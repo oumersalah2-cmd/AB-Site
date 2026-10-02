@@ -21,41 +21,120 @@ const TYPING_LINES = [
 ];
 
 const PROJECTS = [
+  // ── Core AI & Educational Platforms
   {
     name: "Gebere Vision AI",
-    desc: "AI-powered Telegram bot that diagnoses crop diseases for Ethiopian farmers in Amharic and Afaan Oromo. Photo-based diagnosis with treatment plans in under 30 seconds — deployed 24/7 on Railway.",
-    tags: ["Node.js", "Groq AI", "Supabase", "PostgreSQL", "Telegram Bot API"],
-    type: "AI",
+    desc: "AI-powered agricultural Telegram bot utilizing Groq AI vision models (llama-4-scout-17b) to provide instant crop disease diagnosis in Amharic, Afaan Oromoo, English, and Arabic, backed by Supabase and a Human-in-the-Loop verification network.",
+    tags: ["Groq AI", "Telegram Bot API", "Supabase", "PostgreSQL", "Node.js"],
+    type: "AI & EdTech",
     accent: "#10B981",
     demo: "https://t.me/gebere_vision_bot",
     github: "https://github.com/oumersalah2-cmd/gebere-vision-ai"
   },
   {
-    name: "LAMIF — Tutoring & Education Platform",
-    desc: "Premium MERN-stack tutoring marketplace connecting students with qualified instructors across Ethiopia. Features instructor discovery, session booking, and matching logic.",
-    tags: ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS"],
-    type: "Full-Stack",
+    name: "Ace Ifa Boru (Ace IfaBoruBot)",
+    desc: "Educational Telegram mini-app delivering premium, localized practice questions (such as Herrega and Saayinsii Waliigalaa) to help students prepare for competitive boarding school entrance exams across Ethiopia.",
+    tags: ["Telegram Mini-App", "Node.js", "EdTech", "Localized Education"],
+    type: "AI & EdTech",
     accent: "#3B82F6",
-    demo: "https://lamif-platform.vercel.app/",
+    demo: "https://t.me/ace_ifaborubot",
+    github: "https://github.com/oumersalah2-cmd"
+  },
+  {
+    name: "Jabalu",
+    desc: "Interactive, bilingual narrative web application built with React, Next.js, and Tailwind CSS, designed to showcase rich historical stories through engaging multimedia and fluid storytelling interfaces.",
+    tags: ["React", "Next.js", "Tailwind CSS", "Interactive Narrative"],
+    type: "Full-Stack",
+    accent: "#8B5CF6",
+    demo: null,
+    github: "https://github.com/oumersalah2-cmd"
+  },
+
+  // ── Business & Financial Systems
+  {
+    name: "SmartBiz ERP Lite",
+    desc: "Offline-first Progressive Web Application (PWA) built with Next.js, NestJS, and PostgreSQL to handle local business pricing, product cataloging, and inventory management reliably without constant internet connectivity.",
+    tags: ["Next.js", "NestJS", "PostgreSQL", "PWA", "Offline-First"],
+    type: "Full-Stack",
+    accent: "#06B6D4",
+    demo: null,
     github: "https://github.com/oumersalah2-cmd"
   },
   {
     name: "Ethio Bucks — Task & Reward Platform",
-    desc: "Transaction-heavy financial rewards backend for the Ethiopian market. Mobile-first ETB wallet, task completion flows, referral system, and daily bonus claiming.",
-    tags: ["Django", "PostgreSQL", "Python", "Mobile-First"],
-    type: "Full-Stack",
-    accent: "#06B6D4",
+    desc: "Robust financial backend platform engineered with Django and PostgreSQL for the Ethiopian market. Features a mobile-first ETB wallet, task completion flows, referral system, and daily bonus claiming.",
+    tags: ["Django", "PostgreSQL", "Python", "Mobile-First Wallet", "Fintech"],
+    type: "Fintech",
+    accent: "#10B981",
     demo: "http://abdusalam.pythonanywhere.com",
     github: "https://github.com/oumersalah2-cmd"
   },
   {
-    name: "AAU Café Management System",
-    desc: "Full-stack campus café ordering system for Addis Ababa University. Digitises meal attendance, automates 3,000 ETB monthly stipend payments, and prevents dual-claiming fraud with database-level constraints.",
-    tags: ["Node.js", "Express", "PostgreSQL", "JWT Auth"],
-    type: "Full-Stack",
+    name: "AmanaTrade — Supply Chain Platform",
+    desc: "Agricultural supply chain settlement and trading platform developed as an innovative project proposal for the M-PESA Hackathon 2026, facilitating fair payments, escrow, and agricultural logistics tracking.",
+    tags: ["M-PESA Hackathon 2026", "Supply Chain", "Fintech", "Next.js", "APIs"],
+    type: "Fintech",
     accent: "#F59E0B",
+    demo: null,
+    github: "https://github.com/oumersalah2-cmd"
+  },
+  {
+    name: "Seif Online Services",
+    desc: "Localized, reliable web service platform built with Next.js and Tailwind CSS providing passport processing, government application support, and digital service access for the Dodola city community.",
+    tags: ["Next.js", "Tailwind CSS", "Dodola Community", "Web Platform"],
+    type: "Full-Stack",
+    accent: "#EC4899",
+    demo: "https://seif-online-services.vercel.app/",
+    github: "https://github.com/oumersalah2-cmd"
+  },
+
+  // ── Management & Lifestyle Applications
+  {
+    name: "CampusTrack — Lost & Found System",
+    desc: "Secure lost-and-found item management system utilizing Node.js, Express, SQLite3, and JWT authentication to streamline campus item recovery, owner verification, and custody audits.",
+    tags: ["Node.js", "Express", "SQLite3", "JWT Auth", "Campus Security"],
+    type: "Full-Stack",
+    accent: "#6366F1",
+    demo: null,
+    github: "https://github.com/oumersalah2-cmd"
+  },
+  {
+    name: "AAU Café Management System",
+    desc: "Full-stack campus dining registration platform for Addis Ababa University. Digitises meal attendance, automates 3,000 ETB monthly stipend payments, and prevents dual-claiming fraud with database constraints.",
+    tags: ["Node.js", "Express", "PostgreSQL", "JWT Auth", "AAU Dining"],
+    type: "Full-Stack",
+    accent: "#F97316",
     demo: "https://addis-ababa-university-cafe-management.onrender.com/",
     github: "https://github.com/oumersalah2-cmd/Addis-Ababa-University-Cafe-Management-and-Stipend-System"
+  },
+  {
+    name: "FitEthio — Health & Wellness Platform",
+    desc: "Health and wellness web application built with Next.js and Supabase for the Wellness Hackathon 2026, delivering personalized workout tracking, nutrition guidance, and healthy lifestyle monitoring.",
+    tags: ["Next.js", "Supabase", "Wellness Hackathon 2026", "Health Tech"],
+    type: "Full-Stack",
+    accent: "#14B8A6",
+    demo: null,
+    github: "https://github.com/oumersalah2-cmd"
+  },
+
+  // ── Mobile Engineering
+  {
+    name: "Flutter E-Commerce App",
+    desc: "Modern mobile storefront built with Flutter and Dart, leveraging Riverpod for predictable reactive state management, product filtering, dynamic cart management, and seamless checkout flows.",
+    tags: ["Flutter", "Dart", "Riverpod", "Mobile Storefront", "Cross-Platform"],
+    type: "Mobile",
+    accent: "#0284C7",
+    demo: null,
+    github: "https://github.com/oumersalah2-cmd"
+  },
+  {
+    name: "Flutter Weather App",
+    desc: "Cross-platform mobile application delivering real-time forecasts, multi-city tracking, and detailed meteorological metrics via live integration with the Open-Meteo API.",
+    tags: ["Flutter", "Dart", "Open-Meteo API", "REST API", "Mobile App"],
+    type: "Mobile",
+    accent: "#38BDF8",
+    demo: null,
+    github: "https://github.com/oumersalah2-cmd"
   },
 ];
 
@@ -357,7 +436,7 @@ export default function App() {
     }
   };
 
-  const types = ["All", "Full-Stack", "AI"];
+  const types = ["All", "AI & EdTech", "Full-Stack", "Fintech", "Mobile"];
   const filtered = filter === "All" ? PROJECTS : PROJECTS.filter(p => p.type === filter);
 
   return (
@@ -929,7 +1008,7 @@ export default function App() {
                 maxWidth: "640px"
               }}
             >
-              <StatCounter num={10} suffix="+" label="Projects Shipped" start={statsVisible} />
+              <StatCounter num={12} suffix="+" label="Projects Shipped" start={statsVisible} />
               <StatCounter num={2} suffix="+ Years" label="Software Building" start={statsVisible} />
               <StatCounter num={5} suffix="+" label="Core Tech Stacks" start={statsVisible} />
             </div>
