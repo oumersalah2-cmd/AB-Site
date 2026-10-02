@@ -60,3 +60,4 @@ npm run lint
 
 - **Email**: [oumersalah2@gmail.com](mailto:oumersalah2@gmail.com)
 - **GitHub**: [@oumersalah2-cmd](https://github.com/oumersalah2-cmd)
+- **Upwork**: [Abdusalam Oumer on Upwork](https://www.upwork.com/freelancers/~01d02c68660140f622)

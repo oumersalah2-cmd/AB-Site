@@ -1444,7 +1444,7 @@ export default function App() {
                   >
                     {[
                       ["GitHub", "https://github.com/oumersalah2-cmd"],
-                      ["Upwork", "#"],
+                      ["Upwork", "https://www.upwork.com/freelancers/~01d02c68660140f622"],
                       ["LinkedIn", "#"]
                     ].map(([label, href]) => (
                       <a
@@ -1708,7 +1708,7 @@ export default function App() {
             {[
               ["GitHub", "https://github.com/oumersalah2-cmd"],
               ["Email", `mailto:${emailAddress}`],
-              ["Upwork", "#"]
+              ["Upwork", "https://www.upwork.com/freelancers/~01d02c68660140f622"]
             ].map(([label, href]) => (
               <a
                 key={label}
