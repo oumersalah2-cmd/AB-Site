@@ -19,7 +19,7 @@ Modern, minimalist portfolio website for **Abdusalam Oumer**, Full-Stack Softwar
     - **AAU Café Management System**: Campus dining registration and automated 3,000 ETB monthly stipend platform for Addis Ababa University.
 - **Work Experience & Credentials**:
   - Software Engineering Intern at **Sof Omar Technologies** (Sep 2026).
-  - Cybersecurity & Software Engineering Trainee at **INSA** (Information Network Security Administration).
+  - Software Development Trainee at **INSA** (Information Network Security Administration) (Jul 2026 – Nov 2026).
   - Full-Stack Developer at **Lamif Digital Aid**.
 - **Working Contact System**:
   - Interactive contact form with asynchronous submission via FormSubmit.

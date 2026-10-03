@@ -42,15 +42,7 @@ const PROJECTS = [
   },
 
   // ── Business & Financial Systems
-  {
-    name: "SmartBiz ERP Lite",
-    desc: "Offline-first Progressive Web Application (PWA) built with Next.js, NestJS, and PostgreSQL to handle local business pricing, product cataloging, and inventory management reliably without constant internet connectivity.",
-    tags: ["Next.js", "NestJS", "PostgreSQL", "PWA", "Offline-First"],
-    type: "Full-Stack",
-    accent: "#06B6D4",
-    demo: null,
-    github: "https://github.com/oumersalah2-cmd"
-  },
+
   {
     name: "Ethio Bucks — Task & Reward Platform",
     desc: "Robust financial backend platform engineered with Django and PostgreSQL for the Ethiopian market. Features a mobile-first ETB wallet, task completion flows, referral system, and daily bonus claiming.",
@@ -100,11 +92,11 @@ const EXPERIENCE = [
     tags: ["Software Engineering", "Full-Stack", "Flutter", "Web Development", "Team Collaboration"]
   },
   {
-    role: "Software Engineering Trainee / Intern",
+    role: "Software Development Trainee",
     company: "INSA (Information Network Security Administration)",
-    period: "2025 – 2026",
-    desc: "Completed technical engineering training and internship at Ethiopia's national cyber security administration. Worked on system security fundamentals, network architecture, and robust software implementation practices.",
-    tags: ["Cybersecurity", "Network Architecture", "Python", "Linux", "Software Engineering"]
+    period: "Jul 2026 – Nov 2026",
+    desc: "Completed hands-on technical software development training at Ethiopia's national Information Network Security Administration (INSA). Focused on core software development principles, system architectures, secure coding practices, and practical engineering workflows.",
+    tags: ["Software Development", "Python", "Linux", "Algorithms", "Secure Engineering"]
   },
   {
     role: "Full-Stack Web Developer",
@@ -124,7 +116,7 @@ const EXPERIENCE = [
 
 const CERTS = [
   { title: "Internship Certificate of Completion", provider: "Sof Omar Technologies", date: "Sep 2026" },
-  { title: "Cybersecurity & Software Training", provider: "INSA (Information Network Security Administration)", date: "2025 – 2026" },
+  { title: "Software Development Training", provider: "INSA (Information Network Security Administration)", date: "Nov 2026" },
   { title: "Android Developer Fundamentals", provider: "Udacity", date: "Sep 2025" },
   { title: "Programming Fundamentals", provider: "Udacity", date: "Sep 2025" },
 ];
