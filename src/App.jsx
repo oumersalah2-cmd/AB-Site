@@ -278,6 +278,22 @@ function SectionHeading({ children }) {
   );
 }
 
+// ── Cosmic Background Stars ────────────────────────────
+const STARS = [
+  { top: "12%", left: "15%", size: 2, delay: "0s", dur: "3.2s" },
+  { top: "22%", left: "28%", size: 3, delay: "1.1s", dur: "4.5s" },
+  { top: "35%", left: "8%", size: 1.5, delay: "0.4s", dur: "3.8s" },
+  { top: "18%", left: "62%", size: 2.5, delay: "2.3s", dur: "5.1s" },
+  { top: "28%", left: "85%", size: 2, delay: "0.8s", dur: "3.5s" },
+  { top: "45%", left: "92%", size: 3, delay: "1.7s", dur: "4.2s" },
+  { top: "68%", left: "75%", size: 2, delay: "2.9s", dur: "4.8s" },
+  { top: "82%", left: "88%", size: 1.5, delay: "0.5s", dur: "3.1s" },
+  { top: "75%", left: "12%", size: 2.5, delay: "1.4s", dur: "4.0s" },
+  { top: "88%", left: "25%", size: 2, delay: "2.1s", dur: "3.7s" },
+  { top: "15%", left: "45%", size: 1.5, delay: "1.9s", dur: "4.3s" },
+  { top: "55%", left: "48%", size: 2, delay: "0.2s", dur: "3.9s" },
+];
+
 // ── Main App ───────────────────────────────────────────
 export default function App() {
   const [active, setActive] = useState("About");
@@ -286,6 +302,7 @@ export default function App() {
   const [statsRef, statsVisible] = useInView(0.2);
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [photoModalOpen, setPhotoModalOpen] = useState(false);
   const typedText = useTyping(TYPING_LINES);
 
   // Contact Form State
@@ -294,6 +311,23 @@ export default function App() {
   const [formErrorMsg, setFormErrorMsg] = useState("");
 
   const emailAddress = "oumersalah2@gmail.com";
+
+  // Prevent background scroll when photo modal is active
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") setPhotoModalOpen(false);
+    };
+    if (photoModalOpen) {
+      window.addEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [photoModalOpen]);
 
   useEffect(() => {
     const fn = () => {
@@ -612,7 +646,129 @@ export default function App() {
           box-shadow: 0 0 0 3px var(--accent-soft) !important;
         }
 
-        @media (max-width: 900px) {
+        /* ── HERO COSMIC ATMOSPHERE & SHOWCASE ──────── */
+        @keyframes earthPulse {
+          0% { transform: scale(0.98); opacity: 0.65; }
+          50% { transform: scale(1.06); opacity: 0.95; }
+          100% { transform: scale(0.98); opacity: 0.65; }
+        }
+
+        @keyframes cosmicTwinkle {
+          0%, 100% { opacity: 0.2; transform: scale(0.8); }
+          50% { opacity: 0.95; transform: scale(1.2); }
+        }
+
+        @keyframes floatBadge {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-7px); }
+        }
+
+        @keyframes floatBadgeRev {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(7px); }
+        }
+
+        @keyframes modalFadeIn {
+          from { opacity: 0; transform: scale(0.96); }
+          to { opacity: 1; transform: scale(1); }
+        }
+
+        .hero-cosmic-section {
+          position: relative;
+          min-height: 94vh;
+          display: flex;
+          align-items: center;
+          padding: 140px 6vw 80px;
+          overflow: hidden;
+        }
+
+        .hero-ambient-canvas {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          z-index: 0;
+          overflow: hidden;
+        }
+
+        .hero-grid {
+          display: grid;
+          grid-template-columns: 1.15fr 0.85fr;
+          align-items: center;
+          gap: 3.5rem;
+          width: 100%;
+          max-width: 1240px;
+          margin: 0 auto;
+          position: relative;
+          z-index: 2;
+        }
+
+        .hero-photo-portal {
+          position: relative;
+          width: 100%;
+          max-width: 440px;
+          margin: 0 auto;
+          border-radius: 26px;
+          padding: 9px;
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.03) 50%, rgba(59, 130, 246, 0.22) 100%);
+          box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.75), 0 0 50px rgba(37, 99, 235, 0.2);
+          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+        }
+
+        .hero-photo-portal:hover {
+          transform: translateY(-5px) scale(1.012);
+          box-shadow: 0 36px 80px -12px rgba(0, 0, 0, 0.85), 0 0 65px rgba(56, 189, 248, 0.32);
+        }
+
+        .hero-photo-inner {
+          position: relative;
+          border-radius: 19px;
+          overflow: hidden;
+          background: #000000;
+          aspect-ratio: 9 / 14;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+        }
+
+        .hero-photo-inner img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center 25%;
+          transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .hero-photo-portal:hover .hero-photo-inner img {
+          transform: scale(1.035);
+        }
+
+        .hero-badge-glass {
+          position: absolute;
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
+          border-radius: 12px;
+          padding: 9px 14px;
+          border: 1px solid rgba(255, 255, 255, 0.16);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+          z-index: 3;
+          pointer-events: auto;
+          transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        [data-theme="dark"] .hero-badge-glass {
+          background: rgba(10, 15, 26, 0.85);
+          color: #FFFFFF;
+        }
+
+        [data-theme="light"] .hero-badge-glass {
+          background: rgba(255, 255, 255, 0.92);
+          border-color: rgba(0, 0, 0, 0.1);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+          color: #09090B;
+        }
+
+        @media (max-width: 960px) {
           .nav-links-list {
             display: none !important;
           }
@@ -626,6 +782,18 @@ export default function App() {
           .experience-grid {
             grid-template-columns: 1fr !important;
             gap: 0.8rem !important;
+          }
+          .hero-grid {
+            grid-template-columns: 1fr !important;
+            gap: 2.75rem !important;
+          }
+          .hero-photo-portal {
+            max-width: 360px;
+            order: -1;
+          }
+          .hero-cosmic-section {
+            padding-top: 110px !important;
+            min-height: auto !important;
           }
         }
       `}</style>
@@ -815,149 +983,367 @@ export default function App() {
           </div>
         )}
 
-        {/* ── HERO SECTION (CLEAN & MINIMALIST) ── */}
+        {/* ── HERO SECTION (COSMIC ATMOSPHERE & SHOWCASE) ── */}
         <section
           id="about"
-          style={{
-            padding: "160px 6vw 90px",
-            maxWidth: "920px",
-            margin: "0 auto",
-            minHeight: "85vh",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center"
-          }}
+          className="hero-cosmic-section"
         >
-          <FadeIn delay={0.05}>
-            {/* Available status pill */}
+          {/* Ambient Cosmic Background Canvas */}
+          <div className="hero-ambient-canvas" aria-hidden="true">
+            {/* Soft Ambient Projection of the Cosmic Background Image */}
             <div
               style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "10px",
-                padding: "6px 14px",
-                borderRadius: "100px",
-                background: "var(--surface-soft)",
-                border: "1px solid var(--border)",
-                marginBottom: "1.75rem"
+                position: "absolute",
+                right: "-2%",
+                top: "48%",
+                transform: "translateY(-50%)",
+                width: "min(720px, 58vw)",
+                height: "min(920px, 85vh)",
+                backgroundImage: "url('/hero-cosmic.webp')",
+                backgroundSize: "contain",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+                opacity: darkMode ? 0.38 : 0.12,
+                filter: "blur(1px)",
+                maskImage: "radial-gradient(ellipse at 65% 50%, black 25%, rgba(0,0,0,0.5) 55%, transparent 75%)",
+                WebkitMaskImage: "radial-gradient(ellipse at 65% 50%, black 25%, rgba(0,0,0,0.5) 55%, transparent 75%)",
+                pointerEvents: "none"
               }}
-            >
+            />
+
+            {/* Pulsing Earth Globe Aura */}
+            <div
+              style={{
+                position: "absolute",
+                right: "12%",
+                top: "50%",
+                width: "440px",
+                height: "440px",
+                borderRadius: "50%",
+                background: "radial-gradient(circle, rgba(56, 189, 248, 0.28) 0%, rgba(37, 99, 235, 0.14) 40%, transparent 70%)",
+                filter: "blur(40px)",
+                animation: "earthPulse 6s ease-in-out infinite alternate",
+                transform: "translateY(-50%)"
+              }}
+            />
+
+            {/* Subtle Ethiopian Emerald Innovation Aura */}
+            <div
+              style={{
+                position: "absolute",
+                right: "24%",
+                top: "68%",
+                width: "300px",
+                height: "300px",
+                borderRadius: "50%",
+                background: "radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, transparent 70%)",
+                filter: "blur(35px)",
+                transform: "translateY(-50%)"
+              }}
+            />
+
+            {/* Twinkling Space Stars */}
+            {STARS.map((s, i) => (
               <span
-                className="pulse-dot"
+                key={i}
                 style={{
-                  width: "8px",
-                  height: "8px",
+                  position: "absolute",
+                  top: s.top,
+                  left: s.left,
+                  width: `${s.size}px`,
+                  height: `${s.size}px`,
                   borderRadius: "50%",
-                  background: "#22C55E",
-                  display: "inline-block"
+                  backgroundColor: "#FFFFFF",
+                  boxShadow: `0 0 ${s.size * 2}px #60A5FA`,
+                  animation: `cosmicTwinkle ${s.dur} ease-in-out infinite`,
+                  animationDelay: s.delay,
+                  opacity: darkMode ? 0.75 : 0.25
                 }}
               />
-              <span style={{ fontSize: "0.78rem", fontWeight: 600, color: "var(--text)" }}>
-                Available for full-time & contract roles
-              </span>
-            </div>
-          </FadeIn>
+            ))}
 
-          <FadeIn delay={0.15}>
-            <h1
-              style={{
-                fontSize: "clamp(2.75rem, 6vw, 4.5rem)",
-                fontWeight: 900,
-                lineHeight: 1.05,
-                letterSpacing: "-0.04em",
-                color: "var(--text)",
-                marginBottom: "0.75rem"
-              }}
-            >
-              Abdusalam Oumer
-            </h1>
-            <p
-              style={{
-                fontSize: "clamp(1.1rem, 2vw, 1.35rem)",
-                fontWeight: 600,
-                color: "var(--accent)",
-                marginBottom: "1.25rem"
-              }}
-            >
-              Full-Stack Software Engineer · AAU Software Engineering 🇪🇹
-            </p>
-          </FadeIn>
-
-          {/* Typing effect line */}
-          <FadeIn delay={0.25}>
+            {/* Seamless Edge Blends */}
             <div
               style={{
-                fontSize: "0.95rem",
-                fontFamily: "'JetBrains Mono', monospace",
-                color: "var(--muted)",
-                minHeight: "1.8rem",
-                marginBottom: "1.25rem"
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                height: "140px",
+                background: "linear-gradient(to bottom, var(--bg) 0%, transparent 100%)"
               }}
-            >
-              <span style={{ color: "var(--accent)", marginRight: "6px" }}>&gt;</span>
-              {typedText}
-              <span className="cursor" />
-            </div>
-
-            <p
-              style={{
-                fontSize: "1.02rem",
-                color: "var(--muted)",
-                lineHeight: 1.75,
-                maxWidth: "680px",
-                marginBottom: "2.5rem"
-              }}
-            >
-              Specializing in full-stack architecture, performant web applications, and applied AI integrations.
-              From PostgreSQL schemas to smooth Next.js interfaces, I build production-ready digital products with clean, reliable code.
-            </p>
-          </FadeIn>
-
-          {/* Action Buttons */}
-          <FadeIn delay={0.35}>
-            <div style={{ display: "flex", gap: "0.85rem", flexWrap: "wrap", marginBottom: "3.5rem" }}>
-              <button onClick={() => scrollTo("Projects")} className="btn-primary">
-                View Projects
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M7 17L17 7M17 7H7M17 7V17" />
-                </svg>
-              </button>
-              <button onClick={() => scrollTo("Contact")} className="btn-outline">
-                Get in Touch
-              </button>
-              <button
-                onClick={handleCopyEmail}
-                className="btn-outline"
-                title="Click to copy email address"
-                style={{ position: "relative" }}
-              >
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                </svg>
-                {copiedEmail ? "Email Copied!" : "Copy Email"}
-              </button>
-            </div>
-          </FadeIn>
-
-          {/* Stats Bar */}
-          <FadeIn delay={0.45}>
+            />
             <div
-              ref={statsRef}
               style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-                gap: "2rem",
-                paddingTop: "2.25rem",
-                borderTop: "1px solid var(--border)",
-                maxWidth: "640px"
+                position: "absolute",
+                bottom: 0,
+                left: 0,
+                right: 0,
+                height: "160px",
+                background: "linear-gradient(to top, var(--bg) 0%, transparent 100%)"
               }}
-            >
-              <StatCounter num={7} suffix="+" label="Projects Shipped" start={statsVisible} />
-              <StatCounter num={2} suffix="+ Years" label="Software Building" start={statsVisible} />
-              <StatCounter num={5} suffix="+" label="Core Tech Stacks" start={statsVisible} />
+            />
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                bottom: 0,
+                left: 0,
+                width: "48vw",
+                background: "linear-gradient(to right, var(--bg) 0%, var(--bg) 40%, transparent 100%)"
+              }}
+            />
+          </div>
+
+          {/* Hero Foreground Content */}
+          <div className="hero-grid">
+            {/* Left Column: Typography, Bio & Actions */}
+            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
+              <FadeIn delay={0.05}>
+                {/* Available status pill */}
+                <div
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "10px",
+                    padding: "6px 14px",
+                    borderRadius: "100px",
+                    background: "var(--surface-soft)",
+                    border: "1px solid var(--border)",
+                    marginBottom: "1.75rem",
+                    width: "fit-content"
+                  }}
+                >
+                  <span
+                    className="pulse-dot"
+                    style={{
+                      width: "8px",
+                      height: "8px",
+                      borderRadius: "50%",
+                      background: "#22C55E",
+                      display: "inline-block"
+                    }}
+                  />
+                  <span style={{ fontSize: "0.78rem", fontWeight: 600, color: "var(--text)" }}>
+                    Available for full-time & contract roles
+                  </span>
+                </div>
+              </FadeIn>
+
+              <FadeIn delay={0.15}>
+                <h1
+                  style={{
+                    fontSize: "clamp(2.75rem, 5.5vw, 4.4rem)",
+                    fontWeight: 900,
+                    lineHeight: 1.05,
+                    letterSpacing: "-0.04em",
+                    color: "var(--text)",
+                    marginBottom: "0.75rem"
+                  }}
+                >
+                  Abdusalam Oumer
+                </h1>
+                <p
+                  style={{
+                    fontSize: "clamp(1.08rem, 1.8vw, 1.3rem)",
+                    fontWeight: 600,
+                    color: "var(--accent)",
+                    marginBottom: "1.25rem"
+                  }}
+                >
+                  Full-Stack Software Engineer · AAU Software Engineering 🇪🇹
+                </p>
+              </FadeIn>
+
+              {/* Typing effect line */}
+              <FadeIn delay={0.25}>
+                <div
+                  style={{
+                    fontSize: "0.95rem",
+                    fontFamily: "'JetBrains Mono', monospace",
+                    color: "var(--muted)",
+                    minHeight: "1.8rem",
+                    marginBottom: "1.25rem"
+                  }}
+                >
+                  <span style={{ color: "var(--accent)", marginRight: "6px" }}>&gt;</span>
+                  {typedText}
+                  <span className="cursor" />
+                </div>
+
+                <p
+                  style={{
+                    fontSize: "1.02rem",
+                    color: "var(--muted)",
+                    lineHeight: 1.75,
+                    maxWidth: "580px",
+                    marginBottom: "2.25rem"
+                  }}
+                >
+                  Specializing in full-stack architecture, performant web applications, and applied AI integrations.
+                  From PostgreSQL schemas to smooth Next.js interfaces, I build production-ready digital products with clean, reliable code.
+                </p>
+              </FadeIn>
+
+              {/* Action Buttons */}
+              <FadeIn delay={0.35}>
+                <div style={{ display: "flex", gap: "0.85rem", flexWrap: "wrap", marginBottom: "3rem" }}>
+                  <button onClick={() => scrollTo("Projects")} className="btn-primary">
+                    View Projects
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M7 17L17 7M17 7H7M17 7V17" />
+                    </svg>
+                  </button>
+                  <button onClick={() => scrollTo("Contact")} className="btn-outline">
+                    Get in Touch
+                  </button>
+                  <button
+                    onClick={handleCopyEmail}
+                    className="btn-outline"
+                    title="Click to copy email address"
+                    style={{ position: "relative" }}
+                  >
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    {copiedEmail ? "Email Copied!" : "Copy Email"}
+                  </button>
+                </div>
+              </FadeIn>
+
+              {/* Stats Bar */}
+              <FadeIn delay={0.45}>
+                <div
+                  ref={statsRef}
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
+                    gap: "1.5rem",
+                    paddingTop: "2rem",
+                    borderTop: "1px solid var(--border)",
+                    maxWidth: "580px"
+                  }}
+                >
+                  <StatCounter num={7} suffix="+" label="Projects Shipped" start={statsVisible} />
+                  <StatCounter num={2} suffix="+ Years" label="Software Building" start={statsVisible} />
+                  <StatCounter num={5} suffix="+" label="Core Tech Stacks" start={statsVisible} />
+                </div>
+              </FadeIn>
             </div>
-          </FadeIn>
+
+            {/* Right Column: Hero Cosmic Showcase & Portal */}
+            <FadeIn delay={0.2} style={{ display: "flex", justifyContent: "center" }}>
+              <div className="hero-photo-portal">
+                {/* Floating Top Badge */}
+                <div
+                  className="hero-badge-glass"
+                  style={{
+                    top: "-18px",
+                    left: "-14px",
+                    animation: "floatBadge 5s ease-in-out infinite"
+                  }}
+                >
+                  <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                    <span style={{ fontSize: "1.1rem" }}>🌍</span>
+                    <div>
+                      <div style={{ fontSize: "0.78rem", fontWeight: 700, letterSpacing: "-0.01em" }}>
+                        Addis Ababa to the World
+                      </div>
+                      <div style={{ fontSize: "0.68rem", opacity: 0.75 }}>
+                        AAU Software Engineering 🇪🇹
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Photo Container */}
+                <div
+                  className="hero-photo-inner"
+                  onClick={() => setPhotoModalOpen(true)}
+                  title="Click to view full photo"
+                >
+                  <img
+                    src="/hero-cosmic.webp"
+                    alt="Abdusalam Oumer in front of Earth and cosmic projection"
+                    loading="eager"
+                  />
+
+                  {/* Gentle gradient overlay to smoothly anchor the bottom */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      background: "linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%, transparent 35%, transparent 80%, rgba(0, 0, 0, 0.35) 100%)",
+                      pointerEvents: "none"
+                    }}
+                  />
+
+                  {/* Expand view trigger button */}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setPhotoModalOpen(true);
+                    }}
+                    style={{
+                      position: "absolute",
+                      top: "14px",
+                      right: "14px",
+                      width: "34px",
+                      height: "34px",
+                      borderRadius: "50%",
+                      background: "rgba(0, 0, 0, 0.55)",
+                      backdropFilter: "blur(8px)",
+                      border: "1px solid rgba(255, 255, 255, 0.25)",
+                      color: "#FFFFFF",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      cursor: "pointer",
+                      transition: "transform 0.2s, background 0.2s"
+                    }}
+                    title="Expand photo"
+                    aria-label="Expand photo"
+                  >
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                      <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                    </svg>
+                  </button>
+                </div>
+
+                {/* Floating Bottom Badge */}
+                <div
+                  className="hero-badge-glass"
+                  style={{
+                    bottom: "-16px",
+                    right: "-12px",
+                    animation: "floatBadgeRev 5.5s ease-in-out infinite"
+                  }}
+                >
+                  <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                    <span
+                      style={{
+                        width: "8px",
+                        height: "8px",
+                        borderRadius: "50%",
+                        background: "#38BDF8",
+                        boxShadow: "0 0 8px #38BDF8",
+                        display: "inline-block"
+                      }}
+                    />
+                    <div>
+                      <div style={{ fontSize: "0.78rem", fontWeight: 700, letterSpacing: "-0.01em" }}>
+                        Applied AI & Full-Stack
+                      </div>
+                      <div style={{ fontSize: "0.68rem", opacity: 0.75 }}>
+                        Next.js · Django · Supabase
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
         </section>
 
         {/* ── SKILLS SECTION ── */}
@@ -1722,6 +2108,94 @@ export default function App() {
             ))}
           </div>
         </footer>
+
+        {/* ── PHOTO LIGHTBOX MODAL ── */}
+        {photoModalOpen && (
+          <div
+            onClick={() => setPhotoModalOpen(false)}
+            style={{
+              position: "fixed",
+              inset: 0,
+              zIndex: 9999,
+              background: "rgba(0, 0, 0, 0.88)",
+              backdropFilter: "blur(16px)",
+              WebkitBackdropFilter: "blur(16px)",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "24px",
+              animation: "modalFadeIn 0.25s ease-out"
+            }}
+          >
+            <div
+              onClick={(e) => e.stopPropagation()}
+              style={{
+                position: "relative",
+                maxWidth: "520px",
+                width: "100%",
+                maxHeight: "90vh",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center"
+              }}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setPhotoModalOpen(false)}
+                style={{
+                  position: "absolute",
+                  top: "-46px",
+                  right: "0",
+                  background: "rgba(255, 255, 255, 0.15)",
+                  border: "1px solid rgba(255, 255, 255, 0.25)",
+                  color: "#FFFFFF",
+                  width: "36px",
+                  height: "36px",
+                  borderRadius: "50%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  cursor: "pointer",
+                  fontSize: "1.1rem",
+                  transition: "background 0.2s"
+                }}
+                aria-label="Close modal"
+              >
+                ✕
+              </button>
+
+              <img
+                src="/hero-bg.jpg"
+                alt="Abdusalam Oumer with illuminated Earth globe"
+                style={{
+                  maxWidth: "100%",
+                  maxHeight: "76vh",
+                  objectFit: "contain",
+                  borderRadius: "18px",
+                  boxShadow: "0 25px 60px rgba(0, 0, 0, 0.8), 0 0 50px rgba(56, 189, 248, 0.3)",
+                  border: "1px solid rgba(255, 255, 255, 0.18)"
+                }}
+              />
+
+              <div
+                style={{
+                  marginTop: "16px",
+                  textAlign: "center",
+                  color: "rgba(255, 255, 255, 0.95)",
+                  fontSize: "0.85rem"
+                }}
+              >
+                <div style={{ fontWeight: 700, fontSize: "1rem", letterSpacing: "-0.01em" }}>
+                  Abdusalam Oumer — Full-Stack Software Engineer
+                </div>
+                <div style={{ color: "rgba(255, 255, 255, 0.7)", marginTop: "4px", fontSize: "0.8rem" }}>
+                  በተፈጥሮ ሂደት በመሬት ምህዳር · Building from Addis Ababa to the World 🌍
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
