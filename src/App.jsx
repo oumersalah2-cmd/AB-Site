@@ -4,21 +4,19 @@ import { useState, useEffect, useRef } from "react";
 const PROFILE = {
   name: "Abdusalam Oumer Aman",
   handle: "oumersalah2",
-  title: "Software Engineering at AAU · Systems Security at INSA · Applied AI Founder",
+  title: "Software Engineering at AAU · INSA Cyber Talent Graduate · Applied AI Founder",
   heroPunchline: "Building localized, production-ready AI systems for Ethiopian infrastructure.",
   email: "oumersalah2@gmail.com",
   github: "https://github.com/oumersalah2-cmd",
   upwork: "https://www.upwork.com/freelancers/~01d02c68660140f622",
   twitter: "https://x.com/oumersalah2",
   twitterHandle: "@oumersalah2",
-  telegramDirect: "https://t.me/ggedAbdusay",
-  telegramDirectHandle: "@ggedAbdusay",
-  telegramChannel: "https://t.me/unpluggedme",
+  telegramChannel: "https://t.me/ggedAbdusay",
   telegramChannelName: "Unplugged Me",
   cvUrl: "/cv.pdf",
   location: "Addis Ababa, Ethiopia",
   institution: "Addis Ababa University (AAU)",
-  securityTraining: "INSA CTC National Cyber Talent Camp",
+  securityTraining: "INSA National Cyber Talent Camp Graduate",
 };
 
 // ── 4 CLEAR PORTFOLIO PAGES / SECTIONS ────────────────────────────────
@@ -45,12 +43,12 @@ const CREDENTIALS_AND_CERTS = [
   {
     id: "insa-sec",
     badge: "SYSTEMS SECURITY // NATIONAL CYBER CAMP",
-    title: "National Ethio Cyber Talent Summer Camp",
+    title: "National Ethio Cyber Talent Summer Camp Graduate",
     authority: "Information Network Security Administration (INSA)",
     date: "Jul 2026 – Nov 2026",
     sponsor: "National Systems Architecture & Defense Division",
     summary:
-      "Intensive training in defensive cybersecurity, network intrusion containment, Linux kernel auditing, and cryptographic ledger integrity.",
+      "Intensive national talent training in defensive cybersecurity, network intrusion containment, Linux kernel auditing, and cryptographic ledger integrity.",
     skills: ["Defensive Cybersecurity", "Linux Kernel Audits", "Cryptographic Ledgers", "Systems Architecture"],
   },
   {
@@ -186,7 +184,7 @@ export default function App() {
   const [terminalOutput, setTerminalOutput] = useState([
     { type: "system", text: "AMAN-SYSTEMS KERNEL // INITIALIZED [HOST: ADDIS ABABA, ET]" },
     { type: "system", text: "Verified credentials catalog: 5 entries loaded." },
-    { type: "system", text: "Direct Telegram: https://t.me/ggedAbdusay (@ggedAbdusay)" },
+    { type: "system", text: "Telegram Channel: https://t.me/ggedAbdusay (Unplugged Me)" },
     { type: "system", text: "Type 'help' or click commands below to run queries." },
   ]);
 
@@ -252,10 +250,9 @@ export default function App() {
   whoami         - Print founder biographical coordinates
   credentials    - Display all 5 academic and professional certificates
   projects       - List core production projects
-  telegram       - Open direct Telegram: https://t.me/ggedAbdusay
-  channel        - Open Telegram channel: https://t.me/unpluggedme
+  channel        - Open Telegram channel: https://t.me/ggedAbdusay
   cv             - View Curriculum Vitae details
-  contact        - Direct contact coordinates
+  contact        - Direct contact coordinates & channels
   clear          - Clear terminal buffer`,
         });
         break;
@@ -263,9 +260,9 @@ export default function App() {
         newLogs.push({
           type: "output",
           text: `Abdusalam Oumer Aman
-Software Engineering (AAU) · Systems Security (INSA) · Applied AI Founder
+Software Engineering (AAU) · INSA Cyber Talent Graduate · Applied AI Founder
 Venture: Gebere Vision AI (METI-Funded UniPods AI Programme)
-Direct Telegram: https://t.me/ggedAbdusay (@ggedAbdusay)
+Channel: Unplugged Me (https://t.me/ggedAbdusay)
 Location: Addis Ababa, Ethiopia
 Mission: Localized, production-ready AI systems for Ethiopian infrastructure.`,
         });
@@ -274,7 +271,7 @@ Mission: Localized, production-ready AI systems for Ethiopian infrastructure.`,
         newLogs.push({
           type: "output",
           text: `1. MIT Open Learning: Introduction to Universal AI (Prof. Dimitris Bertsimas)
-2. INSA: National Ethio Cyber Talent Summer Camp (Defensive Systems Security)
+2. INSA: National Ethio Cyber Talent Summer Camp Graduate
 3. Addis Ababa University (AAU): B.Sc. in Software Engineering (Year 3 / Junior)
 4. Sof Omar Technologies: Software Engineering Internship Certificate
 5. Udacity: Android Developer & Programming Fundamentals`,
@@ -289,14 +286,14 @@ Mission: Localized, production-ready AI systems for Ethiopian infrastructure.`,
 4. CampusTrack AAU - University dining custody & 3,000 ETB stipend automation`,
         });
         break;
+      case "channel":
       case "telegram":
         newLogs.push({
           type: "output",
-          text: `Direct Telegram: https://t.me/ggedAbdusay (@ggedAbdusay)
-Channel: https://t.me/unpluggedme (@unpluggedme)`,
+          text: `Channel: Unplugged Me (https://t.me/ggedAbdusay)`,
         });
         if (typeof window !== "undefined") {
-          window.open(PROFILE.telegramDirect, "_blank");
+          window.open(PROFILE.telegramChannel, "_blank");
         }
         break;
       case "cv":
@@ -310,8 +307,7 @@ Channel: https://t.me/unpluggedme (@unpluggedme)`,
         newLogs.push({
           type: "output",
           text: `EMAIL: oumersalah2@gmail.com
-TELEGRAM (DIRECT): https://t.me/ggedAbdusay (@ggedAbdusay)
-TELEGRAM CHANNEL: https://t.me/unpluggedme
+TELEGRAM CHANNEL: https://t.me/ggedAbdusay (Unplugged Me)
 TWITTER / X: https://x.com/oumersalah2
 UPWORK: https://www.upwork.com/freelancers/~01d02c68660140f622
 GITHUB: https://github.com/oumersalah2-cmd`,
@@ -371,7 +367,7 @@ GITHUB: https://github.com/oumersalah2-cmd`,
     } catch {
       setFormStatus("error");
       setFormMsg(
-        `Unable to reach automated dispatch worker. Please write directly to ${PROFILE.email} or reach out on Telegram @ggedAbdusay.`
+        `Unable to reach automated dispatch worker. Please write directly to ${PROFILE.email} or on Telegram channel @ggedAbdusay.`
       );
     }
   };
@@ -553,8 +549,8 @@ GITHUB: https://github.com/oumersalah2-cmd`,
           {/* Brand Wordmark & Coordinates */}
           <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
             <img
-              src="/profile-circle.webp"
-              alt="Abdusalam avatar"
+              src="/profile-world-circle.webp"
+              alt="Abdusalam avatar with world globe"
               style={{
                 width: "36px",
                 height: "36px",
@@ -583,7 +579,7 @@ GITHUB: https://github.com/oumersalah2-cmd`,
                   letterSpacing: "0.02em",
                 }}
               >
-                AAU SOFTWARE ENG · INSA CYBER · MIT OPEN LEARNING
+                AAU SOFTWARE ENG · INSA CYBER GRADUATE · MIT OPEN LEARNING
               </div>
             </div>
           </div>
@@ -730,7 +726,7 @@ GITHUB: https://github.com/oumersalah2-cmd`,
             </div>
           </div>
 
-          {/* Profile Hero Block with Compact Circular Avatar */}
+          {/* Profile Hero Block with Circular Avatar (Substituted with World Globe Image) */}
           <div>
             {/* Header row: Circular Avatar + Name */}
             <div
@@ -742,11 +738,11 @@ GITHUB: https://github.com/oumersalah2-cmd`,
                 marginBottom: "1.8rem",
               }}
             >
-              {/* Circular Avatar (Cropped, Legs Removed, EAII Background) */}
+              {/* Circular Avatar (World Globe & Face Visible, Legs Removed) */}
               <div style={{ position: "relative", flexShrink: 0 }}>
                 <img
-                  src="/profile-circle.webp"
-                  alt="Abdusalam Oumer Aman at Ethiopian Artificial Intelligence Institute (EAII)"
+                  src="/profile-world-circle.webp"
+                  alt="Abdusalam Oumer Aman in front of Earth projection"
                   style={{
                     width: "155px",
                     height: "155px",
@@ -815,7 +811,7 @@ GITHUB: https://github.com/oumersalah2-cmd`,
                 >
                   <span>AAU Software Engineering</span>
                   <span>·</span>
-                  <span>INSA Systems Security</span>
+                  <span>INSA Cyber Talent Graduate</span>
                   <span>·</span>
                   <span>MIT Universal AI</span>
                 </div>
@@ -841,7 +837,7 @@ GITHUB: https://github.com/oumersalah2-cmd`,
                   marginBottom: "0.5rem",
                 }}
               >
-                Software Engineering at AAU. Systems Security at INSA. Applied AI Founder.
+                Software Engineering at AAU. INSA Cyber Talent Graduate. Applied AI Founder.
               </p>
               <p
                 className="font-mono"
@@ -857,7 +853,7 @@ GITHUB: https://github.com/oumersalah2-cmd`,
             </div>
 
             {/* Narrative Paragraphs with Optimal 60-80 Character Line Length (Readability Recommendation) */}
-            <div style={{ maxWidth: "65ch", marginBottom: "2.2rem" }}>
+            <div style={{ maxWidth: "65ch", marginBottom: "2.4rem" }}>
               <p
                 style={{
                   fontSize: "1.04rem",
@@ -868,8 +864,8 @@ GITHUB: https://github.com/oumersalah2-cmd`,
               >
                 Most modern AI projects settle for generic OpenAI wrapper scripts and flashy dark-mode marketing pages. My
                 engineering work bridges third-year Software Engineering foundations at{" "}
-                <strong>Addis Ababa University</strong>, rigorous defensive cybersecurity at Ethiopia's national{" "}
-                <strong>INSA (Information Network Security Administration)</strong>, and applied optimization validated
+                <strong>Addis Ababa University</strong>, rigorous defensive cybersecurity training as a graduate of Ethiopia's national{" "}
+                <strong>INSA (Information Network Security Administration) Cyber Talent Camp</strong>, and applied optimization validated
                 through <strong>MIT Open Learning</strong> under Boeing Professor of Operations Research Dimitris Bertsimas.
               </p>
 
@@ -894,71 +890,20 @@ GITHUB: https://github.com/oumersalah2-cmd`,
               </p>
             </div>
 
-            {/* Action Buttons */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.85rem", marginBottom: "2.2rem" }}>
+            {/* Primary Action Buttons (Clean & Focused, No Social Duplication) */}
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.85rem" }}>
               <button onClick={() => scrollToSection("projects")} className="btn-action">
                 Inspect Core Projects ↓
               </button>
               <button onClick={() => scrollToSection("credentials")} className="btn-action-ghost">
-                Credentials & Certs ↓
+                Foundations & Certs ↓
               </button>
               <button onClick={() => setCvModalOpen(true)} className="btn-action-ghost">
                 Curriculum Vitae (CV) 📄
               </button>
-              <a href={PROFILE.telegramDirect} target="_blank" rel="noreferrer" className="btn-action-ghost">
-                Telegram: {PROFILE.telegramDirectHandle} ↗
-              </a>
-              <button onClick={copyEmailAddress} className="btn-action-ghost">
-                {emailCopied ? "✓ Copied to Clipboard" : `Copy Email`}
+              <button onClick={() => scrollToSection("contact")} className="btn-action-ghost">
+                Contact & Channels ↓
               </button>
-            </div>
-
-            {/* Quick Hard Facts & Metrics Strip */}
-            <div
-              className="font-mono border-ledger bg-card"
-              style={{
-                border: `1px solid ${isDark ? "#222222" : "#E5E7EB"}`,
-                padding: "1.2rem",
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(210px, 1fr))",
-                gap: "1.2rem",
-                fontSize: "0.8rem",
-              }}
-            >
-              <div>
-                <span className="text-muted">LOCATION: </span>
-                <strong>{PROFILE.location} (UTC+3)</strong>
-              </div>
-              <div>
-                <span className="text-muted">DIRECT TELEGRAM: </span>
-                <a href={PROFILE.telegramDirect} target="_blank" rel="noreferrer" className="tactile-link" style={{ fontWeight: 600 }}>
-                  {PROFILE.telegramDirectHandle} ↗
-                </a>
-              </div>
-              <div>
-                <span className="text-muted">TELEGRAM CHANNEL: </span>
-                <a href={PROFILE.telegramChannel} target="_blank" rel="noreferrer" className="tactile-link" style={{ fontWeight: 600 }}>
-                  {PROFILE.telegramChannelName} ↗
-                </a>
-              </div>
-              <div>
-                <span className="text-muted">GITHUB: </span>
-                <a href={PROFILE.github} target="_blank" rel="noreferrer" className="tactile-link" style={{ fontWeight: 600 }}>
-                  @{PROFILE.handle}-cmd ↗
-                </a>
-              </div>
-              <div>
-                <span className="text-muted">UPWORK: </span>
-                <a href={PROFILE.upwork} target="_blank" rel="noreferrer" className="tactile-link" style={{ fontWeight: 600 }}>
-                  Top-Rated Profile ↗
-                </a>
-              </div>
-              <div>
-                <span className="text-muted">DIRECT INBOX: </span>
-                <a href={`mailto:${PROFILE.email}`} style={{ fontWeight: 600, color: accentHex }}>
-                  {PROFILE.email}
-                </a>
-              </div>
             </div>
           </div>
         </section>
@@ -1148,7 +1093,7 @@ GITHUB: https://github.com/oumersalah2-cmd`,
               Foundations & Verified Certifications
             </h2>
             <p style={{ fontSize: "0.92rem", color: isDark ? "#888888" : "#64748B", maxWidth: "65ch", marginTop: "0.4rem" }}>
-              Formal verification bridging AAU Software Engineering rigor, INSA national cybersecurity operations, and MIT Open Learning applied optimization.
+              Formal verification bridging AAU Software Engineering rigor, INSA national cybersecurity operations training, and MIT Open Learning applied optimization.
             </p>
           </div>
 
@@ -1245,13 +1190,13 @@ GITHUB: https://github.com/oumersalah2-cmd`,
         </section>
 
         {/* ════════════════════════════════════════════════════════════════
-            PAGE 04: CONNECT, DISPATCH & CV
+            PAGE 04: CONNECT, CHANNELS & CV (WITH CLEAR EXPLANATIONS)
         ════════════════════════════════════════════════════════════════ */}
         <section id="contact" style={{ paddingBottom: "2rem" }}>
           {/* Section Heading */}
           <div style={{ marginBottom: "2rem" }}>
             <div className="font-mono" style={{ fontSize: "0.74rem", color: accentHex, fontWeight: 700, letterSpacing: "0.06em" }}>
-              PAGE 04 // DISPATCH CONSOLE & CV
+              PAGE 04 // CONTACT & DISPATCH CONSOLE
             </div>
             <h2 className="font-serif" style={{ fontSize: "clamp(2rem, 3.2vw, 2.7rem)", fontWeight: 600, marginTop: "0.2rem" }}>
               Direct Channels & Collaboration
@@ -1265,14 +1210,13 @@ GITHUB: https://github.com/oumersalah2-cmd`,
             className="dispatch-grid"
             style={{
               display: "grid",
-              gridTemplateColumns: "1fr 1fr",
+              gridTemplateColumns: "1.1fr 0.9fr",
               gap: "2.5rem",
               alignItems: "start",
             }}
           >
-            {/* Left Column: Direct Coordinates + CV Card */}
+            {/* Left Column: Direct Coordinates with Purpose & Explanations */}
             <div>
-              {/* Direct Channels Grid */}
               <div
                 className="border-ledger bg-card"
                 style={{
@@ -1281,74 +1225,111 @@ GITHUB: https://github.com/oumersalah2-cmd`,
                   marginBottom: "1.5rem",
                 }}
               >
-                <div className="font-mono" style={{ fontSize: "0.72rem", fontWeight: 700, color: accentHex, letterSpacing: "0.06em", marginBottom: "1rem" }}>
-                  VERIFIED DIRECT CHANNELS
+                <div className="font-mono" style={{ fontSize: "0.72rem", fontWeight: 700, color: accentHex, letterSpacing: "0.06em", marginBottom: "1.2rem" }}>
+                  CONTACT COORDINATES & CHANNELS (WITH DIRECT EXPLANATIONS)
                 </div>
 
-                <div style={{ display: "grid", gap: "1rem", fontSize: "0.85rem" }}>
+                <div style={{ display: "grid", gap: "1.25rem" }}>
+                  {/* Telegram Channel: Unplugged Me */}
                   <div>
-                    <span className="font-mono text-muted" style={{ fontSize: "0.75rem", display: "block" }}>
-                      TELEGRAM (DIRECT // FASTEST RESPONSE):
-                    </span>
-                    <a
-                      href={PROFILE.telegramDirect}
-                      target="_blank"
-                      rel="noreferrer"
-                      style={{ fontWeight: 600, color: accentHex, fontSize: "0.95rem" }}
-                    >
-                      {PROFILE.telegramDirectHandle} (https://t.me/ggedAbdusay) ↗
-                    </a>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "4px" }}>
+                      <span className="font-mono text-muted" style={{ fontSize: "0.74rem", fontWeight: 700 }}>
+                        TELEGRAM CHANNEL // DEV BLOG:
+                      </span>
+                      <a
+                        href={PROFILE.telegramChannel}
+                        target="_blank"
+                        rel="noreferrer"
+                        style={{ fontWeight: 600, color: accentHex, fontSize: "0.88rem" }}
+                      >
+                        {PROFILE.telegramChannelName} (https://t.me/ggedAbdusay) ↗
+                      </a>
+                    </div>
+                    <p style={{ fontSize: "0.82rem", color: isDark ? "#A0A0A0" : "#64748B", marginTop: "4px", lineHeight: 1.5 }}>
+                      My primary engineering publication channel where I share system architecture notes, LeetCode dynamic programming optimizations, terminal configs, and founder reflections.
+                    </p>
                   </div>
 
-                  <div>
-                    <span className="font-mono text-muted" style={{ fontSize: "0.75rem", display: "block" }}>
-                      TELEGRAM CHANNEL (DEV LOGS & BENCHMARKS):
-                    </span>
-                    <a
-                      href={PROFILE.telegramChannel}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="tactile-link"
-                      style={{ fontWeight: 600 }}
-                    >
-                      {PROFILE.telegramChannelName} (https://t.me/unpluggedme) ↗
-                    </a>
+                  {/* Primary Inbox */}
+                  <div style={{ borderTop: `1px solid ${isDark ? "#1C1C1C" : "#F1F5F9"}`, paddingTop: "1rem" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "4px" }}>
+                      <span className="font-mono text-muted" style={{ fontSize: "0.74rem", fontWeight: 700 }}>
+                        PRIMARY EMAIL // DIRECT INQUIRIES:
+                      </span>
+                      <button
+                        onClick={copyEmailAddress}
+                        className="tactile-link"
+                        style={{ background: "none", border: "none", cursor: "pointer", fontWeight: 600, fontSize: "0.88rem" }}
+                      >
+                        {emailCopied ? "✓ Email Copied!" : PROFILE.email}
+                      </button>
+                    </div>
+                    <p style={{ fontSize: "0.82rem", color: isDark ? "#A0A0A0" : "#64748B", marginTop: "4px", lineHeight: 1.5 }}>
+                      Best for formal founder opportunities, technical advisory conversations, and high-concurrency systems design proposals.
+                    </p>
                   </div>
 
-                  <div>
-                    <span className="font-mono text-muted" style={{ fontSize: "0.75rem", display: "block" }}>
-                      PRIMARY EMAIL:
-                    </span>
-                    <a href={`mailto:${PROFILE.email}`} style={{ fontWeight: 600 }}>
-                      {PROFILE.email}
-                    </a>
+                  {/* GitHub */}
+                  <div style={{ borderTop: `1px solid ${isDark ? "#1C1C1C" : "#F1F5F9"}`, paddingTop: "1rem" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "4px" }}>
+                      <span className="font-mono text-muted" style={{ fontSize: "0.74rem", fontWeight: 700 }}>
+                        GITHUB REPOSITORIES // OPEN SOURCE:
+                      </span>
+                      <a
+                        href={PROFILE.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="tactile-link"
+                        style={{ fontWeight: 600, fontSize: "0.88rem" }}
+                      >
+                        github.com/{PROFILE.handle}-cmd ↗
+                      </a>
+                    </div>
+                    <p style={{ fontSize: "0.82rem", color: isDark ? "#A0A0A0" : "#64748B", marginTop: "4px", lineHeight: 1.5 }}>
+                      Public repositories, commit logs, and codebases including Gebere Vision AI, AAU Campus Cafe, and algorithmic solutions.
+                    </p>
                   </div>
 
-                  <div>
-                    <span className="font-mono text-muted" style={{ fontSize: "0.75rem", display: "block" }}>
-                      GITHUB REPOSITORIES:
-                    </span>
-                    <a href={PROFILE.github} target="_blank" rel="noreferrer" className="tactile-link" style={{ fontWeight: 600 }}>
-                      github.com/{PROFILE.handle}-cmd ↗
-                    </a>
+                  {/* Upwork Profile */}
+                  <div style={{ borderTop: `1px solid ${isDark ? "#1C1C1C" : "#F1F5F9"}`, paddingTop: "1rem" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "4px" }}>
+                      <span className="font-mono text-muted" style={{ fontSize: "0.74rem", fontWeight: 700 }}>
+                        UPWORK FREELANCER:
+                      </span>
+                      <a
+                        href={PROFILE.upwork}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="tactile-link"
+                        style={{ fontWeight: 600, fontSize: "0.88rem" }}
+                      >
+                        Upwork Profile ↗
+                      </a>
+                    </div>
+                    <p style={{ fontSize: "0.82rem", color: isDark ? "#A0A0A0" : "#64748B", marginTop: "4px", lineHeight: 1.5 }}>
+                      Escrow-protected software contracts for backend engineering, Python/Django APIs, and offline-first web/mobile apps.
+                    </p>
                   </div>
 
-                  <div>
-                    <span className="font-mono text-muted" style={{ fontSize: "0.75rem", display: "block" }}>
-                      TWITTER / X:
-                    </span>
-                    <a href={PROFILE.twitter} target="_blank" rel="noreferrer" className="tactile-link" style={{ fontWeight: 600 }}>
-                      {PROFILE.twitterHandle} ↗
-                    </a>
-                  </div>
-
-                  <div>
-                    <span className="font-mono text-muted" style={{ fontSize: "0.75rem", display: "block" }}>
-                      UPWORK FREELANCER:
-                    </span>
-                    <a href={PROFILE.upwork} target="_blank" rel="noreferrer" className="tactile-link" style={{ fontWeight: 600 }}>
-                      Top-Rated Engineering Profile ↗
-                    </a>
+                  {/* Twitter / X */}
+                  <div style={{ borderTop: `1px solid ${isDark ? "#1C1C1C" : "#F1F5F9"}`, paddingTop: "1rem" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "4px" }}>
+                      <span className="font-mono text-muted" style={{ fontSize: "0.74rem", fontWeight: 700 }}>
+                        TWITTER / X:
+                      </span>
+                      <a
+                        href={PROFILE.twitter}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="tactile-link"
+                        style={{ fontWeight: 600, fontSize: "0.88rem" }}
+                      >
+                        {PROFILE.twitterHandle} ↗
+                      </a>
+                    </div>
+                    <p style={{ fontSize: "0.82rem", color: isDark ? "#A0A0A0" : "#64748B", marginTop: "4px", lineHeight: 1.5 }}>
+                      Public thoughts on applied AI models, African infrastructure, and systems software.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -1616,14 +1597,11 @@ GITHUB: https://github.com/oumersalah2-cmd`,
           className="font-mono text-muted"
         >
           <div>
-            © 2026 ABDUSALAM OUMER AMAN · ADDIS ABABA UNIVERSITY · INSA · MIT OPEN LEARNING
+            © 2026 ABDUSALAM OUMER AMAN · AAU · INSA CYBER GRADUATE · MIT OPEN LEARNING
           </div>
           <div style={{ display: "flex", gap: "1rem" }}>
-            <a href={PROFILE.telegramDirect} target="_blank" rel="noreferrer" className="tactile-link">
-              Telegram Direct ↗
-            </a>
             <a href={PROFILE.telegramChannel} target="_blank" rel="noreferrer" className="tactile-link">
-              Unplugged Me ↗
+              Unplugged Me (Telegram) ↗
             </a>
             <a href={PROFILE.github} target="_blank" rel="noreferrer" className="tactile-link">
               GitHub ↗
@@ -1672,7 +1650,7 @@ GITHUB: https://github.com/oumersalah2-cmd`,
                   Abdusalam Oumer Aman
                 </h2>
                 <div className="font-mono text-muted" style={{ fontSize: "0.78rem" }}>
-                  oumersalah2@gmail.com · Addis Ababa, Ethiopia · @ggedAbdusay
+                  oumersalah2@gmail.com · Addis Ababa, Ethiopia · Unplugged Me (Telegram)
                 </div>
               </div>
               <button
@@ -1700,7 +1678,7 @@ GITHUB: https://github.com/oumersalah2-cmd`,
                   <strong>Addis Ababa University (AAU)</strong> — B.Sc. in Software Engineering (Junior / 3rd Year, 2022–Present).
                 </p>
                 <p>
-                  <strong>Information Network Security Administration (INSA)</strong> — National Ethio Cyber Talent Summer Camp (Jul–Nov 2026).
+                  <strong>Information Network Security Administration (INSA)</strong> — National Ethio Cyber Talent Summer Camp Graduate (Jul–Nov 2026).
                 </p>
                 <p>
                   <strong>MIT Open Learning</strong> — Introduction to Universal AI, Prof. Dimitris Bertsimas (Completed Oct 2026).
