@@ -1,63 +1,107 @@
-# Abdusalam Oumer — Personal Portfolio
+# Abdusalam Oumer Aman — Applied AI Founder & Systems Portfolio
 
-Modern, minimalist portfolio website for **Abdusalam Oumer**, Full-Stack Software Engineer (AAU Software Engineering 🇪🇹).
+A bespoke, "Anti-AI" editorial portfolio rejecting generic glowing AI aesthetics in favor of maximum white space, high-contrast tactile typography, verifiable credentials, and raw engineering artifacts.
 
-## ✨ Features
+```
+Abdusalam Oumer Aman
+Software Engineering at AAU. Systems Security at INSA. Applied AI Founder.
+Building localized, production-ready AI systems for Ethiopian infrastructure.
+```
 
-- **Minimalist & Clean Editorial Design**: High-contrast typography powered by `Inter` and `JetBrains Mono`.
-- **True OLED Pitch Black Dark Mode**: Refined dark theme (`#000000`) with smooth theme toggle and `localStorage` persistence.
-- **Featured Projects**:
-  - **Core AI & Educational Platforms**:
-    - **Gebere Vision AI**: AI-powered Telegram bot utilizing Groq AI vision models for instant crop disease diagnosis in Amharic, Afaan Oromoo, English, and Arabic.
-    - **Ace Ifa Boru**: Educational Telegram mini-app delivering localized entrance exam practice for boarding school candidates across Ethiopia.
-  - **Business & Financial Systems**:
-    - **SmartBiz ERP Lite**: Offline-first Progressive Web Application (PWA) for local business pricing, product cataloging, and inventory management.
-    - **Ethio Bucks**: Robust financial backend platform with mobile-first ETB wallet, task flows, and reward systems (Django, PostgreSQL).
-    - **AmanaTrade**: Agricultural supply chain settlement platform developed for the M-PESA Hackathon 2026.
-  - **Management & Systems Applications**:
-    - **CampusTrack**: Secure lost-and-found item management system with JWT authentication and audit tracking.
-    - **AAU Café Management System**: Campus dining registration and automated 3,000 ETB monthly stipend platform for Addis Ababa University.
-- **Work Experience & Credentials**:
-  - Software Engineering Intern at **Sof Omar Technologies** (Sep 2026).
-  - Software Development Trainee at **INSA** (Information Network Security Administration) (Jul 2026 – Nov 2026).
-  - Full-Stack Developer at **Lamif Digital Aid**.
-- **Working Contact System**:
-  - Interactive contact form with asynchronous submission via FormSubmit.
-  - Automatic fallback to direct email and native mail client.
-  - 1-click **Copy Email** action with instant visual feedback.
+---
 
-## 🛠️ Tech Stack
+## 🏛️ Foundations that Matter
 
-- **Framework**: React 19 + Vite
-- **Styling**: Vanilla CSS Design Tokens (Zero bloated UI libraries)
-- **Typography**: Google Fonts (Inter & JetBrains Mono)
-- **Linting**: ESLint 9
+1. **AI Fluency // MIT Open Learning**
+   - **Credential:** *Introduction to Universal AI* (Completed Oct 7, 2026)
+   - **Validation ID:** `11cce330-19b6-48ff-ae8c-b645623efabb`
+   - **Faculty Sponsor:** Dimitris Bertsimas — MIT's Vice Provost for Open Learning and Boeing Professor of Operations Research.
+   - **Core Rigor:** Mathematical optimization, mixed-integer formulations, transformer architectures, and applied operations research.
 
-## 🚀 Getting Started
+2. **Security & Infrastructure // INSA**
+   - **Program:** National Ethio Cyber Talent Summer Camp (Jul – Nov 2026)
+   - **Institution:** Information Network Security Administration (INSA), Addis Ababa.
+   - **Focus:** Defensive cybersecurity, kernel-level Linux auditing, cryptographic ledger validation.
 
-### 1. Install Dependencies
+3. **Academic Core // Addis Ababa University (AAU)**
+   - **Program:** B.Sc. in Software Engineering (Junior / 3rd Year, 2022 – Present)
+   - **Focus:** Relational database transaction isolation (ACID), distributed systems, and algorithmic complexity.
+
+---
+
+## 🚀 The Founder Showcase (Projects as Products)
+
+- **Gebere Vision AI (ግብረ ቪዥን)**
+  - *Founder & Lead Architect* · Selected for **METI-Funded UniPods AI Programme**.
+  - Edge crop disease diagnosis via Groq AI Llama vision models (<800ms inference).
+  - Native multilingual support: **Amharic (አማርኛ), Afaan Oromoo, English, and Arabic**.
+  - Supabase `pgvector` disease knowledge base + Human-in-the-Loop agronomist verification pipeline.
+  - Live Telegram Bot: [t.me/gebere_vision_bot](https://t.me/gebere_vision_bot)
+
+- **SmartBiz ERP Lite**
+  - *Architect & Systems Engineer* · Retail & Wholesale Offline-First State Engine.
+  - 100% local-first PWA built with Next.js, IndexedDB, and NestJS.
+  - Deterministic vector-clock sync engine for zero-connectivity environments and erratic power cuts.
+
+- **Ethio Bucks & Financial Backends**
+  - *Backend Architect* · High-concurrency ETB wallet and microwork ledger in Django & PostgreSQL.
+  - Enforced row-level locking (`SELECT FOR UPDATE`) to eliminate double-spend race conditions.
+  - Live Deployment: [abdusalam.pythonanywhere.com](http://abdusalam.pythonanywhere.com)
+
+- **CampusTrack & AAU Café Stipend System**
+  - Cryptographic item custody audit (Node/Express/SQLite3).
+  - AAU dining stipend platform automating 3,000 ETB/mo allocations with unique database constraints.
+
+---
+
+## 📓 The Engineering Ledger (Replacing the Blog)
+
+Replacing generic SaaS blog posts with real, unfiltered engineering changelogs:
+- Daily algorithmic breakthroughs on LeetCode (150+ solved with O(1) space DP).
+- Bare-metal workstation migration to Ubuntu 26.04 LTS & custom kernel tuning.
+- Shaving 400ms off Groq vision inference for rural 2G/3G links.
+- **Telegram Dispatch Channel:** [Unplugged Me (@unpluggedme)](https://t.me/unpluggedme)
+
+---
+
+## 🛠️ Tech Stack & Anti-AI Design System
+
+- **Framework:** React 19 + Vite
+- **Typography:** 
+  - Headings: `Newsreader` (Editorial optical serif)
+  - Technical Specs / Code / IDs: `JetBrains Mono` (Terminal monospace)
+  - Body: `Inter`
+- **Color Palette:** Stark bone paper (`#FAF9F5`), high-contrast ink black (`#111111`), hairline borders (`#E2E2DC`), and a single strict accent (`#0047FF` hyper-link blue or `#E64A19` signal orange).
+- **Interactive Engineering Features:**
+  - In-browser interactive Bash Terminal (`verify mit`, `arch gebere`, `arch smartbiz`, `ledger`, `whoami`, `contact`).
+  - Interactive ASCII / System Blueprints for core products.
+  - MIT Open Learning Certificate validation inspector modal (`ID: 11cce330-19b6-48ff-ae8c-b645623efabb`).
+  - Working direct message dispatch form + 1-click email copy.
+
+---
+
+## 🏃 Local Development
+
 ```bash
+# Install dependencies
 npm install
-```
 
-### 2. Run Local Development Server
-```bash
+# Start Vite dev server
 npm run dev
-```
-Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-### 3. Production Build
-```bash
+# Run ESLint
+npm run lint
+
+# Compile production bundle
 npm run build
 ```
 
-### 4. Linting
-```bash
-npm run lint
-```
+---
 
-## 📬 Contact
+## 📬 Dispatch & Contact
 
-- **Email**: [oumersalah2@gmail.com](mailto:oumersalah2@gmail.com)
-- **GitHub**: [@oumersalah2-cmd](https://github.com/oumersalah2-cmd)
-- **Upwork**: [Abdusalam Oumer on Upwork](https://www.upwork.com/freelancers/~01d02c68660140f622)
+- **Email:** [oumersalah2@gmail.com](mailto:oumersalah2@gmail.com)
+- **Telegram Channel:** [@unpluggedme](https://t.me/unpluggedme)
+- **GitHub:** [@oumersalah2-cmd](https://github.com/oumersalah2-cmd)
+- **Upwork:** [Abdusalam Oumer](https://www.upwork.com/freelancers/~01d02c68660140f622)
+- **Location:** Addis Ababa, Ethiopia (UTC+3)

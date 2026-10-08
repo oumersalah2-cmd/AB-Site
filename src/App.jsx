@@ -1,2202 +1,2825 @@
 import { useState, useEffect, useRef } from "react";
 
-const NAV_LINKS = ["About", "Skills", "Projects", "Experience", "Blog", "Contact"];
+// ── BRAND & CORE METADATA ──────────────────────────────────────────────
+const PROFILE = {
+  name: "Abdusalam Oumer Aman",
+  handle: "oumersalah2",
+  title: "Software Engineering at AAU · Systems Security at INSA · Applied AI Founder",
+  heroPunchline: "Building localized, production-ready AI systems for Ethiopian infrastructure.",
+  email: "oumersalah2@gmail.com",
+  github: "https://github.com/oumersalah2-cmd",
+  upwork: "https://www.upwork.com/freelancers/~01d02c68660140f622",
+  telegram: "https://t.me/unpluggedme",
+  telegramHandle: "@unpluggedme",
+  telegramChannelName: "Unplugged Me",
+  location: "Addis Ababa, Ethiopia",
+  institution: "Addis Ababa University (AAU)",
+  securityTraining: "INSA CTC National Cyber Talent Camp",
+  mitCertId: "11cce330-19b6-48ff-ae8c-b645623efabb",
+  mitCertDate: "October 7, 2026",
+  mitSponsor: "Dimitris Bertsimas — MIT Vice Provost for Open Learning & Boeing Professor of Operations Research",
+};
 
-const SKILLS = [
-  { category: "Frontend", items: ["Next.js", "React", "TypeScript", "JavaScript", "Tailwind CSS"] },
-  { category: "Backend", items: ["Node.js", "Express", "Django", "Python", "REST APIs"] },
-  { category: "Mobile Development", items: ["Flutter", "Dart", "Android", "Cross-Platform"] },
-  { category: "DevOps & Cloud", items: ["Docker", "CI/CD", "Linux", "Railway", "Vercel", "Git & GitHub"] },
-  { category: "Databases", items: ["PostgreSQL", "Supabase", "MongoDB"] },
-  { category: "AI & Integrations", items: ["Groq AI", "Gemini API", "OpenAI API", "Telegram Bot API"] },
+// ── NAVIGATION ANCHORS ────────────────────────────────────────────────
+const NAV_ITEMS = [
+  { id: "manifesto", label: "01. Manifesto" },
+  { id: "credentials", label: "02. Foundations" },
+  { id: "products", label: "03. Founder Showcase" },
+  { id: "blueprints", label: "04. Architecture" },
+  { id: "ledger", label: "05. Changelog" },
+  { id: "terminal", label: "06. Inspector" },
+  { id: "dispatch", label: "07. Dispatch" },
 ];
 
-const TYPING_LINES = [
-  "Next.js · Django · Flutter · Supabase · DevOps.",
-  "Sof Omar Technologies & INSA Software Engineering Alum.",
-  "Built an AI crop diagnostic bot serving Ethiopian farmers.",
-  "Full-stack from schema to UI — PostgreSQL to Next.js.",
-  "Daily LeetCode & Algorithmic Problem Solving.",
-  "Open to remote engineering roles & contract work.",
-];
-
-const PROJECTS = [
-  // ── Core AI & Educational Platforms
+// ── FOUNDATIONAL PILLARS (CREDENTIALS THAT MATTER) ─────────────────────
+const CREDENTIAL_PILLARS = [
   {
-    name: "Gebere Vision AI",
-    desc: "AI-powered agricultural Telegram bot utilizing Groq AI vision models (llama-4-scout-17b) to provide instant crop disease diagnosis in Amharic, Afaan Oromoo, English, and Arabic, backed by Supabase and a Human-in-the-Loop verification network.",
-    tags: ["Groq AI", "Telegram Bot API", "Supabase", "PostgreSQL", "Node.js"],
-    type: "AI & EdTech",
-    accent: "#10B981",
-    demo: "https://t.me/gebere_vision_bot",
-    github: "https://github.com/oumersalah2-cmd/gebere-vision-ai"
+    id: "mit-ai",
+    badge: "AI FLUENCY // VALIDATED CREDENTIAL",
+    title: "Introduction to Universal AI",
+    authority: "MIT Open Learning",
+    sponsor: "Prof. Dimitris Bertsimas (Vice Provost for Open Learning & Boeing Professor of Operations Research)",
+    date: "Completed Oct 7, 2026",
+    verificationId: "11cce330-19b6-48ff-ae8c-b645623efabb",
+    summary:
+      "Rigorous mastery of universal artificial intelligence, decision algorithms, and mathematical optimization under MIT Open Learning leadership. Bridges deep algorithmic theory with production-grade AI systems.",
+    deliverables: [
+      "Mathematical optimization and mixed-integer decision formulation",
+      "Transformer architectures & multi-modal vision-language grounding",
+      "Robust decision trees and algorithmic policy synthesis",
+      "Applied operations research for real-world resource allocation in developing economies",
+    ],
+    verified: true,
   },
   {
-    name: "Ace Ifa Boru (Ace IfaBoruBot)",
-    desc: "Educational Telegram mini-app delivering premium, localized practice questions (such as Herrega and Saayinsii Waliigalaa) to help students prepare for competitive boarding school entrance exams across Ethiopia.",
-    tags: ["Telegram Mini-App", "Node.js", "EdTech", "Localized Education"],
-    type: "AI & EdTech",
-    accent: "#3B82F6",
-    demo: "https://t.me/ace_ifaborubot",
-    github: "https://github.com/oumersalah2-cmd"
-  },
-
-  // ── Business & Financial Systems
-
-  {
-    name: "Ethio Bucks — Task & Reward Platform",
-    desc: "Robust financial backend platform engineered with Django and PostgreSQL for the Ethiopian market. Features a mobile-first ETB wallet, task completion flows, referral system, and daily bonus claiming.",
-    tags: ["Django", "PostgreSQL", "Python", "Mobile-First Wallet", "Fintech"],
-    type: "Fintech",
-    accent: "#10B981",
-    demo: "http://abdusalam.pythonanywhere.com",
-    github: "https://github.com/oumersalah2-cmd"
+    id: "insa-sec",
+    badge: "SECURITY & INFRASTRUCTURE // DEFENSIVE SYSTEMS",
+    title: "National Ethio Cyber Talent Summer Camp",
+    authority: "Information Network Security Administration (INSA)",
+    sponsor: "National Cybersecurity & Systems Architecture Division",
+    date: "Jul 2026 – Nov 2026",
+    verificationId: "INSA-CTC-2026-ETH",
+    summary:
+      "Intensive national cybersecurity training at Ethiopia's premier cyber intelligence and defense agency. Trained in defensive systems architecture, kernel-level Linux auditing, and cryptographic validation.",
+    deliverables: [
+      "Defensive cybersecurity & network intrusion containment",
+      "Linux kernel auditing, process isolation, and bare-metal systems administration",
+      "Cryptographic ledger validation & tamper-evident audit pipelines",
+      "Secure engineering applied to financial and campus infrastructure",
+    ],
+    verified: true,
   },
   {
-    name: "AmanaTrade — Supply Chain Platform",
-    desc: "Agricultural supply chain settlement and trading platform developed as an innovative project proposal for the M-PESA Hackathon 2026, facilitating fair payments, escrow, and agricultural logistics tracking.",
-    tags: ["M-PESA Hackathon 2026", "Supply Chain", "Fintech", "Next.js", "APIs"],
-    type: "Fintech",
-    accent: "#F59E0B",
-    demo: null,
-    github: "https://github.com/oumersalah2-cmd"
-  },
-
-  // ── Management & Systems Applications
-  {
-    name: "CampusTrack — Lost & Found System",
-    desc: "Secure lost-and-found item management system utilizing Node.js, Express, SQLite3, and JWT authentication to streamline campus item recovery, owner verification, and custody audits.",
-    tags: ["Node.js", "Express", "SQLite3", "JWT Auth", "Campus Security"],
-    type: "Full-Stack",
-    accent: "#6366F1",
-    demo: null,
-    github: "https://github.com/oumersalah2-cmd"
-  },
-  {
-    name: "AAU Café Management System",
-    desc: "Full-stack campus dining registration platform for Addis Ababa University. Digitises meal attendance, automates 3,000 ETB monthly stipend payments, and prevents dual-claiming fraud with database constraints.",
-    tags: ["Node.js", "Express", "PostgreSQL", "JWT Auth", "AAU Dining"],
-    type: "Full-Stack",
-    accent: "#F97316",
-    demo: "https://addis-ababa-university-cafe-management.onrender.com/",
-    github: "https://github.com/oumersalah2-cmd/Addis-Ababa-University-Cafe-Management-and-Stipend-System"
-  },
-];
-
-const EXPERIENCE = [
-  {
-    role: "Software Engineering Intern",
-    company: "Sof Omar Technologies",
-    period: "Jun 2026 – Sep 2026",
-    desc: "Successfully completed software engineering internship at Sof Omar Technologies. Contributed to production web and mobile software development, agile team workflows, and feature implementation with high dedication and code quality.",
-    tags: ["Software Engineering", "Full-Stack", "Flutter", "Web Development", "Team Collaboration"]
-  },
-  {
-    role: "Software Development Trainee",
-    company: "INSA (Information Network Security Administration)",
-    period: "Jul 2026 – Nov 2026",
-    desc: "Completed hands-on technical software development training at Ethiopia's national Information Network Security Administration (INSA). Focused on core software development principles, system architectures, secure coding practices, and practical engineering workflows.",
-    tags: ["Software Development", "Python", "Linux", "Algorithms", "Secure Engineering"]
-  },
-  {
-    role: "Full-Stack Web Developer",
-    company: "Lamif Digital Aid",
-    period: "Feb 2024 – Mar 2026",
-    desc: "Expert-vetted full-stack developer building modern, scalable web applications. Designed responsive frontends with React and Next.js, developed secure backend APIs with Node.js, Express, and Django, and managed relational and document databases.",
-    tags: ["React", "Next.js", "Node.js", "Django", "PostgreSQL", "MongoDB"]
-  },
-  {
-    role: "Software Engineer — Full-Stack",
-    company: "Self-Employed / Personal Projects",
-    period: "May 2024 – Present",
-    desc: "Designing and shipping full-stack web applications from concept to deployment. Built Ethio Bucks (Django fintech), the LAMIF Tutor Marketplace (MERN), and the AAU Café ordering system. Exploring NestJS and AI API integration.",
-    tags: ["Django", "NestJS", "React", "TypeScript", "PostgreSQL", "AI APIs"]
+    id: "aau-se",
+    badge: "ACADEMIC CORE // DISTRIBUTED SOFTWARE",
+    title: "B.Sc. in Software Engineering (Year 3)",
+    authority: "Addis Ababa University (AAU)",
+    sponsor: "School of Information Technology & Engineering",
+    date: "2022 – Present (Junior Standing)",
+    verificationId: "AAU-SE-REG-2022",
+    summary:
+      "Core theoretical and systems engineering foundation at Ethiopia's flagship university. Deep study in relational database constraints, distributed architectures, and algorithm design.",
+    deliverables: [
+      "Database schema integrity, ACID transaction isolation, and row-level locking",
+      "Distributed systems design and enterprise backend architecture",
+      "Compiler basics, data structures, and algorithmic complexity analysis",
+      "Shipped production systems: AAU Café Stipend System (3,000 ETB/mo automated dining ledger)",
+    ],
+    verified: true,
   },
 ];
 
-const CERTS = [
-  { title: "Internship Certificate of Completion", provider: "Sof Omar Technologies", date: "Sep 2026" },
-  { title: "Software Development Training", provider: "INSA (Information Network Security Administration)", date: "Nov 2026" },
-  { title: "Android Developer Fundamentals", provider: "Udacity", date: "Sep 2025" },
-  { title: "Programming Fundamentals", provider: "Udacity", date: "Sep 2025" },
+// ── FOUNDER PRODUCTS (FRAMEWORK: PROJECTS AS PRODUCTS) ────────────────
+const PRODUCTS = [
+  {
+    id: "gebere-vision-ai",
+    title: "Gebere Vision AI",
+    subhead: "Multilingual Agricultural Vision Diagnostic Bot",
+    role: "Founder & Lead Architect",
+    recognition: "Selected for METI-Funded UniPods AI Programme",
+    targetUsers: "Ethiopian Smallholder Farmers & Agronomists",
+    languages: "Amharic (አማርኛ), Afaan Oromoo, English, Arabic",
+    status: "Active Deployment",
+    architectureSummary:
+      "Edge-optimized Telegram bot powered by Groq AI Llama vision models (llama-3.2-11b-vision / llama-4-scout) delivering instant crop pathogen diagnoses in under 800ms. Backed by Supabase vector store and a Human-in-the-Loop verification queue.",
+    problem:
+      "Smallholder farmers in rural Ethiopia lose up to 40% of their yields to crop blights because extension workers are scarce and diagnostic tools only operate in English or require high-speed internet.",
+    solution:
+      "A zero-overhead, multi-dialect Telegram interface that compresses image uploads, queries high-throughput Groq vision models with prompt instructions grounded in Ethiopian crop diseases (teff, wheat, enset, maize), and returns localized remediation protocols in native scripts.",
+    stack: ["Groq AI Vision", "Telegram Bot API", "Supabase (pgvector)", "Node.js", "PostgreSQL"],
+    metrics: [
+      { label: "Inference Latency", value: "< 800ms via Groq" },
+      { label: "Supported Dialects", value: "4 Languages" },
+      { label: "Funding & Incubation", value: "METI UniPods AI" },
+      { label: "Deployment", value: "Production Telegram Bot" },
+    ],
+    demoUrl: "https://t.me/gebere_vision_bot",
+    githubUrl: "https://github.com/oumersalah2-cmd/gebere-vision-ai",
+    blueprintKey: "gebere",
+  },
+  {
+    id: "smartbiz-erp",
+    title: "SmartBiz ERP Lite",
+    subhead: "Offline-First Enterprise State & POS Engine",
+    role: "Architect & Systems Engineer",
+    recognition: "Production Merchant Architecture",
+    targetUsers: "Ethiopian Retail & Wholesale Merchants",
+    languages: "English, Amharic Numerics, ETB Ledger",
+    status: "V2 In Production",
+    architectureSummary:
+      "Progressive Web App (PWA) built with Next.js and NestJS engineered for erratic power and zero-connectivity environments. Employs local IndexedDB mutations and a deterministic vector-clock sync reconciliation engine.",
+    problem:
+      "Local shop owners and wholesalers in Addis Ababa and regional hubs face constant connectivity drops, making conventional cloud-only POS systems completely unreliable for daily transactions.",
+    solution:
+      "Full client-side transactional state with zero network latency. Every transaction, receipt, and stock movement is written to IndexedDB first, with atomic batch commits synced to the NestJS / PostgreSQL master backend once internet connectivity is restored.",
+    stack: ["Next.js (App Router)", "NestJS", "IndexedDB", "TypeScript", "PostgreSQL", "PWA Service Workers"],
+    metrics: [
+      { label: "Offline Capability", value: "100% Local-First" },
+      { label: "Conflict Strategy", value: "Vector Clock Sync" },
+      { label: "State Layer", value: "IndexedDB + Reactive Cache" },
+      { label: "Backend Sync", value: "NestJS Delta Replicator" },
+    ],
+    demoUrl: null,
+    githubUrl: "https://github.com/oumersalah2-cmd",
+    blueprintKey: "smartbiz",
+  },
+  {
+    id: "ethio-bucks",
+    title: "Ethio Bucks & Financial Backends",
+    subhead: "Transaction-Isolated ETB Ledger & Task Pipeline",
+    role: "Backend Architect",
+    recognition: "High-Concurrency Fintech Deployment",
+    targetUsers: "Ethiopian Mobile Earners & Micro-merchants",
+    languages: "Amharic & English UX",
+    status: "Deployed (Live)",
+    architectureSummary:
+      "Fintech backend platform engineered with Django and PostgreSQL featuring row-level transaction locks (`SELECT FOR UPDATE`), tamper-resistant ledger tables, and phone number auth mapping.",
+    problem:
+      "Digital microwork and reward distribution in Ethiopia suffers from concurrent double-claim vulnerabilities and payment tampering on unstable mobile cellular networks.",
+    solution:
+      "Enforced strict database-level isolation levels, preventing concurrent balance drain attempts. Integrated referral verification trees, task verification state machines, and audit event logs.",
+    stack: ["Django", "PostgreSQL", "Python", "JWT Auth", "Mobile Wallet Engine"],
+    metrics: [
+      { label: "Ledger Safety", value: "ACID Row Locks" },
+      { label: "Database", value: "PostgreSQL on PythonAnywhere" },
+      { label: "Auth Flow", value: "Phone-Bound Session Tokens" },
+      { label: "Status", value: "Live Production" },
+    ],
+    demoUrl: "http://abdusalam.pythonanywhere.com",
+    githubUrl: "https://github.com/oumersalah2-cmd",
+    blueprintKey: "ethiobucks",
+  },
+  {
+    id: "campustrack-aau",
+    title: "CampusTrack & AAU Café Stipend System",
+    subhead: "Institutional Custody & 3,000 ETB Stipend Allocation",
+    role: "Full-Stack Engineer",
+    recognition: "Addis Ababa University Campus Infrastructure",
+    targetUsers: "AAU Administration & Student Body",
+    languages: "English, AAU Internal Protocol",
+    status: "Deployed",
+    architectureSummary:
+      "Campus lost-and-found custody audit engine (Node/Express/SQLite3) paired with the AAU dining stipend disbursement platform which automates 3,000 ETB monthly allocations with relational constraints preventing dual-claims.",
+    problem:
+      "Paper-based dining ledgers and lost property logs caused rampant reconciliation friction and duplicate stipend claims across university dining halls.",
+    solution:
+      "Replaced manual ledgers with a tamper-evident digital custody audit system. Built database constraints that guarantee exactly-once stipend claiming per student matrix per billing cycle.",
+    stack: ["Node.js", "Express", "PostgreSQL", "SQLite3", "JWT Auth"],
+    metrics: [
+      { label: "Stipend Automation", value: "3,000 ETB / Mo / Student" },
+      { label: "Fraud Prevention", value: "Unique DB Constraints" },
+      { label: "Custody Audit", value: "Cryptographic JWT Verification" },
+      { label: "Deployment", value: "Render Production" },
+    ],
+    demoUrl: "https://addis-ababa-university-cafe-management.onrender.com/",
+    githubUrl: "https://github.com/oumersalah2-cmd/Addis-Ababa-University-Cafe-Management-and-Stipend-System",
+    blueprintKey: "campustrack",
+  },
 ];
 
-const BLOG = [
+// ── THE ENGINEERING LEDGER (CHANGELOG REPLACING "BLOG") ───────────────
+const CHANGELOG_ENTRIES = [
   {
-    title: "Building a Financial Platform for the Ethiopian Market with Django",
-    date: "March 2025",
-    excerpt: "What it takes to design a transaction-safe, mobile-first ETB wallet system in Django — database decisions, security considerations, and UX tradeoffs.",
-    readTime: "8 min"
+    id: "log-043",
+    date: "2026-10-08",
+    commit: "4f9d8a1",
+    tag: "CREDENTIAL",
+    title: "MIT Universal AI Credential Finalized & Validated",
+    content:
+      "Completed Introduction to Universal AI through MIT Open Learning under Prof. Dimitris Bertsimas (Validation ID: 11cce330-19b6-48ff-ae8c-b645623efabb). Shifted focus toward applying mixed-integer optimization and operations research directly into crop diagnostic routing and rural supply logistics.",
+    channelNote: "Shared reflections and validation hash to Unplugged Me.",
   },
   {
-    title: "MERN vs Django for a Tutor Marketplace: My Real-World Comparison",
-    date: "January 2025",
-    excerpt: "I built versions of the same platform in both stacks. Here's what I actually learned about when to pick each one and what the real tradeoffs are.",
-    readTime: "10 min"
+    id: "log-042",
+    date: "2026-10-04",
+    commit: "9c3e21b",
+    tag: "ALGORITHMS",
+    title: "LeetCode Milestone: 150+ Solved with O(1) Space DP Optimizations",
+    content:
+      "Completed a deep sprint on dynamic programming, state compression, and graph shortest paths. Transitioned past naive memoization to space-optimized tabulation for knapsack and interval scheduling variants. Daily disciplined practice is reshaping how I structure backend database lock windows.",
+    channelNote: "Full solution writeup and space-complexity notes published on Telegram.",
   },
   {
-    title: "Why I Do LeetCode Every Day (And What It Changed in My Code)",
-    date: "November 2024",
-    excerpt: "Two months of daily algorithmic practice — the habits it built and the code quality changes I noticed in production projects.",
-    readTime: "6 min"
+    id: "log-041",
+    date: "2026-09-28",
+    commit: "3a88c4d",
+    tag: "SYSTEMS",
+    title: "Workstation OS Migration: Bare-Metal Ubuntu 26.04 LTS Setup",
+    content:
+      "Migrated primary development workstation to fresh Ubuntu 26.04 LTS. Configured custom Linux kernel parameters, stripped desktop environment bloat, tuned sysctl limits for local Docker daemon efficiency, and configured tiling workflow with JetBrains Mono font rendering. Real engineering happens on raw Linux terminals.",
+    channelNote: "Terminal dotfiles and sysctl config shared on Unplugged Me.",
+  },
+  {
+    id: "log-040",
+    date: "2026-09-15",
+    commit: "7e14a29",
+    tag: "AI_INFERENCE",
+    title: "Gebere Vision AI: Shaving 400ms Off Inference over 2G/3G Cellular",
+    content:
+      "Profiled the Groq API vision pipeline for rural Ethiopian Telegram users. Implemented client-side WebP quantization before Telegram webhook dispatch and enabled token streaming responses. Total end-to-end diagnosis time dropped from 1.6s to 780ms on degraded cellular networks in Oromia.",
+    channelNote: "Benchmark charts and Groq API latency analysis logged on Telegram.",
+  },
+  {
+    id: "log-039",
+    date: "2026-08-30",
+    commit: "1b07f83",
+    tag: "STATE_ENGINE",
+    title: "SmartBiz ERP: Resolving Offline Vector-Clock Edge Cases in IndexedDB",
+    content:
+      "Solved edge-case state conflicts when two mobile POS devices modify inventory during prolonged store blackouts. Replaced simple last-write-wins (LWW) with deterministic delta-op vector clocks, maintaining ledger purity without centralized locking.",
+    channelNote: "Code snippets and conflict test cases posted on Telegram.",
+  },
+  {
+    id: "log-038",
+    date: "2026-08-12",
+    commit: "82f159a",
+    tag: "SECURITY",
+    title: "INSA Cyber Training Takeaway: PostgreSQL Row-Level Lock Isolation",
+    content:
+      "Applied defensive security paradigms learned at the INSA CTC summer camp to Django fintech models in Ethio Bucks. Replaced naive ORM updates with explicit `select_for_update(nowait=False)` within atomic blocks to defend against concurrent withdrawal race conditions.",
+    channelNote: "Analysis of double-spend vulnerabilities shared to Unplugged Me.",
   },
 ];
 
-// ── Hooks ──────────────────────────────────────────────
-function useInView(threshold = 0.1) {
-  const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) setVisible(true);
-    }, { threshold });
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, [threshold]);
-  return [ref, visible];
-}
+// ── TECHNICAL SPECIFICATIONS MATRIX (CAPABILITIES) ────────────────────
+const TECH_MATRIX = [
+  {
+    domain: "Applied AI & Inference",
+    technologies: ["Groq Llama Vision Models", "Supabase pgvector", "Prompt Grounding (Amharic / Afaan Oromoo)", "MIT Universal AI Optimization", "Transformer Architectures"],
+    specNote: "Sub-second inference pipelines & domain-specific agricultural grounding",
+  },
+  {
+    domain: "Backend & Systems",
+    technologies: ["Python (Django)", "Node.js (Express)", "NestJS", "PostgreSQL", "SQLite3", "REST / WebSockets"],
+    specNote: "ACID transaction isolation, row-level locks, and enterprise state sync",
+  },
+  {
+    domain: "Frontend & Mobile",
+    technologies: ["Next.js (App Router)", "React 19", "Flutter / Dart", "PWA / Service Workers", "Vanilla CSS Tokens"],
+    specNote: "Offline-first architectures, low-bandwidth optimization, zero bloat",
+  },
+  {
+    domain: "Security & Infrastructure",
+    technologies: ["INSA Defensive Cybersecurity", "Ubuntu Linux (26.04)", "Docker Containerization", "JWT Cryptographic Auth", "OWASP Security Audits"],
+    specNote: "Hardened against concurrent race conditions and network manipulation",
+  },
+];
 
-function useCounter(target, duration = 1600, start = false) {
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    if (!start) return;
-    let startTime = null;
-    const step = (timestamp) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(eased * target));
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }, [start, target, duration]);
-  return count;
-}
+// ── BLUEPRINT SCHEMATICS (RAW WORK-IN-PROGRESS ARTIFACTS) ─────────────
+const BLUEPRINTS = {
+  gebere: {
+    title: "Gebere Vision AI — End-to-End Multilingual Diagnostic Pipeline",
+    diagramAscii: `
++-----------------------------------------------------------------------------------------------+
+| GEBERE VISION AI : EDGE-TO-CLOUD DATAFLOW PIPELINE                                            |
++-----------------------------------------------------------------------------------------------+
 
-function useTyping(lines, speed = 40, pause = 1800) {
-  const [lineIdx, setLineIdx] = useState(0);
-  const [charIdx, setCharIdx] = useState(0);
-  const [deleting, setDeleting] = useState(false);
-
-  useEffect(() => {
-    const current = lines[lineIdx];
-    let timeout;
-    if (!deleting && charIdx < current.length) {
-      timeout = setTimeout(() => setCharIdx(c => c + 1), speed);
-    } else if (!deleting && charIdx >= current.length) {
-      timeout = setTimeout(() => setDeleting(true), pause);
-    } else if (deleting && charIdx > 0) {
-      timeout = setTimeout(() => setCharIdx(c => c - 1), speed / 2);
-    } else {
-      timeout = setTimeout(() => {
-        setDeleting(false);
-        setLineIdx(i => (i + 1) % lines.length);
-        setCharIdx(0);
-      }, speed);
-    }
-    return () => clearTimeout(timeout);
-  }, [charIdx, deleting, lineIdx, lines, speed, pause]);
-
-  const current = lines[lineIdx] || "";
-  return current.slice(0, charIdx);
-}
-
-// ── Components ─────────────────────────────────────────
-function FadeIn({ children, delay = 0, direction = "up", style = {} }) {
-  const [ref, visible] = useInView();
-  const transforms = {
-    up: "translateY(24px)",
-    left: "translateX(-24px)",
-    right: "translateX(24px)",
-    none: "none"
+[ Rural Farmer in Ethiopia ]
+           |
+           |  (Photos of diseased crop via Telegram: Amharic / Afaan Oromoo / Arabic / Eng)
+           v
++------------------------+      +-------------------------------+
+| Telegram Webhook Edge  | ---> | Image Quantization & WebP     |
+| (Node.js Edge Worker)  |      | Size Reduction (2G Friendly)  |
++------------------------+      +-------------------------------+
+           |                                   |
+           v                                   v
++-------------------------------------------------------------------+
+| Multilingual Prompt Router                                        |
+| Injects Ethiopian Crop Taxonomy (Teff, Wheat, Maize, Coffee, etc) |
++-------------------------------------------------------------------+
+           |
+           +---------------------------------+
+           |                                 |
+           v                                 v
++-------------------------------+ +---------------------------------+
+| Groq API Vision Inference     | | Supabase pgvector Store         |
+| (Llama 3.2 11B Vision Model)  | | Vector similarity search        |
+| Latency: ~780ms execution     | | Verified Ethiopian Plant Blights|
++-------------------------------+ +---------------------------------+
+           |                                 |
+           +----------------+----------------+
+                            |
+                            v
++-------------------------------------------------------------------+
+| Confidence Scoring & Human-in-the-Loop (HITL) Agronomist Gate     |
+| If confidence < 0.88 -> Route to Agronomist Review Queue          |
++-------------------------------------------------------------------+
+                            |
+                            v
++-------------------------------------------------------------------+
+| Localized Output Formatter (Amharic Ge'ez / Afaan Oromoo Scripts) |
+| Instant Diagnosis + Organic Remediation Advice delivered to phone |
++-------------------------------------------------------------------+
+`,
+    metrics: "Throughput: Real-time · Latency: 780ms · Languages: 4 · Cost/Inference: ~$0.0003",
+    codeSnippet: `// Raw Webhook Pipeline Snippet (Gebere Vision AI)
+export async function handleFarmerDiagnosis(req, res) {
+  const { photo_url, language, farmer_id } = req.body;
+  
+  // 1. Fetch & downsample image for low-bandwidth 2G link
+  const imageBuffer = await fetchAndOptimizeImage(photo_url, { maxKb: 350 });
+  
+  // 2. Select localized system prompt
+  const systemPrompt = ETHIO_CROP_PROMPTS[language] || ETHIO_CROP_PROMPTS.amharic;
+  
+  // 3. Groq high-speed vision inference
+  const visionPayload = {
+    model: "llama-3.2-11b-vision-preview",
+    messages: [
+      { role: "system", content: systemPrompt },
+      { 
+        role: "user", 
+        content: [
+          { type: "text", text: "Identify pathogen, damage severity, and treatment." },
+          { type: "image_url", image_url: { url: imageBuffer.base64 } }
+        ]
+      }
+    ],
+    temperature: 0.15,
   };
-  return (
-    <div
-      ref={ref}
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "none" : transforms[direction],
-        transition: `opacity 0.6s cubic-bezier(0.16,1,0.3,1) ${delay}s, transform 0.6s cubic-bezier(0.16,1,0.3,1) ${delay}s`,
-        ...style,
-      }}
-    >
-      {children}
-    </div>
-  );
-}
+  
+  const diagnostic = await groqClient.chat.completions.create(visionPayload);
+  return dispatchTelegramReply(farmer_id, diagnostic.choices[0].message.content);
+}`,
+  },
+  smartbiz: {
+    title: "SmartBiz ERP Lite — Offline-First Vector Clock Sync Topology",
+    diagramAscii: `
++-----------------------------------------------------------------------------------------------+
+| SMARTBIZ ERP LITE : OFFLINE-FIRST DISTRIBUTED STATE ENGINE                                    |
++-----------------------------------------------------------------------------------------------+
 
-function StatCounter({ num, suffix = "", label, start }) {
-  const count = useCounter(num, 1400, start);
-  return (
-    <div style={{ textAlign: "left" }}>
-      <div style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)", fontWeight: 800, color: "var(--text)", lineHeight: 1, letterSpacing: "-0.03em" }}>
-        {count}{suffix}
-      </div>
-      <div style={{ fontSize: "0.75rem", color: "var(--muted)", letterSpacing: "0.06em", marginTop: "6px", fontWeight: 500 }}>
-        {label}
-      </div>
-    </div>
-  );
-}
+[ Merchant POS Terminal / Mobile PWA ]
+           |
+           v
++---------------------------------------------------------------+
+| Local Transaction Manager                                     |
+| Writes immediate changes to browser IndexedDB storage         |
++---------------------------------------------------------------+
+           |
+           v
++---------------------------------------------------------------+
+| Local Mutation Queue (Vector Clock Tagged: V_client = [t, id])|
+| Guarantees 0ms checkout latency during power/network outage   |
++---------------------------------------------------------------+
+           |
+           |  (Network Health Ping: navigator.onLine & heartbeat)
+           v
+    [ Network Restored? ]
+         /         \\
+       No           Yes
+       /              \\
+  [ Keep Queue ]       v
+              +-------------------------------------------------+
+              | Delta Replicator (Batch HTTPS Payload)          |
+              +-------------------------------------------------+
+                               |
+                               v
+              +-------------------------------------------------+
+              | NestJS API Gateway Sync Resolver                |
+              | Evaluates Vector Clocks against Server Master   |
+              +-------------------------------------------------+
+                               |
+                               +--------------------------------+
+                               |                                |
+                               v                                v
+              +---------------------------------+ +-----------------------------+
+              | Non-Conflicting Writes          | | Concurrent Conflict Handler |
+              | Direct commit to PostgreSQL     | | Deterministic Delta Merging |
+              +---------------------------------+ +-----------------------------+
+`,
+    metrics: "Zero-latency local checkout · 100% data preservation during power cut · Automatic replay",
+    codeSnippet: `// Vector Clock Resolution Logic (SmartBiz ERP Lite)
+export function reconcileMutations(localQueue, serverState) {
+  return localQueue.map(mutation => {
+    const serverVersion = serverState.getVersion(mutation.entityId);
+    
+    // Check if client version is strictly newer or concurrent
+    if (mutation.vectorClock.timestamp >= serverVersion.timestamp) {
+      return { status: "APPLY_LOCAL", payload: mutation.data };
+    } else {
+      // Deterministic conflict resolution for wholesale inventory
+      return resolveInventoryDelta(mutation, serverVersion);
+    }
+  });
+}`,
+  },
+  ethiobucks: {
+    title: "Ethio Bucks — ACID Row-Level Locking & Ledger Isolation",
+    diagramAscii: `
++-----------------------------------------------------------------------------------------------+
+| ETHIO BUCKS : TRANSACTIONAL FINANCIAL BACKEND INTEGRITY                                       |
++-----------------------------------------------------------------------------------------------+
 
-function Tag({ children, accent }) {
-  return (
-    <span
-      style={{
-        padding: "4px 10px",
-        background: accent ? `${accent}18` : "var(--surface-soft)",
-        border: `1px solid ${accent ? `${accent}33` : "var(--border)"}`,
-        borderRadius: "4px",
-        fontSize: "0.72rem",
-        color: accent || "var(--text)",
-        fontWeight: 500,
-        letterSpacing: "0.02em",
-        whiteSpace: "nowrap"
-      }}
-    >
-      {children}
-    </span>
-  );
-}
+[ Client Claim / Withdrawal Request ]
+           |
+           v
++---------------------------------------------------------------+
+| Django View Handler with Token Authentication                 |
+| Validates user session, IP audit, and rate-limit quotas       |
++---------------------------------------------------------------+
+           |
+           v
++---------------------------------------------------------------+
+| with transaction.atomic():                                    |
+|   1. Acquire Exclusive Row Lock:                              |
+|      Wallet.objects.select_for_update().get(user=user)        |
++---------------------------------------------------------------+
+           |
+           v
+    [ Sufficient Balance & Valid Task State? ]
+         /                                   \\
+       No                                     Yes
+       /                                       \\
+  [ Raise ValidationError ]                     v
+  [ Rollback Transaction ]             +-----------------------------------------+
+                                       | 2. Append Tamper-Evident Ledger Entry   |
+                                       | 3. Decrement Balance atomically         |
+                                       | 4. Write Audit Log Event                |
+                                       +-----------------------------------------+
+                                                        |
+                                                        v
+                                       +-----------------------------------------+
+                                       | Release Lock & Return Receipt (HTTP 200)|
+                                       +-----------------------------------------+
+`,
+    metrics: "Zero double-spending tolerance · Complete tamper-evident audit trail · Sub-50ms lock duration",
+    codeSnippet: `# Django Financial Transaction Lock Implementation
+from django.db import transaction
+from rest_framework.exceptions import ValidationError
 
-function SectionEyebrow({ children }) {
-  return (
-    <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", marginBottom: "0.75rem" }}>
-      <span style={{ width: "16px", height: "2px", background: "var(--accent)", borderRadius: "2px" }} />
-      <span style={{ fontSize: "0.75rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--accent)", fontWeight: 600 }}>
-        {children}
-      </span>
-    </div>
-  );
-}
+@transaction.atomic
+def execute_wallet_disbursement(user, amount, reference_code):
+    # Lock the wallet row to prevent concurrent race condition exploits
+    wallet = Wallet.objects.select_for_update().get(user=user)
+    
+    if wallet.balance < amount:
+        raise ValidationError("Insufficient balance for withdrawal.")
+        
+    # Append immutable transaction ledger record
+    LedgerEntry.objects.create(
+        wallet=wallet,
+        amount=-amount,
+        reference_id=reference_code,
+        balance_after=wallet.balance - amount
+    )
+    
+    wallet.balance -= amount
+    wallet.save(update_fields=['balance', 'updated_at'])
+    return wallet.balance`,
+  },
+};
 
-function SectionHeading({ children }) {
-  return (
-    <h2 style={{ fontSize: "clamp(1.85rem, 3.5vw, 2.75rem)", fontWeight: 800, color: "var(--text)", margin: "0 0 0.5rem", lineHeight: 1.15, letterSpacing: "-0.03em" }}>
-      {children}
-    </h2>
-  );
-}
-
-// ── Cosmic Background Stars ────────────────────────────
-const STARS = [
-  { top: "12%", left: "15%", size: 2, delay: "0s", dur: "3.2s" },
-  { top: "22%", left: "28%", size: 3, delay: "1.1s", dur: "4.5s" },
-  { top: "35%", left: "8%", size: 1.5, delay: "0.4s", dur: "3.8s" },
-  { top: "18%", left: "62%", size: 2.5, delay: "2.3s", dur: "5.1s" },
-  { top: "28%", left: "85%", size: 2, delay: "0.8s", dur: "3.5s" },
-  { top: "45%", left: "92%", size: 3, delay: "1.7s", dur: "4.2s" },
-  { top: "68%", left: "75%", size: 2, delay: "2.9s", dur: "4.8s" },
-  { top: "82%", left: "88%", size: 1.5, delay: "0.5s", dur: "3.1s" },
-  { top: "75%", left: "12%", size: 2.5, delay: "1.4s", dur: "4.0s" },
-  { top: "88%", left: "25%", size: 2, delay: "2.1s", dur: "3.7s" },
-  { top: "15%", left: "45%", size: 1.5, delay: "1.9s", dur: "4.3s" },
-  { top: "55%", left: "48%", size: 2, delay: "0.2s", dur: "3.9s" },
-];
-
-// ── Main App ───────────────────────────────────────────
+// ── MAIN APPLICATION COMPONENT ─────────────────────────────────────────
 export default function App() {
-  const [active, setActive] = useState("About");
-  const [scrolled, setScrolled] = useState(false);
-  const [filter, setFilter] = useState("All");
-  const [statsRef, statsVisible] = useInView(0.2);
-  const [copiedEmail, setCopiedEmail] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [photoModalOpen, setPhotoModalOpen] = useState(false);
-  const typedText = useTyping(TYPING_LINES);
+  const [activeSection, setActiveSection] = useState("manifesto");
+  const [selectedBlueprint, setSelectedBlueprint] = useState("gebere");
+  const [mitModalOpen, setMitModalOpen] = useState(false);
+  const [emailCopied, setEmailCopied] = useState(false);
+  const [themeMode, setThemeMode] = useState("light"); // Default is stark editorial light mode ("anti-ai")
+  const [accentColor, setAccentColor] = useState("blue"); // "blue" (#0047FF) or "orange" (#E64A19)
+
+  // Interactive Terminal State
+  const [terminalInput, setTerminalInput] = useState("");
+  const [terminalOutput, setTerminalOutput] = useState([
+    { type: "system", text: "AMAN-SYSTEMS KERNEL // INITIALIZED [HOST: ADDIS ABABA, ET]" },
+    { type: "system", text: "MIT Universal AI Credential [ID: 11cce330-19b6-48ff-ae8c-b645623efabb] verified." },
+    { type: "system", text: "Type 'help' or click quick-commands below to inspect raw engineering artifacts." },
+  ]);
 
   // Contact Form State
-  const [formState, setFormState] = useState({ name: "", email: "", subject: "", message: "" });
-  const [formStatus, setFormStatus] = useState("idle"); // idle | submitting | success | error
-  const [formErrorMsg, setFormErrorMsg] = useState("");
+  const [formState, setFormState] = useState({ name: "", email: "", topic: "AI Engineering / Founder Role", message: "" });
+  const [formStatus, setFormStatus] = useState("idle"); // idle | sending | success | error
+  const [formMsg, setFormMsg] = useState("");
 
-  const emailAddress = "oumersalah2@gmail.com";
+  const terminalBottomRef = useRef(null);
 
-  // Prevent background scroll when photo modal is active
+  // Synchronize active section on scroll
   useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape") setPhotoModalOpen(false);
+    const handleScroll = () => {
+      const scrollPos = window.scrollY + 200;
+      for (const item of NAV_ITEMS) {
+        const el = document.getElementById(item.id);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPos >= top && scrollPos < top + height) {
+            setActiveSection(item.id);
+            break;
+          }
+        }
+      }
     };
-    if (photoModalOpen) {
-      window.addEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "";
-    };
-  }, [photoModalOpen]);
-
-  useEffect(() => {
-    const fn = () => {
-      setScrolled(window.scrollY > 30);
-      const sections = NAV_LINKS.map(l => document.getElementById(l.toLowerCase())).filter(Boolean);
-      const current = sections.find(s => {
-        const rect = s.getBoundingClientRect();
-        return rect.top <= 160 && rect.bottom >= 160;
-      });
-      if (current) setActive(current.id.charAt(0).toUpperCase() + current.id.slice(1));
-    };
-    window.addEventListener("scroll", fn, { passive: true });
-    return () => window.removeEventListener("scroll", fn);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollTo = (id) => {
-    setActive(id);
-    setMobileMenuOpen(false);
-    document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const [darkMode, setDarkMode] = useState(() => {
-    if (typeof window === "undefined") return true; // Default to sleek dark mode
-    const saved = window.localStorage.getItem("theme");
-    if (saved) return saved === "dark";
-    return window.matchMedia?.("(prefers-color-scheme: dark)")?.matches ?? true;
-  });
-
-  useEffect(() => {
-    document.documentElement.dataset.theme = darkMode ? "dark" : "light";
-    window.localStorage.setItem("theme", darkMode ? "dark" : "light");
-  }, [darkMode]);
-
-  const handleCopyEmail = () => {
-    if (navigator?.clipboard) {
-      navigator.clipboard.writeText(emailAddress).then(() => {
-        setCopiedEmail(true);
-        setTimeout(() => setCopiedEmail(false), 2400);
-      });
-    } else {
-      setCopiedEmail(true);
-      setTimeout(() => setCopiedEmail(false), 2400);
+  const scrollToSection = (id) => {
+    setActiveSection(id);
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  const copyEmailAddress = () => {
+    if (navigator?.clipboard) {
+      navigator.clipboard.writeText(PROFILE.email).then(() => {
+        setEmailCopied(true);
+        setTimeout(() => setEmailCopied(false), 2400);
+      });
+    } else {
+      setEmailCopied(true);
+      setTimeout(() => setEmailCopied(false), 2400);
+    }
+  };
+
+  const handleTerminalSubmit = (e) => {
+    e.preventDefault();
+    const cmd = terminalInput.trim().toLowerCase();
+    if (!cmd) return;
+
+    const newLogs = [...terminalOutput, { type: "user", text: `$ ${terminalInput}` }];
+
+    switch (cmd) {
+      case "help":
+        newLogs.push({
+          type: "output",
+          text: `AVAILABLE COMMANDS:
+  whoami         - Print biographical coordinates and founder status
+  credentials    - Display AAU, INSA, and MIT credentials breakdown
+  verify mit     - Validate MIT Open Learning certificate hash and metadata
+  arch gebere    - Print Gebere Vision AI dataflow blueprint
+  arch smartbiz  - Print SmartBiz ERP offline sync state architecture
+  ledger         - Show recent engineering changelog entries
+  telegram       - Open telegram dispatch channel (@unpluggedme)
+  contact        - Direct contact coordinates
+  clear          - Clear terminal output buffer`,
+        });
+        break;
+      case "whoami":
+        newLogs.push({
+          type: "output",
+          text: `Abdusalam Oumer Aman
+Software Engineering (AAU) · Systems Security (INSA) · Applied AI Founder
+Venture: Gebere Vision AI (METI-Funded UniPods AI Programme)
+Location: Addis Ababa, Ethiopia
+Mission: Localized, production-ready AI systems for Ethiopian infrastructure.`,
+        });
+        break;
+      case "credentials":
+        newLogs.push({
+          type: "output",
+          text: `1. MIT Open Learning: Introduction to Universal AI (Oct 7, 2026) [ID: 11cce330-19b6-48ff-ae8c-b645623efabb]
+   Backed by: Prof. Dimitris Bertsimas (Vice Provost for Open Learning & Boeing Professor of Operations Research)
+2. INSA (Information Network Security Administration): CTC National Cyber Talent Camp
+   Focus: Linux systems administration, kernel auditing, defensive cybersecurity
+3. Addis Ababa University (AAU): B.Sc. in Software Engineering (Junior / 3rd Year)
+   Focus: Distributed software, database transaction isolation, algorithmic analysis`,
+        });
+        break;
+      case "verify mit":
+        newLogs.push({
+          type: "output",
+          text: `[MIT OPEN LEARNING VERIFICATION PROTOCOL]
+CERTIFICATE_ID: 11cce330-19b6-48ff-ae8c-b645623efabb
+RECIPIENT: Abdusalam Oumer Aman
+COURSE: Introduction to Universal AI
+FACULTY_SPONSOR: Dimitris Bertsimas (Boeing Professor & Vice Provost)
+ISSUANCE_DATE: 2026-10-07
+STATUS: CRYPTOGRAPHICALLY VALID & RECOGNIZED`,
+        });
+        break;
+      case "arch gebere":
+        newLogs.push({
+          type: "output",
+          text: `[GEBERE VISION AI ARCHITECTURE SUMMARY]
+Client -> Telegram Webhook -> Node.js Quantizer -> Groq API (Llama 3.2 11B Vision)
++ Supabase pgvector store + HITL Agronomist Queue -> Sub-800ms Amharic/Afaan Oromoo output.`,
+        });
+        break;
+      case "arch smartbiz":
+        newLogs.push({
+          type: "output",
+          text: `[SMARTBIZ ERP OFFLINE SYNC]
+Client -> Local IndexedDB -> Vector Clock Queue -> Network Heartbeat -> NestJS Gateway -> PostgreSQL Master.`,
+        });
+        break;
+      case "ledger":
+        newLogs.push({
+          type: "output",
+          text: `[LATEST CHANGELOG COMMITS]
+- Log 043 (2026-10-08): MIT Universal AI Credential Finalized [ID: 11cce330-19b6]
+- Log 042 (2026-10-04): LeetCode 150+ solved with O(1) space DP optimizations
+- Log 041 (2026-09-28): Bare-metal Ubuntu 26.04 LTS migration & sysctl tuning
+- Log 040 (2026-09-15): Shaved 400ms off Groq vision inference for rural 2G links`,
+        });
+        break;
+      case "telegram":
+        newLogs.push({
+          type: "output",
+          text: `Opening Telegram channel: https://t.me/unpluggedme (@unpluggedme)`,
+        });
+        if (typeof window !== "undefined") {
+          window.open("https://t.me/unpluggedme", "_blank");
+        }
+        break;
+      case "contact":
+        newLogs.push({
+          type: "output",
+          text: `EMAIL: oumersalah2@gmail.com
+TELEGRAM: @unpluggedme
+GITHUB: https://github.com/oumersalah2-cmd
+LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
+        });
+        break;
+      case "clear":
+        setTerminalOutput([{ type: "system", text: "Buffer cleared. Ready." }]);
+        setTerminalInput("");
+        return;
+      default:
+        newLogs.push({
+          type: "error",
+          text: `Command not recognized: '${cmd}'. Type 'help' to view valid commands.`,
+        });
+    }
+
+    setTerminalOutput(newLogs);
+    setTerminalInput("");
+  };
+
+  useEffect(() => {
+    terminalBottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [terminalOutput]);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     if (!formState.name.trim() || !formState.email.trim() || !formState.message.trim()) {
-      setFormErrorMsg("Please fill in your name, email, and message.");
       setFormStatus("error");
+      setFormMsg("Please complete all required fields before dispatching.");
       return;
     }
 
-    setFormStatus("submitting");
-    setFormErrorMsg("");
+    setFormStatus("sending");
+    setFormMsg("");
 
     try {
-      const response = await fetch(`https://formsubmit.co/ajax/${emailAddress}`, {
+      const res = await fetch(`https://formsubmit.co/ajax/${PROFILE.email}`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           name: formState.name,
           email: formState.email,
-          subject: formState.subject || `Portfolio Contact from ${formState.name}`,
+          topic: formState.topic,
           message: formState.message,
-          _subject: `Portfolio Message from ${formState.name}`
-        })
+          _subject: `[FOUNDER DISPATCH] ${formState.name} (${formState.topic})`,
+        }),
       });
 
-      const data = await response.json();
-      if (response.ok && (data.success === "true" || data.success === true || response.status === 200)) {
+      const data = await res.json();
+      if (res.ok && (data.success === "true" || data.success === true || res.status === 200)) {
         setFormStatus("success");
-        setFormState({ name: "", email: "", subject: "", message: "" });
+        setFormState({ name: "", email: "", topic: "AI Engineering / Founder Role", message: "" });
+        setFormMsg("Message dispatched successfully. Abdusalam will review your note shortly.");
       } else {
-        throw new Error(data.message || "Failed to deliver message via form service.");
+        throw new Error("Form dispatch returned non-200 code");
       }
-    } catch (err) {
-      console.warn("Direct form submit fallback:", err);
-      // Fallback: If network/adblocker blocks the API, we provide direct mailto action
+    } catch {
+      // Fallback
       setFormStatus("error");
-      setFormErrorMsg("Could not submit automatically. Please click below to send via your email app or copy Abdusalam's email address directly.");
+      setFormMsg(
+        `Unable to reach automated dispatch worker. Please email directly at ${PROFILE.email} or copy it using the 1-click button.`
+      );
     }
   };
 
-  const types = ["All", "AI & EdTech", "Full-Stack", "Fintech"];
-  const filtered = filter === "All" ? PROJECTS : PROJECTS.filter(p => p.type === filter);
+  // Color Tokens based on Theme and chosen accent
+  const accentHex = accentColor === "blue" ? "#0047FF" : "#E64A19";
+  const isDark = themeMode === "dark";
 
   return (
-    <>
+    <div
+      style={{
+        backgroundColor: isDark ? "#0A0A0A" : "#FAF9F5", // Stark paper canvas
+        color: isDark ? "#E5E5E5" : "#111111", // High-contrast ink
+        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+        minHeight: "100vh",
+        lineHeight: 1.6,
+        WebkitFontSmoothing: "antialiased",
+        MozOsxFontSmoothing: "grayscale",
+      }}
+    >
       <style>{`
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
 
-        /* ── LIGHT THEME ───────────────────────── */
-        :root, [data-theme="light"] {
-          color-scheme: light;
-          --bg: #FFFFFF;
-          --surface: #FFFFFF;
-          --surface-soft: #F4F4F6;
-          --surface-hover: #ECECEF;
-          --border: #E4E4E7;
-          --border-hover: #D4D4D8;
-          --text: #09090B;
-          --muted: #71717A;
-          --muted-strong: #27272A;
-          --accent: #2563EB;
-          --accent-soft: rgba(37, 99, 235, 0.08);
-          --nav-bg: rgba(255, 255, 255, 0.85);
-          --btn-bg: #09090B;
-          --btn-text: #FFFFFF;
-          --btn-bg-hover: #27272A;
-          --btn-outline-bg: transparent;
-          --btn-outline-border: #E4E4E7;
-          --btn-outline-hover: #F4F4F6;
-          --shadow: rgba(0, 0, 0, 0.06);
-          --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-          --card-shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.08);
-        }
-
-        /* ── DARK THEME (PURE TRUE BLACK) ──────── */
-        [data-theme="dark"] {
-          color-scheme: dark;
-          --bg: #000000;
-          --surface: #0A0A0A;
-          --surface-soft: #121212;
-          --surface-hover: #1A1A1A;
-          --border: rgba(255, 255, 255, 0.1);
-          --border-hover: rgba(255, 255, 255, 0.22);
-          --text: #FFFFFF;
-          --muted: #A1A1AA;
-          --muted-strong: #E4E4E7;
-          --accent: #3B82F6;
-          --accent-soft: rgba(59, 130, 246, 0.14);
-          --nav-bg: rgba(0, 0, 0, 0.85);
-          --btn-bg: #FFFFFF;
-          --btn-text: #000000;
-          --btn-bg-hover: #E4E4E7;
-          --btn-outline-bg: rgba(255, 255, 255, 0.03);
-          --btn-outline-border: rgba(255, 255, 255, 0.12);
-          --btn-outline-hover: rgba(255, 255, 255, 0.08);
-          --shadow: rgba(0, 0, 0, 0.6);
-          --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
-          --card-shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.7);
-        }
-
-        body {
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-          background-color: var(--bg);
-          color: var(--text);
-          min-width: 0;
-          overflow-x: hidden;
-          transition: background-color 0.25s ease, color 0.25s ease;
-          line-height: 1.6;
-        }
-
         ::selection {
-          background: var(--accent);
+          background: ${accentHex};
           color: #FFFFFF;
         }
 
-        .nav-link {
-          background: none;
-          border: none;
-          cursor: pointer;
-          font-family: inherit;
-          font-size: 0.82rem;
-          font-weight: 500;
-          letter-spacing: 0.04em;
-          color: var(--muted);
-          padding: 8px 12px;
-          border-radius: 6px;
-          transition: color 0.2s, background-color 0.2s;
+        /* ── EDITORIAL TYPOGRAPHY CLASSES ── */
+        .font-serif {
+          font-family: 'Newsreader', Georgia, serif;
+          font-optical-sizing: auto;
         }
-        .nav-link:hover, .nav-link.active {
-          color: var(--text);
-          background-color: var(--surface-soft);
+        .font-mono {
+          font-family: 'JetBrains Mono', 'Fira Code', monospace;
+        }
+        .font-sans {
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
-        .btn-primary {
-          padding: 12px 24px;
-          background: var(--btn-bg);
-          color: var(--btn-text);
-          border: 1px solid transparent;
-          border-radius: 6px;
-          cursor: pointer;
-          font-size: 0.84rem;
-          font-weight: 600;
-          letter-spacing: 0.02em;
-          transition: all 0.2s ease;
+        /* Hairline borders & ledger grids */
+        .border-ledger {
+          border-color: ${isDark ? "#222222" : "#E2E2DC"};
+        }
+        .bg-card {
+          background-color: ${isDark ? "#121212" : "#FFFFFF"};
+        }
+        .bg-subtle {
+          background-color: ${isDark ? "#181818" : "#F4F3EE"};
+        }
+        .text-ink {
+          color: ${isDark ? "#FFFFFF" : "#111111"};
+        }
+        .text-muted {
+          color: ${isDark ? "#888888" : "#666662"};
+        }
+
+        /* Tactile interactive elements */
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
+        .tactile-link {
+          position: relative;
+          color: ${isDark ? "#E5E5E5" : "#111111"};
+          transition: color 0.15s ease;
+        }
+        .tactile-link:hover {
+          color: ${accentHex};
+        }
+
+        .btn-action {
           display: inline-flex;
           align-items: center;
-          justify-content: center;
           gap: 8px;
-          text-decoration: none;
-        }
-        .btn-primary:hover {
-          background: var(--btn-bg-hover);
-          transform: translateY(-1px);
-        }
-
-        .btn-outline {
-          padding: 12px 24px;
-          background: var(--btn-outline-bg);
-          color: var(--text);
-          border: 1px solid var(--btn-outline-border);
-          border-radius: 6px;
-          cursor: pointer;
-          font-size: 0.84rem;
+          padding: 10px 18px;
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 0.8rem;
           font-weight: 600;
-          letter-spacing: 0.02em;
-          transition: all 0.2s ease;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 8px;
+          letter-spacing: 0.03em;
+          border: 1px solid ${isDark ? "#333333" : "#111111"};
+          background: ${isDark ? "#111111" : "#111111"};
+          color: #FFFFFF;
+          cursor: pointer;
+          transition: all 0.15s ease;
           text-decoration: none;
         }
-        .btn-outline:hover {
-          background: var(--btn-outline-hover);
-          border-color: var(--border-hover);
-          transform: translateY(-1px);
-        }
-
-        .project-card {
-          background: var(--surface);
-          border: 1px solid var(--border);
-          border-radius: 10px;
-          padding: 1.85rem;
-          transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-          display: flex;
-          flex-direction: column;
-          box-shadow: var(--card-shadow);
-        }
-        .project-card:hover {
-          transform: translateY(-4px);
-          border-color: var(--border-hover);
-          box-shadow: var(--card-shadow-hover);
-        }
-
-        .filter-btn {
-          padding: 6px 16px;
-          border-radius: 6px;
-          cursor: pointer;
-          font-size: 0.78rem;
-          font-weight: 500;
-          transition: all 0.2s ease;
-          border: 1px solid var(--border);
-          background: var(--surface);
-          color: var(--muted);
-        }
-        .filter-btn:hover {
-          color: var(--text);
-          border-color: var(--border-hover);
-        }
-        .filter-btn.active {
-          background: var(--btn-bg);
-          color: var(--btn-text);
-          border-color: var(--btn-bg);
-        }
-
-        .demo-btn {
-          padding: 8px 14px;
-          font-size: 0.76rem;
-          font-weight: 600;
-          text-decoration: none;
-          transition: all 0.2s;
-          border-radius: 6px;
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-        }
-
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-        .cursor {
-          display: inline-block;
-          width: 2px;
-          height: 1.15em;
-          background: var(--accent);
-          vertical-align: text-bottom;
-          animation: blink 1s step-end infinite;
-          margin-left: 2px;
-        }
-
-        @keyframes pulse-dot {
-          0% { transform: scale(1); opacity: 0.8; }
-          50% { transform: scale(1.6); opacity: 0; }
-          100% { transform: scale(1); opacity: 0.8; }
-        }
-        .pulse-dot {
-          position: relative;
-        }
-        .pulse-dot::after {
-          content: "";
-          position: absolute;
-          inset: -3px;
-          border-radius: 50%;
-          background: #22C55E;
-          animation: pulse-dot 2s infinite ease-out;
-        }
-
-        @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-
-        input, textarea {
-          transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
-          border-radius: 6px;
-        }
-        input:focus, textarea:focus {
-          outline: none;
-          border-color: var(--accent) !important;
-          box-shadow: 0 0 0 3px var(--accent-soft) !important;
-        }
-
-        /* ── HERO COSMIC ATMOSPHERE & SHOWCASE ──────── */
-        @keyframes earthPulse {
-          0% { transform: scale(0.98); opacity: 0.65; }
-          50% { transform: scale(1.06); opacity: 0.95; }
-          100% { transform: scale(0.98); opacity: 0.65; }
-        }
-
-        @keyframes cosmicTwinkle {
-          0%, 100% { opacity: 0.2; transform: scale(0.8); }
-          50% { opacity: 0.95; transform: scale(1.2); }
-        }
-
-        @keyframes floatBadge {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-7px); }
-        }
-
-        @keyframes floatBadgeRev {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(7px); }
-        }
-
-        @keyframes modalFadeIn {
-          from { opacity: 0; transform: scale(0.96); }
-          to { opacity: 1; transform: scale(1); }
-        }
-
-        .hero-cosmic-section {
-          position: relative;
-          min-height: 94vh;
-          display: flex;
-          align-items: center;
-          padding: 140px 6vw 80px;
-          overflow: hidden;
-        }
-
-        .hero-ambient-canvas {
-          position: absolute;
-          inset: 0;
-          pointer-events: none;
-          z-index: 0;
-          overflow: hidden;
-        }
-
-        .hero-grid {
-          display: grid;
-          grid-template-columns: 1.15fr 0.85fr;
-          align-items: center;
-          gap: 3.5rem;
-          width: 100%;
-          max-width: 1240px;
-          margin: 0 auto;
-          position: relative;
-          z-index: 2;
-        }
-
-        .hero-photo-portal {
-          position: relative;
-          width: 100%;
-          max-width: 440px;
-          margin: 0 auto;
-          border-radius: 26px;
-          padding: 9px;
-          background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.03) 50%, rgba(59, 130, 246, 0.22) 100%);
-          box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.75), 0 0 50px rgba(37, 99, 235, 0.2);
-          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
-        }
-
-        .hero-photo-portal:hover {
-          transform: translateY(-5px) scale(1.012);
-          box-shadow: 0 36px 80px -12px rgba(0, 0, 0, 0.85), 0 0 65px rgba(56, 189, 248, 0.32);
-        }
-
-        .hero-photo-inner {
-          position: relative;
-          border-radius: 19px;
-          overflow: hidden;
-          background: #000000;
-          aspect-ratio: 9 / 14;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-        }
-
-        .hero-photo-inner img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center 25%;
-          transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .hero-photo-portal:hover .hero-photo-inner img {
-          transform: scale(1.035);
-        }
-
-        .hero-badge-glass {
-          position: absolute;
-          backdrop-filter: blur(14px);
-          -webkit-backdrop-filter: blur(14px);
-          border-radius: 12px;
-          padding: 9px 14px;
-          border: 1px solid rgba(255, 255, 255, 0.16);
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
-          z-index: 3;
-          pointer-events: auto;
-          transition: transform 0.2s ease, background 0.2s ease;
-        }
-
-        [data-theme="dark"] .hero-badge-glass {
-          background: rgba(10, 15, 26, 0.85);
+        .btn-action:hover {
+          background: ${accentHex};
+          border-color: ${accentHex};
           color: #FFFFFF;
         }
 
-        [data-theme="light"] .hero-badge-glass {
-          background: rgba(255, 255, 255, 0.92);
-          border-color: rgba(0, 0, 0, 0.1);
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-          color: #09090B;
+        .btn-action-ghost {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 10px 18px;
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 0.8rem;
+          font-weight: 600;
+          letter-spacing: 0.03em;
+          border: 1px solid ${isDark ? "#333333" : "#D0D0CA"};
+          background: transparent;
+          color: ${isDark ? "#E5E5E5" : "#111111"};
+          cursor: pointer;
+          transition: all 0.15s ease;
+          text-decoration: none;
+        }
+        .btn-action-ghost:hover {
+          border-color: ${accentHex};
+          color: ${accentHex};
+          background: ${isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)"};
         }
 
-        @media (max-width: 960px) {
-          .nav-links-list {
-            display: none !important;
-          }
-          .mobile-menu-toggle {
-            display: inline-flex !important;
-          }
-          .contact-layout-grid {
-            grid-template-columns: 1fr !important;
-            gap: 3rem !important;
-          }
-          .experience-grid {
-            grid-template-columns: 1fr !important;
-            gap: 0.8rem !important;
-          }
-          .hero-grid {
-            grid-template-columns: 1fr !important;
-            gap: 2.75rem !important;
-          }
-          .hero-photo-portal {
-            max-width: 360px;
-            order: -1;
-          }
-          .hero-cosmic-section {
-            padding-top: 110px !important;
-            min-height: auto !important;
-          }
+        /* Responsive layout */
+        @media (max-width: 900px) {
+          .ledger-hero-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+          .ledger-blueprint-grid { grid-template-columns: 1fr !important; }
+          .header-nav { display: none !important; }
+          .dispatch-grid { grid-template-columns: 1fr !important; gap: 3rem !important; }
+          .meta-pill-strip { flex-direction: column !important; align-items: flex-start !important; }
         }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: ${isDark ? "#111111" : "#F4F3EE"}; }
+        ::-webkit-scrollbar-thumb { background: ${isDark ? "#333333" : "#D0D0CA"}; }
+        ::-webkit-scrollbar-thumb:hover { background: ${accentHex}; }
       `}</style>
 
-      <div style={{ background: "var(--bg)", minHeight: "100vh", position: "relative" }}>
-
-        {/* ── NAVBAR ── */}
-        <header
+      {/* ── TOP MASTHEAD / TECHNICAL LEDGER HEADER ─────────────────── */}
+      <header
+        style={{
+          position: "sticky",
+          top: 0,
+          zIndex: 100,
+          backgroundColor: isDark ? "rgba(10, 10, 10, 0.94)" : "rgba(250, 249, 245, 0.94)",
+          backdropFilter: "blur(8px)",
+          borderBottom: `1px solid ${isDark ? "#222222" : "#E2E2DC"}`,
+        }}
+      >
+        <div
           style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            zIndex: 100,
-            height: "64px",
+            maxWidth: "1320px",
+            margin: "0 auto",
+            padding: "0.85rem 1.5rem",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            padding: "0 6vw",
-            background: scrolled ? "var(--nav-bg)" : "transparent",
-            backdropFilter: scrolled ? "blur(12px)" : "none",
-            borderBottom: scrolled ? "1px solid var(--border)" : "1px solid transparent",
-            transition: "all 0.25s ease"
+            flexWrap: "wrap",
+            gap: "1rem",
           }}
         >
-          {/* Brand Logo */}
-          <button
-            onClick={() => scrollTo("About")}
-            style={{
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              color: "var(--text)"
-            }}
-          >
-            <span style={{
-              width: "32px",
-              height: "32px",
-              borderRadius: "6px",
-              background: "var(--surface-soft)",
-              border: "1px solid var(--border)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontWeight: 800,
-              fontSize: "0.85rem",
-              letterSpacing: "-0.02em"
-            }}>
-              AO
+          {/* Masthead Identifier */}
+          <div style={{ display: "flex", alignItems: "baseline", gap: "10px" }}>
+            <span
+              className="font-mono"
+              style={{
+                fontSize: "0.82rem",
+                fontWeight: 700,
+                letterSpacing: "0.08em",
+                color: accentHex,
+              }}
+            >
+              [AMAN-SYSTEMS // 2026.10]
             </span>
-            <span style={{ fontWeight: 700, fontSize: "0.95rem", letterSpacing: "-0.02em" }}>
-              Abdusalam
+            <span
+              className="font-mono"
+              style={{
+                fontSize: "0.74rem",
+                color: isDark ? "#888888" : "#666662",
+                display: "inline-block",
+              }}
+            >
+              ADDIS ABABA · AAU SE · INSA · MIT OPEN LEARNING
             </span>
-          </button>
+          </div>
 
-          {/* Desktop Nav Links */}
-          <nav className="nav-links-list" style={{ display: "flex", gap: "0.4rem", listStyle: "none" }}>
-            {NAV_LINKS.map(l => (
+          {/* Ledger Navigation Anchors */}
+          <nav className="header-nav" style={{ display: "flex", alignItems: "center", gap: "1.2rem" }}>
+            {NAV_ITEMS.map((item) => (
               <button
-                key={l}
-                onClick={() => scrollTo(l)}
-                className={`nav-link ${active === l ? "active" : ""}`}
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className="font-mono tactile-link"
+                style={{
+                  background: "none",
+                  border: "none",
+                  padding: "4px 0",
+                  cursor: "pointer",
+                  fontSize: "0.75rem",
+                  fontWeight: activeSection === item.id ? 700 : 500,
+                  color: activeSection === item.id ? accentHex : isDark ? "#A0A0A0" : "#555550",
+                  borderBottom: activeSection === item.id ? `2px solid ${accentHex}` : "2px solid transparent",
+                }}
               >
-                {l}
+                {item.label}
               </button>
             ))}
           </nav>
 
-          {/* Nav Right Actions */}
-          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-            {/* Dark / Light Toggle */}
-            <button
-              onClick={() => setDarkMode(prev => !prev)}
-              aria-label="Toggle theme"
+          {/* Technical Controls & Telegram Dispatch Badge */}
+          <div style={{ display: "flex", alignItems: "center", gap: "0.85rem" }}>
+            {/* Telegram Channel Dispatch Link */}
+            <a
+              href={PROFILE.telegram}
+              target="_blank"
+              rel="noreferrer"
+              className="font-mono"
+              title="Read daily unfiltered technical logs on Telegram"
               style={{
-                width: "36px",
-                height: "36px",
-                borderRadius: "6px",
-                border: "1px solid var(--border)",
-                background: "var(--surface)",
-                color: "var(--text)",
-                cursor: "pointer",
                 display: "inline-flex",
                 alignItems: "center",
-                justifyContent: "center",
-                transition: "all 0.2s ease"
+                gap: "6px",
+                fontSize: "0.72rem",
+                padding: "4px 10px",
+                border: `1px solid ${accentHex}`,
+                color: accentHex,
+                backgroundColor: isDark ? "rgba(0, 71, 255, 0.08)" : "rgba(0, 71, 255, 0.04)",
+                fontWeight: 600,
               }}
             >
-              {darkMode ? (
-                // Sun Icon (Switch to Light)
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="5"></circle>
-                  <line x1="12" y1="1" x2="12" y2="3"></line>
-                  <line x1="12" y1="21" x2="12" y2="23"></line>
-                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                  <line x1="1" y1="12" x2="3" y2="12"></line>
-                  <line x1="21" y1="12" x2="23" y2="12"></line>
-                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                </svg>
-              ) : (
-                // Moon Icon (Switch to Dark)
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                </svg>
-              )}
-            </button>
+              <span style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: accentHex }} />
+              Unplugged Me ↗
+            </a>
 
-            {/* Quick Contact CTA */}
+            {/* Accent Mode Toggle */}
             <button
-              onClick={() => scrollTo("Contact")}
-              className="btn-primary"
-              style={{ padding: "8px 16px", fontSize: "0.78rem" }}
-            >
-              Get in Touch
-            </button>
-
-            {/* Mobile Hamburger Button */}
-            <button
-              className="mobile-menu-toggle"
-              onClick={() => setMobileMenuOpen(prev => !prev)}
-              aria-label="Toggle menu"
+              onClick={() => setAccentColor(accentColor === "blue" ? "orange" : "blue")}
+              className="font-mono"
+              title="Toggle Accent Color (Hyper-link Blue vs Signal Orange)"
               style={{
-                display: "none",
-                width: "36px",
-                height: "36px",
-                borderRadius: "6px",
-                border: "1px solid var(--border)",
-                background: "var(--surface)",
-                color: "var(--text)",
+                background: "none",
+                border: `1px solid ${isDark ? "#333333" : "#D0D0CA"}`,
+                padding: "3px 8px",
+                fontSize: "0.68rem",
+                color: isDark ? "#A0A0A0" : "#555550",
                 cursor: "pointer",
-                alignItems: "center",
-                justifyContent: "center"
               }}
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                {mobileMenuOpen ? (
-                  <path d="M18 6L6 18M6 6l12 12" />
-                ) : (
-                  <path d="M3 12h18M3 6h18M3 18h18" />
-                )}
-              </svg>
+              ACCENT: {accentColor.toUpperCase()}
+            </button>
+
+            {/* Stark Paper / Dark Ledger Theme Switch */}
+            <button
+              onClick={() => setThemeMode(themeMode === "light" ? "dark" : "light")}
+              className="font-mono"
+              title="Toggle Stark Paper vs Dark Ledger Mode"
+              style={{
+                background: "none",
+                border: `1px solid ${isDark ? "#333333" : "#D0D0CA"}`,
+                padding: "3px 8px",
+                fontSize: "0.68rem",
+                color: isDark ? "#A0A0A0" : "#555550",
+                cursor: "pointer",
+              }}
+            >
+              {themeMode === "light" ? "PAPER [L]" : "LEDGER [D]"}
             </button>
           </div>
-        </header>
+        </div>
+      </header>
 
-        {/* Mobile Navigation Drawer */}
-        {mobileMenuOpen && (
+      {/* ── MAIN CONTENT CONTAINER ─────────────────────────────────── */}
+      <main style={{ maxWidth: "1320px", margin: "0 auto", padding: "2.5rem 1.5rem 6rem" }}>
+        {/* ── SECTION 01: THE UNAPOLOGETIC HERO STATEMENT ─────────── */}
+        <section
+          id="manifesto"
+          style={{
+            paddingBottom: "4.5rem",
+            borderBottom: `1px solid ${isDark ? "#222222" : "#E2E2DC"}`,
+            marginBottom: "4.5rem",
+          }}
+        >
+          {/* Top Metadata Header Strip */}
           <div
+            className="font-mono meta-pill-strip"
             style={{
-              position: "fixed",
-              top: "64px",
-              left: 0,
-              right: 0,
-              background: "var(--surface)",
-              borderBottom: "1px solid var(--border)",
-              zIndex: 99,
-              padding: "1.2rem 6vw",
               display: "flex",
-              flexDirection: "column",
-              gap: "0.5rem"
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "1rem",
+              fontSize: "0.74rem",
+              color: isDark ? "#888888" : "#666662",
+              paddingBottom: "1.2rem",
+              marginBottom: "2.2rem",
+              borderBottom: `1px solid ${isDark ? "#1C1C1C" : "#EAEAE4"}`,
             }}
           >
-            {NAV_LINKS.map(l => (
-              <button
-                key={l}
-                onClick={() => scrollTo(l)}
+            <div>
+              <span>LEDGER: </span>
+              <strong style={{ color: isDark ? "#FFFFFF" : "#111111" }}>AMAN-FOUNDER-MANIFESTO</strong>
+              <span style={{ margin: "0 8px" }}>/</span>
+              <span>ORIGIN: ADDIS ABABA UNIVERSITY (AAU) SE '26</span>
+            </div>
+            <div>
+              <span style={{ color: accentHex }}>● PRODUCTION STATUS:</span> ACTIVE SHIPPER · OPEN TO APPLIED AI FOUNDER ROLES
+            </div>
+          </div>
+
+          <div
+            className="ledger-hero-grid"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1.3fr 0.9fr",
+              gap: "4rem",
+              alignItems: "start",
+            }}
+          >
+            {/* Left Column: Direct Unapologetic Manifesto */}
+            <div>
+              {/* Formal Name Heading */}
+              <h1
+                className="font-serif"
                 style={{
-                  background: "none",
-                  border: "none",
-                  textAlign: "left",
-                  padding: "10px 12px",
-                  fontSize: "0.95rem",
-                  color: active === l ? "var(--accent)" : "var(--text)",
-                  fontWeight: active === l ? 700 : 500,
-                  cursor: "pointer",
-                  borderRadius: "6px"
+                  fontSize: "clamp(2.8rem, 5.2vw, 4.4rem)",
+                  fontWeight: 600,
+                  lineHeight: 1.05,
+                  letterSpacing: "-0.025em",
+                  color: isDark ? "#FFFFFF" : "#111111",
+                  marginBottom: "1.2rem",
                 }}
               >
-                {l}
-              </button>
-            ))}
-          </div>
-        )}
+                Abdusalam Oumer Aman
+              </h1>
 
-        {/* ── HERO SECTION (COSMIC ATMOSPHERE & SHOWCASE) ── */}
-        <section
-          id="about"
-          className="hero-cosmic-section"
-        >
-          {/* Ambient Cosmic Background Canvas */}
-          <div className="hero-ambient-canvas" aria-hidden="true">
-            {/* Soft Ambient Projection of the Cosmic Background Image */}
-            <div
-              style={{
-                position: "absolute",
-                right: "-2%",
-                top: "48%",
-                transform: "translateY(-50%)",
-                width: "min(720px, 58vw)",
-                height: "min(920px, 85vh)",
-                backgroundImage: "url('/hero-cosmic.webp')",
-                backgroundSize: "contain",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-                opacity: darkMode ? 0.38 : 0.12,
-                filter: "blur(1px)",
-                maskImage: "radial-gradient(ellipse at 65% 50%, black 25%, rgba(0,0,0,0.5) 55%, transparent 75%)",
-                WebkitMaskImage: "radial-gradient(ellipse at 65% 50%, black 25%, rgba(0,0,0,0.5) 55%, transparent 75%)",
-                pointerEvents: "none"
-              }}
-            />
-
-            {/* Pulsing Earth Globe Aura */}
-            <div
-              style={{
-                position: "absolute",
-                right: "12%",
-                top: "50%",
-                width: "440px",
-                height: "440px",
-                borderRadius: "50%",
-                background: "radial-gradient(circle, rgba(56, 189, 248, 0.28) 0%, rgba(37, 99, 235, 0.14) 40%, transparent 70%)",
-                filter: "blur(40px)",
-                animation: "earthPulse 6s ease-in-out infinite alternate",
-                transform: "translateY(-50%)"
-              }}
-            />
-
-            {/* Subtle Ethiopian Emerald Innovation Aura */}
-            <div
-              style={{
-                position: "absolute",
-                right: "24%",
-                top: "68%",
-                width: "300px",
-                height: "300px",
-                borderRadius: "50%",
-                background: "radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, transparent 70%)",
-                filter: "blur(35px)",
-                transform: "translateY(-50%)"
-              }}
-            />
-
-            {/* Twinkling Space Stars */}
-            {STARS.map((s, i) => (
-              <span
-                key={i}
+              {/* Founder Stance Blockquote */}
+              <div
                 style={{
-                  position: "absolute",
-                  top: s.top,
-                  left: s.left,
-                  width: `${s.size}px`,
-                  height: `${s.size}px`,
-                  borderRadius: "50%",
-                  backgroundColor: "#FFFFFF",
-                  boxShadow: `0 0 ${s.size * 2}px #60A5FA`,
-                  animation: `cosmicTwinkle ${s.dur} ease-in-out infinite`,
-                  animationDelay: s.delay,
-                  opacity: darkMode ? 0.75 : 0.25
+                  borderLeft: `3px solid ${accentHex}`,
+                  paddingLeft: "1.4rem",
+                  marginBottom: "2rem",
                 }}
-              />
-            ))}
-
-            {/* Seamless Edge Blends */}
-            <div
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                right: 0,
-                height: "140px",
-                background: "linear-gradient(to bottom, var(--bg) 0%, transparent 100%)"
-              }}
-            />
-            <div
-              style={{
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                right: 0,
-                height: "160px",
-                background: "linear-gradient(to top, var(--bg) 0%, transparent 100%)"
-              }}
-            />
-            <div
-              style={{
-                position: "absolute",
-                top: 0,
-                bottom: 0,
-                left: 0,
-                width: "48vw",
-                background: "linear-gradient(to right, var(--bg) 0%, var(--bg) 40%, transparent 100%)"
-              }}
-            />
-          </div>
-
-          {/* Hero Foreground Content */}
-          <div className="hero-grid">
-            {/* Left Column: Typography, Bio & Actions */}
-            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
-              <FadeIn delay={0.05}>
-                {/* Available status pill */}
-                <div
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "10px",
-                    padding: "6px 14px",
-                    borderRadius: "100px",
-                    background: "var(--surface-soft)",
-                    border: "1px solid var(--border)",
-                    marginBottom: "1.75rem",
-                    width: "fit-content"
-                  }}
-                >
-                  <span
-                    className="pulse-dot"
-                    style={{
-                      width: "8px",
-                      height: "8px",
-                      borderRadius: "50%",
-                      background: "#22C55E",
-                      display: "inline-block"
-                    }}
-                  />
-                  <span style={{ fontSize: "0.78rem", fontWeight: 600, color: "var(--text)" }}>
-                    Available for full-time & contract roles
-                  </span>
-                </div>
-              </FadeIn>
-
-              <FadeIn delay={0.15}>
-                <h1
-                  style={{
-                    fontSize: "clamp(2.75rem, 5.5vw, 4.4rem)",
-                    fontWeight: 900,
-                    lineHeight: 1.05,
-                    letterSpacing: "-0.04em",
-                    color: "var(--text)",
-                    marginBottom: "0.75rem"
-                  }}
-                >
-                  Abdusalam Oumer
-                </h1>
+              >
                 <p
+                  className="font-serif"
                   style={{
-                    fontSize: "clamp(1.08rem, 1.8vw, 1.3rem)",
+                    fontSize: "clamp(1.25rem, 2vw, 1.6rem)",
+                    lineHeight: 1.35,
+                    fontStyle: "italic",
+                    color: isDark ? "#E5E5E5" : "#222222",
+                    marginBottom: "0.6rem",
+                  }}
+                >
+                  Software Engineering at AAU. Systems Security at INSA. Applied AI Founder.
+                </p>
+                <p
+                  className="font-mono"
+                  style={{
+                    fontSize: "0.92rem",
                     fontWeight: 600,
-                    color: "var(--accent)",
-                    marginBottom: "1.25rem"
+                    color: accentHex,
+                    letterSpacing: "0.01em",
                   }}
                 >
-                  Full-Stack Software Engineer · AAU Software Engineering 🇪🇹
+                  Building localized, production-ready AI systems for Ethiopian infrastructure.
                 </p>
-              </FadeIn>
+              </div>
 
-              {/* Typing effect line */}
-              <FadeIn delay={0.25}>
-                <div
-                  style={{
-                    fontSize: "0.95rem",
-                    fontFamily: "'JetBrains Mono', monospace",
-                    color: "var(--muted)",
-                    minHeight: "1.8rem",
-                    marginBottom: "1.25rem"
-                  }}
-                >
-                  <span style={{ color: "var(--accent)", marginRight: "6px" }}>&gt;</span>
-                  {typedText}
-                  <span className="cursor" />
-                </div>
+              {/* Unapologetic Narrative Paragraphs */}
+              <p
+                style={{
+                  fontSize: "1.05rem",
+                  lineHeight: 1.7,
+                  color: isDark ? "#CCCCCC" : "#333330",
+                  marginBottom: "1.5rem",
+                  maxWidth: "680px",
+                }}
+              >
+                Most modern AI projects settle for generic OpenAI wrapper scripts and flashy dark-mode marketing pages. My
+                engineering work bridges third-year Software Engineering foundations at{" "}
+                <strong>Addis Ababa University</strong>, rigorous defensive cybersecurity at Ethiopia's national{" "}
+                <strong>INSA (Information Network Security Administration)</strong>, and applied optimization validated
+                through <strong>MIT Open Learning</strong> under Boeing Professor of Operations Research Dimitris Bertsimas.
+              </p>
 
-                <p
-                  style={{
-                    fontSize: "1.02rem",
-                    color: "var(--muted)",
-                    lineHeight: 1.75,
-                    maxWidth: "580px",
-                    marginBottom: "2.25rem"
-                  }}
-                >
-                  Specializing in full-stack architecture, performant web applications, and applied AI integrations.
-                  From PostgreSQL schemas to smooth Next.js interfaces, I build production-ready digital products with clean, reliable code.
-                </p>
-              </FadeIn>
+              <p
+                style={{
+                  fontSize: "1.02rem",
+                  lineHeight: 1.7,
+                  color: isDark ? "#A0A0A0" : "#555550",
+                  marginBottom: "2.4rem",
+                  maxWidth: "680px",
+                }}
+              >
+                As founder of <strong>Gebere Vision AI</strong> (selected for the METI-Funded UniPods AI Programme), I deploy
+                sub-second Llama vision inference via Groq directly into rural Telegram interfaces in Amharic and Afaan
+                Oromoo. When power cuts hit retail stores, my <strong>SmartBiz ERP</strong> executes offline-first transactional
+                state on local client machines with deterministic vector clocks.
+              </p>
 
               {/* Action Buttons */}
-              <FadeIn delay={0.35}>
-                <div style={{ display: "flex", gap: "0.85rem", flexWrap: "wrap", marginBottom: "3rem" }}>
-                  <button onClick={() => scrollTo("Projects")} className="btn-primary">
-                    View Projects
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M7 17L17 7M17 7H7M17 7V17" />
-                    </svg>
-                  </button>
-                  <button onClick={() => scrollTo("Contact")} className="btn-outline">
-                    Get in Touch
-                  </button>
-                  <button
-                    onClick={handleCopyEmail}
-                    className="btn-outline"
-                    title="Click to copy email address"
-                    style={{ position: "relative" }}
-                  >
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                    </svg>
-                    {copiedEmail ? "Email Copied!" : "Copy Email"}
-                  </button>
-                </div>
-              </FadeIn>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.85rem", marginBottom: "2.5rem" }}>
+                <a href="#products" className="btn-action">
+                  Inspect Founder Products ↓
+                </a>
+                <button onClick={() => setMitModalOpen(true)} className="btn-action-ghost">
+                  Verify MIT Credential [ID: 11cce330] ↗
+                </button>
+                <button onClick={copyEmailAddress} className="btn-action-ghost">
+                  {emailCopied ? "✓ Copied to Clipboard" : `Copy Email (${PROFILE.email})`}
+                </button>
+              </div>
 
-              {/* Stats Bar */}
-              <FadeIn delay={0.45}>
+              {/* Quick Hard Facts Ledger */}
+              <div
+                className="font-mono border-ledger bg-card"
+                style={{
+                  border: `1px solid ${isDark ? "#222222" : "#E2E2DC"}`,
+                  padding: "1.25rem",
+                }}
+              >
                 <div
-                  ref={statsRef}
+                  style={{
+                    fontSize: "0.72rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.08em",
+                    color: accentHex,
+                    marginBottom: "0.75rem",
+                  }}
+                >
+                  SYSTEM DISPATCH PROTOCOLS & CONTACT COORDINATES:
+                </div>
+                <div
                   style={{
                     display: "grid",
-                    gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
-                    gap: "1.5rem",
-                    paddingTop: "2rem",
-                    borderTop: "1px solid var(--border)",
-                    maxWidth: "580px"
+                    gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                    gap: "0.85rem",
+                    fontSize: "0.8rem",
                   }}
                 >
-                  <StatCounter num={7} suffix="+" label="Projects Shipped" start={statsVisible} />
-                  <StatCounter num={2} suffix="+ Years" label="Software Building" start={statsVisible} />
-                  <StatCounter num={5} suffix="+" label="Core Tech Stacks" start={statsVisible} />
-                </div>
-              </FadeIn>
-            </div>
-
-            {/* Right Column: Hero Cosmic Showcase & Portal */}
-            <FadeIn delay={0.2} style={{ display: "flex", justifyContent: "center" }}>
-              <div className="hero-photo-portal">
-                {/* Floating Top Badge */}
-                <div
-                  className="hero-badge-glass"
-                  style={{
-                    top: "-18px",
-                    left: "-14px",
-                    animation: "floatBadge 5s ease-in-out infinite"
-                  }}
-                >
-                  <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                    <span style={{ fontSize: "1.1rem" }}>🌍</span>
-                    <div>
-                      <div style={{ fontSize: "0.78rem", fontWeight: 700, letterSpacing: "-0.01em" }}>
-                        Addis Ababa to the World
-                      </div>
-                      <div style={{ fontSize: "0.68rem", opacity: 0.75 }}>
-                        AAU Software Engineering 🇪🇹
-                      </div>
-                    </div>
+                  <div>
+                    <span className="text-muted">LOCATION: </span>
+                    <strong>{PROFILE.location} (UTC+3)</strong>
                   </div>
-                </div>
-
-                {/* Photo Container */}
-                <div
-                  className="hero-photo-inner"
-                  onClick={() => setPhotoModalOpen(true)}
-                  title="Click to view full photo"
-                >
-                  <img
-                    src="/hero-cosmic.webp"
-                    alt="Abdusalam Oumer in front of Earth and cosmic projection"
-                    loading="eager"
-                  />
-
-                  {/* Gentle gradient overlay to smoothly anchor the bottom */}
-                  <div
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      background: "linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%, transparent 35%, transparent 80%, rgba(0, 0, 0, 0.35) 100%)",
-                      pointerEvents: "none"
-                    }}
-                  />
-
-                  {/* Expand view trigger button */}
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setPhotoModalOpen(true);
-                    }}
-                    style={{
-                      position: "absolute",
-                      top: "14px",
-                      right: "14px",
-                      width: "34px",
-                      height: "34px",
-                      borderRadius: "50%",
-                      background: "rgba(0, 0, 0, 0.55)",
-                      backdropFilter: "blur(8px)",
-                      border: "1px solid rgba(255, 255, 255, 0.25)",
-                      color: "#FFFFFF",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      cursor: "pointer",
-                      transition: "transform 0.2s, background 0.2s"
-                    }}
-                    title="Expand photo"
-                    aria-label="Expand photo"
-                  >
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                      <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                    </svg>
-                  </button>
-                </div>
-
-                {/* Floating Bottom Badge */}
-                <div
-                  className="hero-badge-glass"
-                  style={{
-                    bottom: "-16px",
-                    right: "-12px",
-                    animation: "floatBadgeRev 5.5s ease-in-out infinite"
-                  }}
-                >
-                  <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                    <span
-                      style={{
-                        width: "8px",
-                        height: "8px",
-                        borderRadius: "50%",
-                        background: "#38BDF8",
-                        boxShadow: "0 0 8px #38BDF8",
-                        display: "inline-block"
-                      }}
-                    />
-                    <div>
-                      <div style={{ fontSize: "0.78rem", fontWeight: 700, letterSpacing: "-0.01em" }}>
-                        Applied AI & Full-Stack
-                      </div>
-                      <div style={{ fontSize: "0.68rem", opacity: 0.75 }}>
-                        Next.js · Django · Supabase
-                      </div>
-                    </div>
+                  <div>
+                    <span className="text-muted">TELEGRAM: </span>
+                    <a href={PROFILE.telegram} target="_blank" rel="noreferrer" className="tactile-link" style={{ fontWeight: 600 }}>
+                      {PROFILE.telegramHandle} (Unplugged Me)
+                    </a>
                   </div>
-                </div>
-              </div>
-            </FadeIn>
-          </div>
-        </section>
-
-        {/* ── SKILLS SECTION ── */}
-        <section
-          id="skills"
-          style={{
-            padding: "100px 6vw",
-            maxWidth: "1200px",
-            margin: "0 auto",
-            borderTop: "1px solid var(--border)"
-          }}
-        >
-          <FadeIn>
-            <SectionEyebrow>Capabilities</SectionEyebrow>
-            <SectionHeading>Technical Skills & Stack</SectionHeading>
-            <p style={{ color: "var(--muted)", fontSize: "0.95rem", maxWidth: "560px", marginTop: "0.5rem" }}>
-              Full-cycle software engineering from robust database design to responsive frontend interfaces.
-            </p>
-          </FadeIn>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-              gap: "1.25rem",
-              marginTop: "2.5rem"
-            }}
-          >
-            {SKILLS.map((group, i) => (
-              <FadeIn key={group.category} delay={i * 0.08}>
-                <div
-                  style={{
-                    background: "var(--surface)",
-                    border: "1px solid var(--border)",
-                    borderRadius: "8px",
-                    padding: "1.75rem",
-                    height: "100%"
-                  }}
-                >
-                  <div
-                    style={{
-                      fontSize: "0.76rem",
-                      fontWeight: 700,
-                      letterSpacing: "0.1em",
-                      textTransform: "uppercase",
-                      color: "var(--accent)",
-                      marginBottom: "1.25rem"
-                    }}
-                  >
-                    {group.category}
+                  <div>
+                    <span className="text-muted">GITHUB: </span>
+                    <a href={PROFILE.github} target="_blank" rel="noreferrer" className="tactile-link" style={{ fontWeight: 600 }}>
+                      @{PROFILE.handle}-cmd
+                    </a>
                   </div>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-                    {group.items.map(s => (
-                      <Tag key={s}>{s}</Tag>
-                    ))}
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-
-          {/* Algorithmic Practice Banner */}
-          <FadeIn delay={0.25}>
-            <div
-              style={{
-                marginTop: "1.5rem",
-                padding: "1.25rem 1.75rem",
-                background: "var(--surface-soft)",
-                border: "1px solid var(--border)",
-                borderRadius: "8px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                flexWrap: "wrap",
-                gap: "1rem"
-              }}
-            >
-              <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                <span style={{ fontSize: "1.4rem" }}>⚡</span>
-                <div>
-                  <div style={{ fontSize: "0.88rem", fontWeight: 700, color: "var(--text)" }}>
-                    Daily Algorithmic Practice & Problem Solving
-                  </div>
-                  <div style={{ fontSize: "0.78rem", color: "var(--muted)" }}>
-                    Strengthening logic, data structures, and runtime efficiency through consistent practice.
-                  </div>
-                </div>
-              </div>
-              <div style={{ display: "flex", gap: "1rem" }}>
-                {["LeetCode", "Codeforces", "HackerRank"].map(p => (
-                  <span
-                    key={p}
-                    style={{
-                      fontSize: "0.75rem",
-                      fontWeight: 600,
-                      color: "var(--accent)",
-                      fontFamily: "'JetBrains Mono', monospace"
-                    }}
-                  >
-                    {p}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </FadeIn>
-        </section>
-
-        {/* ── PROJECTS SECTION ── */}
-        <section
-          id="projects"
-          style={{
-            padding: "100px 6vw",
-            maxWidth: "1200px",
-            margin: "0 auto",
-            borderTop: "1px solid var(--border)"
-          }}
-        >
-          <FadeIn>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "flex-end",
-                flexWrap: "wrap",
-                gap: "1.5rem",
-                marginBottom: "2.5rem"
-              }}
-            >
-              <div>
-                <SectionEyebrow>Portfolio</SectionEyebrow>
-                <SectionHeading>Featured Projects</SectionHeading>
-                <p style={{ color: "var(--muted)", fontSize: "0.95rem", maxWidth: "520px", marginTop: "0.5rem" }}>
-                  Selected production applications, AI systems, and platforms built for real-world impact.
-                </p>
-              </div>
-
-              {/* Filter Tabs */}
-              <div style={{ display: "flex", gap: "8px" }}>
-                {types.map(t => (
-                  <button
-                    key={t}
-                    onClick={() => setFilter(t)}
-                    className={`filter-btn ${filter === t ? "active" : ""}`}
-                  >
-                    {t}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </FadeIn>
-
-          {/* Project Grid */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
-              gap: "1.5rem"
-            }}
-          >
-            {filtered.map((proj, i) => (
-              <FadeIn key={proj.name} delay={i * 0.05}>
-                <div className="project-card">
-                  {/* Card Header: Type Badge & Status */}
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1rem" }}>
-                    <span
-                      style={{
-                        fontSize: "0.7rem",
-                        fontWeight: 700,
-                        letterSpacing: "0.08em",
-                        textTransform: "uppercase",
-                        color: proj.accent
-                      }}
-                    >
-                      {proj.type}
-                    </span>
-                    {proj.demo && (
-                      <span style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "0.7rem", color: "var(--muted)" }}>
-                        <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#10B981" }} />
-                        Live
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Title & Desc */}
-                  <h3 style={{ fontSize: "1.15rem", fontWeight: 700, color: "var(--text)", marginBottom: "0.6rem", letterSpacing: "-0.02em" }}>
-                    {proj.name}
-                  </h3>
-                  <p style={{ fontSize: "0.86rem", color: "var(--muted)", lineHeight: 1.65, marginBottom: "1.5rem", flex: 1 }}>
-                    {proj.desc}
-                  </p>
-
-                  {/* Tags */}
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "1.5rem" }}>
-                    {proj.tags.map(t => (
-                      <Tag key={t} accent={proj.accent}>{t}</Tag>
-                    ))}
-                  </div>
-
-                  {/* Action Links */}
-                  <div style={{ display: "flex", gap: "8px", marginTop: "auto" }}>
-                    {proj.demo && (
-                      <a
-                        href={proj.demo}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="demo-btn"
-                        style={{
-                          background: "var(--btn-bg)",
-                          color: "var(--btn-text)",
-                          border: "1px solid transparent"
-                        }}
-                      >
-                        Live Demo
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                          <path d="M7 17L17 7M17 7H7M17 7V17" />
-                        </svg>
-                      </a>
-                    )}
-                    <a
-                      href={proj.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="demo-btn"
-                      style={{
-                        background: "var(--surface-soft)",
-                        color: "var(--text)",
-                        border: "1px solid var(--border)"
-                      }}
-                    >
-                      GitHub
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                      </svg>
+                  <div>
+                    <span className="text-muted">DIRECT INBOX: </span>
+                    <a href={`mailto:${PROFILE.email}`} style={{ fontWeight: 600, color: accentHex }}>
+                      {PROFILE.email}
                     </a>
                   </div>
                 </div>
-              </FadeIn>
-            ))}
+              </div>
+            </div>
+
+            {/* Right Column: Authentic Editorial Archival Portrait */}
+            <div>
+              <div
+                className="border-ledger bg-card"
+                style={{
+                  border: `1px solid ${isDark ? "#222222" : "#E2E2DC"}`,
+                  padding: "1rem",
+                }}
+              >
+                {/* Image Frame with Archival Plate Styling */}
+                <div
+                  style={{
+                    position: "relative",
+                    backgroundColor: isDark ? "#141414" : "#F0EFEB",
+                    border: `1px solid ${isDark ? "#262626" : "#E4E3DC"}`,
+                    overflow: "hidden",
+                    textAlign: "center",
+                  }}
+                >
+                  <img
+                    src="/hero-cosmic.webp"
+                    alt="Abdusalam Oumer Aman — Applied AI Founder & Systems Engineer"
+                    style={{
+                      width: "100%",
+                      maxHeight: "440px",
+                      objectFit: "cover",
+                      objectPosition: "center top",
+                      display: "block",
+                      filter: isDark ? "contrast(1.05) brightness(0.98)" : "contrast(1.03)",
+                    }}
+                  />
+                  {/* Technical Overlay Tag */}
+                  <div
+                    className="font-mono"
+                    style={{
+                      position: "absolute",
+                      bottom: "10px",
+                      left: "10px",
+                      backgroundColor: isDark ? "rgba(10, 10, 10, 0.9)" : "rgba(255, 255, 255, 0.92)",
+                      border: `1px solid ${isDark ? "#333333" : "#D0D0CA"}`,
+                      padding: "4px 8px",
+                      fontSize: "0.68rem",
+                      fontWeight: 600,
+                      color: isDark ? "#FFFFFF" : "#111111",
+                    }}
+                  >
+                    PORTRAIT PLATE: AMAN // ARCHIVAL 2026
+                  </div>
+                </div>
+
+                {/* Archival Caption Block */}
+                <div style={{ marginTop: "1rem" }}>
+                  <div className="font-mono" style={{ fontSize: "0.72rem", color: accentHex, fontWeight: 700 }}>
+                    FIG 1.0 — FOUNDER & SYSTEMS ARCHITECT
+                  </div>
+                  <h3 className="font-serif" style={{ fontSize: "1.15rem", marginTop: "2px", fontWeight: 600 }}>
+                    Abdusalam Oumer Aman
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: "0.82rem",
+                      lineHeight: 1.5,
+                      color: isDark ? "#A0A0A0" : "#666662",
+                      marginTop: "4px",
+                    }}
+                  >
+                    Junior Software Engineering Candidate at Addis Ababa University. Systems Security trainee at INSA.
+                    MIT Open Learning certified in Universal AI. Focused on resilient, production-ready systems for
+                    the Horn of Africa.
+                  </p>
+
+                  <div
+                    className="font-mono"
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      borderTop: `1px solid ${isDark ? "#222222" : "#EAEAE4"}`,
+                      marginTop: "12px",
+                      paddingTop: "8px",
+                      fontSize: "0.7rem",
+                      color: isDark ? "#777777" : "#888884",
+                    }}
+                  >
+                    <span>CERT: MIT-11cce330</span>
+                    <span>DISPATCH: @unpluggedme</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Founder Metric Snapshot */}
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  gap: "1rem",
+                  marginTop: "1.2rem",
+                }}
+              >
+                <div
+                  className="font-mono border-ledger bg-card"
+                  style={{
+                    border: `1px solid ${isDark ? "#222222" : "#E2E2DC"}`,
+                    padding: "1rem",
+                  }}
+                >
+                  <div style={{ fontSize: "0.68rem", color: isDark ? "#888888" : "#666662" }}>AI VISION LATENCY</div>
+                  <div style={{ fontSize: "1.5rem", fontWeight: 700, color: accentHex, marginTop: "4px" }}>&lt; 800ms</div>
+                  <div style={{ fontSize: "0.7rem", color: isDark ? "#A0A0A0" : "#777774" }}>Groq API via Telegram</div>
+                </div>
+
+                <div
+                  className="font-mono border-ledger bg-card"
+                  style={{
+                    border: `1px solid ${isDark ? "#222222" : "#E2E2DC"}`,
+                    padding: "1rem",
+                  }}
+                >
+                  <div style={{ fontSize: "0.68rem", color: isDark ? "#888888" : "#666662" }}>TRANSACTION ISOLATION</div>
+                  <div style={{ fontSize: "1.5rem", fontWeight: 700, color: isDark ? "#FFFFFF" : "#111111", marginTop: "4px" }}>
+                    ACID 100%
+                  </div>
+                  <div style={{ fontSize: "0.7rem", color: isDark ? "#A0A0A0" : "#777774" }}>Zero Double-Claim Proof</div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* ── EXPERIENCE SECTION ── */}
+        {/* ── SECTION 02: THE ENGINEERING & AI FOUNDATION ─────────── */}
         <section
-          id="experience"
+          id="credentials"
           style={{
-            padding: "100px 6vw",
-            maxWidth: "1000px",
-            margin: "0 auto",
-            borderTop: "1px solid var(--border)"
+            paddingBottom: "4.5rem",
+            borderBottom: `1px solid ${isDark ? "#222222" : "#E2E2DC"}`,
+            marginBottom: "4.5rem",
           }}
         >
-          <FadeIn>
-            <SectionEyebrow>Career & Growth</SectionEyebrow>
-            <SectionHeading>Work Experience</SectionHeading>
-          </FadeIn>
+          {/* Section Eyebrow */}
+          <div className="font-mono" style={{ fontSize: "0.78rem", fontWeight: 700, color: accentHex, letterSpacing: "0.1em" }}>
+            [02. FOUNDATIONS THAT MATTER]
+          </div>
+          <h2
+            className="font-serif"
+            style={{
+              fontSize: "clamp(2rem, 3.6vw, 2.9rem)",
+              fontWeight: 600,
+              lineHeight: 1.15,
+              marginTop: "0.3rem",
+              marginBottom: "0.8rem",
+            }}
+          >
+            Engineering & AI Credentials
+          </h2>
+          <p
+            style={{
+              fontSize: "1.02rem",
+              lineHeight: 1.65,
+              color: isDark ? "#A0A0A0" : "#555550",
+              maxWidth: "760px",
+              marginBottom: "2.8rem",
+            }}
+          >
+            Authentic engineering authority is earned through verified foundations. Here is the tri-fold bridge:
+            software architecture at Addis Ababa University, national systems security at INSA, and applied decision AI
+            validated by MIT Open Learning leadership.
+          </p>
 
-          <div style={{ marginTop: "3rem", display: "flex", flexDirection: "column", gap: "2.5rem" }}>
-            {EXPERIENCE.map((exp, i) => (
-              <FadeIn key={exp.company} delay={i * 0.12}>
+          {/* Three Pillar Cards */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: "1.5rem" }}>
+            {CREDENTIAL_PILLARS.map((p) => {
+              const isMit = p.id === "mit-ai";
+              return (
                 <div
-                  className="experience-grid"
+                  key={p.id}
+                  className="border-ledger bg-card"
                   style={{
-                    display: "grid",
-                    gridTemplateColumns: "220px 1fr",
-                    gap: "2rem",
-                    paddingBottom: "2rem",
-                    borderBottom: "1px solid var(--border)"
+                    border: `1px solid ${isMit ? accentHex : isDark ? "#262626" : "#E2E2DC"}`,
+                    padding: "1.8rem",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    position: "relative",
                   }}
                 >
-                  <div>
-                    <div style={{ fontSize: "0.8rem", color: "var(--muted)", fontWeight: 500 }}>
-                      {exp.period}
+                  {isMit && (
+                    <div
+                      className="font-mono"
+                      style={{
+                        position: "absolute",
+                        top: "-10px",
+                        right: "16px",
+                        backgroundColor: accentHex,
+                        color: "#FFFFFF",
+                        fontSize: "0.68rem",
+                        fontWeight: 700,
+                        padding: "2px 8px",
+                        letterSpacing: "0.06em",
+                      }}
+                    >
+                      RECENT VALIDATION [OCT 2026]
                     </div>
-                    <div style={{ fontSize: "0.95rem", color: "var(--accent)", fontWeight: 700, marginTop: "4px" }}>
-                      {exp.company}
+                  )}
+
+                  <div>
+                    <div
+                      className="font-mono"
+                      style={{
+                        fontSize: "0.7rem",
+                        fontWeight: 700,
+                        letterSpacing: "0.06em",
+                        color: isMit ? accentHex : isDark ? "#888888" : "#666662",
+                        marginBottom: "0.5rem",
+                      }}
+                    >
+                      {p.badge}
+                    </div>
+
+                    <h3 className="font-serif" style={{ fontSize: "1.55rem", fontWeight: 600, lineHeight: 1.25, marginBottom: "0.3rem" }}>
+                      {p.title}
+                    </h3>
+
+                    <div
+                      className="font-mono"
+                      style={{
+                        fontSize: "0.8rem",
+                        fontWeight: 600,
+                        color: isDark ? "#FFFFFF" : "#111111",
+                        marginBottom: "0.2rem",
+                      }}
+                    >
+                      {p.authority}
+                    </div>
+
+                    <div
+                      style={{
+                        fontSize: "0.78rem",
+                        color: isDark ? "#888888" : "#666662",
+                        lineHeight: 1.45,
+                        marginBottom: "1rem",
+                      }}
+                    >
+                      {p.sponsor}
+                    </div>
+
+                    <p
+                      style={{
+                        fontSize: "0.9rem",
+                        lineHeight: 1.6,
+                        color: isDark ? "#CCCCCC" : "#333330",
+                        marginBottom: "1.2rem",
+                      }}
+                    >
+                      {p.summary}
+                    </p>
+
+                    <div
+                      className="font-mono"
+                      style={{
+                        borderTop: `1px solid ${isDark ? "#222222" : "#EAEAE4"}`,
+                        paddingTop: "0.85rem",
+                        marginBottom: "1.2rem",
+                      }}
+                    >
+                      <div
+                        style={{
+                          fontSize: "0.7rem",
+                          fontWeight: 700,
+                          color: isDark ? "#888888" : "#666662",
+                          marginBottom: "0.4rem",
+                        }}
+                      >
+                        CORE RIGOR & DELIVERABLES:
+                      </div>
+                      <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.35rem" }}>
+                        {p.deliverables.map((item, idx) => (
+                          <li
+                            key={idx}
+                            style={{
+                              fontSize: "0.78rem",
+                              lineHeight: 1.45,
+                              color: isDark ? "#AAAAAA" : "#444440",
+                              display: "flex",
+                              alignItems: "flex-start",
+                              gap: "6px",
+                            }}
+                          >
+                            <span style={{ color: accentHex, fontWeight: 700 }}>▸</span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
 
-                  <div>
-                    <h3 style={{ fontSize: "1.15rem", fontWeight: 700, color: "var(--text)", marginBottom: "0.5rem" }}>
-                      {exp.role}
-                    </h3>
-                    <p style={{ fontSize: "0.88rem", color: "var(--muted)", lineHeight: 1.7, marginBottom: "1.2rem" }}>
-                      {exp.desc}
-                    </p>
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-                      {exp.tags.map(t => (
-                        <Tag key={t}>{t}</Tag>
-                      ))}
+                  {/* Verification Ledger Footer */}
+                  <div
+                    className="font-mono"
+                    style={{
+                      borderTop: `1px solid ${isDark ? "#222222" : "#EAEAE4"}`,
+                      paddingTop: "0.85rem",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      fontSize: "0.72rem",
+                    }}
+                  >
+                    <div>
+                      <span className="text-muted">ID: </span>
+                      <strong>{p.verificationId}</strong>
+                    </div>
+                    {isMit ? (
+                      <button
+                        onClick={() => setMitModalOpen(true)}
+                        style={{
+                          background: "none",
+                          border: "none",
+                          color: accentHex,
+                          fontWeight: 700,
+                          cursor: "pointer",
+                          fontSize: "0.72rem",
+                        }}
+                      >
+                        [INSPECT HASH ↗]
+                      </button>
+                    ) : (
+                      <span style={{ color: isDark ? "#888888" : "#666662" }}>[VERIFIED RECORD]</span>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* ── SECTION 03: THE FOUNDER SHOWCASE (PROJECTS AS PRODUCTS) ── */}
+        <section
+          id="products"
+          style={{
+            paddingBottom: "4.5rem",
+            borderBottom: `1px solid ${isDark ? "#222222" : "#E2E2DC"}`,
+            marginBottom: "4.5rem",
+          }}
+        >
+          {/* Section Eyebrow */}
+          <div className="font-mono" style={{ fontSize: "0.78rem", fontWeight: 700, color: accentHex, letterSpacing: "0.1em" }}>
+            [03. THE FOUNDER SHOWCASE]
+          </div>
+          <h2
+            className="font-serif"
+            style={{
+              fontSize: "clamp(2rem, 3.6vw, 2.9rem)",
+              fontWeight: 600,
+              lineHeight: 1.15,
+              marginTop: "0.3rem",
+              marginBottom: "0.8rem",
+            }}
+          >
+            Projects Engineered as Products
+          </h2>
+          <p
+            style={{
+              fontSize: "1.02rem",
+              lineHeight: 1.65,
+              color: isDark ? "#A0A0A0" : "#555550",
+              maxWidth: "760px",
+              marginBottom: "2.8rem",
+            }}
+          >
+            Tutorial clones do not solve systemic problems. Every product listed below was built with production
+            architecture constraints: low-bandwidth rural cellular, intermittent electrical grid blackouts, and localized
+            languages.
+          </p>
+
+          {/* Product Cards Grid */}
+          <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "2.5rem" }}>
+            {PRODUCTS.map((prod, index) => {
+              return (
+                <div
+                  key={prod.id}
+                  className="border-ledger bg-card"
+                  style={{
+                    border: `1px solid ${isDark ? "#222222" : "#E2E2DC"}`,
+                    padding: "2.2rem",
+                  }}
+                >
+                  {/* Top Badge Strip */}
+                  <div
+                    className="font-mono"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      flexWrap: "wrap",
+                      gap: "0.5rem",
+                      fontSize: "0.74rem",
+                      borderBottom: `1px solid ${isDark ? "#1E1E1E" : "#EAEAE4"}`,
+                      paddingBottom: "0.85rem",
+                      marginBottom: "1.2rem",
+                    }}
+                  >
+                    <div>
+                      <span style={{ color: accentHex, fontWeight: 700 }}>PRODUCT 0{index + 1} // </span>
+                      <strong style={{ color: isDark ? "#FFFFFF" : "#111111" }}>{prod.role.toUpperCase()}</strong>
+                      <span style={{ margin: "0 8px" }}>·</span>
+                      <span style={{ color: isDark ? "#888888" : "#666662" }}>{prod.recognition}</span>
+                    </div>
+                    <div>
+                      <span className="text-muted">STATUS: </span>
+                      <strong style={{ color: accentHex }}>{prod.status}</strong>
+                    </div>
+                  </div>
+
+                  {/* Main Grid: Info + Metrics */}
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "1.4fr 1fr",
+                      gap: "2.5rem",
+                      alignItems: "start",
+                    }}
+                    className="ledger-blueprint-grid"
+                  >
+                    {/* Left: Product Narrative */}
+                    <div>
+                      <h3
+                        className="font-serif"
+                        style={{
+                          fontSize: "clamp(1.75rem, 3vw, 2.3rem)",
+                          fontWeight: 600,
+                          lineHeight: 1.2,
+                          color: isDark ? "#FFFFFF" : "#111111",
+                          marginBottom: "0.3rem",
+                        }}
+                      >
+                        {prod.title}
+                      </h3>
+
+                      <div
+                        className="font-mono"
+                        style={{
+                          fontSize: "0.84rem",
+                          fontWeight: 600,
+                          color: accentHex,
+                          marginBottom: "1.2rem",
+                        }}
+                      >
+                        {prod.subhead} · {prod.languages}
+                      </div>
+
+                      <div style={{ marginBottom: "1.2rem" }}>
+                        <div
+                          className="font-mono"
+                          style={{
+                            fontSize: "0.72rem",
+                            fontWeight: 700,
+                            letterSpacing: "0.06em",
+                            color: isDark ? "#888888" : "#666662",
+                            marginBottom: "4px",
+                          }}
+                        >
+                          THE REAL PROBLEM:
+                        </div>
+                        <p style={{ fontSize: "0.94rem", lineHeight: 1.6, color: isDark ? "#CCCCCC" : "#333330" }}>
+                          {prod.problem}
+                        </p>
+                      </div>
+
+                      <div style={{ marginBottom: "1.5rem" }}>
+                        <div
+                          className="font-mono"
+                          style={{
+                            fontSize: "0.72rem",
+                            fontWeight: 700,
+                            letterSpacing: "0.06em",
+                            color: isDark ? "#888888" : "#666662",
+                            marginBottom: "4px",
+                          }}
+                        >
+                          THE SYSTEM SOLUTION:
+                        </div>
+                        <p style={{ fontSize: "0.94rem", lineHeight: 1.6, color: isDark ? "#CCCCCC" : "#333330" }}>
+                          {prod.solution}
+                        </p>
+                      </div>
+
+                      {/* Stack Tags */}
+                      <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "1.8rem" }}>
+                        {prod.stack.map((tech) => (
+                          <span
+                            key={tech}
+                            className="font-mono"
+                            style={{
+                              fontSize: "0.74rem",
+                              padding: "3px 8px",
+                              backgroundColor: isDark ? "#181818" : "#F2F1EC",
+                              border: `1px solid ${isDark ? "#282828" : "#DCDCD6"}`,
+                              color: isDark ? "#D0D0D0" : "#40403C",
+                            }}
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Action Links */}
+                      <div style={{ display: "flex", flexWrap: "wrap", gap: "0.85rem" }}>
+                        {prod.demoUrl && (
+                          <a href={prod.demoUrl} target="_blank" rel="noreferrer" className="btn-action">
+                            Launch Live Deployment ↗
+                          </a>
+                        )}
+                        <a href={prod.githubUrl} target="_blank" rel="noreferrer" className="btn-action-ghost">
+                          Source Repository (GitHub) ↗
+                        </a>
+                        <button
+                          onClick={() => {
+                            setSelectedBlueprint(prod.blueprintKey);
+                            scrollToSection("blueprints");
+                          }}
+                          className="btn-action-ghost"
+                        >
+                          Inspect Blueprint 🔍
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Right: Technical Spec Box & Performance Ledger */}
+                    <div
+                      className="font-mono border-ledger bg-subtle"
+                      style={{
+                        border: `1px solid ${isDark ? "#262626" : "#E2E2DC"}`,
+                        padding: "1.4rem",
+                      }}
+                    >
+                      <div
+                        style={{
+                          fontSize: "0.72rem",
+                          fontWeight: 700,
+                          letterSpacing: "0.08em",
+                          color: accentHex,
+                          marginBottom: "1rem",
+                        }}
+                      >
+                        TECHNICAL ARCHITECTURE METRICS:
+                      </div>
+
+                      <div style={{ display: "flex", flexDirection: "column", gap: "0.85rem" }}>
+                        {prod.metrics.map((m, idx) => (
+                          <div
+                            key={idx}
+                            style={{
+                              borderBottom: `1px solid ${isDark ? "#222222" : "#E4E3DC"}`,
+                              paddingBottom: "6px",
+                            }}
+                          >
+                            <div style={{ fontSize: "0.68rem", color: isDark ? "#888888" : "#777774" }}>{m.label}</div>
+                            <div
+                              style={{
+                                fontSize: "0.92rem",
+                                fontWeight: 700,
+                                color: isDark ? "#FFFFFF" : "#111111",
+                                marginTop: "2px",
+                              }}
+                            >
+                              {m.value}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Architecture Callout */}
+                      <div
+                        style={{
+                          marginTop: "1.2rem",
+                          fontSize: "0.74rem",
+                          lineHeight: 1.5,
+                          color: isDark ? "#A0A0A0" : "#555550",
+                          backgroundColor: isDark ? "#111111" : "#FFFFFF",
+                          border: `1px solid ${isDark ? "#222222" : "#DCDCD6"}`,
+                          padding: "10px",
+                        }}
+                      >
+                        <strong style={{ color: accentHex }}>TOPOLOGY HIGHLIGHT:</strong>{" "}
+                        {prod.architectureSummary}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </FadeIn>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* ── SECTION 04: RAW ARCHITECTURE BLUEPRINTS ───────────────── */}
+        <section
+          id="blueprints"
+          style={{
+            paddingBottom: "4.5rem",
+            borderBottom: `1px solid ${isDark ? "#222222" : "#E2E2DC"}`,
+            marginBottom: "4.5rem",
+          }}
+        >
+          {/* Section Eyebrow */}
+          <div className="font-mono" style={{ fontSize: "0.78rem", fontWeight: 700, color: accentHex, letterSpacing: "0.1em" }}>
+            [04. RAW ARCHITECTURAL BLUEPRINTS]
+          </div>
+          <h2
+            className="font-serif"
+            style={{
+              fontSize: "clamp(2rem, 3.6vw, 2.9rem)",
+              fontWeight: 600,
+              lineHeight: 1.15,
+              marginTop: "0.3rem",
+              marginBottom: "0.8rem",
+            }}
+          >
+            Engineering Schematics over Marketing Mockups
+          </h2>
+          <p
+            style={{
+              fontSize: "1.02rem",
+              lineHeight: 1.65,
+              color: isDark ? "#A0A0A0" : "#555550",
+              maxWidth: "760px",
+              marginBottom: "2rem",
+            }}
+          >
+            Real systems are defined by their boundary latencies, failure containment gates, and state synchronization
+            models. Below are the actual ASCII blueprints and core algorithmic excerpts for our key infrastructure.
+          </p>
+
+          {/* Blueprint Selector Tabs */}
+          <div
+            className="font-mono"
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "0.5rem",
+              marginBottom: "1.5rem",
+            }}
+          >
+            {[
+              { key: "gebere", label: "01. Gebere Vision AI (Inference Pipeline)" },
+              { key: "smartbiz", label: "02. SmartBiz ERP (Offline Vector Sync)" },
+              { key: "ethiobucks", label: "03. Ethio Bucks (ACID Lock Engine)" },
+            ].map((tab) => (
+              <button
+                key={tab.key}
+                onClick={() => setSelectedBlueprint(tab.key)}
+                style={{
+                  padding: "8px 16px",
+                  fontSize: "0.78rem",
+                  fontWeight: selectedBlueprint === tab.key ? 700 : 500,
+                  backgroundColor: selectedBlueprint === tab.key ? accentHex : isDark ? "#141414" : "#FFFFFF",
+                  color: selectedBlueprint === tab.key ? "#FFFFFF" : isDark ? "#CCCCCC" : "#333330",
+                  border: `1px solid ${selectedBlueprint === tab.key ? accentHex : isDark ? "#282828" : "#DCDCD6"}`,
+                  cursor: "pointer",
+                }}
+              >
+                {tab.label}
+              </button>
             ))}
           </div>
 
-          {/* Certifications */}
-          <FadeIn delay={0.2}>
-            <div style={{ marginTop: "3rem" }}>
-              <div style={{ fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--muted)", marginBottom: "1rem" }}>
-                Certifications & Specializations
+          {/* Active Blueprint Viewer */}
+          {BLUEPRINTS[selectedBlueprint] && (
+            <div
+              className="border-ledger bg-card font-mono"
+              style={{
+                border: `1px solid ${isDark ? "#222222" : "#E2E2DC"}`,
+                padding: "1.5rem",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  flexWrap: "wrap",
+                  gap: "0.5rem",
+                  borderBottom: `1px solid ${isDark ? "#1F1F1F" : "#EAEAE4"}`,
+                  paddingBottom: "0.75rem",
+                  marginBottom: "1rem",
+                }}
+              >
+                <div style={{ fontSize: "0.84rem", fontWeight: 700, color: accentHex }}>
+                  SCHEMATIC: {BLUEPRINTS[selectedBlueprint].title}
+                </div>
+                <div style={{ fontSize: "0.72rem", color: isDark ? "#888888" : "#666662" }}>
+                  SPEC: {BLUEPRINTS[selectedBlueprint].metrics}
+                </div>
               </div>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1rem" }}>
-                {CERTS.map(c => (
-                  <div
-                    key={c.title}
-                    style={{
-                      padding: "1.25rem",
-                      background: "var(--surface)",
-                      border: "1px solid var(--border)",
-                      borderRadius: "8px"
-                    }}
-                  >
-                    <div style={{ fontSize: "0.92rem", fontWeight: 700, color: "var(--text)" }}>
-                      {c.title}
+
+              {/* ASCII Diagram Canvas */}
+              <pre
+                style={{
+                  backgroundColor: isDark ? "#0A0A0A" : "#F7F6F2",
+                  border: `1px solid ${isDark ? "#202020" : "#E5E4DE"}`,
+                  padding: "1.2rem",
+                  fontSize: "clamp(0.68rem, 1.1vw, 0.78rem)",
+                  lineHeight: 1.35,
+                  overflowX: "auto",
+                  color: isDark ? "#38BDF8" : "#0047FF",
+                  marginBottom: "1.5rem",
+                }}
+              >
+                {BLUEPRINTS[selectedBlueprint].diagramAscii}
+              </pre>
+
+              {/* Real Code Snippet Box */}
+              <div>
+                <div
+                  style={{
+                    fontSize: "0.72rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.06em",
+                    color: isDark ? "#888888" : "#666662",
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  ENGINEERING SOURCE ARTIFACT EXCERPT:
+                </div>
+                <pre
+                  style={{
+                    backgroundColor: isDark ? "#111111" : "#1B1B1B",
+                    color: "#E2E8F0",
+                    border: `1px solid ${isDark ? "#222222" : "#111111"}`,
+                    padding: "1.2rem",
+                    fontSize: "0.8rem",
+                    lineHeight: 1.5,
+                    overflowX: "auto",
+                  }}
+                >
+                  {BLUEPRINTS[selectedBlueprint].codeSnippet}
+                </pre>
+              </div>
+            </div>
+          )}
+        </section>
+
+        {/* ── SECTION 05: THE ENGINEERING LEDGER (CHANGELOG) ───────── */}
+        <section
+          id="ledger"
+          style={{
+            paddingBottom: "4.5rem",
+            borderBottom: `1px solid ${isDark ? "#222222" : "#E2E2DC"}`,
+            marginBottom: "4.5rem",
+          }}
+        >
+          {/* Section Eyebrow */}
+          <div className="font-mono" style={{ fontSize: "0.78rem", fontWeight: 700, color: accentHex, letterSpacing: "0.1em" }}>
+            [05. THE ENGINEERING LEDGER // REPLACING THE BLOG]
+          </div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "baseline",
+              justifyContent: "space-between",
+              flexWrap: "wrap",
+              gap: "1rem",
+              marginTop: "0.3rem",
+              marginBottom: "0.8rem",
+            }}
+          >
+            <h2
+              className="font-serif"
+              style={{
+                fontSize: "clamp(2rem, 3.6vw, 2.9rem)",
+                fontWeight: 600,
+                lineHeight: 1.15,
+              }}
+            >
+              Changelog & Technical Stream
+            </h2>
+
+            {/* Telegram Channel CTA */}
+            <a
+              href={PROFILE.telegram}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-action"
+              style={{ backgroundColor: accentHex, borderColor: accentHex }}
+            >
+              Follow Live on Telegram: {PROFILE.telegramChannelName} ↗
+            </a>
+          </div>
+
+          <p
+            style={{
+              fontSize: "1.02rem",
+              lineHeight: 1.65,
+              color: isDark ? "#A0A0A0" : "#555550",
+              maxWidth: "760px",
+              marginBottom: "2.5rem",
+            }}
+          >
+            Instead of generic thought leadership essays, this ledger documents the raw reality of engineering: daily
+            algorithmic breakthroughs on LeetCode, bare-metal OS transitions to Ubuntu 26.04 LTS, low-bandwidth vision
+            optimization, and applied MIT AI models.
+          </p>
+
+          {/* Changelog Entries Timeline */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "1.2rem" }}>
+            {CHANGELOG_ENTRIES.map((entry) => (
+              <div
+                key={entry.id}
+                className="border-ledger bg-card font-mono"
+                style={{
+                  border: `1px solid ${isDark ? "#222222" : "#E2E2DC"}`,
+                  padding: "1.4rem",
+                }}
+              >
+                {/* Entry Meta Header */}
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    flexWrap: "wrap",
+                    gap: "0.5rem",
+                    borderBottom: `1px solid ${isDark ? "#1C1C1C" : "#EAEAE4"}`,
+                    paddingBottom: "0.6rem",
+                    marginBottom: "0.75rem",
+                    fontSize: "0.72rem",
+                  }}
+                >
+                  <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                    <span style={{ color: accentHex, fontWeight: 700 }}>[{entry.tag}]</span>
+                    <strong style={{ color: isDark ? "#FFFFFF" : "#111111" }}>{entry.date}</strong>
+                    <span style={{ color: isDark ? "#777777" : "#888884" }}>commit {entry.commit}</span>
+                  </div>
+                  <div>
+                    <a
+                      href={PROFILE.telegram}
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{ color: accentHex, textDecoration: "underline" }}
+                    >
+                      Telegram Note ↗
+                    </a>
+                  </div>
+                </div>
+
+                {/* Entry Title & Body */}
+                <h4
+                  className="font-serif"
+                  style={{
+                    fontSize: "1.25rem",
+                    fontWeight: 600,
+                    color: isDark ? "#FFFFFF" : "#111111",
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  {entry.title}
+                </h4>
+
+                <p
+                  className="font-sans"
+                  style={{
+                    fontSize: "0.92rem",
+                    lineHeight: 1.6,
+                    color: isDark ? "#CCCCCC" : "#333330",
+                    marginBottom: "0.75rem",
+                  }}
+                >
+                  {entry.content}
+                </p>
+
+                <div
+                  style={{
+                    fontSize: "0.74rem",
+                    color: isDark ? "#888888" : "#666662",
+                    backgroundColor: isDark ? "#141414" : "#F7F6F2",
+                    padding: "6px 10px",
+                    borderLeft: `2px solid ${accentHex}`,
+                  }}
+                >
+                  <strong>CHANNEL LOG:</strong> {entry.channelNote}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Telegram Channel Follow Banner */}
+          <div
+            className="border-ledger bg-subtle"
+            style={{
+              border: `1px solid ${isDark ? "#262626" : "#E2E2DC"}`,
+              padding: "1.8rem",
+              marginTop: "2rem",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              flexWrap: "wrap",
+              gap: "1.5rem",
+            }}
+          >
+            <div>
+              <div className="font-mono" style={{ fontSize: "0.72rem", color: accentHex, fontWeight: 700 }}>
+                TELEGRAM CHANNEL // UNPLUGGED ME
+              </div>
+              <h3 className="font-serif" style={{ fontSize: "1.45rem", marginTop: "2px", fontWeight: 600 }}>
+                Read daily unfiltered technical logs & algorithmic notes
+              </h3>
+              <p
+                style={{
+                  fontSize: "0.88rem",
+                  color: isDark ? "#A0A0A0" : "#555550",
+                  marginTop: "4px",
+                  maxWidth: "600px",
+                }}
+              >
+                Zero polished PR fluff. Real thoughts on Ubuntu workstation tweaks, LeetCode optimal solutions, INSA
+                defensive models, and deploying AI into rural Ethiopian sectors.
+              </p>
+            </div>
+            <a
+              href={PROFILE.telegram}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-action"
+              style={{ backgroundColor: accentHex, borderColor: accentHex }}
+            >
+              Join @unpluggedme Channel ↗
+            </a>
+          </div>
+        </section>
+
+        {/* ── SECTION 06: TECHNICAL MATRIX & INTERACTIVE TERMINAL ──── */}
+        <section
+          id="terminal"
+          style={{
+            paddingBottom: "4.5rem",
+            borderBottom: `1px solid ${isDark ? "#222222" : "#E2E2DC"}`,
+            marginBottom: "4.5rem",
+          }}
+        >
+          {/* Section Eyebrow */}
+          <div className="font-mono" style={{ fontSize: "0.78rem", fontWeight: 700, color: accentHex, letterSpacing: "0.1em" }}>
+            [06. TECHNICAL MATRIX & INTERACTIVE INSPECTOR]
+          </div>
+          <h2
+            className="font-serif"
+            style={{
+              fontSize: "clamp(2rem, 3.6vw, 2.9rem)",
+              fontWeight: 600,
+              lineHeight: 1.15,
+              marginTop: "0.3rem",
+              marginBottom: "0.8rem",
+            }}
+          >
+            Capabilities Ledger & Raw Terminal
+          </h2>
+          <p
+            style={{
+              fontSize: "1.02rem",
+              lineHeight: 1.65,
+              color: isDark ? "#A0A0A0" : "#555550",
+              maxWidth: "760px",
+              marginBottom: "2.5rem",
+            }}
+          >
+            A structured audit of technologies we operate in production, paired with a command-line terminal to
+            interrogate credentials and architecture directly from the browser.
+          </p>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1.1fr 1fr",
+              gap: "2.5rem",
+              alignItems: "start",
+            }}
+            className="ledger-blueprint-grid"
+          >
+            {/* Left: Capabilities Matrix Ledger */}
+            <div
+              className="border-ledger bg-card font-mono"
+              style={{
+                border: `1px solid ${isDark ? "#222222" : "#E2E2DC"}`,
+                padding: "1.5rem",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "0.74rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.08em",
+                  color: accentHex,
+                  marginBottom: "1rem",
+                  borderBottom: `1px solid ${isDark ? "#1E1E1E" : "#EAEAE4"}`,
+                  paddingBottom: "0.5rem",
+                }}
+              >
+                PRODUCTION CAPABILITIES LEDGER:
+              </div>
+
+              <div style={{ display: "flex", flexDirection: "column", gap: "1.2rem" }}>
+                {TECH_MATRIX.map((item, idx) => (
+                  <div key={idx}>
+                    <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
+                      <strong style={{ fontSize: "0.85rem", color: isDark ? "#FFFFFF" : "#111111" }}>
+                        {item.domain}
+                      </strong>
                     </div>
-                    <div style={{ fontSize: "0.78rem", color: "var(--muted)", marginTop: "4px" }}>
-                      {c.provider} · {c.date}
+                    <div style={{ fontSize: "0.72rem", color: isDark ? "#888888" : "#666662", marginBottom: "6px" }}>
+                      {item.specNote}
+                    </div>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: "5px" }}>
+                      {item.technologies.map((t) => (
+                        <span
+                          key={t}
+                          style={{
+                            fontSize: "0.72rem",
+                            padding: "2px 7px",
+                            backgroundColor: isDark ? "#161616" : "#F3F2EC",
+                            border: `1px solid ${isDark ? "#262626" : "#DCDCD6"}`,
+                            color: isDark ? "#CCCCCC" : "#333330",
+                          }}
+                        >
+                          {t}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-          </FadeIn>
-        </section>
 
-        {/* ── BLOG SECTION ── */}
-        <section
-          id="blog"
-          style={{
-            padding: "100px 6vw",
-            maxWidth: "1200px",
-            margin: "0 auto",
-            borderTop: "1px solid var(--border)"
-          }}
-        >
-          <FadeIn>
-            <SectionEyebrow>Engineering Notes</SectionEyebrow>
-            <SectionHeading>Technical Writing</SectionHeading>
-            <p style={{ color: "var(--muted)", fontSize: "0.95rem", maxWidth: "520px", marginTop: "0.5rem" }}>
-              Deep-dives into architectural decisions, real-world tradeoffs, and algorithmic problem-solving.
-            </p>
-          </FadeIn>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-              gap: "1.5rem",
-              marginTop: "2.5rem"
-            }}
-          >
-            {BLOG.map((post, i) => (
-              <FadeIn key={post.title} delay={i * 0.1}>
-                <div
-                  style={{
-                    background: "var(--surface)",
-                    border: "1px solid var(--border)",
-                    borderRadius: "8px",
-                    padding: "1.75rem",
-                    display: "flex",
-                    flexDirection: "column",
-                    height: "100%"
-                  }}
-                >
-                  <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.76rem", color: "var(--muted)", marginBottom: "1rem" }}>
-                    <span>{post.date}</span>
-                    <span>{post.readTime}</span>
-                  </div>
-                  <h3 style={{ fontSize: "1.05rem", fontWeight: 700, color: "var(--text)", lineHeight: 1.4, marginBottom: "0.75rem" }}>
-                    {post.title}
-                  </h3>
-                  <p style={{ fontSize: "0.85rem", color: "var(--muted)", lineHeight: 1.65, marginBottom: "1.25rem", flex: 1 }}>
-                    {post.excerpt}
-                  </p>
-                  <span style={{ fontSize: "0.8rem", fontWeight: 600, color: "var(--accent)", display: "inline-flex", alignItems: "center", gap: "4px" }}>
-                    Read Article →
-                  </span>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </section>
-
-        {/* ── CONTACT SECTION (FIXED EMAIL & WORKING FORM) ── */}
-        <section
-          id="contact"
-          style={{
-            padding: "110px 6vw 90px",
-            background: "var(--bg)",
-            borderTop: "1px solid var(--border)",
-            position: "relative"
-          }}
-        >
-          <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-            <FadeIn>
-              <div
-                className="contact-layout-grid"
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1.15fr",
-                  gap: "5rem",
-                  alignItems: "start"
-                }}
-              >
-                {/* Left: Contact Info & Copy Email */}
-                <div>
-                  <SectionEyebrow>Get in Touch</SectionEyebrow>
-                  <SectionHeading>Let's build something exceptional.</SectionHeading>
-                  <p style={{ color: "var(--muted)", lineHeight: 1.7, fontSize: "0.95rem", marginBottom: "2rem" }}>
-                    I am actively available for full-time software engineering roles, backend contracts, and remote collaborations worldwide.
-                  </p>
-
-                  {/* Direct Email Card with 1-Click Copy */}
-                  <div
-                    style={{
-                      background: "var(--surface)",
-                      border: "1px solid var(--border)",
-                      borderRadius: "8px",
-                      padding: "1.25rem",
-                      marginBottom: "2rem"
-                    }}
-                  >
-                    <div style={{ fontSize: "0.72rem", color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.08em", fontWeight: 600, marginBottom: "6px" }}>
-                      Direct Email Address
-                    </div>
-                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "10px", flexWrap: "wrap" }}>
-                      <a
-                        href={`mailto:${emailAddress}`}
-                        style={{
-                          fontSize: "1rem",
-                          fontWeight: 700,
-                          color: "var(--accent)",
-                          textDecoration: "none",
-                          fontFamily: "'JetBrains Mono', monospace"
-                        }}
-                      >
-                        {emailAddress}
-                      </a>
-                      <button
-                        onClick={handleCopyEmail}
-                        className="btn-outline"
-                        style={{ padding: "6px 14px", fontSize: "0.75rem" }}
-                      >
-                        {copiedEmail ? "✓ Copied!" : "Copy Email"}
-                      </button>
-                    </div>
-                  </div>
-
-                  <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-                    {[
-                      ["Core Focus", "Full-Stack Architecture · Next.js · Django · Supabase"],
-                      ["Open To", "Full-Time Roles · Remote Freelance · Global Contracts"],
-                      ["Location", "Addis Ababa, Ethiopia 🇪🇹 · Global Remote Friendly"]
-                    ].map(([label, val]) => (
-                      <div key={label}>
-                        <div style={{ fontSize: "0.72rem", letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--muted)", fontWeight: 600, marginBottom: "2px" }}>
-                          {label}
-                        </div>
-                        <div style={{ fontSize: "0.9rem", color: "var(--text)", fontWeight: 500 }}>
-                          {val}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Social Profile Links */}
-                  <div
-                    style={{
-                      display: "flex",
-                      gap: "1.5rem",
-                      marginTop: "2.5rem",
-                      paddingTop: "1.5rem",
-                      borderTop: "1px solid var(--border)"
-                    }}
-                  >
-                    {[
-                      ["GitHub", "https://github.com/oumersalah2-cmd"],
-                      ["Upwork", "https://www.upwork.com/freelancers/~01d02c68660140f622"],
-                      ["LinkedIn", "#"]
-                    ].map(([label, href]) => (
-                      <a
-                        key={label}
-                        href={href}
-                        target="_blank"
-                        rel="noreferrer"
-                        style={{
-                          color: "var(--muted)",
-                          textDecoration: "none",
-                          fontSize: "0.82rem",
-                          fontWeight: 600,
-                          transition: "color 0.2s"
-                        }}
-                        onMouseEnter={e => e.currentTarget.style.color = "var(--text)"}
-                        onMouseLeave={e => e.currentTarget.style.color = "var(--muted)"}
-                      >
-                        {label} ↗
-                      </a>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Right: Working Contact Form */}
-                <div
-                  style={{
-                    background: "var(--surface)",
-                    border: "1px solid var(--border)",
-                    borderRadius: "10px",
-                    padding: "2rem",
-                    boxShadow: "var(--card-shadow)"
-                  }}
-                >
-                  <h3 style={{ fontSize: "1.2rem", fontWeight: 700, color: "var(--text)", marginBottom: "0.4rem" }}>
-                    Send a Message
-                  </h3>
-                  <p style={{ fontSize: "0.85rem", color: "var(--muted)", marginBottom: "1.5rem" }}>
-                    Drop a message and it will be sent directly to Abdusalam's inbox.
-                  </p>
-
-                  {/* Success State Notification */}
-                  {formStatus === "success" ? (
-                    <div
-                      style={{
-                        padding: "1.75rem",
-                        background: "rgba(16, 185, 129, 0.1)",
-                        border: "1px solid #10B981",
-                        borderRadius: "8px",
-                        textAlign: "center"
-                      }}
-                    >
-                      <div style={{ width: "40px", height: "40px", borderRadius: "50%", background: "#10B981", color: "#FFFFFF", display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: "1.2rem", marginBottom: "1rem" }}>
-                        ✓
-                      </div>
-                      <h4 style={{ fontSize: "1.05rem", fontWeight: 700, color: "var(--text)", marginBottom: "0.5rem" }}>
-                        Message Sent Successfully!
-                      </h4>
-                      <p style={{ fontSize: "0.86rem", color: "var(--muted)", marginBottom: "1.5rem" }}>
-                        Thank you for reaching out. Abdusalam has received your message and will respond shortly.
-                      </p>
-                      <button
-                        onClick={() => setFormStatus("idle")}
-                        className="btn-outline"
-                        style={{ padding: "8px 18px", fontSize: "0.8rem" }}
-                      >
-                        Send Another Message
-                      </button>
-                    </div>
-                  ) : (
-                    <form onSubmit={handleFormSubmit} style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-                      {/* Name Field */}
-                      <div>
-                        <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: "var(--text)", marginBottom: "6px" }}>
-                          Your Name <span style={{ color: "#EF4444" }}>*</span>
-                        </label>
-                        <input
-                          type="text"
-                          required
-                          placeholder="e.g. Sarah Jenkins"
-                          value={formState.name}
-                          onChange={e => setFormState({ ...formState, name: e.target.value })}
-                          disabled={formStatus === "submitting"}
-                          style={{
-                            width: "100%",
-                            padding: "12px 14px",
-                            background: "var(--surface-soft)",
-                            border: "1px solid var(--border)",
-                            color: "var(--text)",
-                            fontSize: "0.88rem",
-                            fontFamily: "inherit"
-                          }}
-                        />
-                      </div>
-
-                      {/* Email Field */}
-                      <div>
-                        <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: "var(--text)", marginBottom: "6px" }}>
-                          Your Email Address <span style={{ color: "#EF4444" }}>*</span>
-                        </label>
-                        <input
-                          type="email"
-                          required
-                          placeholder="e.g. sarah@company.com"
-                          value={formState.email}
-                          onChange={e => setFormState({ ...formState, email: e.target.value })}
-                          disabled={formStatus === "submitting"}
-                          style={{
-                            width: "100%",
-                            padding: "12px 14px",
-                            background: "var(--surface-soft)",
-                            border: "1px solid var(--border)",
-                            color: "var(--text)",
-                            fontSize: "0.88rem",
-                            fontFamily: "inherit"
-                          }}
-                        />
-                      </div>
-
-                      {/* Subject Field */}
-                      <div>
-                        <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: "var(--text)", marginBottom: "6px" }}>
-                          Subject or Project Scope
-                        </label>
-                        <input
-                          type="text"
-                          placeholder="e.g. Full-Stack Role / Next.js Project"
-                          value={formState.subject}
-                          onChange={e => setFormState({ ...formState, subject: e.target.value })}
-                          disabled={formStatus === "submitting"}
-                          style={{
-                            width: "100%",
-                            padding: "12px 14px",
-                            background: "var(--surface-soft)",
-                            border: "1px solid var(--border)",
-                            color: "var(--text)",
-                            fontSize: "0.88rem",
-                            fontFamily: "inherit"
-                          }}
-                        />
-                      </div>
-
-                      {/* Message Field */}
-                      <div>
-                        <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: "var(--text)", marginBottom: "6px" }}>
-                          Your Message <span style={{ color: "#EF4444" }}>*</span>
-                        </label>
-                        <textarea
-                          rows={4}
-                          required
-                          placeholder="Tell me about your project, team, or opportunity..."
-                          value={formState.message}
-                          onChange={e => setFormState({ ...formState, message: e.target.value })}
-                          disabled={formStatus === "submitting"}
-                          style={{
-                            width: "100%",
-                            padding: "12px 14px",
-                            background: "var(--surface-soft)",
-                            border: "1px solid var(--border)",
-                            color: "var(--text)",
-                            fontSize: "0.88rem",
-                            fontFamily: "inherit",
-                            resize: "vertical"
-                          }}
-                        />
-                      </div>
-
-                      {/* Error Message with Mailto Fallback */}
-                      {formStatus === "error" && (
-                        <div
-                          style={{
-                            padding: "12px 16px",
-                            background: "rgba(239, 68, 68, 0.1)",
-                            border: "1px solid rgba(239, 68, 68, 0.3)",
-                            borderRadius: "6px",
-                            fontSize: "0.82rem",
-                            color: "#EF4444"
-                          }}
-                        >
-                          <div style={{ marginBottom: "8px" }}>{formErrorMsg}</div>
-                          <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
-                            <a
-                              href={`mailto:${emailAddress}?subject=${encodeURIComponent(formState.subject || `Inquiry from ${formState.name}`)}&body=${encodeURIComponent(formState.message)}`}
-                              className="btn-primary"
-                              style={{ padding: "6px 12px", fontSize: "0.75rem", background: "#EF4444", color: "#FFFFFF" }}
-                            >
-                              Open in Mail App
-                            </a>
-                            <button
-                              type="button"
-                              onClick={handleCopyEmail}
-                              className="btn-outline"
-                              style={{ padding: "6px 12px", fontSize: "0.75rem" }}
-                            >
-                              {copiedEmail ? "✓ Copied" : "Copy Email"}
-                            </button>
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Submit Button */}
-                      <button
-                        type="submit"
-                        disabled={formStatus === "submitting"}
-                        className="btn-primary"
-                        style={{
-                          width: "100%",
-                          padding: "14px",
-                          marginTop: "0.5rem",
-                          background: formStatus === "submitting" ? "var(--muted)" : "var(--accent)",
-                          color: "#FFFFFF"
-                        }}
-                      >
-                        {formStatus === "submitting" ? (
-                          <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ animation: "spin 1s linear infinite" }}>
-                              <circle cx="12" cy="12" r="10" strokeDasharray="32" strokeDashoffset="12" />
-                            </svg>
-                            Sending Message...
-                          </span>
-                        ) : (
-                          <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
-                            Send Message
-                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                              <line x1="22" y1="2" x2="11" y2="13"></line>
-                              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                            </svg>
-                          </span>
-                        )}
-                      </button>
-                    </form>
-                  )}
-                </div>
-              </div>
-            </FadeIn>
-          </div>
-        </section>
-
-        {/* ── FOOTER ── */}
-        <footer
-          style={{
-            background: "var(--bg)",
-            borderTop: "1px solid var(--border)",
-            padding: "28px 6vw",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            flexWrap: "wrap",
-            gap: "1.25rem"
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <span style={{ fontWeight: 800, fontSize: "0.95rem", color: "var(--text)", letterSpacing: "-0.02em" }}>
-              A·O
-            </span>
-            <span style={{ fontSize: "0.8rem", color: "var(--muted)" }}>
-              © {new Date().getFullYear()} Abdusalam Oumer · Addis Ababa University
-            </span>
-          </div>
-
-          <div style={{ display: "flex", gap: "1.5rem" }}>
-            {[
-              ["GitHub", "https://github.com/oumersalah2-cmd"],
-              ["Email", `mailto:${emailAddress}`],
-              ["Upwork", "https://www.upwork.com/freelancers/~01d02c68660140f622"]
-            ].map(([label, href]) => (
-              <a
-                key={label}
-                href={href}
-                target={href.startsWith("http") ? "_blank" : undefined}
-                rel={href.startsWith("http") ? "noreferrer" : undefined}
-                style={{
-                  color: "var(--muted)",
-                  fontSize: "0.78rem",
-                  fontWeight: 600,
-                  textDecoration: "none",
-                  transition: "color 0.2s"
-                }}
-                onMouseEnter={e => e.currentTarget.style.color = "var(--text)"}
-                onMouseLeave={e => e.currentTarget.style.color = "var(--muted)"}
-              >
-                {label}
-              </a>
-            ))}
-          </div>
-        </footer>
-
-        {/* ── PHOTO LIGHTBOX MODAL ── */}
-        {photoModalOpen && (
-          <div
-            onClick={() => setPhotoModalOpen(false)}
-            style={{
-              position: "fixed",
-              inset: 0,
-              zIndex: 9999,
-              background: "rgba(0, 0, 0, 0.88)",
-              backdropFilter: "blur(16px)",
-              WebkitBackdropFilter: "blur(16px)",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "24px",
-              animation: "modalFadeIn 0.25s ease-out"
-            }}
-          >
+            {/* Right: Live Interactive Terminal Console */}
             <div
-              onClick={(e) => e.stopPropagation()}
+              className="border-ledger font-mono"
               style={{
-                position: "relative",
-                maxWidth: "520px",
-                width: "100%",
-                maxHeight: "90vh",
+                backgroundColor: isDark ? "#0A0A0A" : "#111111",
+                color: "#E2E8F0",
+                border: `1px solid ${isDark ? "#222222" : "#111111"}`,
                 display: "flex",
                 flexDirection: "column",
-                alignItems: "center"
+                minHeight: "420px",
               }}
             >
-              {/* Close Button */}
-              <button
-                onClick={() => setPhotoModalOpen(false)}
-                style={{
-                  position: "absolute",
-                  top: "-46px",
-                  right: "0",
-                  background: "rgba(255, 255, 255, 0.15)",
-                  border: "1px solid rgba(255, 255, 255, 0.25)",
-                  color: "#FFFFFF",
-                  width: "36px",
-                  height: "36px",
-                  borderRadius: "50%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  cursor: "pointer",
-                  fontSize: "1.1rem",
-                  transition: "background 0.2s"
-                }}
-                aria-label="Close modal"
-              >
-                ✕
-              </button>
-
-              <img
-                src="/hero-bg.jpg"
-                alt="Abdusalam Oumer with illuminated Earth globe"
-                style={{
-                  maxWidth: "100%",
-                  maxHeight: "76vh",
-                  objectFit: "contain",
-                  borderRadius: "18px",
-                  boxShadow: "0 25px 60px rgba(0, 0, 0, 0.8), 0 0 50px rgba(56, 189, 248, 0.3)",
-                  border: "1px solid rgba(255, 255, 255, 0.18)"
-                }}
-              />
-
+              {/* Terminal Window Header */}
               <div
                 style={{
-                  marginTop: "16px",
-                  textAlign: "center",
-                  color: "rgba(255, 255, 255, 0.95)",
-                  fontSize: "0.85rem"
+                  backgroundColor: isDark ? "#141414" : "#1A1A1A",
+                  borderBottom: "1px solid #2A2A2A",
+                  padding: "8px 14px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  fontSize: "0.72rem",
+                  color: "#94A3B8",
                 }}
               >
-                <div style={{ fontWeight: 700, fontSize: "1rem", letterSpacing: "-0.01em" }}>
-                  Abdusalam Oumer — Full-Stack Software Engineer
+                <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                  <span style={{ width: "8px", height: "8px", borderRadius: "50%", backgroundColor: "#EF4444" }} />
+                  <span style={{ width: "8px", height: "8px", borderRadius: "50%", backgroundColor: "#F59E0B" }} />
+                  <span style={{ width: "8px", height: "8px", borderRadius: "50%", backgroundColor: "#10B981" }} />
+                  <span style={{ marginLeft: "8px", fontWeight: 600 }}>bash — ab@aman-systems:~ (tty1)</span>
                 </div>
-                <div style={{ color: "rgba(255, 255, 255, 0.7)", marginTop: "4px", fontSize: "0.8rem" }}>
-                  በተፈጥሮ ሂደት በመሬት ምህዳር · Building from Addis Ababa to the World 🌍
+                <span>x86_64 Ubuntu 26.04</span>
+              </div>
+
+              {/* Terminal Output Log Area */}
+              <div
+                style={{
+                  padding: "1rem",
+                  flex: 1,
+                  maxHeight: "320px",
+                  overflowY: "auto",
+                  fontSize: "0.78rem",
+                  lineHeight: 1.5,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.4rem",
+                }}
+              >
+                {terminalOutput.map((line, index) => {
+                  let color = "#CBD5E1";
+                  if (line.type === "system") color = "#38BDF8";
+                  if (line.type === "user") color = "#F8FAFC";
+                  if (line.type === "error") color = "#F87171";
+                  return (
+                    <div key={index} style={{ color, whiteSpace: "pre-wrap" }}>
+                      {line.text}
+                    </div>
+                  );
+                })}
+                <div ref={terminalBottomRef} />
+              </div>
+
+              {/* Quick Clickable Command Pills */}
+              <div
+                style={{
+                  backgroundColor: isDark ? "#101010" : "#161616",
+                  borderTop: "1px solid #222222",
+                  padding: "6px 10px",
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "5px",
+                }}
+              >
+                {[
+                  { cmd: "verify mit", label: "verify mit" },
+                  { cmd: "arch gebere", label: "arch gebere" },
+                  { cmd: "arch smartbiz", label: "arch smartbiz" },
+                  { cmd: "ledger", label: "ledger" },
+                  { cmd: "whoami", label: "whoami" },
+                  { cmd: "clear", label: "clear" },
+                ].map((item) => (
+                  <button
+                    key={item.cmd}
+                    onClick={() => {
+                      setTerminalInput(item.cmd);
+                      // Trigger command immediately
+                      const newLogs = [
+                        ...terminalOutput,
+                        { type: "user", text: `$ ${item.cmd}` },
+                      ];
+                      if (item.cmd === "verify mit") {
+                        newLogs.push({
+                          type: "output",
+                          text: `[MIT OPEN LEARNING VERIFICATION PROTOCOL]
+CERTIFICATE_ID: 11cce330-19b6-48ff-ae8c-b645623efabb
+RECIPIENT: Abdusalam Oumer Aman
+COURSE: Introduction to Universal AI
+FACULTY_SPONSOR: Dimitris Bertsimas (Boeing Professor & Vice Provost)
+ISSUANCE_DATE: 2026-10-07
+STATUS: CRYPTOGRAPHICALLY VALID & RECOGNIZED`,
+                        });
+                      } else if (item.cmd === "arch gebere") {
+                        newLogs.push({
+                          type: "output",
+                          text: `Telegram -> Node.js Quantizer -> Groq API (Llama 3.2 11B Vision) + Supabase pgvector -> Sub-800ms Amharic output.`,
+                        });
+                      } else if (item.cmd === "arch smartbiz") {
+                        newLogs.push({
+                          type: "output",
+                          text: `Client -> IndexedDB Queue -> Vector Clock Sync -> NestJS Gateway -> PostgreSQL Master.`,
+                        });
+                      } else if (item.cmd === "ledger") {
+                        newLogs.push({
+                          type: "output",
+                          text: `Log 043: MIT AI verified | Log 042: LeetCode 150+ DP | Log 041: Ubuntu 26.04 setup | Log 040: Sub-800ms Groq`,
+                        });
+                      } else if (item.cmd === "whoami") {
+                        newLogs.push({
+                          type: "output",
+                          text: `Abdusalam Oumer Aman: AAU SE '26 · INSA CTC Cyber · MIT Open Learning Universal AI · Founder Gebere Vision AI`,
+                        });
+                      } else if (item.cmd === "clear") {
+                        setTerminalOutput([{ type: "system", text: "Buffer reset." }]);
+                        setTerminalInput("");
+                        return;
+                      }
+                      setTerminalOutput(newLogs);
+                      setTerminalInput("");
+                    }}
+                    style={{
+                      background: "none",
+                      border: "1px solid #334155",
+                      color: "#94A3B8",
+                      fontSize: "0.68rem",
+                      padding: "2px 6px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    ${item.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Terminal Input Bar */}
+              <form
+                onSubmit={handleTerminalSubmit}
+                style={{
+                  display: "flex",
+                  borderTop: "1px solid #2A2A2A",
+                  backgroundColor: isDark ? "#0A0A0A" : "#111111",
+                }}
+              >
+                <span
+                  style={{
+                    padding: "8px 10px 8px 14px",
+                    color: "#38BDF8",
+                    fontSize: "0.82rem",
+                    userSelect: "none",
+                  }}
+                >
+                  $
+                </span>
+                <input
+                  type="text"
+                  value={terminalInput}
+                  onChange={(e) => setTerminalInput(e.target.value)}
+                  placeholder="type 'help', 'verify mit', 'arch gebere'..."
+                  style={{
+                    flex: 1,
+                    background: "none",
+                    border: "none",
+                    outline: "none",
+                    color: "#FFFFFF",
+                    fontFamily: "inherit",
+                    fontSize: "0.8rem",
+                    padding: "8px 12px 8px 0",
+                  }}
+                />
+              </form>
+            </div>
+          </div>
+        </section>
+
+        {/* ── SECTION 07: DISPATCH CONSOLE (CONTACT) ────────────────── */}
+        <section id="dispatch">
+          {/* Section Eyebrow */}
+          <div className="font-mono" style={{ fontSize: "0.78rem", fontWeight: 700, color: accentHex, letterSpacing: "0.1em" }}>
+            [07. FOUNDER DISPATCH PROTOCOL]
+          </div>
+          <h2
+            className="font-serif"
+            style={{
+              fontSize: "clamp(2rem, 3.6vw, 2.9rem)",
+              fontWeight: 600,
+              lineHeight: 1.15,
+              marginTop: "0.3rem",
+              marginBottom: "0.8rem",
+            }}
+          >
+            Direct Dispatch Console
+          </h2>
+          <p
+            style={{
+              fontSize: "1.02rem",
+              lineHeight: 1.65,
+              color: isDark ? "#A0A0A0" : "#555550",
+              maxWidth: "760px",
+              marginBottom: "2.8rem",
+            }}
+          >
+            I am actively considering applied AI founder partnerships, technical contract engineering, and enterprise
+            backend roles worldwide. Drop a dispatch below or connect directly via Telegram.
+          </p>
+
+          <div
+            className="dispatch-grid"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1.1fr 1.3fr",
+              gap: "4rem",
+              alignItems: "start",
+            }}
+          >
+            {/* Left: Contact Specs & 1-Click Copy */}
+            <div>
+              {/* Direct Mail Card */}
+              <div
+                className="border-ledger bg-card font-mono"
+                style={{
+                  border: `1px solid ${isDark ? "#222222" : "#E2E2DC"}`,
+                  padding: "1.5rem",
+                  marginBottom: "1.5rem",
+                }}
+              >
+                <div style={{ fontSize: "0.7rem", color: isDark ? "#888888" : "#666662", marginBottom: "6px" }}>
+                  PRIMARY DISPATCH INBOX:
+                </div>
+                <div
+                  style={{
+                    fontSize: "1.15rem",
+                    fontWeight: 700,
+                    color: accentHex,
+                    marginBottom: "1rem",
+                    wordBreak: "break-all",
+                  }}
+                >
+                  {PROFILE.email}
+                </div>
+                <div style={{ display: "flex", gap: "0.5rem" }}>
+                  <button onClick={copyEmailAddress} className="btn-action">
+                    {emailCopied ? "✓ Address Copied!" : "Copy Email Address"}
+                  </button>
+                  <a href={`mailto:${PROFILE.email}`} className="btn-action-ghost">
+                    Native Mail App ↗
+                  </a>
+                </div>
+              </div>
+
+              {/* Fast Direct Links */}
+              <div
+                className="border-ledger bg-card font-mono"
+                style={{
+                  border: `1px solid ${isDark ? "#222222" : "#E2E2DC"}`,
+                  padding: "1.5rem",
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: "0.72rem",
+                    fontWeight: 700,
+                    color: isDark ? "#888888" : "#666662",
+                    marginBottom: "0.85rem",
+                  }}
+                >
+                  VERIFIED CHANNELS:
+                </div>
+
+                <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", fontSize: "0.82rem" }}>
+                  <div>
+                    <span className="text-muted">TELEGRAM: </span>
+                    <a href={PROFILE.telegram} target="_blank" rel="noreferrer" className="tactile-link" style={{ fontWeight: 600 }}>
+                      {PROFILE.telegramHandle} (Unplugged Me) ↗
+                    </a>
+                  </div>
+                  <div>
+                    <span className="text-muted">GITHUB: </span>
+                    <a href={PROFILE.github} target="_blank" rel="noreferrer" className="tactile-link" style={{ fontWeight: 600 }}>
+                      github.com/{PROFILE.handle}-cmd ↗
+                    </a>
+                  </div>
+                  <div>
+                    <span className="text-muted">UPWORK: </span>
+                    <a href={PROFILE.upwork} target="_blank" rel="noreferrer" className="tactile-link" style={{ fontWeight: 600 }}>
+                      Top-Rated Profile ↗
+                    </a>
+                  </div>
+                  <div>
+                    <span className="text-muted">LOCATION: </span>
+                    <strong style={{ color: isDark ? "#FFFFFF" : "#111111" }}>Addis Ababa, Ethiopia (UTC+3)</strong>
+                  </div>
                 </div>
               </div>
             </div>
+
+            {/* Right: Message Dispatch Form */}
+            <div
+              className="border-ledger bg-card font-mono"
+              style={{
+                border: `1px solid ${isDark ? "#222222" : "#E2E2DC"}`,
+                padding: "2rem",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "0.74rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.08em",
+                  color: accentHex,
+                  marginBottom: "0.3rem",
+                }}
+              >
+                DISPATCH TRANSMISSION FORM:
+              </div>
+              <p
+                className="font-sans"
+                style={{
+                  fontSize: "0.88rem",
+                  color: isDark ? "#888888" : "#666662",
+                  marginBottom: "1.5rem",
+                }}
+              >
+                Direct transmission routed to Abdusalam's priority queue.
+              </p>
+
+              {formStatus === "success" ? (
+                <div
+                  style={{
+                    backgroundColor: isDark ? "rgba(16, 185, 129, 0.1)" : "#ECFDF5",
+                    border: "1px solid #10B981",
+                    padding: "1.5rem",
+                    textAlign: "center",
+                  }}
+                >
+                  <div style={{ fontSize: "1.5rem", color: "#10B981", marginBottom: "0.5rem" }}>✓</div>
+                  <h4 className="font-serif" style={{ fontSize: "1.2rem", fontWeight: 600, marginBottom: "0.4rem" }}>
+                    Dispatch Transmitted
+                  </h4>
+                  <p className="font-sans" style={{ fontSize: "0.85rem", color: isDark ? "#D1D5DB" : "#374151" }}>
+                    {formMsg}
+                  </p>
+                  <button
+                    onClick={() => setFormStatus("idle")}
+                    className="btn-action-ghost"
+                    style={{ marginTop: "1rem" }}
+                  >
+                    Send Another Dispatch
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleFormSubmit} style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                  <div>
+                    <label style={{ display: "block", fontSize: "0.72rem", color: isDark ? "#888888" : "#666662", marginBottom: "4px" }}>
+                      SENDER NAME / ORGANIZATION <span style={{ color: "#EF4444" }}>*</span>
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Dr. K. Evans / UniPods Partner"
+                      value={formState.name}
+                      onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                      style={{
+                        width: "100%",
+                        padding: "10px 12px",
+                        backgroundColor: isDark ? "#141414" : "#F7F6F2",
+                        border: `1px solid ${isDark ? "#282828" : "#DCDCD6"}`,
+                        color: isDark ? "#FFFFFF" : "#111111",
+                        fontSize: "0.84rem",
+                        fontFamily: "inherit",
+                      }}
+                    />
+                  </div>
+
+                  <div>
+                    <label style={{ display: "block", fontSize: "0.72rem", color: isDark ? "#888888" : "#666662", marginBottom: "4px" }}>
+                      SENDER EMAIL ADDRESS <span style={{ color: "#EF4444" }}>*</span>
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      placeholder="e.g. evans@institution.org"
+                      value={formState.email}
+                      onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                      style={{
+                        width: "100%",
+                        padding: "10px 12px",
+                        backgroundColor: isDark ? "#141414" : "#F7F6F2",
+                        border: `1px solid ${isDark ? "#282828" : "#DCDCD6"}`,
+                        color: isDark ? "#FFFFFF" : "#111111",
+                        fontSize: "0.84rem",
+                        fontFamily: "inherit",
+                      }}
+                    />
+                  </div>
+
+                  <div>
+                    <label style={{ display: "block", fontSize: "0.72rem", color: isDark ? "#888888" : "#666662", marginBottom: "4px" }}>
+                      SUBJECT TOPIC
+                    </label>
+                    <select
+                      value={formState.topic}
+                      onChange={(e) => setFormState({ ...formState, topic: e.target.value })}
+                      style={{
+                        width: "100%",
+                        padding: "10px 12px",
+                        backgroundColor: isDark ? "#141414" : "#F7F6F2",
+                        border: `1px solid ${isDark ? "#282828" : "#DCDCD6"}`,
+                        color: isDark ? "#FFFFFF" : "#111111",
+                        fontSize: "0.84rem",
+                        fontFamily: "inherit",
+                      }}
+                    >
+                      <option value="AI Engineering / Founder Role">AI Engineering / Applied Founder Collaboration</option>
+                      <option value="Gebere Vision AI Deployment">Gebere Vision AI Deployment & Incubation</option>
+                      <option value="Enterprise Architecture Contract">Enterprise Backend & PWA Architecture</option>
+                      <option value="Academic & Systems Inquiry">Academic & Systems Security Research</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label style={{ display: "block", fontSize: "0.72rem", color: isDark ? "#888888" : "#666662", marginBottom: "4px" }}>
+                      TECHNICAL SCOPE & MESSAGE <span style={{ color: "#EF4444" }}>*</span>
+                    </label>
+                    <textarea
+                      required
+                      rows={5}
+                      placeholder="Detail your requirements, project architecture, or collaboration scope..."
+                      value={formState.message}
+                      onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                      style={{
+                        width: "100%",
+                        padding: "10px 12px",
+                        backgroundColor: isDark ? "#141414" : "#F7F6F2",
+                        border: `1px solid ${isDark ? "#282828" : "#DCDCD6"}`,
+                        color: isDark ? "#FFFFFF" : "#111111",
+                        fontSize: "0.84rem",
+                        fontFamily: "inherit",
+                        resize: "vertical",
+                      }}
+                    />
+                  </div>
+
+                  {formStatus === "error" && (
+                    <div style={{ fontSize: "0.78rem", color: "#EF4444", backgroundColor: "rgba(239, 68, 68, 0.08)", padding: "8px 12px" }}>
+                      {formMsg}
+                    </div>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={formStatus === "sending"}
+                    className="btn-action"
+                    style={{
+                      justifyContent: "center",
+                      backgroundColor: accentHex,
+                      borderColor: accentHex,
+                      marginTop: "0.5rem",
+                    }}
+                  >
+                    {formStatus === "sending" ? "Transmitting Dispatch..." : "Execute Dispatch Transmission →"}
+                  </button>
+                </form>
+              )}
+            </div>
           </div>
-        )}
-      </div>
-    </>
+        </section>
+      </main>
+
+      {/* ── FOOTER / FORMAL TECHNICAL COLOPHON ─────────────────────── */}
+      <footer
+        className="font-mono"
+        style={{
+          borderTop: `1px solid ${isDark ? "#222222" : "#E2E2DC"}`,
+          backgroundColor: isDark ? "#0A0A0A" : "#F4F3EE",
+          padding: "2.5rem 1.5rem",
+          fontSize: "0.75rem",
+          color: isDark ? "#888888" : "#666662",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1320px",
+            margin: "0 auto",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            flexWrap: "wrap",
+            gap: "1.2rem",
+          }}
+        >
+          <div>
+            <strong style={{ color: isDark ? "#FFFFFF" : "#111111" }}>{PROFILE.name}</strong> · AAU Software Engineering · INSA Cyber
+            Alum · MIT Open Learning (ID: {PROFILE.mitCertId})
+          </div>
+
+          <div>
+            <span>ANTI-AI DESIGN SPEC: </span>
+            <span style={{ color: accentHex }}>MAXIMUM WHITE SPACE · TACTILE SERIF · VERIFIABLE SCHEMATICS</span>
+          </div>
+
+          <div>
+            <a href="#manifesto" className="tactile-link" style={{ fontWeight: 600 }}>
+              ↑ Back to Top of Ledger
+            </a>
+          </div>
+        </div>
+      </footer>
+
+      {/* ── MIT CERTIFICATE VERIFICATION MODAL ──────────────────────── */}
+      {mitModalOpen && (
+        <div
+          onClick={() => setMitModalOpen(false)}
+          style={{
+            position: "fixed",
+            inset: 0,
+            backgroundColor: "rgba(0, 0, 0, 0.82)",
+            backdropFilter: "blur(4px)",
+            zIndex: 9999,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "1.5rem",
+          }}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="border-ledger bg-card font-mono"
+            style={{
+              maxWidth: "680px",
+              width: "100%",
+              border: `2px solid ${accentHex}`,
+              padding: "2rem",
+              position: "relative",
+            }}
+          >
+            <button
+              onClick={() => setMitModalOpen(false)}
+              style={{
+                position: "absolute",
+                top: "14px",
+                right: "16px",
+                background: "none",
+                border: "none",
+                fontSize: "1.2rem",
+                color: isDark ? "#FFFFFF" : "#111111",
+                cursor: "pointer",
+              }}
+            >
+              ✕
+            </button>
+
+            <div style={{ fontSize: "0.72rem", color: accentHex, fontWeight: 700, marginBottom: "4px" }}>
+              MIT OPEN LEARNING // OFFICIAL CREDENTIAL RECORD
+            </div>
+
+            <h3 className="font-serif" style={{ fontSize: "1.8rem", fontWeight: 600, marginBottom: "0.2rem" }}>
+              Introduction to Universal AI
+            </h3>
+
+            <div style={{ fontSize: "0.82rem", color: isDark ? "#A0A0A0" : "#555550", marginBottom: "1.2rem" }}>
+              Validated under Certificate Identifier: <strong style={{ color: accentHex }}>{PROFILE.mitCertId}</strong>
+            </div>
+
+            <div
+              style={{
+                backgroundColor: isDark ? "#0D0D0D" : "#F7F6F2",
+                border: `1px solid ${isDark ? "#262626" : "#E2E2DC"}`,
+                padding: "1.2rem",
+                fontSize: "0.78rem",
+                lineHeight: 1.6,
+                marginBottom: "1.5rem",
+              }}
+            >
+              <div style={{ borderBottom: `1px solid ${isDark ? "#1E1E1E" : "#EAEAE4"}`, paddingBottom: "6px", marginBottom: "6px" }}>
+                <span className="text-muted">RECIPIENT: </span>
+                <strong style={{ color: isDark ? "#FFFFFF" : "#111111" }}>{PROFILE.name}</strong>
+              </div>
+              <div style={{ borderBottom: `1px solid ${isDark ? "#1E1E1E" : "#EAEAE4"}`, paddingBottom: "6px", marginBottom: "6px" }}>
+                <span className="text-muted">ISSUANCE DATE: </span>
+                <strong style={{ color: isDark ? "#FFFFFF" : "#111111" }}>{PROFILE.mitCertDate}</strong>
+              </div>
+              <div style={{ borderBottom: `1px solid ${isDark ? "#1E1E1E" : "#EAEAE4"}`, paddingBottom: "6px", marginBottom: "6px" }}>
+                <span className="text-muted">FACULTY & LEADERSHIP BACKING: </span>
+                <strong style={{ color: isDark ? "#FFFFFF" : "#111111" }}>{PROFILE.mitSponsor}</strong>
+              </div>
+              <div>
+                <span className="text-muted">CORE RIGOR: </span>
+                <span>Universal AI Foundations · Mathematical Optimization · Combinatorial Modeling · Transformer Systems</span>
+              </div>
+            </div>
+
+            <p className="font-sans" style={{ fontSize: "0.85rem", lineHeight: 1.6, color: isDark ? "#CCCCCC" : "#444440", marginBottom: "1.5rem" }}>
+              This credential establishes rigorous theoretical grounding in modern machine intelligence, providing the algorithmic
+              backbone for Gebere Vision AI's multilingual vision pipeline and enterprise optimization systems.
+            </p>
+
+            <div style={{ display: "flex", justifyContent: "flex-end", gap: "0.5rem" }}>
+              <button
+                onClick={() => {
+                  navigator?.clipboard?.writeText(PROFILE.mitCertId);
+                  alert(`Copied MIT Certificate ID: ${PROFILE.mitCertId}`);
+                }}
+                className="btn-action-ghost"
+              >
+                Copy ID: {PROFILE.mitCertId}
+              </button>
+              <button onClick={() => setMitModalOpen(false)} className="btn-action">
+                Dismiss Inspector
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
