@@ -688,7 +688,7 @@ GITHUB: https://github.com/oumersalah2-cmd`,
       </header>
 
       {/* ── MAIN CONTENT CONTAINER (4 PAGES) ────────────────────────── */}
-      <main style={{ maxWidth: "1280px", margin: "0 auto", padding: "2.5rem 1.5rem 5rem" }}>
+      <main style={{ maxWidth: "1040px", margin: "0 auto", padding: "1.25rem 1.25rem 3.5rem" }}>
 
         {/* ════════════════════════════════════════════════════════════════
             PAGE 01: PROFILE & MANIFESTO
@@ -696,9 +696,9 @@ GITHUB: https://github.com/oumersalah2-cmd`,
         <section
           id="profile"
           style={{
-            paddingBottom: "3.5rem",
+            paddingBottom: "1.8rem",
             borderBottom: `1px solid ${isDark ? "#222222" : "#E5E7EB"}`,
-            marginBottom: "3.5rem",
+            marginBottom: "2.2rem",
           }}
         >
           {/* Top Metadata Header Strip */}
@@ -708,26 +708,26 @@ GITHUB: https://github.com/oumersalah2-cmd`,
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              gap: "1rem",
-              fontSize: "0.74rem",
+              gap: "0.8rem",
+              fontSize: "0.72rem",
               color: isDark ? "#888888" : "#64748B",
-              paddingBottom: "1rem",
-              marginBottom: "2rem",
+              paddingBottom: "0.6rem",
+              marginBottom: "1rem",
               borderBottom: `1px solid ${isDark ? "#1C1C1C" : "#F1F5F9"}`,
             }}
           >
             <div>
               <span>PAGE 01 // </span>
               <strong style={{ color: isDark ? "#FFFFFF" : "#111111" }}>FOUNDER PROFILE & MANIFESTO</strong>
-              <span style={{ margin: "0 8px" }}>/</span>
+              <span style={{ margin: "0 6px" }}>/</span>
               <span>ADDIS ABABA UNIVERSITY SE '26</span>
             </div>
             <div>
-              <span style={{ color: accentHex }}>● PRODUCTION STATUS:</span> ACTIVE SHIPPER · OPEN TO APPLIED AI FOUNDER ROLES
+              <span style={{ color: accentHex }}>● PRODUCTION STATUS:</span> ACTIVE SHIPPER
             </div>
           </div>
 
-          {/* Profile Hero Block with Circular Avatar (Substituted with World Globe Image) */}
+          {/* Profile Hero Block with Compact Circular Avatar */}
           <div>
             {/* Header row: Circular Avatar + Name */}
             <div
@@ -735,38 +735,38 @@ GITHUB: https://github.com/oumersalah2-cmd`,
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "2.5rem",
-                marginBottom: "1.8rem",
+                gap: "1.5rem",
+                marginBottom: "1rem",
               }}
             >
-              {/* Circular Avatar (Beloved Photo with Sleek Studio Black Background, Legs Removed) */}
+              {/* Circular Avatar (Compact 105px with Sleek Black Background) */}
               <div style={{ position: "relative", flexShrink: 0 }}>
                 <img
                   src="/profile-circle.webp"
                   alt="Abdusalam Oumer Aman — Applied AI Founder & Systems Engineer"
                   style={{
-                    width: "155px",
-                    height: "155px",
+                    width: "105px",
+                    height: "105px",
                     borderRadius: "50%",
                     objectFit: "cover",
-                    border: `3px solid ${accentHex}`,
+                    border: `2.5px solid ${accentHex}`,
                     backgroundColor: "#000000",
                     boxShadow: isDark
-                      ? "0 10px 30px rgba(0,0,0,0.8)"
-                      : "0 10px 30px rgba(0, 71, 255, 0.16)",
+                      ? "0 6px 20px rgba(0,0,0,0.8)"
+                      : "0 6px 20px rgba(0, 71, 255, 0.14)",
                     display: "block",
                   }}
                 />
                 <div
                   style={{
                     position: "absolute",
-                    bottom: "6px",
-                    right: "10px",
-                    width: "18px",
-                    height: "18px",
+                    bottom: "4px",
+                    right: "6px",
+                    width: "14px",
+                    height: "14px",
                     borderRadius: "50%",
                     backgroundColor: "#10B981",
-                    border: `3px solid ${isDark ? "#0A0A0A" : "#FFFFFF"}`,
+                    border: `2px solid ${isDark ? "#0A0A0A" : "#FFFFFF"}`,
                   }}
                   title="Active Shipper / Online"
                 />
@@ -777,11 +777,11 @@ GITHUB: https://github.com/oumersalah2-cmd`,
                 <div
                   className="font-mono"
                   style={{
-                    fontSize: "0.75rem",
+                    fontSize: "0.72rem",
                     fontWeight: 700,
-                    letterSpacing: "0.08em",
+                    letterSpacing: "0.06em",
                     color: accentHex,
-                    marginBottom: "0.4rem",
+                    marginBottom: "0.25rem",
                     textTransform: "uppercase",
                   }}
                 >
@@ -790,12 +790,12 @@ GITHUB: https://github.com/oumersalah2-cmd`,
                 <h1
                   className="font-serif"
                   style={{
-                    fontSize: "clamp(2.5rem, 4.8vw, 3.8rem)",
+                    fontSize: "clamp(1.9rem, 3.4vw, 2.7rem)",
                     fontWeight: 600,
                     lineHeight: 1.1,
                     letterSpacing: "-0.025em",
                     color: isDark ? "#FFFFFF" : "#111111",
-                    marginBottom: "0.5rem",
+                    marginBottom: "0.3rem",
                   }}
                 >
                   Abdusalam Oumer Aman
@@ -803,7 +803,7 @@ GITHUB: https://github.com/oumersalah2-cmd`,
                 <div
                   className="font-mono"
                   style={{
-                    fontSize: "0.85rem",
+                    fontSize: "0.8rem",
                     color: isDark ? "#A0A0A0" : "#475569",
                     display: "flex",
                     alignItems: "center",
@@ -820,23 +820,23 @@ GITHUB: https://github.com/oumersalah2-cmd`,
               </div>
             </div>
 
-            {/* Founder Stance Blockquote with Balanced Spacing */}
+            {/* Founder Stance Blockquote with Tight Spacing */}
             <div
               style={{
                 borderLeft: `3px solid ${accentHex}`,
-                paddingLeft: "1.2rem",
-                marginTop: "0.8rem",
-                marginBottom: "1.2rem",
+                paddingLeft: "1rem",
+                marginTop: "0.5rem",
+                marginBottom: "0.9rem",
               }}
             >
               <p
                 className="font-serif"
                 style={{
-                  fontSize: "clamp(1.15rem, 1.6vw, 1.45rem)",
+                  fontSize: "clamp(1.08rem, 1.4vw, 1.3rem)",
                   lineHeight: 1.35,
                   fontStyle: "italic",
                   color: isDark ? "#E5E5E5" : "#1E293B",
-                  marginBottom: "0.35rem",
+                  marginBottom: "0.25rem",
                 }}
               >
                 Software Engineering at AAU. INSA Cyber Talent Graduate. Applied AI Founder.
@@ -844,7 +844,7 @@ GITHUB: https://github.com/oumersalah2-cmd`,
               <p
                 className="font-mono"
                 style={{
-                  fontSize: "0.92rem",
+                  fontSize: "0.88rem",
                   fontWeight: 600,
                   color: accentHex,
                   letterSpacing: "0.01em",
@@ -854,14 +854,14 @@ GITHUB: https://github.com/oumersalah2-cmd`,
               </p>
             </div>
 
-            {/* Narrative Paragraphs with Natural Balanced Width */}
-            <div style={{ maxWidth: "880px", marginBottom: "1.6rem" }}>
+            {/* Narrative Paragraphs with Natural Unified Width */}
+            <div style={{ marginBottom: "1.2rem" }}>
               <p
                 style={{
-                  fontSize: "1.04rem",
-                  lineHeight: 1.7,
+                  fontSize: "0.98rem",
+                  lineHeight: 1.65,
                   color: isDark ? "#CCCCCC" : "#334155",
-                  marginBottom: "0.85rem",
+                  marginBottom: "0.75rem",
                 }}
               >
                 Most modern AI projects settle for generic OpenAI wrapper scripts and flashy dark-mode marketing pages. My
@@ -874,8 +874,8 @@ GITHUB: https://github.com/oumersalah2-cmd`,
               {/* Second Paragraph Highlighting Core Projects as Interactive Links */}
               <p
                 style={{
-                  fontSize: "1.02rem",
-                  lineHeight: 1.7,
+                  fontSize: "0.98rem",
+                  lineHeight: 1.65,
                   color: isDark ? "#A0A0A0" : "#64748B",
                 }}
               >
@@ -893,7 +893,7 @@ GITHUB: https://github.com/oumersalah2-cmd`,
             </div>
 
             {/* Primary Action Buttons (Clean & Focused, No Social Duplication) */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.85rem" }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.65rem" }}>
               <button onClick={() => scrollToSection("projects")} className="btn-action">
                 Inspect Core Projects ↓
               </button>
