@@ -549,14 +549,15 @@ GITHUB: https://github.com/oumersalah2-cmd`,
           {/* Brand Wordmark & Coordinates */}
           <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
             <img
-              src="/profile-world-circle.webp"
-              alt="Abdusalam avatar with world globe"
+              src="/profile-circle.webp"
+              alt="Abdusalam avatar"
               style={{
                 width: "36px",
                 height: "36px",
                 borderRadius: "50%",
                 objectFit: "cover",
                 border: `2px solid ${accentHex}`,
+                backgroundColor: "#000000",
               }}
             />
             <div>
@@ -738,20 +739,21 @@ GITHUB: https://github.com/oumersalah2-cmd`,
                 marginBottom: "1.8rem",
               }}
             >
-              {/* Circular Avatar (World Globe & Face Visible, Legs Removed) */}
+              {/* Circular Avatar (Beloved Photo with Sleek Studio Black Background, Legs Removed) */}
               <div style={{ position: "relative", flexShrink: 0 }}>
                 <img
-                  src="/profile-world-circle.webp"
-                  alt="Abdusalam Oumer Aman in front of Earth projection"
+                  src="/profile-circle.webp"
+                  alt="Abdusalam Oumer Aman — Applied AI Founder & Systems Engineer"
                   style={{
                     width: "155px",
                     height: "155px",
                     borderRadius: "50%",
                     objectFit: "cover",
                     border: `3px solid ${accentHex}`,
+                    backgroundColor: "#000000",
                     boxShadow: isDark
-                      ? "0 10px 30px rgba(0,0,0,0.6)"
-                      : "0 10px 30px rgba(0, 71, 255, 0.15)",
+                      ? "0 10px 30px rgba(0,0,0,0.8)"
+                      : "0 10px 30px rgba(0, 71, 255, 0.16)",
                     display: "block",
                   }}
                 />
