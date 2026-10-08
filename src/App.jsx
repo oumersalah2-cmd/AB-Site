@@ -19,15 +19,12 @@ const PROFILE = {
   location: "Addis Ababa, Ethiopia",
   institution: "Addis Ababa University (AAU)",
   securityTraining: "INSA CTC National Cyber Talent Camp",
-  mitCertId: "11cce330-19b6-48ff-ae8c-b645623efabb",
-  mitCertDate: "October 7, 2026",
-  mitSponsor: "Prof. Dimitris Bertsimas — MIT Vice Provost for Open Learning & Boeing Professor of Operations Research",
 };
 
 // ── NAVIGATION ANCHORS ────────────────────────────────────────────────
 const NAV_ITEMS = [
   { id: "manifesto", label: "01. Manifesto" },
-  { id: "credentials", label: "02. Foundations" },
+  { id: "credentials", label: "02. Credentials" },
   { id: "products", label: "03. Founder Showcase" },
   { id: "blueprints", label: "04. Architecture" },
   { id: "ledger", label: "05. Changelog" },
@@ -35,61 +32,62 @@ const NAV_ITEMS = [
   { id: "dispatch", label: "07. Dispatch" },
 ];
 
-// ── FOUNDATIONAL PILLARS (CREDENTIALS THAT MATTER) ─────────────────────
-const CREDENTIAL_PILLARS = [
+// ── COMPREHENSIVE CREDENTIALS & CERTIFICATIONS ────────────────────────
+const CREDENTIALS_AND_CERTS = [
   {
     id: "mit-ai",
-    badge: "AI FLUENCY // VALIDATED CREDENTIAL",
+    badge: "AI FLUENCY // APPLIED OPTIMIZATION",
     title: "Introduction to Universal AI",
     authority: "MIT Open Learning",
-    sponsor: "Prof. Dimitris Bertsimas (Vice Provost for Open Learning & Boeing Professor of Operations Research)",
     date: "Completed Oct 7, 2026",
-    verificationId: "11cce330-19b6-48ff-ae8c-b645623efabb",
+    sponsor: "Prof. Dimitris Bertsimas (MIT Vice Provost for Open Learning & Boeing Professor of Operations Research)",
     summary:
-      "Rigorous mastery of universal artificial intelligence, decision algorithms, and mathematical optimization under MIT Open Learning leadership. Bridges deep algorithmic theory with production-grade AI systems.",
-    deliverables: [
-      "Mathematical optimization and mixed-integer decision formulation",
-      "Transformer architectures & multi-modal vision-language grounding",
-      "Robust decision trees and algorithmic policy synthesis",
-      "Applied operations research for real-world resource allocation in developing economies",
-    ],
-    verified: true,
+      "Mathematical optimization, mixed-integer formulations, transformer architectures, and applied operations research for resource allocation.",
+    skills: ["Decision Algorithms", "Transformer Architectures", "Combinatorial Optimization", "Operations Research"],
+  },
+  {
+    id: "sof-omar",
+    badge: "INDUSTRY EXPERIENCE // PRODUCTION ENGINEERING",
+    title: "Software Engineering Internship Certificate",
+    authority: "Sof Omar Technologies",
+    date: "Jun 2026 – Sep 2026",
+    sponsor: "Engineering & Mobile Systems Team",
+    summary:
+      "Shipped production web and mobile software features in an agile engineering team with strict code quality and deployment standards.",
+    skills: ["Full-Stack Web", "Flutter / Dart", "Production Deployments", "Agile Sprints"],
   },
   {
     id: "insa-sec",
-    badge: "SECURITY & INFRASTRUCTURE // DEFENSIVE SYSTEMS",
+    badge: "SYSTEMS SECURITY // NATIONAL CYBER CAMP",
     title: "National Ethio Cyber Talent Summer Camp",
     authority: "Information Network Security Administration (INSA)",
-    sponsor: "National Cybersecurity & Systems Architecture Division",
     date: "Jul 2026 – Nov 2026",
-    verificationId: "INSA-CTC-2026-ETH",
+    sponsor: "National Systems Architecture & Defense Division",
     summary:
-      "Intensive national cybersecurity training at Ethiopia's premier cyber intelligence and defense agency. Trained in defensive systems architecture, kernel-level Linux auditing, and cryptographic validation.",
-    deliverables: [
-      "Defensive cybersecurity & network intrusion containment",
-      "Linux kernel auditing, process isolation, and bare-metal systems administration",
-      "Cryptographic ledger validation & tamper-evident audit pipelines",
-      "Secure engineering applied to financial and campus infrastructure",
-    ],
-    verified: true,
+      "Intensive training in defensive cybersecurity, network intrusion containment, Linux kernel auditing, and cryptographic ledger integrity.",
+    skills: ["Defensive Cybersecurity", "Linux Kernel Audits", "Cryptographic Ledgers", "Systems Architecture"],
   },
   {
     id: "aau-se",
-    badge: "ACADEMIC CORE // DISTRIBUTED SOFTWARE",
+    badge: "ACADEMIC CORE // ADDIS ABABA UNIVERSITY",
     title: "B.Sc. in Software Engineering (Year 3)",
     authority: "Addis Ababa University (AAU)",
-    sponsor: "School of Information Technology & Engineering",
     date: "2022 – Present (Junior Standing)",
-    verificationId: "AAU-SE-REG-2022",
+    sponsor: "School of Information Technology & Engineering",
     summary:
-      "Core theoretical and systems engineering foundation at Ethiopia's flagship university. Deep study in relational database constraints, distributed architectures, and algorithm design.",
-    deliverables: [
-      "Database schema integrity, ACID transaction isolation, and row-level locking",
-      "Distributed systems design and enterprise backend architecture",
-      "Compiler basics, data structures, and algorithmic complexity analysis",
-      "Shipped production systems: AAU Café Stipend System (3,000 ETB/mo automated dining ledger)",
-    ],
-    verified: true,
+      "Core theoretical systems engineering, relational database constraints (ACID isolation), distributed systems, and algorithmic analysis.",
+    skills: ["Distributed Systems", "ACID Database Constraints", "Algorithms & Complexity", "AAU Dining Ledger"],
+  },
+  {
+    id: "udacity-android",
+    badge: "MOBILE & FOUNDATIONS // UDACITY",
+    title: "Android Developer & Programming Fundamentals",
+    authority: "Udacity",
+    date: "Sep 2025",
+    sponsor: "Google & Udacity Curriculum",
+    summary:
+      "Core object-oriented software engineering principles, native mobile architecture, asynchronous workflows, and clean code patterns.",
+    skills: ["Android Architecture", "Java / Kotlin", "OOP Principles", "REST API Consumption"],
   },
 ];
 
@@ -103,17 +101,15 @@ const PRODUCTS = [
     recognition: "Selected for METI-Funded UniPods AI Programme",
     languages: "Amharic (አማርኛ), Afaan Oromoo, English, Arabic",
     status: "Active Deployment",
-    architectureSummary:
-      "Edge-optimized Telegram bot powered by Groq AI Llama vision models (llama-3.2-11b-vision / llama-4-scout) delivering instant crop pathogen diagnoses in under 800ms. Backed by Supabase vector store and a Human-in-the-Loop verification queue.",
-    problem:
-      "Smallholder farmers in rural Ethiopia lose up to 40% of their yields to crop blights because extension workers are scarce and diagnostic tools only operate in English or require high-speed internet.",
-    solution:
-      "A zero-overhead, multi-dialect Telegram interface that compresses image uploads, queries high-throughput Groq vision models with prompt instructions grounded in Ethiopian crop diseases (teff, wheat, enset, maize), and returns localized remediation protocols in native scripts.",
-    stack: ["Groq AI Vision", "Telegram Bot API", "Supabase (pgvector)", "Node.js", "PostgreSQL"],
+    problemBrief:
+      "Rural Ethiopian farmers lose up to 40% of crop yields to blights due to scarce agronomists and foreign-language tools.",
+    solutionBrief:
+      "Sub-800ms Telegram bot powered by Groq Llama vision models with prompt instructions grounded in Ethiopian crops, returning localized organic treatments in native scripts.",
+    stack: ["Groq AI Vision", "Telegram Bot API", "Supabase pgvector", "Node.js", "PostgreSQL"],
     metrics: [
       { label: "Inference Latency", value: "< 800ms via Groq" },
-      { label: "Supported Dialects", value: "4 Languages" },
-      { label: "Funding & Incubation", value: "METI UniPods AI" },
+      { label: "Supported Dialects", value: "4 Dialects (Amharic, Oromoo, EN, AR)" },
+      { label: "Programme", value: "METI UniPods AI Funded" },
       { label: "Deployment", value: "Production Telegram Bot" },
     ],
     demoUrl: "https://t.me/gebere_vision_bot",
@@ -128,16 +124,14 @@ const PRODUCTS = [
     recognition: "Production Merchant Architecture",
     languages: "English, Amharic Numerics, ETB Ledger",
     status: "V2 In Production",
-    architectureSummary:
-      "Progressive Web App (PWA) built with Next.js and NestJS engineered for erratic power and zero-connectivity environments. Employs local IndexedDB mutations and a deterministic vector-clock sync reconciliation engine.",
-    problem:
-      "Local shop owners and wholesalers in Addis Ababa and regional hubs face constant connectivity drops, making conventional cloud-only POS systems completely unreliable for daily transactions.",
-    solution:
-      "Full client-side transactional state with zero network latency. Every transaction, receipt, and stock movement is written to IndexedDB first, with atomic batch commits synced to the NestJS / PostgreSQL master backend once internet connectivity is restored.",
-    stack: ["Next.js (App Router)", "NestJS", "IndexedDB", "TypeScript", "PostgreSQL", "PWA Service Workers"],
+    problemBrief:
+      "Frequent power outages and cellular drops make conventional cloud-only POS systems unviable for local wholesale merchants.",
+    solutionBrief:
+      "100% local-first PWA with client-side IndexedDB mutations and a deterministic vector-clock sync engine reconciling batches when connectivity returns.",
+    stack: ["Next.js (App Router)", "NestJS", "IndexedDB", "TypeScript", "PostgreSQL", "PWA"],
     metrics: [
-      { label: "Offline Capability", value: "100% Local-First" },
-      { label: "Conflict Strategy", value: "Vector Clock Sync" },
+      { label: "Checkout Latency", value: "0ms Local First" },
+      { label: "Sync Engine", value: "Vector Clock Deltas" },
       { label: "State Layer", value: "IndexedDB + Reactive Cache" },
       { label: "Backend Sync", value: "NestJS Delta Replicator" },
     ],
@@ -153,15 +147,13 @@ const PRODUCTS = [
     recognition: "High-Concurrency Fintech Deployment",
     languages: "Amharic & English UX",
     status: "Deployed (Live)",
-    architectureSummary:
-      "Fintech backend platform engineered with Django and PostgreSQL featuring row-level transaction locks (`SELECT FOR UPDATE`), tamper-resistant ledger tables, and phone number auth mapping.",
-    problem:
-      "Digital microwork and reward distribution in Ethiopia suffers from concurrent double-claim vulnerabilities and payment tampering on unstable mobile cellular networks.",
-    solution:
-      "Enforced strict database-level isolation levels, preventing concurrent balance drain attempts. Integrated referral verification trees, task verification state machines, and audit event logs.",
+    problemBrief:
+      "Microwork rewards on unstable cellular networks are vulnerable to race-condition double-claim exploits and tampering.",
+    solutionBrief:
+      "Django & PostgreSQL financial engine enforcing strict row-level transaction locks (`SELECT FOR UPDATE`), immutable audit ledgers, and phone auth.",
     stack: ["Django", "PostgreSQL", "Python", "JWT Auth", "Mobile Wallet Engine"],
     metrics: [
-      { label: "Ledger Safety", value: "ACID Row Locks" },
+      { label: "Ledger Safety", value: "ACID Row Locks (Zero Double-Spend)" },
       { label: "Database", value: "PostgreSQL on PythonAnywhere" },
       { label: "Auth Flow", value: "Phone-Bound Session Tokens" },
       { label: "Status", value: "Live Production" },
@@ -178,12 +170,10 @@ const PRODUCTS = [
     recognition: "Addis Ababa University Campus Infrastructure",
     languages: "English, AAU Internal Protocol",
     status: "Deployed",
-    architectureSummary:
-      "Campus lost-and-found custody audit engine (Node/Express/SQLite3) paired with the AAU dining stipend disbursement platform which automates 3,000 ETB monthly allocations with relational constraints preventing dual-claims.",
-    problem:
-      "Paper-based dining ledgers and lost property logs caused rampant reconciliation friction and duplicate stipend claims across university dining halls.",
-    solution:
-      "Replaced manual ledgers with a tamper-evident digital custody audit system. Built database constraints that guarantee exactly-once stipend claiming per student matrix per billing cycle.",
+    problemBrief:
+      "Manual paper rosters caused duplicate meal stipend claims and custody tracking disputes across dining halls.",
+    solutionBrief:
+      "Automates 3,000 ETB/month meal stipend disbursements with unique database constraints preventing dual claims, paired with JWT custody audits.",
     stack: ["Node.js", "Express", "PostgreSQL", "SQLite3", "JWT Auth"],
     metrics: [
       { label: "Stipend Automation", value: "3,000 ETB / Mo / Student" },
@@ -206,8 +196,8 @@ const CHANGELOG_ENTRIES = [
     tag: "CREDENTIAL",
     title: "MIT Universal AI Credential Finalized & Validated",
     content:
-      "Completed Introduction to Universal AI through MIT Open Learning under Prof. Dimitris Bertsimas (Validation ID: 11cce330-19b6-48ff-ae8c-b645623efabb). Shifted focus toward applying mixed-integer optimization and operations research directly into crop diagnostic routing and rural supply logistics.",
-    channelNote: "Shared reflections and validation hash to Unplugged Me.",
+      "Completed Introduction to Universal AI through MIT Open Learning under Prof. Dimitris Bertsimas. Applying mixed-integer optimization and operations research directly into crop diagnostic routing and rural supply logistics.",
+    channelNote: "Shared reflections and notes to Unplugged Me.",
   },
   {
     id: "log-042",
@@ -216,7 +206,7 @@ const CHANGELOG_ENTRIES = [
     tag: "ALGORITHMS",
     title: "LeetCode Milestone: 150+ Solved with O(1) Space DP Optimizations",
     content:
-      "Completed a deep sprint on dynamic programming, state compression, and graph shortest paths. Transitioned past naive memoization to space-optimized tabulation for knapsack and interval scheduling variants. Daily disciplined practice is reshaping how I structure backend database lock windows.",
+      "Completed a deep sprint on dynamic programming, state compression, and graph shortest paths. Transitioned past naive memoization to space-optimized tabulation for knapsack and interval scheduling variants.",
     channelNote: "Full solution writeup and space-complexity notes published on Telegram.",
   },
   {
@@ -226,7 +216,7 @@ const CHANGELOG_ENTRIES = [
     tag: "SYSTEMS",
     title: "Workstation OS Migration: Bare-Metal Ubuntu 26.04 LTS Setup",
     content:
-      "Migrated primary development workstation to fresh Ubuntu 26.04 LTS. Configured custom Linux kernel parameters, stripped desktop environment bloat, tuned sysctl limits for local Docker daemon efficiency, and configured tiling workflow with JetBrains Mono font rendering. Real engineering happens on raw Linux terminals.",
+      "Migrated primary development workstation to fresh Ubuntu 26.04 LTS. Configured custom Linux kernel parameters, tuned sysctl limits for Docker daemon efficiency, and configured tiling workflow with JetBrains Mono font rendering.",
     channelNote: "Terminal dotfiles and sysctl config shared on Unplugged Me.",
   },
   {
@@ -495,17 +485,16 @@ def execute_wallet_disbursement(user, amount, reference_code):
 export default function App() {
   const [activeSection, setActiveSection] = useState("manifesto");
   const [selectedBlueprint, setSelectedBlueprint] = useState("gebere");
-  const [mitModalOpen, setMitModalOpen] = useState(false);
   const [cvModalOpen, setCvModalOpen] = useState(false);
   const [emailCopied, setEmailCopied] = useState(false);
-  const [themeMode, setThemeMode] = useState("light"); // Default is crystalline white paper
+  const [themeMode, setThemeMode] = useState("light"); // Default is crystal-clear white paper
   const [accentColor, setAccentColor] = useState("blue"); // "blue" (#0047FF) or "orange" (#E64A19)
 
   // Interactive Terminal State
   const [terminalInput, setTerminalInput] = useState("");
   const [terminalOutput, setTerminalOutput] = useState([
     { type: "system", text: "AMAN-SYSTEMS KERNEL // INITIALIZED [HOST: ADDIS ABABA, ET]" },
-    { type: "system", text: "MIT Universal AI Credential [ID: 11cce330-19b6-48ff-ae8c-b645623efabb] verified." },
+    { type: "system", text: "Credentials & Certificates catalog verified." },
     { type: "system", text: "Direct Telegram: https://t.me/ggedAbdusay (@ggedAbdusay)" },
     { type: "system", text: "Type 'help' or click quick-commands below to inspect raw engineering artifacts." },
   ]);
@@ -570,8 +559,7 @@ export default function App() {
           type: "output",
           text: `AVAILABLE COMMANDS:
   whoami         - Print biographical coordinates and founder status
-  credentials    - Display AAU, INSA, and MIT credentials breakdown
-  verify mit     - Validate MIT Open Learning certificate hash and metadata
+  credentials    - Display all 5 academic and professional certificates
   arch gebere    - Print Gebere Vision AI dataflow blueprint
   arch smartbiz  - Print SmartBiz ERP offline sync state architecture
   ledger         - Show recent engineering changelog entries
@@ -596,24 +584,12 @@ Mission: Localized, production-ready AI systems for Ethiopian infrastructure.`,
       case "credentials":
         newLogs.push({
           type: "output",
-          text: `1. MIT Open Learning: Introduction to Universal AI (Oct 7, 2026) [ID: 11cce330-19b6-48ff-ae8c-b645623efabb]
-   Backed by: Prof. Dimitris Bertsimas (Vice Provost for Open Learning & Boeing Professor of Operations Research)
-2. INSA (Information Network Security Administration): CTC National Cyber Talent Camp
-   Focus: Linux systems administration, kernel auditing, defensive cybersecurity
-3. Addis Ababa University (AAU): B.Sc. in Software Engineering (Junior / 3rd Year)
-   Focus: Distributed software, database transaction isolation, algorithmic analysis`,
-        });
-        break;
-      case "verify mit":
-        newLogs.push({
-          type: "output",
-          text: `[MIT OPEN LEARNING VERIFICATION PROTOCOL]
-CERTIFICATE_ID: 11cce330-19b6-48ff-ae8c-b645623efabb
-RECIPIENT: Abdusalam Oumer Aman
-COURSE: Introduction to Universal AI
-FACULTY_SPONSOR: Dimitris Bertsimas (Boeing Professor & Vice Provost)
-ISSUANCE_DATE: 2026-10-07
-STATUS: CRYPTOGRAPHICALLY VALID & RECOGNIZED`,
+          text: `1. MIT Open Learning: Introduction to Universal AI (Oct 7, 2026)
+   Backed by: Prof. Dimitris Bertsimas (MIT Vice Provost for Open Learning)
+2. Sof Omar Technologies: Software Engineering Internship Certificate (Sep 2026)
+3. INSA: National Ethio Cyber Talent Summer Camp (Jul–Nov 2026, Systems Security)
+4. Addis Ababa University (AAU): B.Sc. in Software Engineering (Junior / 3rd Year)
+5. Udacity: Android Developer & Programming Fundamentals (Sep 2025)`,
         });
         break;
       case "arch gebere":
@@ -635,7 +611,7 @@ Client -> Local IndexedDB -> Vector Clock Queue -> Network Heartbeat -> NestJS G
         newLogs.push({
           type: "output",
           text: `[LATEST CHANGELOG COMMITS]
-- Log 043 (2026-10-08): MIT Universal AI Credential Finalized [ID: 11cce330-19b6]
+- Log 043 (2026-10-08): MIT Universal AI Credential Finalized
 - Log 042 (2026-10-04): LeetCode 150+ solved with O(1) space DP optimizations
 - Log 041 (2026-09-28): Bare-metal Ubuntu 26.04 LTS migration & sysctl tuning
 - Log 040 (2026-09-15): Shaved 400ms off Groq vision inference for rural 2G links`,
@@ -721,7 +697,6 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
         throw new Error("Form dispatch returned non-200 code");
       }
     } catch {
-      // Fallback
       setFormStatus("error");
       setFormMsg(
         `Unable to reach automated dispatch worker. Please write directly at ${PROFILE.email} or reach out on Telegram @ggedAbdusay.`
@@ -781,6 +756,20 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
         }
         .text-muted {
           color: ${isDark ? "#888888" : "#64748B"};
+        }
+
+        /* Highlight Core Projects Links */
+        .project-highlight-link {
+          color: ${isDark ? "#FFFFFF" : "#111111"};
+          text-decoration: underline;
+          text-decoration-color: ${accentHex}88;
+          text-underline-offset: 4px;
+          font-weight: 700;
+          transition: color 0.15s ease, text-decoration-color 0.15s ease;
+        }
+        .project-highlight-link:hover {
+          color: ${accentHex};
+          text-decoration-color: ${accentHex};
         }
 
         /* Tactile interactive elements */
@@ -930,7 +919,7 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
 
           {/* Technical Controls, Social Channels & CV Button */}
           <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexWrap: "wrap" }}>
-            {/* Direct Telegram Profile Link */}
+            {/* Direct Telegram Link */}
             <a
               href={PROFILE.telegramDirect}
               target="_blank"
@@ -959,7 +948,7 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
               target="_blank"
               rel="noreferrer"
               className="font-mono tactile-link"
-              title="View Top-Rated Profile on Upwork"
+              title="View Profile on Upwork"
               style={{
                 fontSize: "0.72rem",
                 color: isDark ? "#AAAAAA" : "#475569",
@@ -1102,12 +1091,12 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
                 Abdusalam Oumer Aman
               </h1>
 
-              {/* Founder Stance Blockquote */}
+              {/* Founder Stance Blockquote with Ample Spacing (Per Gemini Recommendation) */}
               <div
                 style={{
                   borderLeft: `3px solid ${accentHex}`,
                   paddingLeft: "1.4rem",
-                  marginBottom: "2rem",
+                  marginBottom: "2.6rem", // Generous breathing room
                 }}
               >
                 <p
@@ -1135,14 +1124,14 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
                 </p>
               </div>
 
-              {/* Unapologetic Narrative Paragraphs */}
+              {/* Unapologetic Narrative Paragraphs with Optimal 60-80 Character Line Length */}
               <p
                 style={{
                   fontSize: "1.05rem",
                   lineHeight: 1.7,
                   color: isDark ? "#CCCCCC" : "#334155",
                   marginBottom: "1.5rem",
-                  maxWidth: "680px",
+                  maxWidth: "65ch", // Optimal line length for effortless reading
                 }}
               >
                 Most modern AI projects settle for generic OpenAI wrapper scripts and flashy dark-mode marketing pages. My
@@ -1152,19 +1141,26 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
                 through <strong>MIT Open Learning</strong> under Boeing Professor of Operations Research Dimitris Bertsimas.
               </p>
 
+              {/* Second Paragraph Highlighting Core Projects with Interactive Links */}
               <p
                 style={{
                   fontSize: "1.02rem",
                   lineHeight: 1.7,
                   color: isDark ? "#A0A0A0" : "#64748B",
                   marginBottom: "2.4rem",
-                  maxWidth: "680px",
+                  maxWidth: "65ch", // Optimal line length
                 }}
               >
-                As founder of <strong>Gebere Vision AI</strong> (selected for the METI-Funded UniPods AI Programme), I deploy
-                sub-second Llama vision inference via Groq directly into rural Telegram interfaces in Amharic and Afaan
-                Oromoo. When power cuts hit retail stores, my <strong>SmartBiz ERP</strong> executes offline-first transactional
-                state on local client machines with deterministic vector clocks.
+                As founder of{" "}
+                <a href="#gebere-vision-ai" className="project-highlight-link">
+                  <strong>Gebere Vision AI</strong> ↗
+                </a>{" "}
+                (selected for the METI-Funded UniPods AI Programme), I deploy sub-second Llama vision inference via Groq directly into rural Telegram interfaces in Amharic and Afaan
+                Oromoo. When power cuts hit retail stores, my{" "}
+                <a href="#smartbiz-erp" className="project-highlight-link">
+                  <strong>SmartBiz ERP</strong> ↗
+                </a>{" "}
+                executes offline-first transactional state on local client machines with deterministic vector clocks.
               </p>
 
               {/* Action Buttons */}
@@ -1172,9 +1168,9 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
                 <a href="#products" className="btn-action">
                   Inspect Founder Products ↓
                 </a>
-                <button onClick={() => setMitModalOpen(true)} className="btn-action-ghost">
-                  Verify MIT Credential [ID: 11cce330] ↗
-                </button>
+                <a href="#credentials" className="btn-action-ghost">
+                  Credentials & Certificates ↓
+                </a>
                 <button onClick={() => setCvModalOpen(true)} className="btn-action-ghost">
                   Curriculum Vitae (CV) 📄
                 </button>
@@ -1218,13 +1214,13 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
                     <strong>{PROFILE.location} (UTC+3)</strong>
                   </div>
                   <div>
-                    <span className="text-muted">TELEGRAM DIRECT: </span>
+                    <span className="text-muted">DIRECT TELEGRAM: </span>
                     <a href={PROFILE.telegramDirect} target="_blank" rel="noreferrer" className="tactile-link" style={{ fontWeight: 600 }}>
                       {PROFILE.telegramDirectHandle} ↗
                     </a>
                   </div>
                   <div>
-                    <span className="text-muted">TELEGRAM LOGS: </span>
+                    <span className="text-muted">TELEGRAM CHANNEL: </span>
                     <a href={PROFILE.telegramChannel} target="_blank" rel="noreferrer" className="tactile-link" style={{ fontWeight: 600 }}>
                       {PROFILE.telegramChannelName} ↗
                     </a>
@@ -1251,7 +1247,7 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
               </div>
             </div>
 
-            {/* Right Column: Authentic Editorial Archival Portrait */}
+            {/* Right Column: Authentic Editorial Archival Portrait with Earth + Face Fully Visible */}
             <div>
               <div
                 className="border-ledger bg-card"
@@ -1260,7 +1256,7 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
                   padding: "1rem",
                 }}
               >
-                {/* Image Frame with Archival Plate Styling */}
+                {/* Image Frame with Perfect Framing: Earth + Face 100% Visible */}
                 <div
                   style={{
                     position: "relative",
@@ -1268,16 +1264,20 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
                     border: `1px solid ${isDark ? "#262626" : "#E2E8F0"}`,
                     overflow: "hidden",
                     textAlign: "center",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
                   }}
                 >
                   <img
-                    src="/hero-cosmic.webp"
-                    alt="Abdusalam Oumer Aman — Applied AI Founder & Systems Engineer"
+                    src="/hero-portrait.webp"
+                    alt="Abdusalam Oumer Aman in front of Earth projection"
                     style={{
                       width: "100%",
-                      maxHeight: "440px",
-                      objectFit: "cover",
-                      objectPosition: "center top",
+                      height: "auto",
+                      maxHeight: "480px",
+                      objectFit: "contain",
+                      objectPosition: "center",
                       display: "block",
                       filter: isDark ? "contrast(1.05) brightness(0.98)" : "contrast(1.02)",
                     }}
@@ -1334,7 +1334,7 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
                       color: isDark ? "#777777" : "#64748B",
                     }}
                   >
-                    <span>CERT: MIT-11cce330</span>
+                    <span>AAU SE · INSA · MIT</span>
                     <span>DISPATCH: @ggedAbdusay</span>
                   </div>
                 </div>
@@ -1379,7 +1379,7 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
           </div>
         </section>
 
-        {/* ── SECTION 02: THE ENGINEERING & AI FOUNDATION ─────────── */}
+        {/* ── SECTION 02: THE ENGINEERING & CERTIFICATIONS ─────────── */}
         <section
           id="credentials"
           style={{
@@ -1390,7 +1390,7 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
         >
           {/* Section Eyebrow */}
           <div className="font-mono" style={{ fontSize: "0.78rem", fontWeight: 700, color: accentHex, letterSpacing: "0.1em" }}>
-            [02. FOUNDATIONS THAT MATTER]
+            [02. CREDENTIALS & CERTIFICATIONS]
           </div>
           <h2
             className="font-serif"
@@ -1402,7 +1402,7 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
               marginBottom: "0.8rem",
             }}
           >
-            Engineering & AI Credentials
+            Engineering Foundation & Certifications
           </h2>
           <p
             style={{
@@ -1413,18 +1413,17 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
               marginBottom: "2.8rem",
             }}
           >
-            Authentic engineering authority is earned through verified foundations. Here is the tri-fold bridge:
-            software architecture at Addis Ababa University, national systems security at INSA, and applied decision AI
-            validated by MIT Open Learning leadership.
+            Bridging theoretical software architecture at Addis Ababa University, national systems security at INSA,
+            and applied decision AI from MIT Open Learning leadership.
           </p>
 
-          {/* Three Pillar Cards */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: "1.5rem" }}>
-            {CREDENTIAL_PILLARS.map((p) => {
-              const isMit = p.id === "mit-ai";
+          {/* Full Credentials Cards Grid */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "1.5rem" }}>
+            {CREDENTIALS_AND_CERTS.map((c) => {
+              const isMit = c.id === "mit-ai";
               return (
                 <div
-                  key={p.id}
+                  key={c.id}
                   className="border-ledger bg-card"
                   style={{
                     border: `1px solid ${isMit ? accentHex : isDark ? "#262626" : "#E5E7EB"}`,
@@ -1450,7 +1449,7 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
                         letterSpacing: "0.06em",
                       }}
                     >
-                      RECENT VALIDATION [OCT 2026]
+                      RECENT CERTIFICATE [OCT 2026]
                     </div>
                   )}
 
@@ -1465,11 +1464,11 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
                         marginBottom: "0.5rem",
                       }}
                     >
-                      {p.badge}
+                      {c.badge}
                     </div>
 
-                    <h3 className="font-serif" style={{ fontSize: "1.55rem", fontWeight: 600, lineHeight: 1.25, marginBottom: "0.3rem" }}>
-                      {p.title}
+                    <h3 className="font-serif" style={{ fontSize: "1.45rem", fontWeight: 600, lineHeight: 1.25, marginBottom: "0.3rem" }}>
+                      {c.title}
                     </h3>
 
                     <div
@@ -1481,7 +1480,7 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
                         marginBottom: "0.2rem",
                       }}
                     >
-                      {p.authority}
+                      {c.authority} · <span style={{ color: accentHex }}>{c.date}</span>
                     </div>
 
                     <div
@@ -1492,7 +1491,7 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
                         marginBottom: "1rem",
                       }}
                     >
-                      {p.sponsor}
+                      {c.sponsor}
                     </div>
 
                     <p
@@ -1503,81 +1502,35 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
                         marginBottom: "1.2rem",
                       }}
                     >
-                      {p.summary}
+                      {c.summary}
                     </p>
-
-                    <div
-                      className="font-mono"
-                      style={{
-                        borderTop: `1px solid ${isDark ? "#222222" : "#F1F5F9"}`,
-                        paddingTop: "0.85rem",
-                        marginBottom: "1.2rem",
-                      }}
-                    >
-                      <div
-                        style={{
-                          fontSize: "0.7rem",
-                          fontWeight: 700,
-                          color: isDark ? "#888888" : "#64748B",
-                          marginBottom: "0.4rem",
-                        }}
-                      >
-                        CORE RIGOR & DELIVERABLES:
-                      </div>
-                      <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.35rem" }}>
-                        {p.deliverables.map((item, idx) => (
-                          <li
-                            key={idx}
-                            style={{
-                              fontSize: "0.78rem",
-                              lineHeight: 1.45,
-                              color: isDark ? "#AAAAAA" : "#475569",
-                              display: "flex",
-                              alignItems: "flex-start",
-                              gap: "6px",
-                            }}
-                          >
-                            <span style={{ color: accentHex, fontWeight: 700 }}>▸</span>
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
                   </div>
 
-                  {/* Verification Ledger Footer */}
+                  {/* Skills / Deliverables Chips */}
                   <div
                     className="font-mono"
                     style={{
                       borderTop: `1px solid ${isDark ? "#222222" : "#F1F5F9"}`,
                       paddingTop: "0.85rem",
                       display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      fontSize: "0.72rem",
+                      flexWrap: "wrap",
+                      gap: "5px",
                     }}
                   >
-                    <div>
-                      <span className="text-muted">ID: </span>
-                      <strong>{p.verificationId}</strong>
-                    </div>
-                    {isMit ? (
-                      <button
-                        onClick={() => setMitModalOpen(true)}
+                    {c.skills.map((skill) => (
+                      <span
+                        key={skill}
                         style={{
-                          background: "none",
-                          border: "none",
-                          color: accentHex,
-                          fontWeight: 700,
-                          cursor: "pointer",
                           fontSize: "0.72rem",
+                          padding: "2px 7px",
+                          backgroundColor: isDark ? "#161616" : "#F1F5F9",
+                          border: `1px solid ${isDark ? "#282828" : "#E2E8F0"}`,
+                          color: isDark ? "#CBD5E1" : "#475569",
                         }}
                       >
-                        [INSPECT HASH ↗]
-                      </button>
-                    ) : (
-                      <span style={{ color: isDark ? "#888888" : "#64748B" }}>[VERIFIED RECORD]</span>
-                    )}
+                        {skill}
+                      </span>
+                    ))}
                   </div>
                 </div>
               );
@@ -1619,20 +1572,19 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
               marginBottom: "2.8rem",
             }}
           >
-            Tutorial clones do not solve systemic problems. Every product listed below was built with production
-            architecture constraints: low-bandwidth rural cellular, intermittent electrical grid blackouts, and localized
-            languages.
+            Built from first principles for low-bandwidth cellular links, power outages, and localized languages.
           </p>
 
-          {/* Product Cards Grid */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "2.5rem" }}>
+          {/* Product Cards Grid: Brief, Punchy & Clear */}
+          <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "2rem" }}>
             {PRODUCTS.map((prod, index) => (
               <div
                 key={prod.id}
+                id={prod.id}
                 className="border-ledger bg-card"
                 style={{
                   border: `1px solid ${isDark ? "#222222" : "#E5E7EB"}`,
-                  padding: "2.2rem",
+                  padding: "1.8rem",
                 }}
               >
                 {/* Top Badge Strip */}
@@ -1646,8 +1598,8 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
                     gap: "0.5rem",
                     fontSize: "0.74rem",
                     borderBottom: `1px solid ${isDark ? "#1E1E1E" : "#F1F5F9"}`,
-                    paddingBottom: "0.85rem",
-                    marginBottom: "1.2rem",
+                    paddingBottom: "0.65rem",
+                    marginBottom: "1rem",
                   }}
                 >
                   <div>
@@ -1662,26 +1614,26 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
                   </div>
                 </div>
 
-                {/* Main Grid: Info + Metrics */}
+                {/* Main Grid: Brief Explanation + Metrics */}
                 <div
                   style={{
                     display: "grid",
                     gridTemplateColumns: "1.4fr 1fr",
-                    gap: "2.5rem",
+                    gap: "2rem",
                     alignItems: "start",
                   }}
                   className="ledger-blueprint-grid"
                 >
-                  {/* Left: Product Narrative */}
+                  {/* Left: Punchy Narrative */}
                   <div>
                     <h3
                       className="font-serif"
                       style={{
-                        fontSize: "clamp(1.75rem, 3vw, 2.3rem)",
+                        fontSize: "clamp(1.6rem, 2.8vw, 2.1rem)",
                         fontWeight: 600,
                         lineHeight: 1.2,
                         color: isDark ? "#FFFFFF" : "#111111",
-                        marginBottom: "0.3rem",
+                        marginBottom: "0.2rem",
                       }}
                     >
                       {prod.title}
@@ -1690,60 +1642,35 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
                     <div
                       className="font-mono"
                       style={{
-                        fontSize: "0.84rem",
+                        fontSize: "0.82rem",
                         fontWeight: 600,
                         color: accentHex,
-                        marginBottom: "1.2rem",
+                        marginBottom: "1rem",
                       }}
                     >
                       {prod.subhead} · {prod.languages}
                     </div>
 
-                    <div style={{ marginBottom: "1.2rem" }}>
-                      <div
-                        className="font-mono"
-                        style={{
-                          fontSize: "0.72rem",
-                          fontWeight: 700,
-                          letterSpacing: "0.06em",
-                          color: isDark ? "#888888" : "#64748B",
-                          marginBottom: "4px",
-                        }}
-                      >
-                        THE REAL PROBLEM:
-                      </div>
-                      <p style={{ fontSize: "0.94rem", lineHeight: 1.6, color: isDark ? "#CCCCCC" : "#334155" }}>
-                        {prod.problem}
-                      </p>
+                    {/* Brief Problem & Solution */}
+                    <div style={{ marginBottom: "0.85rem" }}>
+                      <strong style={{ fontSize: "0.82rem", color: isDark ? "#FFFFFF" : "#111111" }}>Problem: </strong>
+                      <span style={{ fontSize: "0.9rem", color: isDark ? "#CCCCCC" : "#475569" }}>{prod.problemBrief}</span>
                     </div>
 
-                    <div style={{ marginBottom: "1.5rem" }}>
-                      <div
-                        className="font-mono"
-                        style={{
-                          fontSize: "0.72rem",
-                          fontWeight: 700,
-                          letterSpacing: "0.06em",
-                          color: isDark ? "#888888" : "#64748B",
-                          marginBottom: "4px",
-                        }}
-                      >
-                        THE SYSTEM SOLUTION:
-                      </div>
-                      <p style={{ fontSize: "0.94rem", lineHeight: 1.6, color: isDark ? "#CCCCCC" : "#334155" }}>
-                        {prod.solution}
-                      </p>
+                    <div style={{ marginBottom: "1.2rem" }}>
+                      <strong style={{ fontSize: "0.82rem", color: isDark ? "#FFFFFF" : "#111111" }}>Solution: </strong>
+                      <span style={{ fontSize: "0.9rem", color: isDark ? "#CCCCCC" : "#475569" }}>{prod.solutionBrief}</span>
                     </div>
 
                     {/* Stack Tags */}
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "1.8rem" }}>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "1.4rem" }}>
                       {prod.stack.map((tech) => (
                         <span
                           key={tech}
                           className="font-mono"
                           style={{
-                            fontSize: "0.74rem",
-                            padding: "3px 8px",
+                            fontSize: "0.72rem",
+                            padding: "2px 7px",
                             backgroundColor: isDark ? "#181818" : "#F1F5F9",
                             border: `1px solid ${isDark ? "#282828" : "#E2E8F0"}`,
                             color: isDark ? "#D0D0D0" : "#334155",
@@ -1755,14 +1682,14 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
                     </div>
 
                     {/* Action Links */}
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: "0.85rem" }}>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem" }}>
                       {prod.demoUrl && (
                         <a href={prod.demoUrl} target="_blank" rel="noreferrer" className="btn-action">
                           Launch Live Deployment ↗
                         </a>
                       )}
                       <a href={prod.githubUrl} target="_blank" rel="noreferrer" className="btn-action-ghost">
-                        Source Repository (GitHub) ↗
+                        GitHub Source ↗
                       </a>
                       <button
                         onClick={() => {
@@ -1781,34 +1708,34 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
                     className="font-mono border-ledger bg-subtle"
                     style={{
                       border: `1px solid ${isDark ? "#262626" : "#E2E8F0"}`,
-                      padding: "1.4rem",
+                      padding: "1.2rem",
                     }}
                   >
                     <div
                       style={{
-                        fontSize: "0.72rem",
+                        fontSize: "0.7rem",
                         fontWeight: 700,
                         letterSpacing: "0.08em",
                         color: accentHex,
-                        marginBottom: "1rem",
+                        marginBottom: "0.85rem",
                       }}
                     >
-                      TECHNICAL ARCHITECTURE METRICS:
+                      ARCHITECTURE METRICS:
                     </div>
 
-                    <div style={{ display: "flex", flexDirection: "column", gap: "0.85rem" }}>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
                       {prod.metrics.map((m, idx) => (
                         <div
                           key={idx}
                           style={{
                             borderBottom: `1px solid ${isDark ? "#222222" : "#E2E8F0"}`,
-                            paddingBottom: "6px",
+                            paddingBottom: "5px",
                           }}
                         >
                           <div style={{ fontSize: "0.68rem", color: isDark ? "#888888" : "#64748B" }}>{m.label}</div>
                           <div
                             style={{
-                              fontSize: "0.92rem",
+                              fontSize: "0.88rem",
                               fontWeight: 700,
                               color: isDark ? "#FFFFFF" : "#111111",
                               marginTop: "2px",
@@ -1818,22 +1745,6 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
                           </div>
                         </div>
                       ))}
-                    </div>
-
-                    {/* Architecture Callout */}
-                    <div
-                      style={{
-                        marginTop: "1.2rem",
-                        fontSize: "0.74rem",
-                        lineHeight: 1.5,
-                        color: isDark ? "#A0A0A0" : "#475569",
-                        backgroundColor: isDark ? "#111111" : "#FFFFFF",
-                        border: `1px solid ${isDark ? "#222222" : "#E2E8F0"}`,
-                        padding: "10px",
-                      }}
-                    >
-                      <strong style={{ color: accentHex }}>TOPOLOGY HIGHLIGHT:</strong>{" "}
-                      {prod.architectureSummary}
                     </div>
                   </div>
                 </div>
@@ -1876,8 +1787,7 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
               marginBottom: "2rem",
             }}
           >
-            Real systems are defined by their boundary latencies, failure containment gates, and state synchronization
-            models. Below are the actual ASCII blueprints and core algorithmic excerpts for our key infrastructure.
+            Below are the actual ASCII blueprints and core algorithmic excerpts for our key infrastructure.
           </p>
 
           {/* Blueprint Selector Tabs */}
@@ -2046,8 +1956,8 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
             }}
           >
             Instead of generic thought leadership essays, this ledger documents the raw reality of engineering: daily
-            algorithmic breakthroughs on LeetCode, bare-metal OS transitions to Ubuntu 26.04 LTS, low-bandwidth vision
-            optimization, and applied MIT AI models.
+            algorithmic breakthroughs on LeetCode, bare-metal OS transitions to Ubuntu 26.04 LTS, and low-bandwidth vision
+            optimization.
           </p>
 
           {/* Changelog Entries Timeline */}
@@ -2161,8 +2071,8 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
                   maxWidth: "600px",
                 }}
               >
-                Zero polished PR fluff. Real thoughts on Ubuntu workstation tweaks, LeetCode optimal solutions, INSA
-                defensive models, and deploying AI into rural Ethiopian sectors.
+                Real thoughts on Ubuntu workstation tweaks, LeetCode solutions, INSA defensive models, and deploying AI
+                into rural Ethiopian sectors.
               </p>
             </div>
             <a
@@ -2352,7 +2262,7 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
                 }}
               >
                 {[
-                  { cmd: "verify mit", label: "verify mit" },
+                  { cmd: "credentials", label: "credentials" },
                   { cmd: "arch gebere", label: "arch gebere" },
                   { cmd: "arch smartbiz", label: "arch smartbiz" },
                   { cmd: "cv", label: "cv" },
@@ -2368,16 +2278,15 @@ LOCATION: Addis Ababa, Ethiopia (UTC+3)`,
                         ...terminalOutput,
                         { type: "user", text: `$ ${item.cmd}` },
                       ];
-                      if (item.cmd === "verify mit") {
+                      if (item.cmd === "credentials") {
                         newLogs.push({
                           type: "output",
-                          text: `[MIT OPEN LEARNING VERIFICATION PROTOCOL]
-CERTIFICATE_ID: 11cce330-19b6-48ff-ae8c-b645623efabb
-RECIPIENT: Abdusalam Oumer Aman
-COURSE: Introduction to Universal AI
-FACULTY_SPONSOR: Dimitris Bertsimas (Boeing Professor & Vice Provost)
-ISSUANCE_DATE: 2026-10-07
-STATUS: CRYPTOGRAPHICALLY VALID & RECOGNIZED`,
+                          text: `1. MIT Open Learning: Introduction to Universal AI (Oct 7, 2026)
+   Backed by: Prof. Dimitris Bertsimas (Vice Provost for Open Learning)
+2. Sof Omar Technologies: Software Engineering Internship Certificate (Sep 2026)
+3. INSA: National Ethio Cyber Talent Summer Camp (Jul–Nov 2026, Systems Security)
+4. Addis Ababa University (AAU): B.Sc. in Software Engineering (Junior / 3rd Year)
+5. Udacity: Android Developer & Programming Fundamentals (Sep 2025)`,
                         });
                       } else if (item.cmd === "arch gebere") {
                         newLogs.push({
@@ -2451,7 +2360,7 @@ STATUS: CRYPTOGRAPHICALLY VALID & RECOGNIZED`,
                   type="text"
                   value={terminalInput}
                   onChange={(e) => setTerminalInput(e.target.value)}
-                  placeholder="type 'help', 'verify mit', 'telegram', 'cv'..."
+                  placeholder="type 'help', 'credentials', 'telegram', 'cv'..."
                   style={{
                     flex: 1,
                     background: "none",
@@ -2801,7 +2710,7 @@ STATUS: CRYPTOGRAPHICALLY VALID & RECOGNIZED`,
         >
           <div>
             <strong style={{ color: isDark ? "#FFFFFF" : "#111111" }}>{PROFILE.name}</strong> · AAU Software Engineering · INSA Cyber
-            Alum · MIT Open Learning (ID: {PROFILE.mitCertId})
+            Alum · MIT Open Learning
           </div>
 
           <div style={{ display: "flex", gap: "1rem" }}>
@@ -2826,112 +2735,6 @@ STATUS: CRYPTOGRAPHICALLY VALID & RECOGNIZED`,
           </div>
         </div>
       </footer>
-
-      {/* ── MIT CERTIFICATE VERIFICATION MODAL ──────────────────────── */}
-      {mitModalOpen && (
-        <div
-          onClick={() => setMitModalOpen(false)}
-          style={{
-            position: "fixed",
-            inset: 0,
-            backgroundColor: "rgba(0, 0, 0, 0.82)",
-            backdropFilter: "blur(4px)",
-            zIndex: 9999,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "1.5rem",
-          }}
-        >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="border-ledger bg-card font-mono"
-            style={{
-              maxWidth: "680px",
-              width: "100%",
-              border: `2px solid ${accentHex}`,
-              padding: "2rem",
-              position: "relative",
-            }}
-          >
-            <button
-              onClick={() => setMitModalOpen(false)}
-              style={{
-                position: "absolute",
-                top: "14px",
-                right: "16px",
-                background: "none",
-                border: "none",
-                fontSize: "1.2rem",
-                color: isDark ? "#FFFFFF" : "#111111",
-                cursor: "pointer",
-              }}
-            >
-              ✕
-            </button>
-
-            <div style={{ fontSize: "0.72rem", color: accentHex, fontWeight: 700, marginBottom: "4px" }}>
-              MIT OPEN LEARNING // OFFICIAL CREDENTIAL RECORD
-            </div>
-
-            <h3 className="font-serif" style={{ fontSize: "1.8rem", fontWeight: 600, marginBottom: "0.2rem" }}>
-              Introduction to Universal AI
-            </h3>
-
-            <div style={{ fontSize: "0.82rem", color: isDark ? "#A0A0A0" : "#64748B", marginBottom: "1.2rem" }}>
-              Validated under Certificate Identifier: <strong style={{ color: accentHex }}>{PROFILE.mitCertId}</strong>
-            </div>
-
-            <div
-              style={{
-                backgroundColor: isDark ? "#0D0D0D" : "#F8FAFC",
-                border: `1px solid ${isDark ? "#262626" : "#E2E8F0"}`,
-                padding: "1.2rem",
-                fontSize: "0.78rem",
-                lineHeight: 1.6,
-                marginBottom: "1.5rem",
-              }}
-            >
-              <div style={{ borderBottom: `1px solid ${isDark ? "#1E1E1E" : "#E2E8F0"}`, paddingBottom: "6px", marginBottom: "6px" }}>
-                <span className="text-muted">RECIPIENT: </span>
-                <strong style={{ color: isDark ? "#FFFFFF" : "#111111" }}>{PROFILE.name}</strong>
-              </div>
-              <div style={{ borderBottom: `1px solid ${isDark ? "#1E1E1E" : "#E2E8F0"}`, paddingBottom: "6px", marginBottom: "6px" }}>
-                <span className="text-muted">ISSUANCE DATE: </span>
-                <strong style={{ color: isDark ? "#FFFFFF" : "#111111" }}>{PROFILE.mitCertDate}</strong>
-              </div>
-              <div style={{ borderBottom: `1px solid ${isDark ? "#1E1E1E" : "#E2E8F0"}`, paddingBottom: "6px", marginBottom: "6px" }}>
-                <span className="text-muted">FACULTY & LEADERSHIP BACKING: </span>
-                <strong style={{ color: isDark ? "#FFFFFF" : "#111111" }}>{PROFILE.mitSponsor}</strong>
-              </div>
-              <div>
-                <span className="text-muted">CORE RIGOR: </span>
-                <span>Universal AI Foundations · Mathematical Optimization · Combinatorial Modeling · Transformer Systems</span>
-              </div>
-            </div>
-
-            <p className="font-sans" style={{ fontSize: "0.85rem", lineHeight: 1.6, color: isDark ? "#CCCCCC" : "#475569", marginBottom: "1.5rem" }}>
-              This credential establishes rigorous theoretical grounding in modern machine intelligence, providing the algorithmic
-              backbone for Gebere Vision AI's multilingual vision pipeline and enterprise optimization systems.
-            </p>
-
-            <div style={{ display: "flex", justifyContent: "flex-end", gap: "0.5rem" }}>
-              <button
-                onClick={() => {
-                  navigator?.clipboard?.writeText(PROFILE.mitCertId);
-                  alert(`Copied MIT Certificate ID: ${PROFILE.mitCertId}`);
-                }}
-                className="btn-action-ghost"
-              >
-                Copy ID: {PROFILE.mitCertId}
-              </button>
-              <button onClick={() => setMitModalOpen(false)} className="btn-action">
-                Dismiss Inspector
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* ── CURRICULUM VITAE (CV) VIEWER MODAL ───────────────────────── */}
       {cvModalOpen && (
@@ -2987,7 +2790,7 @@ STATUS: CRYPTOGRAPHICALLY VALID & RECOGNIZED`,
             </h3>
 
             <div style={{ fontSize: "0.82rem", color: isDark ? "#A0A0A0" : "#64748B", marginBottom: "1.4rem" }}>
-              Software Engineering (AAU) · Systems Security (INSA) · Applied AI Founder (MIT Open Learning)
+              Software Engineering (AAU) · Systems Security (INSA) · Applied AI Founder
             </div>
 
             {/* Quick Actions Row */}
@@ -3018,17 +2821,19 @@ STATUS: CRYPTOGRAPHICALLY VALID & RECOGNIZED`,
               {/* Education & Credentials */}
               <div style={{ borderBottom: `1px solid ${isDark ? "#222222" : "#E2E8F0"}`, paddingBottom: "1rem" }}>
                 <div style={{ fontSize: "0.72rem", fontWeight: 700, color: accentHex, marginBottom: "6px" }}>
-                  1. EDUCATION & AI CREDENTIALS
+                  1. EDUCATION & CREDENTIALS
                 </div>
                 <div><strong>Addis Ababa University (AAU)</strong> — B.Sc. in Software Engineering (2022–Present, 3rd Year)</div>
-                <div><strong>MIT Open Learning</strong> — Introduction to Universal AI (Completed Oct 7, 2026, ID: 11cce330-19b6-48ff-ae8c-b645623efabb, Backed by Prof. Dimitris Bertsimas)</div>
-                <div><strong>INSA</strong> — National Ethio Cyber Talent Summer Camp (Jul–Nov 2026, Systems Security & Linux Audits)</div>
+                <div><strong>MIT Open Learning</strong> — Introduction to Universal AI (Completed Oct 7, 2026, Backed by Prof. Dimitris Bertsimas)</div>
+                <div><strong>Sof Omar Technologies</strong> — Software Engineering Internship Certificate (Sep 2026)</div>
+                <div><strong>INSA</strong> — National Ethio Cyber Talent Summer Camp (Jul–Nov 2026, Systems Security)</div>
+                <div><strong>Udacity</strong> — Android Developer & Programming Fundamentals (Sep 2025)</div>
               </div>
 
               {/* Founder Experience */}
               <div style={{ borderBottom: `1px solid ${isDark ? "#222222" : "#E2E8F0"}`, paddingBottom: "1rem" }}>
                 <div style={{ fontSize: "0.72rem", fontWeight: 700, color: accentHex, marginBottom: "6px" }}>
-                  2. FOUNDER & PRODUCTION VENTURES
+                  2. PRODUCTION PRODUCTS & FOUNDER VENTURES
                 </div>
                 <div style={{ marginBottom: "6px" }}>
                   <strong>Gebere Vision AI</strong> (Founder & Architect · Selected for METI-Funded UniPods AI Programme):
