@@ -9,8 +9,8 @@ const PROFILE = {
   email: "oumersalah2@gmail.com",
   github: "https://github.com/oumersalah2-cmd",
   upwork: "https://www.upwork.com/freelancers/~01d02c68660140f622",
-  twitter: "https://x.com/oumersalah2",
-  twitterHandle: "@oumersalah2",
+  twitter: "https://x.com/titanic66834",
+  twitterHandle: "@titanic66834",
   telegramChannel: "https://t.me/ggedAbdusay",
   telegramChannelName: "Unplugged Me",
   cvUrl: "/cv.pdf",
@@ -820,23 +820,23 @@ GITHUB: https://github.com/oumersalah2-cmd`,
               </div>
             </div>
 
-            {/* Founder Stance Blockquote with Ample Spacing (Gemini Spacing Recommendation) */}
+            {/* Founder Stance Blockquote with Balanced Spacing */}
             <div
               style={{
                 borderLeft: `3px solid ${accentHex}`,
-                paddingLeft: "1.4rem",
-                marginTop: "1.2rem",
-                marginBottom: "2.5rem", // Generous breathing room
+                paddingLeft: "1.2rem",
+                marginTop: "0.8rem",
+                marginBottom: "1.2rem",
               }}
             >
               <p
                 className="font-serif"
                 style={{
-                  fontSize: "clamp(1.2rem, 1.8vw, 1.5rem)",
+                  fontSize: "clamp(1.15rem, 1.6vw, 1.45rem)",
                   lineHeight: 1.35,
                   fontStyle: "italic",
                   color: isDark ? "#E5E5E5" : "#1E293B",
-                  marginBottom: "0.5rem",
+                  marginBottom: "0.35rem",
                 }}
               >
                 Software Engineering at AAU. INSA Cyber Talent Graduate. Applied AI Founder.
@@ -844,7 +844,7 @@ GITHUB: https://github.com/oumersalah2-cmd`,
               <p
                 className="font-mono"
                 style={{
-                  fontSize: "0.94rem",
+                  fontSize: "0.92rem",
                   fontWeight: 600,
                   color: accentHex,
                   letterSpacing: "0.01em",
@@ -854,14 +854,14 @@ GITHUB: https://github.com/oumersalah2-cmd`,
               </p>
             </div>
 
-            {/* Narrative Paragraphs with Optimal 60-80 Character Line Length (Readability Recommendation) */}
-            <div style={{ maxWidth: "65ch", marginBottom: "2.4rem" }}>
+            {/* Narrative Paragraphs with Natural Balanced Width */}
+            <div style={{ maxWidth: "880px", marginBottom: "1.6rem" }}>
               <p
                 style={{
                   fontSize: "1.04rem",
                   lineHeight: 1.7,
                   color: isDark ? "#CCCCCC" : "#334155",
-                  marginBottom: "1.4rem",
+                  marginBottom: "0.85rem",
                 }}
               >
                 Most modern AI projects settle for generic OpenAI wrapper scripts and flashy dark-mode marketing pages. My
