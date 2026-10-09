@@ -1816,6 +1816,61 @@ GITHUB: https://github.com/oumersalah2-cmd`,
             </p>
           </div>
 
+          {/* Official CV Direct Access Card */}
+          <div
+            className="border-ledger bg-card"
+            style={{
+              border: `1px solid ${accentHex}44`,
+              padding: "1.25rem 1.6rem",
+              marginBottom: "2rem",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              flexWrap: "wrap",
+              gap: "1.2rem",
+              borderRadius: "3px",
+              boxShadow: isDark ? "0 4px 20px rgba(0,0,0,0.4)" : "0 4px 20px rgba(0,0,0,0.04)",
+            }}
+          >
+            <div>
+              <div className="font-mono" style={{ fontSize: "0.72rem", color: accentHex, fontWeight: 700, letterSpacing: "0.06em", marginBottom: "3px" }}>
+                CURRICULUM VITAE // OFFICIAL RESUME (OCT 2026)
+              </div>
+              <div style={{ fontSize: "1rem", fontWeight: 700, color: isDark ? "#FFFFFF" : "#111111" }}>
+                Abdusalam Oumer Aman — Full-Stack Engineer
+              </div>
+              <div className="font-mono" style={{ fontSize: "0.75rem", color: isDark ? "#888888" : "#64748B", marginTop: "3px" }}>
+                AAU Software Engineering · INSA Cyber Talent Graduate · Applied AI & Full-Stack Systems
+              </div>
+            </div>
+            <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+              <button
+                onClick={() => setCvModalOpen(true)}
+                className="btn-action"
+                style={{ fontSize: "0.78rem", padding: "8px 16px" }}
+              >
+                📄 Preview CV Modal
+              </button>
+              <a
+                href={PROFILE.cvUrl}
+                download="Abdusalam_Oumer_Aman_FlowCV_Resume.pdf"
+                className="btn-action-ghost"
+                style={{ fontSize: "0.78rem", padding: "8px 16px", textDecoration: "none" }}
+              >
+                📥 Download PDF
+              </a>
+              <a
+                href={PROFILE.cvUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-action-ghost"
+                style={{ fontSize: "0.78rem", padding: "8px 16px", textDecoration: "none" }}
+              >
+                ↗ Open PDF
+              </a>
+            </div>
+          </div>
+
           <div
             className="dispatch-grid"
             style={{
@@ -2214,9 +2269,11 @@ GITHUB: https://github.com/oumersalah2-cmd`,
                 marginBottom: "1.5rem",
                 paddingBottom: "0.85rem",
                 borderBottom: `1px solid ${isDark ? "#262626" : "#E2E8F0"}`,
+                flexWrap: "wrap",
+                gap: "10px",
               }}
             >
-              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
                 <span
                   className="font-mono"
                   style={{
@@ -2232,17 +2289,36 @@ GITHUB: https://github.com/oumersalah2-cmd`,
                   OFFICIAL CURRICULUM VITAE // 2026
                 </span>
                 <span className="font-mono" style={{ fontSize: "0.72rem", color: isDark ? "#888888" : "#64748B" }}>
-                  A4 Executive Format
+                  FlowCV Verified Edition
                 </span>
               </div>
-              <div style={{ display: "flex", gap: "8px" }}>
+              <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+                <a
+                  href={PROFILE.cvUrl}
+                  download="Abdusalam_Oumer_Aman_FlowCV_Resume.pdf"
+                  className="font-mono btn-action"
+                  style={{ padding: "5px 12px", fontSize: "0.72rem", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "4px" }}
+                  title="Download original FlowCV PDF"
+                >
+                  📥 Download PDF
+                </a>
+                <a
+                  href={PROFILE.cvUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono btn-action-ghost"
+                  style={{ padding: "5px 12px", fontSize: "0.72rem", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "4px" }}
+                  title="Open PDF in new tab"
+                >
+                  ↗ Open PDF
+                </a>
                 <button
                   onClick={() => window.print()}
-                  className="font-mono btn-action"
+                  className="font-mono btn-action-ghost"
                   style={{ padding: "5px 12px", fontSize: "0.72rem" }}
                   title="Print or Save as Clean PDF"
                 >
-                  🖨️ Print / Save PDF
+                  🖨️ Print
                 </button>
                 <button
                   onClick={() => setCvModalOpen(false)}
@@ -2283,13 +2359,13 @@ GITHUB: https://github.com/oumersalah2-cmd`,
               </h1>
               <p
                 style={{
-                  fontSize: "0.95rem",
+                  fontSize: "1rem",
                   fontStyle: "italic",
                   color: isDark ? "#A0A0A0" : "#475569",
                   marginBottom: "0.75rem",
                 }}
               >
-                Full-Stack Engineer | Specialized in Production-Ready Systems
+                Full-Stack Engineer
               </p>
 
               {/* Primary Contact Row */}
@@ -2313,7 +2389,7 @@ GITHUB: https://github.com/oumersalah2-cmd`,
                   📞 {PROFILE.phone}
                 </a>
                 <span>📍 {PROFILE.location}</span>
-                <span>📅 {PROFILE.birthDate}</span>
+                <span>📅 2006-05-21</span>
               </div>
 
               {/* Secondary Coordinates & Online Profiles */}
@@ -2330,16 +2406,13 @@ GITHUB: https://github.com/oumersalah2-cmd`,
                 }}
               >
                 <a href={PROFILE.portfolioUrl} target="_blank" rel="noreferrer" style={{ textDecoration: "underline" }}>
-                  🔗 ab-site-tawny.vercel.app ↗
+                  🔗 Portfolio ↗
                 </a>
                 <a href={PROFILE.github} target="_blank" rel="noreferrer" style={{ textDecoration: "underline" }}>
                   🐙 {PROFILE.handle} ↗
                 </a>
                 <a href={PROFILE.twitter} target="_blank" rel="noreferrer" style={{ textDecoration: "underline" }}>
                   𝕏 {PROFILE.twitterHandle} ↗
-                </a>
-                <a href={PROFILE.telegramChannel} target="_blank" rel="noreferrer" style={{ textDecoration: "underline" }}>
-                  ✈ {PROFILE.telegramChannelName} ↗
                 </a>
               </div>
             </div>
@@ -2362,7 +2435,7 @@ GITHUB: https://github.com/oumersalah2-cmd`,
                 SUMMARY
               </div>
               <p style={{ fontSize: "0.86rem", lineHeight: 1.65, color: isDark ? "#CCCCCC" : "#334155" }}>
-                Dedicated software engineering student with extensive hands-on experience building production-ready, full-stack applications. Specializing in the MERN stack, Django, and Next.js, I focus on delivering efficient, scalable systems from concept to deployment. Driven by daily algorithmic problem-solving, I write clean, maintainable code and prioritize clear communication to deliver reliable solutions for frontend, backend, and full-stack roles.
+                Dedicated software engineering student with extensive hands-on experience building production-ready, full-stack applications. Specializing in the MERN stack, Django, and Next.js, I focus on delivering efficient, scalable systems from concept to deployment. Driven by daily algorithmic problem-solving, I write clean, maintainable code and prioritize clear communication to deliver reliable solutions for frontend, backend, and full-stack roles
               </p>
             </div>
 
@@ -2383,19 +2456,45 @@ GITHUB: https://github.com/oumersalah2-cmd`,
               >
                 EDUCATION
               </div>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "8px", fontSize: "0.86rem" }}>
-                <div>
-                  <strong style={{ fontSize: "0.92rem", color: isDark ? "#FFFFFF" : "#111111" }}>
-                    Bachelors in Software Engineering
-                  </strong>
-                  <div style={{ color: isDark ? "#A0A0A0" : "#475569", fontStyle: "italic", marginTop: "2px" }}>
-                    Addis Ababa University
+
+              {/* Addis Ababa University */}
+              <div style={{ marginBottom: "0.9rem" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "8px", fontSize: "0.86rem" }}>
+                  <div>
+                    <strong style={{ fontSize: "0.92rem", color: isDark ? "#FFFFFF" : "#111111" }}>
+                      Bachelors in Software Engineering
+                    </strong>
+                    <div style={{ color: isDark ? "#A0A0A0" : "#475569", fontStyle: "italic", marginTop: "2px" }}>
+                      Addis Ababa University
+                    </div>
+                  </div>
+                  <div className="font-mono" style={{ textAlign: "right", fontSize: "0.78rem", color: isDark ? "#888888" : "#64748B" }}>
+                    <div>09/2024 – Present</div>
+                    <div>Addis Ababa, Ethiopia</div>
                   </div>
                 </div>
-                <div className="font-mono" style={{ textAlign: "right", fontSize: "0.78rem", color: isDark ? "#888888" : "#64748B" }}>
-                  <div>09/2024 – Present</div>
-                  <div>Addis Ababa, Ethiopia</div>
+              </div>
+
+              {/* INSA */}
+              <div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "8px", fontSize: "0.86rem" }}>
+                  <div>
+                    <strong style={{ fontSize: "0.92rem", color: isDark ? "#FFFFFF" : "#111111" }}>
+                      Summer Camp Training Program (CTC 5th Batch)
+                    </strong>
+                    <div style={{ color: isDark ? "#A0A0A0" : "#475569", fontStyle: "italic", marginTop: "2px" }}>
+                      Information Network Security Administration (INSA)
+                    </div>
+                  </div>
+                  <div className="font-mono" style={{ textAlign: "right", fontSize: "0.78rem", color: isDark ? "#888888" : "#64748B" }}>
+                    <div>07/2026 – 09/2026</div>
+                    <div>Addis Ababa, Ethiopia</div>
+                  </div>
                 </div>
+                <ul style={{ listStyleType: "disc", paddingLeft: "1.2rem", marginTop: "4px", fontSize: "0.84rem", lineHeight: 1.55, color: isDark ? "#CCCCCC" : "#334155" }}>
+                  <li>Completed an intensive three-month technical summer camp focused on technology and development.</li>
+                  <li>Received structured, hands-on training covering software development principles, network security fundamentals, and technical problem-solving.</li>
+                </ul>
               </div>
             </div>
 
@@ -2414,112 +2513,78 @@ GITHUB: https://github.com/oumersalah2-cmd`,
                   marginBottom: "8px",
                 }}
               >
-                SKILLS & TECHNICAL PROFICIENCIES
+                SKILLS
               </div>
-              <div style={{ fontSize: "0.86rem", lineHeight: 1.65, color: isDark ? "#CCCCCC" : "#334155" }}>
-                <div style={{ fontStyle: "italic", marginBottom: "0.4rem", color: isDark ? "#A0A0A0" : "#475569" }}>
-                  Full-Stack Development, Applied AI Systems, Offline-First Architecture, Concurrency & Fintech
-                </div>
-                <ul style={{ listStyleType: "disc", paddingLeft: "1.2rem", display: "grid", gap: "4px" }}>
-                  <li>
-                    <strong>Languages:</strong> TypeScript, JavaScript (ES6+), Python, Java, SQL, Dart, C/C++
-                  </li>
-                  <li>
-                    <strong>Frontend & Mobile:</strong> Next.js (App Router), React 19, Tailwind CSS, Telegram Mini Apps (TMA), Flutter, PWA
-                  </li>
-                  <li>
-                    <strong>Backend & APIs:</strong> Node.js, Express, Django, NestJS, Safaricom Daraja API (M-PESA), grammY / Telegram Bots, REST APIs
-                  </li>
-                  <li>
-                    <strong>Databases & Storage:</strong> PostgreSQL (ACID row locks), Supabase (pgvector), MongoDB Atlas, IndexedDB, SQLite3, Prisma ORM
-                  </li>
-                  <li>
-                    <strong>Applied AI & Optimization:</strong> Groq AI Vision (Llama 3.2 Vision), Prompt Engineering (Amharic & Afaan Oromoo), Mixed-Integer Optimization (MIT)
-                  </li>
-                  <li>
-                    <strong>Systems & DevOps:</strong> Ubuntu Linux 26.04 LTS, Docker, Git/GitHub, Vercel, Render, PythonAnywhere, INSA Kernel Audits & OWASP Security
-                  </li>
-                </ul>
-              </div>
-            </div>
 
-            {/* ── 4. LANGUAGES ──────────────────────────────────────────── */}
-            <div style={{ marginBottom: "1.4rem" }}>
-              <div
-                className="font-mono cv-section-rule"
-                style={{
-                  fontSize: "0.82rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  color: isDark ? "#FFFFFF" : "#111111",
-                  borderBottom: `1.5px solid ${isDark ? "#333333" : "#111111"}`,
-                  paddingBottom: "4px",
-                  marginBottom: "8px",
-                }}
-              >
-                LANGUAGES
+              {/* Core Skill Disciplines */}
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "0.75rem" }}>
+                {["Full-Stack Development", "Web Application Development", "E-commerce Websites"].map((item) => (
+                  <span
+                    key={item}
+                    className="font-mono"
+                    style={{
+                      fontSize: "0.72rem",
+                      fontWeight: 600,
+                      padding: "2px 8px",
+                      backgroundColor: isDark ? "rgba(255,255,255,0.06)" : "#F1F5F9",
+                      border: `1px solid ${isDark ? "#333" : "#E2E8F0"}`,
+                      color: isDark ? "#FFFFFF" : "#0F172A",
+                      borderRadius: "3px",
+                    }}
+                  >
+                    {item}
+                  </span>
+                ))}
               </div>
+
               <div
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-                  gap: "0.6rem 2.5rem",
-                  fontSize: "0.86rem",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+                  gap: "0.8rem 1.5rem",
+                  fontSize: "0.85rem",
+                  lineHeight: 1.6,
+                  color: isDark ? "#CCCCCC" : "#334155",
                 }}
               >
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                  <span>Oromic</span>
-                  <span style={{ display: "inline-flex", gap: "4px" }}>
-                    {[1, 2, 3, 4, 5].map((i) => (
-                      <span
-                        key={i}
-                        className={i <= 5 ? "cv-dot-filled" : "cv-dot-empty"}
-                        style={{ backgroundColor: i <= 5 ? (isDark ? accentHex : "#111111") : (isDark ? "#333333" : "#D1D5DB") }}
-                      />
-                    ))}
-                  </span>
+                <div>
+                  <div style={{ fontWeight: 700, color: isDark ? "#FFFFFF" : "#111111", marginBottom: "2px" }}>
+                    Languages
+                  </div>
+                  <div>JavaScript, TypeScript, Python, Java</div>
                 </div>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                  <span>English</span>
-                  <span style={{ display: "inline-flex", gap: "4px" }}>
-                    {[1, 2, 3, 4, 5].map((i) => (
-                      <span
-                        key={i}
-                        className={i <= 4 ? "cv-dot-filled" : "cv-dot-empty"}
-                        style={{ backgroundColor: i <= 4 ? (isDark ? accentHex : "#111111") : (isDark ? "#333333" : "#D1D5DB") }}
-                      />
-                    ))}
-                  </span>
+
+                <div>
+                  <div style={{ fontWeight: 700, color: isDark ? "#FFFFFF" : "#111111", marginBottom: "2px" }}>
+                    Frontend
+                  </div>
+                  <div>React, Next.js, Tailwind CSS</div>
                 </div>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                  <span>Amharic</span>
-                  <span style={{ display: "inline-flex", gap: "4px" }}>
-                    {[1, 2, 3, 4, 5].map((i) => (
-                      <span
-                        key={i}
-                        className={i <= 4 ? "cv-dot-filled" : "cv-dot-empty"}
-                        style={{ backgroundColor: i <= 4 ? (isDark ? accentHex : "#111111") : (isDark ? "#333333" : "#D1D5DB") }}
-                      />
-                    ))}
-                  </span>
+
+                <div>
+                  <div style={{ fontWeight: 700, color: isDark ? "#FFFFFF" : "#111111", marginBottom: "2px" }}>
+                    Backend
+                  </div>
+                  <div>Node.js, Express, Django, NestJS, REST APIs</div>
                 </div>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                  <span>Arabic</span>
-                  <span style={{ display: "inline-flex", gap: "4px" }}>
-                    {[1, 2, 3, 4, 5].map((i) => (
-                      <span
-                        key={i}
-                        className={i <= 2 ? "cv-dot-filled" : "cv-dot-empty"}
-                        style={{ backgroundColor: i <= 2 ? (isDark ? accentHex : "#111111") : (isDark ? "#333333" : "#D1D5DB") }}
-                      />
-                    ))}
-                  </span>
+
+                <div>
+                  <div style={{ fontWeight: 700, color: isDark ? "#FFFFFF" : "#111111", marginBottom: "2px" }}>
+                    Databases
+                  </div>
+                  <div>PostgreSQL, MongoDB</div>
+                </div>
+
+                <div style={{ gridColumn: "1 / -1" }}>
+                  <div style={{ fontWeight: 700, color: isDark ? "#FFFFFF" : "#111111", marginBottom: "2px" }}>
+                    Applied Artificial Intelligence
+                  </div>
+                  <div>LLM Integration (Groq, Llama), Computer Vision Applications, AI API Implementation, Prompt Engineering</div>
                 </div>
               </div>
             </div>
 
-            {/* ── 5. CERTIFICATES ───────────────────────────────────────── */}
+            {/* ── 4. CERTIFICATES ───────────────────────────────────────── */}
             <div style={{ marginBottom: "1.4rem" }}>
               <div
                 className="font-mono cv-section-rule"
@@ -2540,45 +2605,42 @@ GITHUB: https://github.com/oumersalah2-cmd`,
                 style={{
                   display: "grid",
                   gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-                  gap: "0.55rem 1.5rem",
+                  gap: "0.8rem 1.5rem",
                   fontSize: "0.85rem",
                   color: isDark ? "#CCCCCC" : "#334155",
                 }}
               >
                 <div>
-                  • <strong>Programming Fundamentals</strong>{" "}
-                  <span className="font-mono" style={{ fontSize: "0.74rem", color: isDark ? "#888888" : "#64748B" }}>
-                    (Udacity)
-                  </span>
+                  <strong style={{ color: isDark ? "#FFFFFF" : "#111111" }}>Programming Fundamentals</strong>
                 </div>
+
                 <div>
-                  • <strong>Android Developer Fundamentals</strong>{" "}
-                  <span className="font-mono" style={{ fontSize: "0.74rem", color: isDark ? "#888888" : "#64748B" }}>
-                    (Udacity)
-                  </span>
+                  <strong style={{ color: isDark ? "#FFFFFF" : "#111111" }}>Android Developer Fundamentals</strong>
                 </div>
+
                 <div>
-                  • <strong>Introduction to Universal AI</strong>{" "}
-                  <span className="font-mono" style={{ fontSize: "0.74rem", color: isDark ? "#888888" : "#64748B" }}>
-                    (MIT Open Learning)
-                  </span>
+                  <div>
+                    <strong style={{ color: isDark ? "#FFFFFF" : "#111111" }}>Introduction to Universal AI</strong>{" "}
+                    <span style={{ fontSize: "0.75rem", color: accentHex }}>🔗</span>
+                  </div>
+                  <div style={{ fontSize: "0.82rem", color: isDark ? "#A0A0A0" : "#475569", marginTop: "2px" }}>
+                    Certificate in Introduction to Universal AI | MIT Open Learning (October 2026)
+                  </div>
                 </div>
+
                 <div>
-                  • <strong>National Ethio Cyber Talent Summer Camp Graduate</strong>{" "}
-                  <span className="font-mono" style={{ fontSize: "0.74rem", color: isDark ? "#888888" : "#64748B" }}>
-                    (INSA Cyber Talent)
-                  </span>
-                </div>
-                <div>
-                  • <strong>Software Engineering Internship</strong>{" "}
-                  <span className="font-mono" style={{ fontSize: "0.74rem", color: isDark ? "#888888" : "#64748B" }}>
-                    (Sof Omar Technologies)
-                  </span>
+                  <div>
+                    <strong style={{ color: isDark ? "#FFFFFF" : "#111111" }}>Full-Stack Software Engineering Internship</strong>{" "}
+                    <span style={{ fontSize: "0.75rem", color: accentHex }}>🔗</span>
+                  </div>
+                  <div style={{ fontSize: "0.82rem", color: isDark ? "#A0A0A0" : "#475569", marginTop: "2px", lineHeight: 1.5 }}>
+                    Developed SmartBiz ERP Lite, an offline-first Progressive Web Application for business pricing and inventory management using Next.js, NestJS, and PostgreSQL.
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* ── 6. PROJECTS ───────────────────────────────────────────── */}
+            {/* ── 5. LANGUAGES ──────────────────────────────────────────── */}
             <div style={{ marginBottom: "1.4rem" }}>
               <div
                 className="font-mono cv-section-rule"
@@ -2593,186 +2655,80 @@ GITHUB: https://github.com/oumersalah2-cmd`,
                   marginBottom: "8px",
                 }}
               >
-                PROJECTS
+                LANGUAGES
               </div>
-              <div style={{ display: "grid", gap: "1rem", fontSize: "0.86rem" }}>
-                {/* AmanaTrade */}
-                <div>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "6px" }}>
-                    <div>
-                      <strong style={{ fontSize: "0.92rem", color: isDark ? "#FFFFFF" : "#111111" }}>
-                        AmanaTrade
-                      </strong>
-                      <a
-                        href="https://github.com/oumersalah2-cmd/Amana-Trading-"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="font-mono"
-                        style={{ marginLeft: "8px", fontSize: "0.74rem", color: accentHex, textDecoration: "underline" }}
-                      >
-                        github.com/oumersalah2-cmd/Amana-Trading- ↗
-                      </a>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+                  gap: "0.5rem 1.5rem",
+                  fontSize: "0.86rem",
+                  color: isDark ? "#FFFFFF" : "#111111",
+                }}
+              >
+                <div>• Oromic</div>
+                <div>• English</div>
+                <div>• Amharic</div>
+                <div>• Arabic</div>
+              </div>
+            </div>
+
+            {/* ── 6. COURSES ────────────────────────────────────────────── */}
+            <div style={{ marginBottom: "1.4rem" }}>
+              <div
+                className="font-mono cv-section-rule"
+                style={{
+                  fontSize: "0.82rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  color: isDark ? "#FFFFFF" : "#111111",
+                  borderBottom: `1.5px solid ${isDark ? "#333333" : "#111111"}`,
+                  paddingBottom: "4px",
+                  marginBottom: "8px",
+                }}
+              >
+                COURSES
+              </div>
+
+              {/* MIT Open Learning */}
+              <div style={{ marginBottom: "0.9rem" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "8px", fontSize: "0.86rem" }}>
+                  <div>
+                    <strong style={{ fontSize: "0.92rem", color: isDark ? "#FFFFFF" : "#111111" }}>
+                      Introduction to Universal AI
+                    </strong>
+                    <div style={{ color: isDark ? "#A0A0A0" : "#475569", fontStyle: "italic", marginTop: "2px" }}>
+                      MIT Open Learning
                     </div>
-                    <span className="font-mono" style={{ fontSize: "0.76rem", color: isDark ? "#888888" : "#64748B" }}>
-                      09/2026 – Present
-                    </span>
                   </div>
-                  <p style={{ marginTop: "3px", lineHeight: 1.55, color: isDark ? "#CCCCCC" : "#334155" }}>
-                    Built an offline-first B2B platform designed to digitize supply chains and drive M-PESA adoption for wholesale transactions across Ethiopia. Features milestone escrow holding capital until delivery, automated settlement, and Safaricom Daraja API integration.
-                  </p>
-                  <div className="font-mono" style={{ fontSize: "0.72rem", color: isDark ? "#888888" : "#64748B", marginTop: "2px" }}>
-                    Stack: Next.js, Node.js, TypeScript, Safaricom Daraja API (M-PESA), Offline-First Architecture
+                  <div className="font-mono" style={{ textAlign: "right", fontSize: "0.78rem", color: isDark ? "#888888" : "#64748B" }}>
+                    <div>2026 – Present</div>
+                    <div>Online</div>
                   </div>
                 </div>
+                <ul style={{ listStyleType: "disc", paddingLeft: "1.2rem", marginTop: "4px", fontSize: "0.84rem", lineHeight: 1.55, color: isDark ? "#CCCCCC" : "#334155" }}>
+                  <li>Completed foundational modules covering artificial intelligence theories, concepts, and problem-solving approaches.</li>
+                  <li>Gained practical knowledge in Large Language Models, Deep Learning, and Generative AI.</li>
+                  <li>Learned to interpret AI outputs and evaluate AI applications across real-world contexts.</li>
+                </ul>
+              </div>
 
-                {/* SmartBiz ERP Lite */}
-                <div>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "6px" }}>
-                    <div>
-                      <strong style={{ fontSize: "0.92rem", color: isDark ? "#FFFFFF" : "#111111" }}>
-                        SmartBiz ERP Lite
-                      </strong>
-                      <span className="font-mono" style={{ marginLeft: "8px", fontSize: "0.74rem", color: isDark ? "#888888" : "#64748B" }}>
-                        Offline-First Enterprise State & POS Engine
-                      </span>
+              {/* Nexus Tutorial */}
+              <div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "8px", fontSize: "0.86rem" }}>
+                  <div>
+                    <strong style={{ fontSize: "0.92rem", color: isDark ? "#FFFFFF" : "#111111" }}>
+                      Software Development and Competitive Programming (DSA)
+                    </strong>
+                    <div style={{ color: isDark ? "#A0A0A0" : "#475569", fontStyle: "italic", marginTop: "2px" }}>
+                      Nexus Tutorial
                     </div>
-                    <span className="font-mono" style={{ fontSize: "0.76rem", color: isDark ? "#888888" : "#64748B" }}>
-                      Production Architecture
-                    </span>
                   </div>
-                  <p style={{ marginTop: "3px", lineHeight: 1.55, color: isDark ? "#CCCCCC" : "#334155" }}>
-                    • 100% local-first PWA with client-side IndexedDB mutations and deterministic vector-clock sync eliminating transaction dropouts during power cuts.
-                  </p>
-                </div>
-
-                {/* Tutor Marketplace (LAMIF) */}
-                <div>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "6px" }}>
-                    <div>
-                      <strong style={{ fontSize: "0.92rem", color: isDark ? "#FFFFFF" : "#111111" }}>
-                        Tutor Marketplace (LAMIF)
-                      </strong>
-                      <a
-                        href="https://lamif-platform.vercel.app"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="font-mono"
-                        style={{ marginLeft: "8px", fontSize: "0.74rem", color: accentHex, textDecoration: "underline" }}
-                      >
-                        lamif-platform.vercel.app ↗
-                      </a>
-                    </div>
-                    <span className="font-mono" style={{ fontSize: "0.76rem", color: isDark ? "#888888" : "#64748B" }}>
-                      02/2026 – 03/2026
-                    </span>
+                  <div className="font-mono" style={{ textAlign: "right", fontSize: "0.78rem", color: isDark ? "#888888" : "#64748B" }}>
+                    <div>10/2025 – 01/2026</div>
+                    <div>Addis Ababa, Ethiopia</div>
                   </div>
-                  <p style={{ marginTop: "3px", lineHeight: 1.55, color: isDark ? "#CCCCCC" : "#334155" }}>
-                    Built a comprehensive student-instructor platform featuring complex booking and matching logic, developed using React, Node.js, and MongoDB.
-                  </p>
-                </div>
-
-                {/* Ethio Bucks */}
-                <div>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "6px" }}>
-                    <div>
-                      <strong style={{ fontSize: "0.92rem", color: isDark ? "#FFFFFF" : "#111111" }}>
-                        Ethio Bucks
-                      </strong>
-                      <a
-                        href="http://abdusalam.pythonanywhere.com"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="font-mono"
-                        style={{ marginLeft: "8px", fontSize: "0.74rem", color: accentHex, textDecoration: "underline" }}
-                      >
-                        abdusalam.pythonanywhere.com ↗
-                      </a>
-                    </div>
-                    <span className="font-mono" style={{ fontSize: "0.76rem", color: isDark ? "#888888" : "#64748B" }}>
-                      10/2025 – 01/2026
-                    </span>
-                  </div>
-                  <p style={{ marginTop: "3px", lineHeight: 1.55, color: isDark ? "#CCCCCC" : "#334155" }}>
-                    Developed a transaction-heavy financial backend built for scale and reliability. Deployed the system utilizing Django and PostgreSQL with strict row-level ACID locks (`SELECT FOR UPDATE`).
-                  </p>
-                </div>
-
-                {/* AAU Café Management System */}
-                <div>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "6px" }}>
-                    <div>
-                      <strong style={{ fontSize: "0.92rem", color: isDark ? "#FFFFFF" : "#111111" }}>
-                        AAU Café Management System (CampusTrack)
-                      </strong>
-                      <a
-                        href="https://addis-ababa-university-cafe-management.onrender.com/"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="font-mono"
-                        style={{ marginLeft: "8px", fontSize: "0.74rem", color: accentHex, textDecoration: "underline" }}
-                      >
-                        Live Portal ↗
-                      </a>
-                    </div>
-                    <span className="font-mono" style={{ fontSize: "0.76rem", color: isDark ? "#888888" : "#64748B" }}>
-                      04/2026 – 04/2026
-                    </span>
-                  </div>
-                  <p style={{ marginTop: "3px", lineHeight: 1.55, color: isDark ? "#CCCCCC" : "#334155" }}>
-                    • Engineered a real-time campus ordering system utilizing JavaScript and PostgreSQL. Automates 3,000 ETB/mo dining stipend custody with database uniqueness constraints preventing duplicate claims.
-                  </p>
-                </div>
-
-                {/* Gebere Vision AI */}
-                <div>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "6px" }}>
-                    <div>
-                      <strong style={{ fontSize: "0.92rem", color: isDark ? "#FFFFFF" : "#111111" }}>
-                        Gebere Vision AI
-                      </strong>
-                      <a
-                        href="https://t.me/gebere_vision_bot"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="font-mono"
-                        style={{ marginLeft: "8px", fontSize: "0.74rem", color: accentHex, textDecoration: "underline" }}
-                      >
-                        t.me/gebere_vision_bot ↗
-                      </a>
-                    </div>
-                    <span className="font-mono" style={{ fontSize: "0.76rem", color: isDark ? "#888888" : "#64748B" }}>
-                      07/2026 – Present
-                    </span>
-                  </div>
-                  <p style={{ marginTop: "3px", lineHeight: 1.55, color: isDark ? "#CCCCCC" : "#334155" }}>
-                    • Selected for the METI-Funded UniPods AI Programme. Multilingual crop diagnostic bot powered by Groq Llama 3.2 Vision in Amharic & Afaan Oromoo, returning localized remedies in native scripts.
-                  </p>
-                </div>
-
-                {/* Ace-Ifa-Boru */}
-                <div>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "6px" }}>
-                    <div>
-                      <strong style={{ fontSize: "0.92rem", color: isDark ? "#FFFFFF" : "#111111" }}>
-                        Ace-Ifa-Boru
-                      </strong>
-                      <a
-                        href="https://ace-ifa-boru-frontend.vercel.app"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="font-mono"
-                        style={{ marginLeft: "8px", fontSize: "0.74rem", color: accentHex, textDecoration: "underline" }}
-                      >
-                        ace-ifa-boru-frontend.vercel.app ↗
-                      </a>
-                    </div>
-                    <span className="font-mono" style={{ fontSize: "0.76rem", color: isDark ? "#888888" : "#64748B" }}>
-                      08/2026 – Present
-                    </span>
-                  </div>
-                  <p style={{ marginTop: "3px", lineHeight: 1.55, color: isDark ? "#CCCCCC" : "#334155" }}>
-                    • Native Telegram Mini App (TMA) secondary exam preparation platform with Next.js 14, Express, grammY bot, Prisma ORM, and anti-leak content protection.
-                  </p>
                 </div>
               </div>
             </div>
@@ -2792,19 +2748,22 @@ GITHUB: https://github.com/oumersalah2-cmd`,
                   marginBottom: "8px",
                 }}
               >
-                CONTINUOUS DEVELOPMENT
+                CUSTOM
               </div>
               <div>
-                <strong style={{ fontSize: "0.9rem", color: isDark ? "#FFFFFF" : "#111111", display: "block", marginBottom: "4px" }}>
-                  Competitive Programming & Algorithm Optimization
+                <strong style={{ fontSize: "0.9rem", color: isDark ? "#FFFFFF" : "#111111", display: "block", marginBottom: "2px" }}>
+                  Continuous Development
                 </strong>
+                <div style={{ fontSize: "0.84rem", fontStyle: "italic", color: isDark ? "#A0A0A0" : "#475569", marginBottom: "6px" }}>
+                  Competitive Programming & Algorithm Optimization
+                </div>
                 <p style={{ fontSize: "0.86rem", lineHeight: 1.65, color: isDark ? "#CCCCCC" : "#334155" }}>
                   Maintain a rigorous daily practice of solving complex data structure and algorithmic challenges across LeetCode, Codeforces, and HackerRank. This consistent discipline ensures that writing highly optimized, structurally sound, and efficient code is a foundational habit, directly translating into faster and more reliable production systems.
                 </p>
               </div>
             </div>
 
-            {/* ── 8. COURSES ────────────────────────────────────────────── */}
+            {/* ── 8. PROJECTS ───────────────────────────────────────────── */}
             <div style={{ marginBottom: "1.2rem" }}>
               <div
                 className="font-mono cv-section-rule"
@@ -2819,20 +2778,75 @@ GITHUB: https://github.com/oumersalah2-cmd`,
                   marginBottom: "8px",
                 }}
               >
-                COURSES
+                PROJECTS
               </div>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "8px", fontSize: "0.86rem" }}>
+
+              <div style={{ display: "grid", gap: "1rem", fontSize: "0.86rem" }}>
+                {/* Gebere Vision AI */}
                 <div>
-                  <strong style={{ fontSize: "0.9rem", color: isDark ? "#FFFFFF" : "#111111" }}>
-                    Software Development and Competitive Programming (DSA)
-                  </strong>
-                  <div style={{ color: isDark ? "#A0A0A0" : "#475569", fontStyle: "italic", marginTop: "2px" }}>
-                    Nexus Tutorial
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "6px" }}>
+                    <div>
+                      <strong style={{ fontSize: "0.92rem", color: isDark ? "#FFFFFF" : "#111111" }}>
+                        Gebere Vision AI
+                      </strong>
+                    </div>
+                    <span className="font-mono" style={{ fontSize: "0.76rem", color: isDark ? "#888888" : "#64748B" }}>
+                      2025 – Present
+                    </span>
                   </div>
+                  <div style={{ fontSize: "0.84rem", fontStyle: "italic", color: isDark ? "#A0A0A0" : "#475569", marginTop: "1px", marginBottom: "4px" }}>
+                    AI-Powered Agricultural Diagnosis Platform & Telegram Bot
+                  </div>
+                  <ul style={{ listStyleType: "disc", paddingLeft: "1.2rem", display: "grid", gap: "4px", lineHeight: 1.55, color: isDark ? "#CCCCCC" : "#334155" }}>
+                    <li>Engineered a live AI-powered Telegram bot providing instant crop disease diagnosis with multilingual support for Amharic, Afaan Oromoo, English, and Arabic.</li>
+                    <li>Integrated Groq AI's llama-4-scout-17b vision models for high-speed image analysis, building a scalable backend with Node.js, Express, and Supabase PostgreSQL.</li>
+                    <li>Implemented a Human-in-the-Loop verification network to ensure diagnostic accuracy and deployed the full system via Railway cloud hosting.</li>
+                  </ul>
                 </div>
-                <div className="font-mono" style={{ textAlign: "right", fontSize: "0.78rem", color: isDark ? "#888888" : "#64748B" }}>
-                  <div>10/2025 – 01/2026</div>
-                  <div>Addis Ababa, Ethiopia</div>
+
+                {/* AAU Café Management System */}
+                <div>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "6px" }}>
+                    <strong style={{ fontSize: "0.92rem", color: isDark ? "#FFFFFF" : "#111111" }}>
+                      AAU Café Management System
+                    </strong>
+                    <span className="font-mono" style={{ fontSize: "0.76rem", color: isDark ? "#888888" : "#64748B" }}>
+                      04/2026 – 04/2026
+                    </span>
+                  </div>
+                  <p style={{ marginTop: "3px", lineHeight: 1.55, color: isDark ? "#CCCCCC" : "#334155" }}>
+                    Engineered a real-time campus ordering system utilizing JavaScript and PostgreSQL.
+                  </p>
+                </div>
+
+                {/* Tutor Marketplace */}
+                <div>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "6px" }}>
+                    <strong style={{ fontSize: "0.92rem", color: isDark ? "#FFFFFF" : "#111111" }}>
+                      Tutor Marketplace
+                    </strong>
+                    <span className="font-mono" style={{ fontSize: "0.76rem", color: isDark ? "#888888" : "#64748B" }}>
+                      02/2026 – 03/2026
+                    </span>
+                  </div>
+                  <p style={{ marginTop: "3px", lineHeight: 1.55, color: isDark ? "#CCCCCC" : "#334155" }}>
+                    Built a comprehensive student-instructor platform featuring complex booking and matching logic, developed using React, Node.js, and MongoDB.
+                  </p>
+                </div>
+
+                {/* Ethio Bucks */}
+                <div>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "6px" }}>
+                    <strong style={{ fontSize: "0.92rem", color: isDark ? "#FFFFFF" : "#111111" }}>
+                      Ethio Bucks
+                    </strong>
+                    <span className="font-mono" style={{ fontSize: "0.76rem", color: isDark ? "#888888" : "#64748B" }}>
+                      10/2025 – 01/2026
+                    </span>
+                  </div>
+                  <p style={{ marginTop: "3px", lineHeight: 1.55, color: isDark ? "#CCCCCC" : "#334155" }}>
+                    Developed a transaction-heavy financial backend built for scale and reliability. Deployed the system utilizing Django and PostgreSQL.
+                  </p>
                 </div>
               </div>
             </div>
@@ -2852,15 +2866,32 @@ GITHUB: https://github.com/oumersalah2-cmd`,
               }}
             >
               <span className="font-mono" style={{ fontSize: "0.74rem", color: isDark ? "#888888" : "#64748B" }}>
-                Verified Official Resume · Abdusalam Oumer Aman
+                Verified Official Resume · FlowCV Edition · Abdusalam Oumer Aman
               </span>
-              <div style={{ display: "flex", gap: "8px" }}>
+              <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+                <a
+                  href={PROFILE.cvUrl}
+                  download="Abdusalam_Oumer_Aman_FlowCV_Resume.pdf"
+                  className="btn-action"
+                  style={{ padding: "6px 14px", fontSize: "0.75rem", textDecoration: "none" }}
+                >
+                  📥 Download PDF
+                </a>
+                <a
+                  href={PROFILE.cvUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-action-ghost"
+                  style={{ padding: "6px 14px", fontSize: "0.75rem", textDecoration: "none" }}
+                >
+                  ↗ Open PDF
+                </a>
                 <button
                   onClick={() => window.print()}
-                  className="btn-action"
+                  className="btn-action-ghost"
                   style={{ padding: "6px 14px", fontSize: "0.75rem" }}
                 >
-                  🖨️ Print / Save PDF
+                  🖨️ Print
                 </button>
                 <button
                   onClick={() => setCvModalOpen(false)}
