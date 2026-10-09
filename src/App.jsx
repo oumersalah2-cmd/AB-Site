@@ -3,10 +3,14 @@ import { useState, useEffect, useRef } from "react";
 // ── BRAND & CORE METADATA ──────────────────────────────────────────────
 const PROFILE = {
   name: "Abdusalam Oumer Aman",
-  handle: "oumersalah2",
+  handle: "oumersalah2-cmd",
   title: "Software Engineering at AAU · INSA Cyber Talent Graduate · Applied AI Founder",
+  headline: "Full-Stack Engineer | Specialized in Production-Ready Systems",
   heroPunchline: "Building localized, production-ready AI systems for Ethiopian infrastructure.",
   email: "oumersalah2@gmail.com",
+  phone: "+251934978247",
+  birthDate: "May 21, 2006",
+  portfolioUrl: "https://ab-site-tawny.vercel.app/",
   github: "https://github.com/oumersalah2-cmd",
   upwork: "https://www.upwork.com/freelancers/~01d02c68660140f622",
   twitter: "https://x.com/titanic66834",
@@ -19,12 +23,13 @@ const PROFILE = {
   securityTraining: "INSA National Cyber Talent Camp Graduate",
 };
 
-// ── 4 CLEAR PORTFOLIO PAGES / SECTIONS ────────────────────────────────
+// ── 5 CLEAR PORTFOLIO PAGES / SECTIONS ────────────────────────────────
 const NAV_ITEMS = [
   { id: "profile", label: "01. Profile & Manifesto" },
   { id: "projects", label: "02. Selected Projects" },
-  { id: "credentials", label: "03. Foundations & Certs" },
-  { id: "contact", label: "04. Connect & CV" },
+  { id: "stack", label: "03. Tech Stack" },
+  { id: "credentials", label: "04. Foundations & Certs" },
+  { id: "contact", label: "05. Connect & CV" },
 ];
 
 // ── COMPREHENSIVE CREDENTIALS & CERTIFICATIONS (5 IN PLACE) ───────────
@@ -32,12 +37,12 @@ const CREDENTIALS_AND_CERTS = [
   {
     id: "mit-ai",
     badge: "AI FLUENCY // APPLIED OPTIMIZATION",
-    title: "Introduction to Universal AI",
+    title: "Introduction to Universal AI (Completed) & Ongoing Applied AI Studies",
     authority: "MIT Open Learning",
-    date: "Completed Oct 7, 2026",
+    date: "Completed Oct 7, 2026 · Ongoing Studies",
     sponsor: "Prof. Dimitris Bertsimas (MIT Vice Provost for Open Learning & Boeing Professor of Operations Research)",
     summary:
-      "Mathematical optimization, mixed-integer formulations, transformer architectures, and applied operations research for resource allocation.",
+      "Mathematical optimization, mixed-integer formulations, transformer architectures, and applied operations research for resource allocation. Introduction completed, currently pursuing applied AI extensions.",
     skills: ["Decision Algorithms", "Transformer Architectures", "Combinatorial Optimization", "Operations Research"],
   },
   {
@@ -54,7 +59,7 @@ const CREDENTIALS_AND_CERTS = [
   {
     id: "aau-se",
     badge: "ACADEMIC CORE // ADDIS ABABA UNIVERSITY",
-    title: "B.Sc. in Software Engineering (Year 3)",
+    title: "B.Sc. in Software Engineering (Year 3 / Junior)",
     authority: "Addis Ababa University (AAU)",
     date: "2022 – Present (Junior Standing)",
     sponsor: "School of Information Technology & Engineering",
@@ -109,6 +114,31 @@ const PRODUCTS = [
     githubUrl: "https://github.com/oumersalah2-cmd/gebere-vision-ai",
   },
   {
+    id: "amanatrade",
+    title: "AmanaTrade",
+    subhead: "Offline-First B2B Escrow & Wholesale Platform",
+    role: "Full-Stack Architect",
+    recognition: "B2B Supply Chain & M-PESA Wholesale",
+    languages: "Amharic & English UX",
+    status: "Active Architecture",
+    brief:
+      "Offline-first B2B platform designed to digitize supply chains and drive M-PESA adoption for wholesale transactions across Ethiopia. Solves regional counterparty trust deficits and unstable internet connectivity through milestone-based escrow, automated transaction settlements, and Safaricom Daraja API integration.",
+    stack: [
+      "Next.js",
+      "Node.js",
+      "TypeScript",
+      "Safaricom Daraja API",
+      "M-PESA Integration",
+      "Offline-First Architecture",
+    ],
+    metrics: [
+      { label: "Trust Engine", value: "Milestone Escrow" },
+      { label: "Payment Rail", value: "Safaricom Daraja API (M-PESA)" },
+      { label: "Fault-Tolerance", value: "Offline-First Architecture" },
+    ],
+    githubUrl: "https://github.com/oumersalah2-cmd/Amana-Trading-",
+  },
+  {
     id: "smartbiz-erp",
     title: "SmartBiz ERP Lite",
     subhead: "Offline-First Enterprise State & POS Engine",
@@ -126,6 +156,54 @@ const PRODUCTS = [
     ],
     demoUrl: null,
     demoLabel: null,
+    githubUrl: "https://github.com/oumersalah2-cmd",
+  },
+  {
+    id: "ace-ifa-boru",
+    title: "Ace-Ifa-Boru",
+    subhead: "Premium Telegram Mini App (TMA) & Exam Prep Platform",
+    role: "Full-Stack Engineer & Bot Architect",
+    recognition: "Native Telegram Mini App (TMA)",
+    languages: "Afaan Oromoo & English UX",
+    status: "Production Live",
+    brief:
+      "Production-ready secondary school exam preparation platform built as a native Telegram Mini App (TMA). Features responsive Oromo-centric UI, anti-leak content and screenshot protection, practice vs timed exam modes, and subscription verification via Telegram bot admin commands.",
+    stack: [
+      "Next.js 14",
+      "Telegram Mini App SDK",
+      "TypeScript",
+      "Express",
+      "grammY",
+      "Prisma ORM",
+      "PostgreSQL (Supabase)",
+    ],
+    metrics: [
+      { label: "Platform", value: "Native Telegram Mini App (TMA)" },
+      { label: "Security", value: "Anti-Leak Content Protection" },
+      { label: "Database", value: "PostgreSQL on Supabase" },
+    ],
+    demoUrl: "https://ace-ifa-boru-frontend.vercel.app",
+    demoLabel: "Launch TMA Platform ↗",
+    githubUrl: "https://github.com/oumersalah2-cmd/Ace-Ifa-Boru",
+  },
+  {
+    id: "lamif-platform",
+    title: "LAMIF Educational Platform",
+    subhead: "Full-Stack Tutor Marketplace & Monorepo Platform",
+    role: "Full-Stack Engineer",
+    recognition: "Live Monorepo Production Platform",
+    languages: "English, Amharic UX",
+    status: "Production Live",
+    brief:
+      "Full-stack monorepo platform connecting students with qualified tutors. Features role-based JWT auth, CV uploads, and session booking.",
+    stack: ["React 19 (Vite)", "Node.js", "Express", "MongoDB Atlas", "Render", "Vercel"],
+    metrics: [
+      { label: "Architecture", value: "Full-stack Monorepo" },
+      { label: "Security Flow", value: "Role-Based JWT Auth" },
+      { label: "Production", value: "Vercel Client + Render API" },
+    ],
+    demoUrl: "https://lamif-platform.vercel.app",
+    demoLabel: "Live Platform ↗",
     githubUrl: "https://github.com/oumersalah2-cmd",
   },
   {
@@ -170,14 +248,117 @@ const PRODUCTS = [
   },
 ];
 
+// ── COMPREHENSIVE TECH STACK & PRODUCTION CAPABILITIES ─────────────────
+const TECH_STACK_DATA = [
+  {
+    id: "languages",
+    category: "Languages & Core Runtimes",
+    code: "01 // RUNTIMES",
+    badge: "Production Daily",
+    description:
+      "Core programming languages utilized for high-throughput server backbones, web client logic, and daily algorithmic problem-solving.",
+    skills: [
+      { name: "TypeScript", level: "Primary", badge: "Production", context: "Next.js 14, NestJS, Node microservices & TMA SDK" },
+      { name: "JavaScript (ES6+)", level: "Primary", badge: "Production", context: "Full-stack apps, Vite, DOM interaction engines" },
+      { name: "Python", level: "Primary", badge: "Production", context: "Django REST APIs, AI pipeline scripts, daily LeetCode DSA" },
+      { name: "Java", level: "Proficient", badge: "Core OOP", context: "Object-oriented software architecture & Android fundamentals" },
+      { name: "SQL", level: "Primary", badge: "Production", context: "Relational queries, index tuning, ACID transaction locks" },
+      { name: "Dart", level: "Proficient", badge: "Production", context: "Cross-platform mobile apps (Sof Omar Technologies)" },
+      { name: "C / C++", level: "Applied", badge: "Academic", context: "Low-level memory decomposition & DSA foundations (AAU)" },
+    ],
+  },
+  {
+    id: "frontend",
+    category: "Frontend & Mobile Interfaces",
+    code: "02 // CLIENT & INTERFACES",
+    badge: "High-Performance UI",
+    description:
+      "Client-side frameworks and rendering engines engineered for sub-second responsiveness, offline-first execution, and mobile UX.",
+    skills: [
+      { name: "Next.js (App Router)", level: "Primary", badge: "Production", context: "AmanaTrade, Ace-Ifa-Boru, SSR & server actions" },
+      { name: "React 19 / React", level: "Primary", badge: "Production", context: "Component architectures, reactive hooks, SPA/PWA" },
+      { name: "Tailwind CSS", level: "Proficient", badge: "Production", context: "Utility-first design systems & responsive layouts" },
+      { name: "Progressive Web Apps (PWA)", level: "Primary", badge: "Production", context: "SmartBiz ERP 100% offline-first local installs" },
+      { name: "Telegram Mini Apps (TMA SDK)", level: "Primary", badge: "Production", context: "Native Telegram exam platform (Ace-Ifa-Boru)" },
+      { name: "Flutter", level: "Proficient", badge: "Production", context: "Cross-platform mobile client shipping (Sof Omar)" },
+      { name: "Vanilla CSS & HTML5", level: "Primary", badge: "Production", context: "Bespoke styling, layout engines & micro-interactions" },
+    ],
+  },
+  {
+    id: "backend",
+    category: "Backend, APIs & Distributed Rails",
+    code: "03 // BACKEND & CONCURRENCY",
+    badge: "ACID & Concurrency",
+    description:
+      "High-concurrency server architectures, transaction isolation layers, and African fintech payment clearing rails.",
+    skills: [
+      { name: "Node.js & Express", level: "Primary", badge: "Production", context: "High-throughput microservices, AAU Café, LAMIF" },
+      { name: "Django (Python)", level: "Primary", badge: "Production", context: "Fintech task ledger, row-level locks (Ethio Bucks)" },
+      { name: "NestJS (TypeScript)", level: "Proficient", badge: "Production", context: "Enterprise architecture & modular service layers" },
+      { name: "Safaricom Daraja API", level: "Primary", badge: "Fintech Rail", context: "M-PESA wholesale escrow & automated clearing (AmanaTrade)" },
+      { name: "Telegram Bot API / grammY", level: "Primary", badge: "Production", context: "Gebere Vision AI bot & exam engine backends" },
+      { name: "RESTful Architecture", level: "Primary", badge: "Production", context: "Strict contracts, JWT bearer token auth & rate limits" },
+      { name: "Vector Clocks & Offline Sync", level: "Specialized", badge: "Production", context: "Deterministic conflict-free multi-client reconciliation" },
+    ],
+  },
+  {
+    id: "databases",
+    category: "Databases, Ledgers & Persistence",
+    code: "04 // PERSISTENCE & ACID",
+    badge: "Zero-Data-Loss",
+    description:
+      "Storage engines configured for strict transaction isolation, low latency, and deterministic offline caching during power outages.",
+    skills: [
+      { name: "PostgreSQL", level: "Primary", badge: "Production", context: "ACID row locks (`SELECT FOR UPDATE`), constraints, indexes" },
+      { name: "Supabase & pgvector", level: "Primary", badge: "Production", context: "Vector embeddings similarity search & managed Postgres" },
+      { name: "MongoDB Atlas", level: "Proficient", badge: "Production", context: "Document storage & aggregation pipelines (LAMIF Platform)" },
+      { name: "IndexedDB", level: "Specialized", badge: "Production", context: "100% local client storage for offline PWA resilience" },
+      { name: "SQLite3", level: "Proficient", badge: "Production", context: "Embedded local transactional storage (AAU Café)" },
+      { name: "Prisma ORM", level: "Primary", badge: "Production", context: "Type-safe migrations, queries & schema relations" },
+    ],
+  },
+  {
+    id: "ai",
+    category: "Applied AI, Machine Vision & Optimization",
+    code: "05 // AI & OPTIMIZATION",
+    badge: "Sub-800ms Inference",
+    description:
+      "Production AI vision inference pipelines and operations research optimization models grounded in African real-world constraints.",
+    skills: [
+      { name: "Groq AI Vision API", level: "Primary", badge: "Production", context: "Sub-800ms Llama 3.2 Vision inference for crop pathology" },
+      { name: "Multilingual Prompt Engineering", level: "Primary", badge: "Production", context: "Domain-grounded reasoning in Amharic & Afaan Oromoo" },
+      { name: "Mathematical Optimization", level: "Specialized", badge: "MIT Validated", context: "Mixed-integer programming & operations research (MIT Bertsimas)" },
+      { name: "Transformer Architectures", level: "Applied", badge: "MIT Validated", context: "Attention mechanisms & vision-language representations" },
+      { name: "Vector Search & RAG", level: "Primary", badge: "Production", context: "Agronomy disease knowledge retrieval via pgvector" },
+    ],
+  },
+  {
+    id: "devops",
+    category: "DevOps, Security & Systems Rigor",
+    code: "06 // SYSTEMS & SECURITY",
+    badge: "Hardened & Deployed",
+    description:
+      "Defensive cybersecurity training from INSA National Cyber Talent Camp combined with automated cloud deployment workflows.",
+    skills: [
+      { name: "Ubuntu Linux & Bash", level: "Primary", badge: "Environment", context: "Bare-metal daily workstation, scripting & kernel tuning" },
+      { name: "Docker", level: "Proficient", badge: "Production", context: "Containerized reproducible development & deployments" },
+      { name: "Git & GitHub", level: "Primary", badge: "Daily Rigor", context: "Version control, branching strategy, open source workflows" },
+      { name: "Vercel & Render", level: "Primary", badge: "Production", context: "Continuous deployment for Next.js, Vite & Node services" },
+      { name: "PythonAnywhere", level: "Proficient", badge: "Production", context: "WSGI Python service deployments & Postgres hosting" },
+      { name: "Defensive Cybersecurity", level: "Specialized", badge: "INSA Certified", context: "Kernel audits, network intrusion containment, OWASP" },
+    ],
+  },
+];
+
 // ── MAIN APPLICATION COMPONENT ─────────────────────────────────────────
 export default function App() {
   const [activeSection, setActiveSection] = useState("profile");
   const [cvModalOpen, setCvModalOpen] = useState(false);
   const [terminalOpen, setTerminalOpen] = useState(false);
   const [emailCopied, setEmailCopied] = useState(false);
-  const [themeMode, setThemeMode] = useState("light"); // Pure crystalline white canvas
+  const [themeMode, setThemeMode] = useState("dark"); // Default sleek dark mode
   const [accentColor, setAccentColor] = useState("blue"); // "blue" (#0047FF) or "orange" (#E64A19)
+  const [stackFilter, setStackFilter] = useState("all");
 
   // Interactive Terminal State
   const [terminalInput, setTerminalInput] = useState("");
@@ -248,8 +429,9 @@ export default function App() {
           type: "output",
           text: `AVAILABLE COMMANDS:
   whoami         - Print founder biographical coordinates
-  credentials    - Display all 5 academic and professional certificates
+  credentials    - Display verified academic and professional certificates
   projects       - List core production projects
+  stack          - Categorized technical stack and systems capabilities
   channel        - Open Telegram channel: https://t.me/ggedAbdusay
   cv             - View Curriculum Vitae details
   contact        - Direct contact coordinates & channels
@@ -270,7 +452,7 @@ Mission: Localized, production-ready AI systems for Ethiopian infrastructure.`,
       case "credentials":
         newLogs.push({
           type: "output",
-          text: `1. MIT Open Learning: Introduction to Universal AI (Prof. Dimitris Bertsimas)
+          text: `1. MIT Open Learning: Introduction to Universal AI (Completed Oct 7, 2026)
 2. INSA: National Ethio Cyber Talent Summer Camp Graduate
 3. Addis Ababa University (AAU): B.Sc. in Software Engineering (Year 3 / Junior)
 4. Sof Omar Technologies: Software Engineering Internship Certificate
@@ -281,9 +463,32 @@ Mission: Localized, production-ready AI systems for Ethiopian infrastructure.`,
         newLogs.push({
           type: "output",
           text: `1. Gebere Vision AI - Multilingual crop diagnostic bot (<800ms Groq Vision)
-2. SmartBiz ERP Lite - Offline-first IndexedDB vector-clock POS engine
-3. Ethio Bucks Backend - ACID row-locked financial ledger in Django
-4. CampusTrack AAU - University dining custody & 3,000 ETB stipend automation`,
+2. AmanaTrade - Offline-first B2B escrow & M-PESA wholesale platform (github.com/oumersalah2-cmd/Amana-Trading-)
+3. SmartBiz ERP Lite - Offline-first enterprise state & POS engine (IndexedDB + vector clocks)
+4. Ace-Ifa-Boru - Premium Telegram Mini App (TMA) exam prep platform (ace-ifa-boru-frontend.vercel.app)
+5. LAMIF Educational Platform - Full-stack monorepo connecting students with tutors (lamif-platform.vercel.app)
+6. Ethio Bucks Backend - ACID row-locked financial ledger in Django
+7. CampusTrack AAU - University dining custody & 3,000 ETB stipend automation`,
+        });
+        break;
+      case "stack":
+      case "techstack":
+        newLogs.push({
+          type: "output",
+          text: `AMAN-SYSTEMS // FULL-STACK & SYSTEMS CAPABILITIES
+
+1. LANGUAGES & RUNTIMES:
+   • TypeScript, JavaScript (ES6+), Python 3, Java, SQL, Dart, C/C++
+2. FRONTEND & MOBILE:
+   • Next.js 14, React 19, Tailwind CSS, Progressive Web Apps (PWA), Telegram Mini Apps (TMA), Flutter
+3. BACKEND, CONCURRENCY & APIS:
+   • Node.js & Express, Django, NestJS, Safaricom Daraja API (M-PESA), grammY / Telegram Bots
+4. DATABASES & PERSISTENCE:
+   • PostgreSQL (ACID row locks), Supabase (pgvector), MongoDB Atlas, IndexedDB, SQLite3, Prisma ORM
+5. APPLIED AI & OPTIMIZATION:
+   • Groq AI Vision (Llama 3.2 Vision), Prompt Engineering (Amharic/Oromoo), MIT Universal AI (MIP)
+6. SYSTEMS & DEVOPS:
+   • Ubuntu Linux 26.04 LTS, Docker, Git/GitHub, Vercel, Render, PythonAnywhere, INSA Kernel Security`,
         });
         break;
       case "channel":
@@ -300,15 +505,18 @@ Mission: Localized, production-ready AI systems for Ethiopian infrastructure.`,
         setCvModalOpen(true);
         newLogs.push({
           type: "output",
-          text: `Opening Curriculum Vitae modal...`,
+          text: `Opening Curriculum Vitae document view...`,
         });
         break;
       case "contact":
         newLogs.push({
           type: "output",
           text: `EMAIL: oumersalah2@gmail.com
-TELEGRAM CHANNEL: https://t.me/ggedAbdusay (Unplugged Me)
-TWITTER / X: https://x.com/oumersalah2
+PHONE: +251934978247
+LOCATION: Addis Ababa, Ethiopia
+PORTFOLIO: https://ab-site-tawny.vercel.app/
+TELEGRAM: https://t.me/ggedAbdusay (Unplugged Me)
+TWITTER / X: https://x.com/titanic66834 (@titanic66834)
 UPWORK: https://www.upwork.com/freelancers/~01d02c68660140f622
 GITHUB: https://github.com/oumersalah2-cmd`,
         });
@@ -508,12 +716,17 @@ GITHUB: https://github.com/oumersalah2-cmd`,
         }
 
         /* Responsive layout */
+        @media (max-width: 960px) {
+          .hero-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+        }
+
         @media (max-width: 860px) {
           .hero-header-row { flex-direction: column !important; align-items: flex-start !important; gap: 1.5rem !important; }
           .header-nav { display: none !important; }
           .dispatch-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
           .meta-pill-strip { flex-direction: column !important; align-items: flex-start !important; }
           .projects-grid { grid-template-columns: 1fr !important; }
+          .stack-grid { grid-template-columns: 1fr !important; }
           .certs-grid { grid-template-columns: 1fr !important; }
         }
 
@@ -522,6 +735,65 @@ GITHUB: https://github.com/oumersalah2-cmd`,
         ::-webkit-scrollbar-track { background: ${isDark ? "#111111" : "#F8FAFC"}; }
         ::-webkit-scrollbar-thumb { background: ${isDark ? "#333333" : "#CBD5E1"}; }
         ::-webkit-scrollbar-thumb:hover { background: ${accentHex}; }
+
+        /* ── CV DOCUMENT & PRINT MEDIA STYLES ── */
+        .cv-dot-filled {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          display: inline-block;
+        }
+        .cv-dot-empty {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          display: inline-block;
+        }
+
+        @media print {
+          @page {
+            margin: 1.2cm;
+            size: A4 portrait;
+          }
+          body {
+            background: #FFFFFF !important;
+            color: #111111 !important;
+          }
+          nav, footer, .interactive-terminal-card, #profile, #projects, #credentials, #contact, .no-print {
+            display: none !important;
+          }
+          .cv-modal-backdrop {
+            position: static !important;
+            background: transparent !important;
+            padding: 0 !important;
+            backdrop-filter: none !important;
+            inset: auto !important;
+          }
+          .cv-paper-container {
+            max-width: 100% !important;
+            max-height: none !important;
+            overflow: visible !important;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            background: #FFFFFF !important;
+            color: #111111 !important;
+          }
+          .cv-paper-container * {
+            color: #111111 !important;
+            background-color: transparent !important;
+            box-shadow: none !important;
+          }
+          .cv-section-rule {
+            border-bottom: 1.5px solid #111111 !important;
+          }
+          .cv-dot-filled {
+            background-color: #111111 !important;
+          }
+          .cv-dot-empty {
+            background-color: #D1D5DB !important;
+          }
+        }
       `}</style>
 
       {/* ── TOP MASTHEAD HEADER (4-PAGE NAVIGATION) ─────────────────── */}
@@ -570,7 +842,7 @@ GITHUB: https://github.com/oumersalah2-cmd`,
                   color: isDark ? "#FFFFFF" : "#111111",
                 }}
               >
-                ABDUSALAM OUMER AMAN
+                Abdusalam Oumer Aman
               </div>
               <div
                 className="font-mono"
@@ -585,24 +857,24 @@ GITHUB: https://github.com/oumersalah2-cmd`,
             </div>
           </div>
 
-          {/* 4-Page Navigation Anchors */}
-          <nav className="header-nav" style={{ display: "flex", gap: "1.25rem", alignItems: "center" }}>
+          {/* Clean 4-Item Desktop Navigation */}
+          <nav className="header-nav" style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
             {NAV_ITEMS.map((item) => {
-              const isSelected = activeSection === item.id;
+              const isActive = activeSection === item.id;
               return (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="font-mono"
+                  className="font-mono tactile-link"
                   style={{
-                    fontSize: "0.76rem",
-                    fontWeight: isSelected ? 700 : 500,
-                    color: isSelected ? accentHex : isDark ? "#888888" : "#64748B",
                     background: "none",
                     border: "none",
+                    fontSize: "0.78rem",
+                    fontWeight: isActive ? 700 : 500,
+                    color: isActive ? accentHex : isDark ? "#A0A0A0" : "#475569",
                     cursor: "pointer",
                     padding: "4px 0",
-                    borderBottom: isSelected ? `2px solid ${accentHex}` : "2px solid transparent",
+                    borderBottom: isActive ? `2px solid ${accentHex}` : "2px solid transparent",
                     transition: "all 0.15s ease",
                   }}
                 >
@@ -612,108 +884,87 @@ GITHUB: https://github.com/oumersalah2-cmd`,
             })}
           </nav>
 
-          {/* Controls: Theme, Accent, CV */}
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            {/* Accent switcher */}
-            <div
-              style={{
-                display: "flex",
-                gap: "4px",
-                padding: "2px",
-                border: `1px solid ${isDark ? "#333333" : "#E2E8F0"}`,
-                borderRadius: "4px",
-              }}
-              title="Toggle Accent Color"
-            >
-              <button
-                onClick={() => setAccentColor("blue")}
-                style={{
-                  width: "16px",
-                  height: "16px",
-                  borderRadius: "2px",
-                  backgroundColor: "#0047FF",
-                  border: accentColor === "blue" ? "2px solid #FFFFFF" : "none",
-                  cursor: "pointer",
-                }}
-              />
-              <button
-                onClick={() => setAccentColor("orange")}
-                style={{
-                  width: "16px",
-                  height: "16px",
-                  borderRadius: "2px",
-                  backgroundColor: "#E64A19",
-                  border: accentColor === "orange" ? "2px solid #FFFFFF" : "none",
-                  cursor: "pointer",
-                }}
-              />
-            </div>
-
-            {/* Dark / Light Toggle */}
+          {/* Theme & Accent Controls (Customizable Canvas) */}
+          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <button
               onClick={() => setThemeMode(isDark ? "light" : "dark")}
               className="font-mono"
               style={{
-                fontSize: "0.72rem",
+                background: "transparent",
+                border: `1px solid ${isDark ? "#333333" : "#D1D5DB"}`,
                 padding: "5px 10px",
-                border: `1px solid ${isDark ? "#333333" : "#E2E8F0"}`,
-                background: isDark ? "#161616" : "#F8FAFC",
-                color: isDark ? "#E5E5E5" : "#111111",
+                fontSize: "0.72rem",
+                color: isDark ? "#FFFFFF" : "#111111",
                 cursor: "pointer",
-                fontWeight: 600,
               }}
+              title="Toggle Dark / Pure White Theme"
             >
-              {isDark ? "☀ LIGHT" : "☾ DARK"}
+              {isDark ? "☾ DARK" : "☼ LIGHT"}
             </button>
 
-            {/* CV Modal Trigger */}
             <button
-              onClick={() => setCvModalOpen(true)}
+              onClick={() => setAccentColor(accentColor === "blue" ? "orange" : "blue")}
               className="font-mono"
               style={{
+                background: "transparent",
+                border: `1px solid ${accentHex}`,
+                padding: "5px 10px",
                 fontSize: "0.72rem",
-                fontWeight: 700,
-                padding: "6px 12px",
-                backgroundColor: accentHex,
-                color: "#FFFFFF",
-                border: "none",
+                color: accentHex,
                 cursor: "pointer",
-                letterSpacing: "0.03em",
               }}
+              title="Toggle Electric Blue / Engineering Orange Accent"
             >
-              CV 📄
+              {accentColor === "blue" ? "● BLUE" : "● ORANGE"}
+            </button>
+
+            <button
+              onClick={() => setTerminalOpen(!terminalOpen)}
+              className="font-mono"
+              style={{
+                background: terminalOpen ? accentHex : "transparent",
+                border: `1px solid ${accentHex}`,
+                padding: "5px 10px",
+                fontSize: "0.72rem",
+                color: terminalOpen ? "#FFFFFF" : accentHex,
+                cursor: "pointer",
+              }}
+              title="Toggle Integrated Terminal View"
+            >
+              {terminalOpen ? ">_ HIDE CLI" : ">_ CLI"}
             </button>
           </div>
         </div>
       </header>
 
-      {/* ── MAIN CONTENT CONTAINER (4 PAGES) ────────────────────────── */}
-      <main style={{ maxWidth: "1040px", margin: "0 auto", padding: "1.25rem 1.25rem 3.5rem" }}>
-
+      {/* ── MAIN EDITORIAL CANVAS ─────────────────────────────────────── */}
+      <main style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 1.5rem" }}>
+        
         {/* ════════════════════════════════════════════════════════════════
-            PAGE 01: PROFILE & MANIFESTO
+            PAGE 01: THE PROFILE & MANIFESTO
         ════════════════════════════════════════════════════════════════ */}
         <section
           id="profile"
           style={{
-            paddingBottom: "1.8rem",
+            paddingTop: "2.5rem",
+            paddingBottom: "3.5rem",
             borderBottom: `1px solid ${isDark ? "#222222" : "#E5E7EB"}`,
-            marginBottom: "2.2rem",
+            marginBottom: "3.5rem",
           }}
         >
-          {/* Top Metadata Header Strip */}
+          {/* Metadata Ledger Bar */}
           <div
-            className="font-mono meta-pill-strip"
+            className="meta-pill-strip"
             style={{
               display: "flex",
-              alignItems: "center",
               justifyContent: "space-between",
-              gap: "0.8rem",
-              fontSize: "0.72rem",
+              alignItems: "center",
+              gap: "1rem",
+              paddingBottom: "1.2rem",
+              borderBottom: `1px solid ${isDark ? "#1C1C1C" : "#F3F4F6"}`,
+              marginBottom: "2rem",
+              fontSize: "0.74rem",
               color: isDark ? "#888888" : "#64748B",
-              paddingBottom: "0.6rem",
-              marginBottom: "1rem",
-              borderBottom: `1px solid ${isDark ? "#1C1C1C" : "#F1F5F9"}`,
             }}
           >
             <div>
@@ -727,185 +978,380 @@ GITHUB: https://github.com/oumersalah2-cmd`,
             </div>
           </div>
 
-          {/* Profile Hero Block with Compact Circular Avatar */}
-          <div>
-            {/* Header row: Circular Avatar + Name */}
-            <div
-              className="hero-header-row"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "1.5rem",
-                marginBottom: "1rem",
-              }}
-            >
-              {/* Circular Avatar (Compact 105px with Sleek Black Background) */}
-              <div style={{ position: "relative", flexShrink: 0 }}>
-                <img
-                  src="/profile-circle.webp"
-                  alt="Abdusalam Oumer Aman — Applied AI Founder & Systems Engineer"
-                  style={{
-                    width: "105px",
-                    height: "105px",
-                    borderRadius: "50%",
-                    objectFit: "cover",
-                    border: `2.5px solid ${accentHex}`,
-                    backgroundColor: "#000000",
-                    boxShadow: isDark
-                      ? "0 6px 20px rgba(0,0,0,0.8)"
-                      : "0 6px 20px rgba(0, 71, 255, 0.14)",
-                    display: "block",
-                  }}
-                />
-                <div
-                  style={{
-                    position: "absolute",
-                    bottom: "4px",
-                    right: "6px",
-                    width: "14px",
-                    height: "14px",
-                    borderRadius: "50%",
-                    backgroundColor: "#10B981",
-                    border: `2px solid ${isDark ? "#0A0A0A" : "#FFFFFF"}`,
-                  }}
-                  title="Active Shipper / Online"
-                />
+          {/* Profile Hero Block with Compact Circular Avatar + [LEDGER // SPECIFICATIONS] */}
+          <div
+            className="hero-grid"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 340px",
+              gap: "2.5rem",
+              alignItems: "start",
+            }}
+          >
+            {/* Left Column: Avatar + Name + Title + Stance + Narrative + Buttons */}
+            <div>
+              {/* Header row: Circular Avatar + Name */}
+              <div
+                className="hero-header-row"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "1.5rem",
+                  marginBottom: "1rem",
+                }}
+              >
+                {/* Circular Avatar (Compact 105px with Sleek Black Background as before) */}
+                <div style={{ position: "relative", flexShrink: 0 }}>
+                  <img
+                    src="/profile-circle.webp"
+                    alt="Abdusalam Oumer Aman — Applied AI Founder & Systems Engineer"
+                    style={{
+                      width: "105px",
+                      height: "105px",
+                      borderRadius: "50%",
+                      objectFit: "cover",
+                      border: `2.5px solid ${accentHex}`,
+                      backgroundColor: "#000000",
+                      boxShadow: isDark
+                        ? "0 6px 20px rgba(0,0,0,0.8)"
+                        : "0 6px 20px rgba(0, 71, 255, 0.14)",
+                      display: "block",
+                    }}
+                  />
+                  <div
+                    style={{
+                      position: "absolute",
+                      bottom: "4px",
+                      right: "6px",
+                      width: "14px",
+                      height: "14px",
+                      borderRadius: "50%",
+                      backgroundColor: "#10B981",
+                      border: `2px solid ${isDark ? "#0A0A0A" : "#FFFFFF"}`,
+                    }}
+                    title="Active Shipper / Online"
+                  />
+                </div>
+
+                {/* Title & Coordinates */}
+                <div>
+                  <div
+                    className="font-mono"
+                    style={{
+                      fontSize: "0.72rem",
+                      fontWeight: 700,
+                      letterSpacing: "0.06em",
+                      color: accentHex,
+                      marginBottom: "0.25rem",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Founder & Systems Engineer · Addis Ababa, Ethiopia
+                  </div>
+                  <h1
+                    className="font-serif"
+                    style={{
+                      fontSize: "clamp(1.9rem, 3.4vw, 2.7rem)",
+                      fontWeight: 600,
+                      lineHeight: 1.1,
+                      letterSpacing: "-0.025em",
+                      color: isDark ? "#FFFFFF" : "#111111",
+                      marginBottom: "0.3rem",
+                    }}
+                  >
+                    Abdusalam Oumer Aman
+                  </h1>
+                  <div
+                    className="font-mono"
+                    style={{
+                      fontSize: "0.8rem",
+                      color: isDark ? "#A0A0A0" : "#475569",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "8px",
+                      flexWrap: "wrap",
+                    }}
+                  >
+                    <span>AAU Software Engineering</span>
+                    <span>·</span>
+                    <span>INSA Cyber Talent Graduate</span>
+                    <span>·</span>
+                    <span>MIT Universal AI</span>
+                  </div>
+                </div>
               </div>
 
-              {/* Title & Coordinates */}
-              <div>
-                <div
-                  className="font-mono"
-                  style={{
-                    fontSize: "0.72rem",
-                    fontWeight: 700,
-                    letterSpacing: "0.06em",
-                    color: accentHex,
-                    marginBottom: "0.25rem",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  Founder & Systems Engineer · Addis Ababa, Ethiopia
-                </div>
-                <h1
+              {/* Founder Stance Blockquote with Tight Spacing */}
+              <div
+                style={{
+                  borderLeft: `3px solid ${accentHex}`,
+                  paddingLeft: "1rem",
+                  marginTop: "0.5rem",
+                  marginBottom: "0.9rem",
+                }}
+              >
+                <p
                   className="font-serif"
                   style={{
-                    fontSize: "clamp(1.9rem, 3.4vw, 2.7rem)",
-                    fontWeight: 600,
-                    lineHeight: 1.1,
-                    letterSpacing: "-0.025em",
-                    color: isDark ? "#FFFFFF" : "#111111",
-                    marginBottom: "0.3rem",
+                    fontSize: "clamp(1.08rem, 1.4vw, 1.3rem)",
+                    lineHeight: 1.35,
+                    fontStyle: "italic",
+                    color: isDark ? "#E5E5E5" : "#1E293B",
+                    marginBottom: "0.25rem",
                   }}
                 >
-                  Abdusalam Oumer Aman
-                </h1>
-                <div
+                  Software Engineering at AAU. INSA Cyber Talent Graduate. Applied AI Founder.
+                </p>
+                <p
                   className="font-mono"
                   style={{
-                    fontSize: "0.8rem",
-                    color: isDark ? "#A0A0A0" : "#475569",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "8px",
-                    flexWrap: "wrap",
+                    fontSize: "0.88rem",
+                    fontWeight: 600,
+                    color: accentHex,
+                    letterSpacing: "0.01em",
                   }}
                 >
-                  <span>AAU Software Engineering</span>
-                  <span>·</span>
-                  <span>INSA Cyber Talent Graduate</span>
-                  <span>·</span>
-                  <span>MIT Universal AI</span>
-                </div>
+                  Building localized, production-ready AI systems for Ethiopian infrastructure.
+                </p>
+              </div>
+
+              {/* Narrative Paragraphs */}
+              <div style={{ marginBottom: "1.2rem" }}>
+                <p
+                  style={{
+                    fontSize: "0.98rem",
+                    lineHeight: 1.65,
+                    color: isDark ? "#CCCCCC" : "#334155",
+                    marginBottom: "0.75rem",
+                  }}
+                >
+                  Most modern AI projects settle for generic OpenAI wrapper scripts and flashy dark-mode marketing pages. My
+                  engineering work bridges third-year Software Engineering foundations at{" "}
+                  <strong>Addis Ababa University</strong>, rigorous defensive cybersecurity training as a graduate of Ethiopia's national{" "}
+                  <strong>INSA (Information Network Security Administration) Cyber Talent Camp</strong>, and applied optimization validated
+                  through <strong>MIT Open Learning</strong> under Boeing Professor of Operations Research Dimitris Bertsimas.
+                </p>
+
+                {/* Second Paragraph Highlighting Core Projects as Interactive Links */}
+                <p
+                  style={{
+                    fontSize: "0.98rem",
+                    lineHeight: 1.65,
+                    color: isDark ? "#A0A0A0" : "#64748B",
+                  }}
+                >
+                  As founder of{" "}
+                  <a href="#gebere-vision-ai" className="project-highlight-link">
+                    <strong>Gebere Vision AI</strong> ↗
+                  </a>{" "}
+                  (selected for the METI-Funded UniPods AI Programme), I deploy sub-second Llama vision inference via Groq directly into rural Telegram interfaces in Amharic and Afaan
+                  Oromoo. When power cuts hit retail stores, my{" "}
+                  <a href="#smartbiz-erp" className="project-highlight-link">
+                    <strong>SmartBiz ERP</strong> ↗
+                  </a>{" "}
+                  executes offline-first transactional state on local client machines with deterministic vector clocks.
+                </p>
+              </div>
+
+              {/* Primary Action Buttons (Clean & Focused, No Social Duplication) */}
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.65rem" }}>
+                <button onClick={() => scrollToSection("projects")} className="btn-action">
+                  Inspect Core Projects ↓
+                </button>
+                <button onClick={() => scrollToSection("stack")} className="btn-action-ghost">
+                  Technical Stack ↓
+                </button>
+                <button onClick={() => scrollToSection("credentials")} className="btn-action-ghost">
+                  Foundations & Certs ↓
+                </button>
+                <button onClick={() => setCvModalOpen(true)} className="btn-action-ghost">
+                  Curriculum Vitae (CV) 📄
+                </button>
+                <button onClick={() => scrollToSection("contact")} className="btn-action-ghost">
+                  Contact & Channels ↓
+                </button>
               </div>
             </div>
 
-            {/* Founder Stance Blockquote with Tight Spacing */}
+            {/* Right Column: [LEDGER // SPECIFICATIONS] */}
             <div
+              className="border-ledger bg-card"
               style={{
-                borderLeft: `3px solid ${accentHex}`,
-                paddingLeft: "1rem",
-                marginTop: "0.5rem",
-                marginBottom: "0.9rem",
+                border: `1px solid ${isDark ? "#262626" : "#E2E8F0"}`,
+                padding: "1.5rem",
               }}
             >
-              <p
-                className="font-serif"
-                style={{
-                  fontSize: "clamp(1.08rem, 1.4vw, 1.3rem)",
-                  lineHeight: 1.35,
-                  fontStyle: "italic",
-                  color: isDark ? "#E5E5E5" : "#1E293B",
-                  marginBottom: "0.25rem",
-                }}
-              >
-                Software Engineering at AAU. INSA Cyber Talent Graduate. Applied AI Founder.
-              </p>
-              <p
+              <div
                 className="font-mono"
                 style={{
-                  fontSize: "0.88rem",
-                  fontWeight: 600,
+                  fontSize: "0.75rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.1em",
                   color: accentHex,
-                  letterSpacing: "0.01em",
+                  paddingBottom: "0.75rem",
+                  borderBottom: `1px solid ${isDark ? "#262626" : "#E2E8F0"}`,
+                  marginBottom: "1rem",
                 }}
               >
-                Building localized, production-ready AI systems for Ethiopian infrastructure.
-              </p>
-            </div>
+                [LEDGER // SPECIFICATIONS]
+              </div>
 
-            {/* Narrative Paragraphs with Natural Unified Width */}
-            <div style={{ marginBottom: "1.2rem" }}>
-              <p
-                style={{
-                  fontSize: "0.98rem",
-                  lineHeight: 1.65,
-                  color: isDark ? "#CCCCCC" : "#334155",
-                  marginBottom: "0.75rem",
-                }}
-              >
-                Most modern AI projects settle for generic OpenAI wrapper scripts and flashy dark-mode marketing pages. My
-                engineering work bridges third-year Software Engineering foundations at{" "}
-                <strong>Addis Ababa University</strong>, rigorous defensive cybersecurity training as a graduate of Ethiopia's national{" "}
-                <strong>INSA (Information Network Security Administration) Cyber Talent Camp</strong>, and applied optimization validated
-                through <strong>MIT Open Learning</strong> under Boeing Professor of Operations Research Dimitris Bertsimas.
-              </p>
+              <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                <div>
+                  <div className="font-mono" style={{ fontSize: "0.6875rem", color: isDark ? "#888888" : "#64748B" }}>
+                    PRIMARY SPECIALTY
+                  </div>
+                  <div
+                    className="font-mono"
+                    style={{
+                      fontSize: "0.8125rem",
+                      fontWeight: 600,
+                      color: isDark ? "#FFFFFF" : "#0A0A0A",
+                    }}
+                  >
+                    Applied AI & Full-Stack Systems
+                  </div>
+                </div>
 
-              {/* Second Paragraph Highlighting Core Projects as Interactive Links */}
-              <p
-                style={{
-                  fontSize: "0.98rem",
-                  lineHeight: 1.65,
-                  color: isDark ? "#A0A0A0" : "#64748B",
-                }}
-              >
-                As founder of{" "}
-                <a href="#gebere-vision-ai" className="project-highlight-link">
-                  <strong>Gebere Vision AI</strong> ↗
-                </a>{" "}
-                (selected for the METI-Funded UniPods AI Programme), I deploy sub-second Llama vision inference via Groq directly into rural Telegram interfaces in Amharic and Afaan
-                Oromoo. When power cuts hit retail stores, my{" "}
-                <a href="#smartbiz-erp" className="project-highlight-link">
-                  <strong>SmartBiz ERP</strong> ↗
-                </a>{" "}
-                executes offline-first transactional state on local client machines with deterministic vector clocks.
-              </p>
-            </div>
+                <div>
+                  <div className="font-mono" style={{ fontSize: "0.6875rem", color: isDark ? "#888888" : "#64748B" }}>
+                    ACADEMIC INSTITUTION
+                  </div>
+                  <div
+                    className="font-mono"
+                    style={{
+                      fontSize: "0.8125rem",
+                      fontWeight: 600,
+                      color: isDark ? "#FFFFFF" : "#0A0A0A",
+                    }}
+                  >
+                    Addis Ababa University (Year 3)
+                  </div>
+                </div>
 
-            {/* Primary Action Buttons (Clean & Focused, No Social Duplication) */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.65rem" }}>
-              <button onClick={() => scrollToSection("projects")} className="btn-action">
-                Inspect Core Projects ↓
-              </button>
-              <button onClick={() => scrollToSection("credentials")} className="btn-action-ghost">
-                Foundations & Certs ↓
-              </button>
-              <button onClick={() => setCvModalOpen(true)} className="btn-action-ghost">
-                Curriculum Vitae (CV) 📄
-              </button>
-              <button onClick={() => scrollToSection("contact")} className="btn-action-ghost">
-                Contact & Channels ↓
-              </button>
+                <div>
+                  <div className="font-mono" style={{ fontSize: "0.6875rem", color: isDark ? "#888888" : "#64748B" }}>
+                    SYSTEMS SECURITY
+                  </div>
+                  <div
+                    className="font-mono"
+                    style={{
+                      fontSize: "0.8125rem",
+                      fontWeight: 600,
+                      color: isDark ? "#FFFFFF" : "#0A0A0A",
+                    }}
+                  >
+                    INSA Cyber Talent Graduate
+                  </div>
+                </div>
+
+                <div>
+                  <div className="font-mono" style={{ fontSize: "0.6875rem", color: isDark ? "#888888" : "#64748B" }}>
+                    AI VALIDATION
+                  </div>
+                  <div
+                    className="font-mono"
+                    style={{
+                      fontSize: "0.8125rem",
+                      fontWeight: 600,
+                      color: isDark ? "#FFFFFF" : "#0A0A0A",
+                    }}
+                  >
+                    MIT Open Learning (Universal AI)
+                  </div>
+                </div>
+
+                <div>
+                  <div className="font-mono" style={{ fontSize: "0.6875rem", color: isDark ? "#888888" : "#64748B" }}>
+                    LOCALIZATION ENGINE
+                  </div>
+                  <div
+                    className="font-mono"
+                    style={{
+                      fontSize: "0.8125rem",
+                      fontWeight: 600,
+                      color: isDark ? "#FFFFFF" : "#0A0A0A",
+                    }}
+                  >
+                    Amharic (አማርኛ) & Afaan Oromoo
+                  </div>
+                </div>
+
+                <div>
+                  <div className="font-mono" style={{ fontSize: "0.6875rem", color: isDark ? "#888888" : "#64748B" }}>
+                    CORE TECH STACK
+                  </div>
+                  <div
+                    className="font-mono"
+                    style={{
+                      fontSize: "0.8125rem",
+                      fontWeight: 600,
+                      color: isDark ? "#FFFFFF" : "#0A0A0A",
+                    }}
+                  >
+                    TypeScript · Python · Next.js · Django · PostgreSQL · Groq AI
+                  </div>
+                </div>
+
+                <div
+                  style={{
+                    paddingTop: "1rem",
+                    borderTop: `1px solid ${isDark ? "#262626" : "#E2E8F0"}`,
+                  }}
+                >
+                  <div
+                    className="font-mono"
+                    style={{
+                      fontSize: "0.6875rem",
+                      color: isDark ? "#888888" : "#64748B",
+                      marginBottom: "6px",
+                    }}
+                  >
+                    DIRECT CHANNELS
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                    <a
+                      href={PROFILE.telegramChannel}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="font-mono"
+                      style={{
+                        fontSize: "0.75rem",
+                        color: accentHex,
+                        textDecoration: "underline",
+                      }}
+                    >
+                      Telegram: {PROFILE.telegramChannelName} ↗
+                    </a>
+                    <a
+                      href={PROFILE.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="font-mono"
+                      style={{
+                        fontSize: "0.75rem",
+                        color: accentHex,
+                        textDecoration: "underline",
+                      }}
+                    >
+                      GitHub: {PROFILE.handle} ↗
+                    </a>
+                    <a
+                      href={PROFILE.upwork}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="font-mono"
+                      style={{
+                        fontSize: "0.75rem",
+                        color: accentHex,
+                        textDecoration: "underline",
+                      }}
+                    >
+                      Upwork ↗
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -985,7 +1431,7 @@ GITHUB: https://github.com/oumersalah2-cmd`,
                     {project.subhead}
                   </div>
 
-                  {/* Brief, Crisp Explanation (Requested by User) */}
+                  {/* Brief, Crisp Explanation */}
                   <p
                     style={{
                       fontSize: "0.88rem",
@@ -998,74 +1444,51 @@ GITHUB: https://github.com/oumersalah2-cmd`,
                   </p>
 
                   {/* Key Metrics Chips */}
-                  <div
-                    style={{
-                      display: "flex",
-                      flexWrap: "wrap",
-                      gap: "0.6rem",
-                      marginBottom: "1.2rem",
-                      paddingBottom: "1rem",
-                      borderBottom: `1px solid ${isDark ? "#1C1C1C" : "#F1F5F9"}`,
-                    }}
-                  >
-                    {project.metrics.map((m, idx) => (
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "1.2rem" }}>
+                    {project.metrics.map((metric, idx) => (
                       <div
                         key={idx}
-                        className="font-mono"
+                        className="font-mono bg-subtle"
                         style={{
-                          fontSize: "0.72rem",
-                          backgroundColor: isDark ? "#181818" : "#F8FAFC",
-                          border: `1px solid ${isDark ? "#2A2A2A" : "#E2E8F0"}`,
+                          fontSize: "0.7rem",
                           padding: "4px 8px",
+                          border: `1px solid ${isDark ? "#262626" : "#E2E8F0"}`,
                         }}
                       >
-                        <span className="text-muted">{m.label}: </span>
-                        <strong>{m.value}</strong>
+                        <span style={{ color: isDark ? "#888888" : "#64748B" }}>{metric.label}: </span>
+                        <strong style={{ color: isDark ? "#FFFFFF" : "#111111" }}>{metric.value}</strong>
                       </div>
                     ))}
                   </div>
 
-                  {/* Tech Stack Chips */}
+                  {/* Tech Stack Pills */}
                   <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "1.4rem" }}>
-                    {project.stack.map((tech, idx) => (
+                    {project.stack.map((t, idx) => (
                       <span
                         key={idx}
                         className="font-mono"
                         style={{
-                          fontSize: "0.7rem",
-                          color: isDark ? "#AAAAAA" : "#475569",
-                          backgroundColor: isDark ? "#141414" : "#F1F5F9",
-                          padding: "2px 6px",
-                          borderRadius: "2px",
+                          fontSize: "0.68rem",
+                          backgroundColor: isDark ? "#1C1C1C" : "#F1F5F9",
+                          color: isDark ? "#E5E5E5" : "#334155",
+                          padding: "2px 7px",
                         }}
                       >
-                        {tech}
+                        {t}
                       </span>
                     ))}
                   </div>
                 </div>
 
                 {/* Card Action Links */}
-                <div style={{ display: "flex", gap: "0.8rem", flexWrap: "wrap" }}>
+                <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", borderTop: `1px solid ${isDark ? "#1F1F1F" : "#F1F5F9"}`, paddingTop: "1rem" }}>
                   {project.demoUrl && (
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="btn-action"
-                      style={{ padding: "6px 12px", fontSize: "0.74rem" }}
-                    >
-                      {project.demoLabel || "Live Demo ↗"}
+                    <a href={project.demoUrl} target="_blank" rel="noreferrer" className="btn-action" style={{ padding: "6px 12px", fontSize: "0.74rem" }}>
+                      {project.demoLabel}
                     </a>
                   )}
                   {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="btn-action-ghost"
-                      style={{ padding: "6px 12px", fontSize: "0.74rem" }}
-                    >
+                    <a href={project.githubUrl} target="_blank" rel="noreferrer" className="btn-action-ghost" style={{ padding: "6px 12px", fontSize: "0.74rem" }}>
                       GitHub Repo ↗
                     </a>
                   )}
@@ -1076,7 +1499,193 @@ GITHUB: https://github.com/oumersalah2-cmd`,
         </section>
 
         {/* ════════════════════════════════════════════════════════════════
-            PAGE 03: FOUNDATIONS & CERTIFICATIONS (5 IN PLACE)
+            PAGE 03: PRODUCTION TECH STACK & SYSTEMS ENGINE
+        ════════════════════════════════════════════════════════════════ */}
+        <section
+          id="stack"
+          style={{
+            paddingBottom: "3.5rem",
+            borderBottom: `1px solid ${isDark ? "#222222" : "#E5E7EB"}`,
+            marginBottom: "3.5rem",
+          }}
+        >
+          {/* Section Heading */}
+          <div style={{ marginBottom: "2rem" }}>
+            <div className="font-mono" style={{ fontSize: "0.74rem", color: accentHex, fontWeight: 700, letterSpacing: "0.06em" }}>
+              PAGE 03 // SYSTEMS ARCHITECTURE & TECH STACK
+            </div>
+            <h2 className="font-serif" style={{ fontSize: "clamp(2rem, 3.2vw, 2.7rem)", fontWeight: 600, marginTop: "0.2rem" }}>
+              Production Tech Stack & Systems Engine
+            </h2>
+            <p style={{ fontSize: "0.92rem", color: isDark ? "#888888" : "#64748B", maxWidth: "70ch", marginTop: "0.4rem" }}>
+              Categorized inventory of languages, frameworks, distributed databases, and security infrastructure deployed across live products, national talent camps, and algorithmic research.
+            </p>
+          </div>
+
+          {/* Interactive Domain Filter Strip */}
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "1.75rem" }}>
+            {[
+              { id: "all", label: "All Domains" },
+              { id: "languages", label: "01. Runtimes" },
+              { id: "frontend", label: "02. Frontend & Mobile" },
+              { id: "backend", label: "03. Backend & Concurrency" },
+              { id: "databases", label: "04. Persistence & ACID" },
+              { id: "ai", label: "05. Applied AI & Math" },
+              { id: "devops", label: "06. Systems & Security" },
+            ].map((tab) => {
+              const active = stackFilter === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setStackFilter(tab.id)}
+                  className="font-mono"
+                  style={{
+                    fontSize: "0.72rem",
+                    fontWeight: 600,
+                    padding: "6px 12px",
+                    cursor: "pointer",
+                    border: `1px solid ${active ? accentHex : isDark ? "#2A2A2A" : "#E2E8F0"}`,
+                    backgroundColor: active ? (isDark ? "rgba(0,71,255,0.14)" : "rgba(0,71,255,0.08)") : isDark ? "#141414" : "#F8FAFC",
+                    color: active ? accentHex : isDark ? "#CCCCCC" : "#475569",
+                    transition: "all 0.15s ease",
+                  }}
+                >
+                  {tab.label}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* 6 Grid Cards */}
+          <div
+            className="stack-grid"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))",
+              gap: "1.5rem",
+            }}
+          >
+            {TECH_STACK_DATA
+              .filter((domain) => stackFilter === "all" || stackFilter === domain.id)
+              .map((domain) => (
+                <div
+                  key={domain.id}
+                  className="border-ledger bg-card interactive-card"
+                  style={{
+                    border: `1px solid ${isDark ? "#222222" : "#E5E7EB"}`,
+                    padding: "1.5rem",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <div>
+                    {/* Card Header */}
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.75rem", gap: "8px" }}>
+                      <span className="font-mono" style={{ fontSize: "0.68rem", fontWeight: 700, color: accentHex, letterSpacing: "0.04em" }}>
+                        {domain.code}
+                      </span>
+                      <span
+                        className="font-mono"
+                        style={{
+                          fontSize: "0.68rem",
+                          fontWeight: 600,
+                          backgroundColor: isDark ? "#1A1A1A" : "#F1F5F9",
+                          color: isDark ? "#A0A0A0" : "#475569",
+                          padding: "2px 7px",
+                          border: `1px solid ${isDark ? "#2D2D2D" : "#E2E8F0"}`,
+                        }}
+                      >
+                        {domain.badge}
+                      </span>
+                    </div>
+
+                    <h3 className="font-serif" style={{ fontSize: "1.35rem", fontWeight: 600, marginBottom: "0.35rem" }}>
+                      {domain.category}
+                    </h3>
+                    <p style={{ fontSize: "0.85rem", lineHeight: 1.55, color: isDark ? "#999999" : "#64748B", marginBottom: "1.2rem" }}>
+                      {domain.description}
+                    </p>
+
+                    {/* Skill Items List */}
+                    <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
+                      {domain.skills.map((skill, sIdx) => (
+                        <div
+                          key={sIdx}
+                          style={{
+                            padding: "8px 10px",
+                            backgroundColor: isDark ? "#161616" : "#FAFAFA",
+                            border: `1px solid ${isDark ? "#262626" : "#E5E7EB"}`,
+                            display: "flex",
+                            justifyContent: "space-between",
+                            alignItems: "flex-start",
+                            gap: "8px",
+                            transition: "border-color 0.15s ease",
+                          }}
+                        >
+                          <div>
+                            <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+                              <strong style={{ fontSize: "0.86rem", color: isDark ? "#FFFFFF" : "#111111" }}>
+                                {skill.name}
+                              </strong>
+                              <span
+                                className="font-mono"
+                                style={{
+                                  fontSize: "0.64rem",
+                                  padding: "1px 5px",
+                                  backgroundColor: skill.badge === "Production" ? (isDark ? "rgba(16,185,129,0.12)" : "rgba(16,185,129,0.08)") : (isDark ? "#222222" : "#EAEAEA"),
+                                  color: skill.badge === "Production" ? "#10B981" : (isDark ? "#AAAAAA" : "#475569"),
+                                  border: `1px solid ${skill.badge === "Production" ? "rgba(16,185,129,0.3)" : isDark ? "#333333" : "#D1D5DB"}`,
+                                  fontWeight: 600,
+                                }}
+                              >
+                                {skill.badge}
+                              </span>
+                            </div>
+                            <div className="font-mono" style={{ fontSize: "0.72rem", color: isDark ? "#888888" : "#64748B", marginTop: "3px" }}>
+                              {skill.context}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Card Bottom Link */}
+                  <div
+                    style={{
+                      marginTop: "1.2rem",
+                      paddingTop: "0.75rem",
+                      borderTop: `1px solid ${isDark ? "#1C1C1C" : "#F1F5F9"}`,
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      fontSize: "0.72rem",
+                    }}
+                    className="font-mono text-muted"
+                  >
+                    <span>{domain.skills.length} Capabilities Verified</span>
+                    <button
+                      onClick={() => scrollToSection("projects")}
+                      style={{
+                        background: "none",
+                        border: "none",
+                        color: accentHex,
+                        cursor: "pointer",
+                        fontSize: "0.72rem",
+                        fontWeight: 600,
+                      }}
+                    >
+                      View Linked Projects →
+                    </button>
+                  </div>
+                </div>
+              ))}
+          </div>
+        </section>
+
+        {/* ════════════════════════════════════════════════════════════════
+            PAGE 04: FOUNDATIONS & CREDENTIALS
         ════════════════════════════════════════════════════════════════ */}
         <section
           id="credentials"
@@ -1089,7 +1698,7 @@ GITHUB: https://github.com/oumersalah2-cmd`,
           {/* Section Heading */}
           <div style={{ marginBottom: "2rem" }}>
             <div className="font-mono" style={{ fontSize: "0.74rem", color: accentHex, fontWeight: 700, letterSpacing: "0.06em" }}>
-              PAGE 03 // CREDENTIALS & ACADEMIC CORE
+              PAGE 04 // CREDENTIALS & ACADEMIC CORE
             </div>
             <h2 className="font-serif" style={{ fontSize: "clamp(2rem, 3.2vw, 2.7rem)", fontWeight: 600, marginTop: "0.2rem" }}>
               Foundations & Verified Certifications
@@ -1099,7 +1708,7 @@ GITHUB: https://github.com/oumersalah2-cmd`,
             </p>
           </div>
 
-          {/* 5 Complete Credentials Cards in Grid */}
+          {/* Credentials Cards in Grid */}
           <div
             className="certs-grid"
             style={{
@@ -1178,7 +1787,7 @@ GITHUB: https://github.com/oumersalah2-cmd`,
                           backgroundColor: isDark ? "#181818" : "#F8FAFC",
                           border: `1px solid ${isDark ? "#2A2A2A" : "#E2E8F0"}`,
                           padding: "2px 6px",
-                          color: isDark ? "#DDDDDD" : "#1E293B",
+                          color: isDark ? "#E5E5E5" : "#334155",
                         }}
                       >
                         {skill}
@@ -1192,19 +1801,18 @@ GITHUB: https://github.com/oumersalah2-cmd`,
         </section>
 
         {/* ════════════════════════════════════════════════════════════════
-            PAGE 04: CONNECT, CHANNELS & CV (WITH CLEAR EXPLANATIONS)
+            PAGE 05: CONNECT, TERMINAL CLI & DIRECT DISPATCH
         ════════════════════════════════════════════════════════════════ */}
-        <section id="contact" style={{ paddingBottom: "2rem" }}>
-          {/* Section Heading */}
+        <section id="contact" style={{ paddingBottom: "4rem" }}>
           <div style={{ marginBottom: "2rem" }}>
             <div className="font-mono" style={{ fontSize: "0.74rem", color: accentHex, fontWeight: 700, letterSpacing: "0.06em" }}>
-              PAGE 04 // CONTACT & DISPATCH CONSOLE
+              PAGE 05 // DISPATCH & TERMINAL
             </div>
             <h2 className="font-serif" style={{ fontSize: "clamp(2rem, 3.2vw, 2.7rem)", fontWeight: 600, marginTop: "0.2rem" }}>
-              Direct Channels & Collaboration
+              Direct Transmission & Command Shell
             </h2>
             <p style={{ fontSize: "0.92rem", color: isDark ? "#888888" : "#64748B", maxWidth: "65ch", marginTop: "0.4rem" }}>
-              Open to Applied AI founder collaborations, high-concurrency systems contracts, and research engineering initiatives.
+              Inquire about production systems, applied AI integration, or contract advisory. Alternatively query the simulated CLI kernel below.
             </p>
           </div>
 
@@ -1212,377 +1820,319 @@ GITHUB: https://github.com/oumersalah2-cmd`,
             className="dispatch-grid"
             style={{
               display: "grid",
-              gridTemplateColumns: "1.1fr 0.9fr",
+              gridTemplateColumns: "1fr 1fr",
               gap: "2.5rem",
               alignItems: "start",
             }}
           >
-            {/* Left Column: Direct Coordinates with Purpose & Explanations */}
-            <div>
-              <div
-                className="border-ledger bg-card"
-                style={{
-                  border: `1px solid ${isDark ? "#222222" : "#E5E7EB"}`,
-                  padding: "1.5rem",
-                  marginBottom: "1.5rem",
-                }}
-              >
-                <div className="font-mono" style={{ fontSize: "0.72rem", fontWeight: 700, color: accentHex, letterSpacing: "0.06em", marginBottom: "1.2rem" }}>
-                  CONTACT COORDINATES & CHANNELS (WITH DIRECT EXPLANATIONS)
-                </div>
-
-                <div style={{ display: "grid", gap: "1.25rem" }}>
-                  {/* Telegram Channel: Unplugged Me */}
-                  <div>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "4px" }}>
-                      <span className="font-mono text-muted" style={{ fontSize: "0.74rem", fontWeight: 700 }}>
-                        TELEGRAM CHANNEL // DEV BLOG:
-                      </span>
-                      <a
-                        href={PROFILE.telegramChannel}
-                        target="_blank"
-                        rel="noreferrer"
-                        style={{ fontWeight: 600, color: accentHex, fontSize: "0.88rem" }}
-                      >
-                        {PROFILE.telegramChannelName} (https://t.me/ggedAbdusay) ↗
-                      </a>
-                    </div>
-                    <p style={{ fontSize: "0.82rem", color: isDark ? "#A0A0A0" : "#64748B", marginTop: "4px", lineHeight: 1.5 }}>
-                      My primary engineering publication channel where I share system architecture notes, LeetCode dynamic programming optimizations, terminal configs, and founder reflections.
-                    </p>
-                  </div>
-
-                  {/* Primary Inbox */}
-                  <div style={{ borderTop: `1px solid ${isDark ? "#1C1C1C" : "#F1F5F9"}`, paddingTop: "1rem" }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "4px" }}>
-                      <span className="font-mono text-muted" style={{ fontSize: "0.74rem", fontWeight: 700 }}>
-                        PRIMARY EMAIL // DIRECT INQUIRIES:
-                      </span>
-                      <button
-                        onClick={copyEmailAddress}
-                        className="tactile-link"
-                        style={{ background: "none", border: "none", cursor: "pointer", fontWeight: 600, fontSize: "0.88rem" }}
-                      >
-                        {emailCopied ? "✓ Email Copied!" : PROFILE.email}
-                      </button>
-                    </div>
-                    <p style={{ fontSize: "0.82rem", color: isDark ? "#A0A0A0" : "#64748B", marginTop: "4px", lineHeight: 1.5 }}>
-                      Best for formal founder opportunities, technical advisory conversations, and high-concurrency systems design proposals.
-                    </p>
-                  </div>
-
-                  {/* GitHub */}
-                  <div style={{ borderTop: `1px solid ${isDark ? "#1C1C1C" : "#F1F5F9"}`, paddingTop: "1rem" }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "4px" }}>
-                      <span className="font-mono text-muted" style={{ fontSize: "0.74rem", fontWeight: 700 }}>
-                        GITHUB REPOSITORIES // OPEN SOURCE:
-                      </span>
-                      <a
-                        href={PROFILE.github}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="tactile-link"
-                        style={{ fontWeight: 600, fontSize: "0.88rem" }}
-                      >
-                        github.com/{PROFILE.handle}-cmd ↗
-                      </a>
-                    </div>
-                    <p style={{ fontSize: "0.82rem", color: isDark ? "#A0A0A0" : "#64748B", marginTop: "4px", lineHeight: 1.5 }}>
-                      Public repositories, commit logs, and codebases including Gebere Vision AI, AAU Campus Cafe, and algorithmic solutions.
-                    </p>
-                  </div>
-
-                  {/* Upwork Profile */}
-                  <div style={{ borderTop: `1px solid ${isDark ? "#1C1C1C" : "#F1F5F9"}`, paddingTop: "1rem" }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "4px" }}>
-                      <span className="font-mono text-muted" style={{ fontSize: "0.74rem", fontWeight: 700 }}>
-                        UPWORK FREELANCER:
-                      </span>
-                      <a
-                        href={PROFILE.upwork}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="tactile-link"
-                        style={{ fontWeight: 600, fontSize: "0.88rem" }}
-                      >
-                        Upwork Profile ↗
-                      </a>
-                    </div>
-                    <p style={{ fontSize: "0.82rem", color: isDark ? "#A0A0A0" : "#64748B", marginTop: "4px", lineHeight: 1.5 }}>
-                      Escrow-protected software contracts for backend engineering, Python/Django APIs, and offline-first web/mobile apps.
-                    </p>
-                  </div>
-
-                  {/* Twitter / X */}
-                  <div style={{ borderTop: `1px solid ${isDark ? "#1C1C1C" : "#F1F5F9"}`, paddingTop: "1rem" }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "4px" }}>
-                      <span className="font-mono text-muted" style={{ fontSize: "0.74rem", fontWeight: 700 }}>
-                        TWITTER / X:
-                      </span>
-                      <a
-                        href={PROFILE.twitter}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="tactile-link"
-                        style={{ fontWeight: 600, fontSize: "0.88rem" }}
-                      >
-                        {PROFILE.twitterHandle} ↗
-                      </a>
-                    </div>
-                    <p style={{ fontSize: "0.82rem", color: isDark ? "#A0A0A0" : "#64748B", marginTop: "4px", lineHeight: 1.5 }}>
-                      Public thoughts on applied AI models, African infrastructure, and systems software.
-                    </p>
-                  </div>
-                </div>
+            {/* Direct Dispatch Web Form */}
+            <div className="border-ledger bg-card" style={{ border: `1px solid ${isDark ? "#222222" : "#E5E7EB"}`, padding: "1.8rem" }}>
+              <div className="font-mono" style={{ fontSize: "0.8rem", fontWeight: 700, marginBottom: "1.2rem", color: accentHex }}>
+                DIRECT TRANSMISSION FORM
               </div>
 
-              {/* CV Download & Action Box */}
-              <div
-                className="border-ledger bg-card"
-                style={{
-                  border: `1px solid ${isDark ? "#222222" : "#E5E7EB"}`,
-                  padding: "1.5rem",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  gap: "1rem",
-                }}
-              >
+              <form onSubmit={handleFormSubmit} style={{ display: "grid", gap: "1rem" }}>
                 <div>
-                  <div className="font-mono" style={{ fontSize: "0.72rem", color: accentHex, fontWeight: 700 }}>
-                    CURRICULUM VITAE
-                  </div>
-                  <div className="font-serif" style={{ fontSize: "1.15rem", fontWeight: 600 }}>
-                    Abdusalam Oumer Aman (CV)
-                  </div>
-                  <div style={{ fontSize: "0.78rem", color: isDark ? "#888888" : "#64748B", marginTop: "2px" }}>
-                    Complete verified record of AAU, INSA, MIT, and founder projects.
-                  </div>
-                </div>
-                <div style={{ display: "flex", gap: "8px", flexShrink: 0 }}>
-                  <button onClick={() => setCvModalOpen(true)} className="btn-action" style={{ fontSize: "0.75rem", padding: "8px 12px" }}>
-                    Preview CV 📄
-                  </button>
-                  <a href={PROFILE.cvUrl} download="Abdusalam_Oumer_Aman_CV.pdf" className="btn-action-ghost" style={{ fontSize: "0.75rem", padding: "8px 12px" }}>
-                    Download ↓
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column: Dispatch Form + Terminal Toggle */}
-            <div>
-              <div
-                className="border-ledger bg-card"
-                style={{
-                  border: `1px solid ${isDark ? "#222222" : "#E5E7EB"}`,
-                  padding: "1.5rem",
-                }}
-              >
-                <div className="font-mono" style={{ fontSize: "0.72rem", fontWeight: 700, color: accentHex, letterSpacing: "0.06em", marginBottom: "1rem" }}>
-                  DISPATCH DIRECT TRANSMISSION
+                  <label className="font-mono" style={{ display: "block", fontSize: "0.72rem", marginBottom: "4px", color: isDark ? "#A0A0A0" : "#475569" }}>
+                    YOUR FULL NAME *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={formState.name}
+                    onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                    placeholder="e.g. Elena Rostova"
+                    className="font-mono"
+                    style={{
+                      width: "100%",
+                      padding: "10px",
+                      fontSize: "0.82rem",
+                      backgroundColor: isDark ? "#0A0A0A" : "#FFFFFF",
+                      border: `1px solid ${isDark ? "#2E2E2E" : "#D1D5DB"}`,
+                      color: isDark ? "#FFFFFF" : "#111111",
+                      outline: "none",
+                    }}
+                  />
                 </div>
 
-                <form onSubmit={handleFormSubmit} style={{ display: "grid", gap: "1rem" }}>
-                  <div>
-                    <label className="font-mono text-muted" style={{ fontSize: "0.72rem", display: "block", marginBottom: "4px" }}>
-                      YOUR NAME / CALLSIGN *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={formState.name}
-                      onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                      placeholder="e.g. Elena Vance"
-                      style={{
-                        width: "100%",
-                        padding: "10px 12px",
-                        fontSize: "0.85rem",
-                        fontFamily: "inherit",
-                        backgroundColor: isDark ? "#161616" : "#FFFFFF",
-                        border: `1px solid ${isDark ? "#333333" : "#CBD5E1"}`,
-                        color: isDark ? "#FFFFFF" : "#111111",
-                        outline: "none",
-                      }}
-                    />
-                  </div>
+                <div>
+                  <label className="font-mono" style={{ display: "block", fontSize: "0.72rem", marginBottom: "4px", color: isDark ? "#A0A0A0" : "#475569" }}>
+                    YOUR DIRECT EMAIL *
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    value={formState.email}
+                    onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                    placeholder="e.g. elena@institution.org"
+                    className="font-mono"
+                    style={{
+                      width: "100%",
+                      padding: "10px",
+                      fontSize: "0.82rem",
+                      backgroundColor: isDark ? "#0A0A0A" : "#FFFFFF",
+                      border: `1px solid ${isDark ? "#2E2E2E" : "#D1D5DB"}`,
+                      color: isDark ? "#FFFFFF" : "#111111",
+                      outline: "none",
+                    }}
+                  />
+                </div>
 
-                  <div>
-                    <label className="font-mono text-muted" style={{ fontSize: "0.72rem", display: "block", marginBottom: "4px" }}>
-                      CONTACT EMAIL *
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      value={formState.email}
-                      onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                      placeholder="e.g. elena@firm.com"
-                      style={{
-                        width: "100%",
-                        padding: "10px 12px",
-                        fontSize: "0.85rem",
-                        fontFamily: "inherit",
-                        backgroundColor: isDark ? "#161616" : "#FFFFFF",
-                        border: `1px solid ${isDark ? "#333333" : "#CBD5E1"}`,
-                        color: isDark ? "#FFFFFF" : "#111111",
-                        outline: "none",
-                      }}
-                    />
-                  </div>
-
-                  <div>
-                    <label className="font-mono text-muted" style={{ fontSize: "0.72rem", display: "block", marginBottom: "4px" }}>
-                      TOPIC / INQUIRY
-                    </label>
-                    <select
-                      value={formState.topic}
-                      onChange={(e) => setFormState({ ...formState, topic: e.target.value })}
-                      style={{
-                        width: "100%",
-                        padding: "10px 12px",
-                        fontSize: "0.85rem",
-                        fontFamily: "inherit",
-                        backgroundColor: isDark ? "#161616" : "#FFFFFF",
-                        border: `1px solid ${isDark ? "#333333" : "#CBD5E1"}`,
-                        color: isDark ? "#FFFFFF" : "#111111",
-                        outline: "none",
-                      }}
-                    >
-                      <option value="AI Engineering / Founder Role">AI Engineering / Founder Role</option>
-                      <option value="High-Concurrency Backend Contract">High-Concurrency Backend Contract</option>
-                      <option value="Gebere Vision AI Partnership">Gebere Vision AI Partnership</option>
-                      <option value="Research & Technical Discussion">Research & Technical Discussion</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="font-mono text-muted" style={{ fontSize: "0.72rem", display: "block", marginBottom: "4px" }}>
-                      MESSAGE BRIEF *
-                    </label>
-                    <textarea
-                      required
-                      rows={4}
-                      value={formState.message}
-                      onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                      placeholder="Outline project scope, timelines, or engineering questions..."
-                      style={{
-                        width: "100%",
-                        padding: "10px 12px",
-                        fontSize: "0.85rem",
-                        fontFamily: "inherit",
-                        backgroundColor: isDark ? "#161616" : "#FFFFFF",
-                        border: `1px solid ${isDark ? "#333333" : "#CBD5E1"}`,
-                        color: isDark ? "#FFFFFF" : "#111111",
-                        outline: "none",
-                        resize: "vertical",
-                      }}
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={formStatus === "sending"}
-                    className="btn-action"
-                    style={{ justifyContent: "center", padding: "12px", width: "100%" }}
+                <div>
+                  <label className="font-mono" style={{ display: "block", fontSize: "0.72rem", marginBottom: "4px", color: isDark ? "#A0A0A0" : "#475569" }}>
+                    TOPIC OF DISCUSSION
+                  </label>
+                  <select
+                    value={formState.topic}
+                    onChange={(e) => setFormState({ ...formState, topic: e.target.value })}
+                    className="font-mono"
+                    style={{
+                      width: "100%",
+                      padding: "10px",
+                      fontSize: "0.82rem",
+                      backgroundColor: isDark ? "#0A0A0A" : "#FFFFFF",
+                      border: `1px solid ${isDark ? "#2E2E2E" : "#D1D5DB"}`,
+                      color: isDark ? "#FFFFFF" : "#111111",
+                      outline: "none",
+                    }}
                   >
-                    {formStatus === "sending" ? "Dispatching Transmission..." : "Transmit Message →"}
-                  </button>
+                    <option>AI Engineering / Founder Role</option>
+                    <option>Full-Stack Contract Architecture</option>
+                    <option>Research Collaboration / Academic</option>
+                    <option>Other Engineering Inquiry</option>
+                  </select>
+                </div>
 
-                  {formMsg && (
-                    <div
-                      className="font-mono"
-                      style={{
-                        fontSize: "0.75rem",
-                        padding: "8px",
-                        backgroundColor: formStatus === "success" ? "rgba(16,185,129,0.1)" : "rgba(239,68,68,0.1)",
-                        color: formStatus === "success" ? "#10B981" : "#EF4444",
-                        border: `1px solid ${formStatus === "success" ? "#10B981" : "#EF4444"}`,
-                      }}
-                    >
-                      {formMsg}
-                    </div>
-                  )}
-                </form>
-              </div>
+                <div>
+                  <label className="font-mono" style={{ display: "block", fontSize: "0.72rem", marginBottom: "4px", color: isDark ? "#A0A0A0" : "#475569" }}>
+                    MESSAGE / PROJECT CONSTRAINTS *
+                  </label>
+                  <textarea
+                    rows={4}
+                    required
+                    value={formState.message}
+                    onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                    placeholder="Briefly state target latency, database constraints, or the problem space..."
+                    className="font-mono"
+                    style={{
+                      width: "100%",
+                      padding: "10px",
+                      fontSize: "0.82rem",
+                      backgroundColor: isDark ? "#0A0A0A" : "#FFFFFF",
+                      border: `1px solid ${isDark ? "#2E2E2E" : "#D1D5DB"}`,
+                      color: isDark ? "#FFFFFF" : "#111111",
+                      outline: "none",
+                      resize: "vertical",
+                    }}
+                  />
+                </div>
 
-              {/* Bonus Collapsible Terminal Inspector */}
-              <div style={{ marginTop: "1rem" }}>
-                <button
-                  onClick={() => setTerminalOpen(!terminalOpen)}
-                  className="font-mono"
-                  style={{
-                    width: "100%",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    padding: "8px 12px",
-                    fontSize: "0.74rem",
-                    backgroundColor: isDark ? "#141414" : "#F8FAFC",
-                    border: `1px solid ${isDark ? "#222222" : "#E2E8F0"}`,
-                    color: isDark ? "#AAAAAA" : "#475569",
-                    cursor: "pointer",
-                  }}
-                >
-                  <span>{terminalOpen ? "▼ HIDE" : "▶ LAUNCH"} INTERACTIVE TERMINAL INSPECTOR</span>
-                  <span style={{ color: accentHex }}>bash: amansys</span>
-                </button>
-
-                {terminalOpen && (
+                {formMsg && (
                   <div
                     className="font-mono"
                     style={{
-                      marginTop: "6px",
-                      backgroundColor: "#0C0C0C",
-                      color: "#33FF33",
-                      border: "1px solid #222222",
-                      padding: "1rem",
-                      fontSize: "0.75rem",
+                      padding: "8px 12px",
+                      fontSize: "0.76rem",
+                      backgroundColor: formStatus === "success" ? "rgba(16, 185, 129, 0.1)" : "rgba(239, 68, 68, 0.1)",
+                      border: `1px solid ${formStatus === "success" ? "#10B981" : "#EF4444"}`,
+                      color: formStatus === "success" ? "#10B981" : "#EF4444",
                     }}
                   >
-                    <div style={{ maxHeight: "180px", overflowY: "auto", marginBottom: "8px" }}>
-                      {terminalOutput.map((log, idx) => (
-                        <div key={idx} style={{ marginBottom: "4px", whiteSpace: "pre-wrap" }}>
-                          {log.type === "system" && <span style={{ color: "#888888" }}>[SYS] {log.text}</span>}
-                          {log.type === "user" && <span style={{ color: "#FFFFFF" }}>{log.text}</span>}
-                          {log.type === "output" && <span style={{ color: "#00E5FF" }}>{log.text}</span>}
-                          {log.type === "error" && <span style={{ color: "#FF5252" }}>{log.text}</span>}
-                        </div>
-                      ))}
-                      <div ref={terminalBottomRef} />
-                    </div>
-
-                    <form onSubmit={handleTerminalSubmit} style={{ display: "flex", gap: "6px" }}>
-                      <span style={{ color: "#00E5FF" }}>$</span>
-                      <input
-                        type="text"
-                        value={terminalInput}
-                        onChange={(e) => setTerminalInput(e.target.value)}
-                        placeholder="help, whoami, credentials, projects..."
-                        style={{
-                          flex: 1,
-                          background: "transparent",
-                          border: "none",
-                          outline: "none",
-                          color: "#FFFFFF",
-                          fontFamily: "inherit",
-                          fontSize: "0.75rem",
-                        }}
-                      />
-                    </form>
+                    {formMsg}
                   </div>
                 )}
+
+                <button
+                  type="submit"
+                  disabled={formStatus === "sending"}
+                  className="btn-action"
+                  style={{ justifyContent: "center" }}
+                >
+                  {formStatus === "sending" ? "Dispatching..." : "Transmit Message ↵"}
+                </button>
+              </form>
+
+              {/* Direct email quick-copy fallback */}
+              <div style={{ marginTop: "1.5rem", paddingTop: "1.2rem", borderTop: `1px solid ${isDark ? "#222" : "#EEE"}` }}>
+                <div className="font-mono text-muted" style={{ fontSize: "0.72rem", marginBottom: "6px" }}>
+                  DIRECT EMAIL INBOX:
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+                  <code className="font-mono" style={{ fontSize: "0.85rem", fontWeight: 600 }}>
+                    {PROFILE.email}
+                  </code>
+                  <button
+                    onClick={copyEmailAddress}
+                    className="font-mono"
+                    style={{
+                      padding: "4px 8px",
+                      fontSize: "0.72rem",
+                      backgroundColor: isDark ? "#1E1E1E" : "#F1F5F9",
+                      border: `1px solid ${isDark ? "#333" : "#D1D5DB"}`,
+                      color: isDark ? "#FFF" : "#111",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {emailCopied ? "✓ COPIED" : "COPY"}
+                  </button>
+                </div>
               </div>
+            </div>
+
+            {/* Interactive Terminal / CLI Console (Requested Feature) */}
+            <div
+              className="border-ledger"
+              style={{
+                backgroundColor: isDark ? "#0A0A0A" : "#0F172A",
+                color: "#E2E8F0",
+                border: `1px solid ${isDark ? "#222222" : "#334155"}`,
+                borderRadius: "2px",
+                overflow: "hidden",
+                boxShadow: isDark ? "0 6px 30px rgba(0,0,0,0.6)" : "0 6px 30px rgba(15, 23, 42, 0.2)",
+              }}
+            >
+              {/* Terminal Window Header Bar */}
+              <div
+                style={{
+                  padding: "8px 14px",
+                  backgroundColor: isDark ? "#141414" : "#1E293B",
+                  borderBottom: `1px solid ${isDark ? "#222222" : "#334155"}`,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                  <span style={{ width: "9px", height: "9px", borderRadius: "50%", backgroundColor: "#EF4444", display: "inline-block" }} />
+                  <span style={{ width: "9px", height: "9px", borderRadius: "50%", backgroundColor: "#F59E0B", display: "inline-block" }} />
+                  <span style={{ width: "9px", height: "9px", borderRadius: "50%", backgroundColor: "#10B981", display: "inline-block" }} />
+                  <span className="font-mono" style={{ fontSize: "0.72rem", color: "#94A3B8", marginLeft: "6px" }}>
+                    aman@aau-kernel: ~
+                  </span>
+                </div>
+                <div className="font-mono" style={{ fontSize: "0.68rem", color: "#94A3B8" }}>
+                  ZSH 5.9 (x86_64)
+                </div>
+              </div>
+
+              {/* Command Quick-Click Shortcut Strip */}
+              <div
+                style={{
+                  padding: "6px 12px",
+                  backgroundColor: isDark ? "#101010" : "#162032",
+                  borderBottom: `1px solid ${isDark ? "#1E1E1E" : "#283548"}`,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  flexWrap: "wrap",
+                }}
+              >
+                <span className="font-mono" style={{ fontSize: "0.66rem", color: "#64748B" }}>
+                  TRY:
+                </span>
+                {["whoami", "credentials", "projects", "contact", "clear"].map((cmd) => (
+                  <button
+                    key={cmd}
+                    onClick={() => {
+                      setTerminalInput(cmd);
+                    }}
+                    className="font-mono"
+                    style={{
+                      fontSize: "0.66rem",
+                      padding: "2px 6px",
+                      background: "rgba(255,255,255,0.05)",
+                      border: "1px solid rgba(255,255,255,0.1)",
+                      color: "#38BDF8",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {cmd}
+                  </button>
+                ))}
+              </div>
+
+              {/* Terminal Output Log Area */}
+              <div
+                style={{
+                  height: "320px",
+                  overflowY: "auto",
+                  padding: "12px 14px",
+                  fontSize: "0.78rem",
+                  lineHeight: 1.5,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "6px",
+                }}
+              >
+                {terminalOutput.map((item, idx) => (
+                  <div key={idx} className="font-mono" style={{ whiteSpace: "pre-wrap" }}>
+                    {item.type === "system" && <span style={{ color: "#64748B" }}>[SYS] {item.text}</span>}
+                    {item.type === "user" && <span style={{ color: "#38BDF8", fontWeight: 700 }}>{item.text}</span>}
+                    {item.type === "output" && <span style={{ color: "#E2E8F0" }}>{item.text}</span>}
+                    {item.type === "error" && <span style={{ color: "#F87171" }}>{item.text}</span>}
+                  </div>
+                ))}
+                <div ref={terminalBottomRef} />
+              </div>
+
+              {/* Terminal Interactive Input Line */}
+              <form
+                onSubmit={handleTerminalSubmit}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  padding: "8px 12px",
+                  backgroundColor: isDark ? "#0E0E0E" : "#1E293B",
+                  borderTop: `1px solid ${isDark ? "#222222" : "#334155"}`,
+                }}
+              >
+                <span className="font-mono" style={{ color: "#10B981", marginRight: "8px", fontWeight: 700 }}>
+                  aman@ledger:~$
+                </span>
+                <input
+                  type="text"
+                  value={terminalInput}
+                  onChange={(e) => setTerminalInput(e.target.value)}
+                  placeholder="type 'help', 'whoami', 'credentials'..."
+                  className="font-mono"
+                  style={{
+                    flex: 1,
+                    backgroundColor: "transparent",
+                    border: "none",
+                    outline: "none",
+                    color: "#FFFFFF",
+                    fontSize: "0.8rem",
+                  }}
+                />
+                <button
+                  type="submit"
+                  className="font-mono"
+                  style={{
+                    background: "none",
+                    border: "none",
+                    color: "#38BDF8",
+                    fontSize: "0.72rem",
+                    cursor: "pointer",
+                    padding: "2px 6px",
+                  }}
+                >
+                  RUN ↵
+                </button>
+              </form>
             </div>
           </div>
         </section>
+
       </main>
 
-      {/* ── FOOTER ─────────────────────────────────────────────────── */}
+      {/* ── FOOTER (AUTHORITATIVE SYSTEM METADATA) ────────────────────── */}
       <footer
         style={{
           borderTop: `1px solid ${isDark ? "#222222" : "#E5E7EB"}`,
-          backgroundColor: isDark ? "#0A0A0A" : "#FFFFFF",
-          padding: "2rem 1.5rem",
+          backgroundColor: isDark ? "#080808" : "#F8FAFC",
+          padding: "2.5rem 1.5rem",
+          fontSize: "0.76rem",
+          color: isDark ? "#888888" : "#64748B",
         }}
       >
         <div
@@ -1593,24 +2143,28 @@ GITHUB: https://github.com/oumersalah2-cmd`,
             justifyContent: "space-between",
             alignItems: "center",
             flexWrap: "wrap",
-            gap: "1rem",
-            fontSize: "0.75rem",
+            gap: "1.5rem",
           }}
-          className="font-mono text-muted"
         >
           <div>
-            © 2026 ABDUSALAM OUMER AMAN · AAU · INSA CYBER GRADUATE · MIT OPEN LEARNING
+            <div className="font-mono" style={{ fontWeight: 700, color: isDark ? "#FFFFFF" : "#111111", marginBottom: "4px" }}>
+              ABDUSALAM OUMER AMAN — APPLIED AI FOUNDER & SYSTEMS ARCHITECT
+            </div>
+            <div className="font-mono">
+              © 2026 ABDUSALAM OUMER AMAN · AAU · INSA CYBER GRADUATE · MIT OPEN LEARNING
+            </div>
           </div>
-          <div style={{ display: "flex", gap: "1rem" }}>
-            <a href={PROFILE.telegramChannel} target="_blank" rel="noreferrer" className="tactile-link">
-              Unplugged Me (Telegram) ↗
+
+          <div style={{ display: "flex", gap: "1.2rem", flexWrap: "wrap" }}>
+            <a href={PROFILE.telegramChannel} target="_blank" rel="noreferrer" className="font-mono tactile-link" style={{ color: accentHex }}>
+              Telegram: @ggedAbdusay (Unplugged Me) ↗
             </a>
-            <a href={PROFILE.github} target="_blank" rel="noreferrer" className="tactile-link">
+            <a href={PROFILE.github} target="_blank" rel="noreferrer" className="font-mono tactile-link" style={{ color: accentHex }}>
               GitHub ↗
             </a>
-            <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} style={{ background: "none", border: "none", cursor: "pointer", color: accentHex }}>
-              ↑ Return to Top
-            </button>
+            <a href={PROFILE.upwork} target="_blank" rel="noreferrer" className="font-mono tactile-link" style={{ color: accentHex }}>
+              Upwork ↗
+            </a>
           </div>
         </div>
       </footer>
@@ -1618,118 +2172,704 @@ GITHUB: https://github.com/oumersalah2-cmd`,
       {/* ── CURRICULUM VITAE (CV) PREVIEW MODAL ───────────────────────── */}
       {cvModalOpen && (
         <div
+          className="cv-modal-backdrop"
           style={{
             position: "fixed",
-            inset: 0,
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0,0,0,0.85)",
+            backdropFilter: "blur(8px)",
             zIndex: 1000,
-            backgroundColor: "rgba(0,0,0,0.75)",
-            backdropFilter: "blur(6px)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            padding: "1rem",
+            padding: "1.25rem",
           }}
           onClick={() => setCvModalOpen(false)}
         >
           <div
-            className="border-ledger bg-card"
+            className="border-ledger bg-card cv-paper-container"
             style={{
-              maxWidth: "720px",
+              maxWidth: "840px",
               width: "100%",
-              maxHeight: "90vh",
+              maxHeight: "92vh",
               overflowY: "auto",
-              border: `1px solid ${isDark ? "#333333" : "#111111"}`,
-              padding: "2rem",
+              padding: "clamp(1.5rem, 3.5vw, 2.75rem)",
+              border: `1px solid ${accentHex}`,
+              boxShadow: "0 15px 50px rgba(0,0,0,0.85)",
+              borderRadius: "4px",
+              position: "relative",
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1.5rem" }}>
-              <div>
-                <span className="font-mono" style={{ fontSize: "0.7rem", color: accentHex, fontWeight: 700 }}>
+            {/* Modal Sticky Top Controls (No-Print) */}
+            <div
+              className="no-print"
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginBottom: "1.5rem",
+                paddingBottom: "0.85rem",
+                borderBottom: `1px solid ${isDark ? "#262626" : "#E2E8F0"}`,
+              }}
+            >
+              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <span
+                  className="font-mono"
+                  style={{
+                    fontSize: "0.7rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.06em",
+                    color: accentHex,
+                    backgroundColor: isDark ? "rgba(0,71,255,0.12)" : "rgba(0,71,255,0.06)",
+                    padding: "3px 8px",
+                    border: `1px solid ${accentHex}33`,
+                  }}
+                >
                   OFFICIAL CURRICULUM VITAE // 2026
                 </span>
-                <h2 className="font-serif" style={{ fontSize: "1.8rem", fontWeight: 600 }}>
-                  Abdusalam Oumer Aman
-                </h2>
-                <div className="font-mono text-muted" style={{ fontSize: "0.78rem" }}>
-                  oumersalah2@gmail.com · Addis Ababa, Ethiopia · Unplugged Me (Telegram)
-                </div>
+                <span className="font-mono" style={{ fontSize: "0.72rem", color: isDark ? "#888888" : "#64748B" }}>
+                  A4 Executive Format
+                </span>
               </div>
-              <button
-                onClick={() => setCvModalOpen(false)}
-                className="font-mono"
+              <div style={{ display: "flex", gap: "8px" }}>
+                <button
+                  onClick={() => window.print()}
+                  className="font-mono btn-action"
+                  style={{ padding: "5px 12px", fontSize: "0.72rem" }}
+                  title="Print or Save as Clean PDF"
+                >
+                  🖨️ Print / Save PDF
+                </button>
+                <button
+                  onClick={() => setCvModalOpen(false)}
+                  className="font-mono btn-action-ghost"
+                  style={{ padding: "5px 10px", fontSize: "0.72rem" }}
+                >
+                  ✕ Close
+                </button>
+              </div>
+            </div>
+
+            {/* ── CV DOCUMENT HEADER ─────────────────────────────────────── */}
+            <div style={{ textAlign: "center", marginBottom: "1.8rem" }}>
+              <img
+                src="/profile-circle.webp"
+                alt="Abdusalam Oumer Aman"
                 style={{
-                  background: "none",
-                  border: `1px solid ${isDark ? "#333333" : "#D1D5DB"}`,
-                  padding: "4px 10px",
-                  cursor: "pointer",
+                  width: "105px",
+                  height: "105px",
+                  borderRadius: "50%",
+                  objectFit: "cover",
+                  display: "inline-block",
+                  border: `2px solid ${isDark ? "#333333" : "#D1D5DB"}`,
+                  boxShadow: "0 4px 14px rgba(0,0,0,0.25)",
+                }}
+              />
+              <h1
+                className="font-serif"
+                style={{
+                  fontSize: "clamp(1.75rem, 3vw, 2.25rem)",
+                  fontWeight: 700,
+                  marginTop: "0.6rem",
+                  marginBottom: "0.2rem",
                   color: isDark ? "#FFFFFF" : "#111111",
                 }}
               >
-                ✕ CLOSE
-              </button>
-            </div>
-
-            {/* CV Content Sections */}
-            <div style={{ display: "grid", gap: "1.2rem", fontSize: "0.85rem", lineHeight: 1.6 }}>
-              <div>
-                <h4 className="font-mono" style={{ fontSize: "0.8rem", color: accentHex, borderBottom: `1px solid ${isDark ? "#222" : "#EEE"}`, paddingBottom: "4px", marginBottom: "6px" }}>
-                  1. ACADEMIC & INSTITUTIONAL EDUCATION
-                </h4>
-                <p>
-                  <strong>Addis Ababa University (AAU)</strong> — B.Sc. in Software Engineering (Junior / 3rd Year, 2022–Present).
-                </p>
-                <p>
-                  <strong>Information Network Security Administration (INSA)</strong> — National Ethio Cyber Talent Summer Camp Graduate (Jul–Nov 2026).
-                </p>
-                <p>
-                  <strong>MIT Open Learning</strong> — Introduction to Universal AI, Prof. Dimitris Bertsimas (Completed Oct 2026).
-                </p>
-              </div>
-
-              <div>
-                <h4 className="font-mono" style={{ fontSize: "0.8rem", color: accentHex, borderBottom: `1px solid ${isDark ? "#222" : "#EEE"}`, paddingBottom: "4px", marginBottom: "6px" }}>
-                  2. VENTURES & PRODUCTION SYSTEMS
-                </h4>
-                <p>
-                  <strong>Gebere Vision AI</strong> — Multilingual agricultural vision diagnostic bot on Telegram (METI-Funded UniPods AI Programme). Sub-800ms Groq Llama 3.2 Vision in Amharic & Afaan Oromoo.
-                </p>
-                <p>
-                  <strong>SmartBiz ERP Lite</strong> — Offline-first local retail ERP engine utilizing client IndexedDB and deterministic vector clock sync for power-cut resilience.
-                </p>
-                <p>
-                  <strong>Ethio Bucks Backend</strong> — Concurrency-hardened Django financial backend with row-level locks and immutable ledgers.
-                </p>
-                <p>
-                  <strong>CampusTrack (AAU Café)</strong> — Institutional custody & 3,000 ETB stipend allocation system preventing dual-claim fraud.
-                </p>
-              </div>
-
-              <div>
-                <h4 className="font-mono" style={{ fontSize: "0.8rem", color: accentHex, borderBottom: `1px solid ${isDark ? "#222" : "#EEE"}`, paddingBottom: "4px", marginBottom: "6px" }}>
-                  3. CORE TECHNICAL COMPETENCIES
-                </h4>
-                <p>
-                  <strong>Languages & Frameworks:</strong> Python (Django), TypeScript, Node.js (Express, NestJS), React 19, Next.js, Flutter / Dart.
-                </p>
-                <p>
-                  <strong>Data & AI Infrastructure:</strong> PostgreSQL (ACID isolation), Groq API (Llama Vision), Supabase pgvector, IndexedDB.
-                </p>
-                <p>
-                  <strong>Systems & Security:</strong> Ubuntu Linux 26.04 LTS, Docker, Linux Kernel parameter tuning, OWASP security audits.
-                </p>
-              </div>
-            </div>
-
-            <div style={{ marginTop: "1.8rem", display: "flex", gap: "10px", justifyContent: "flex-end" }}>
-              <a
-                href={PROFILE.cvUrl}
-                download="Abdusalam_Oumer_Aman_CV.pdf"
-                className="btn-action"
-                style={{ fontSize: "0.8rem" }}
+                Abdusalam Oumer Aman
+              </h1>
+              <p
+                style={{
+                  fontSize: "0.95rem",
+                  fontStyle: "italic",
+                  color: isDark ? "#A0A0A0" : "#475569",
+                  marginBottom: "0.75rem",
+                }}
               >
-                Download PDF (cv.pdf) ↓
-              </a>
+                Full-Stack Engineer | Specialized in Production-Ready Systems
+              </p>
+
+              {/* Primary Contact Row */}
+              <div
+                className="font-mono"
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: "0.85rem 1.25rem",
+                  fontSize: "0.76rem",
+                  color: isDark ? "#999999" : "#475569",
+                  marginBottom: "0.5rem",
+                }}
+              >
+                <a href={`mailto:${PROFILE.email}`} style={{ textDecoration: "none", color: "inherit" }}>
+                  ✉ {PROFILE.email}
+                </a>
+                <a href={`tel:${PROFILE.phone}`} style={{ textDecoration: "none", color: "inherit" }}>
+                  📞 {PROFILE.phone}
+                </a>
+                <span>📍 {PROFILE.location}</span>
+                <span>📅 {PROFILE.birthDate}</span>
+              </div>
+
+              {/* Secondary Coordinates & Online Profiles */}
+              <div
+                className="font-mono"
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: "0.65rem 1.2rem",
+                  fontSize: "0.74rem",
+                  color: accentHex,
+                }}
+              >
+                <a href={PROFILE.portfolioUrl} target="_blank" rel="noreferrer" style={{ textDecoration: "underline" }}>
+                  🔗 ab-site-tawny.vercel.app ↗
+                </a>
+                <a href={PROFILE.github} target="_blank" rel="noreferrer" style={{ textDecoration: "underline" }}>
+                  🐙 {PROFILE.handle} ↗
+                </a>
+                <a href={PROFILE.twitter} target="_blank" rel="noreferrer" style={{ textDecoration: "underline" }}>
+                  𝕏 {PROFILE.twitterHandle} ↗
+                </a>
+                <a href={PROFILE.telegramChannel} target="_blank" rel="noreferrer" style={{ textDecoration: "underline" }}>
+                  ✈ {PROFILE.telegramChannelName} ↗
+                </a>
+              </div>
+            </div>
+
+            {/* ── 1. SUMMARY ────────────────────────────────────────────── */}
+            <div style={{ marginBottom: "1.4rem" }}>
+              <div
+                className="font-mono cv-section-rule"
+                style={{
+                  fontSize: "0.82rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  color: isDark ? "#FFFFFF" : "#111111",
+                  borderBottom: `1.5px solid ${isDark ? "#333333" : "#111111"}`,
+                  paddingBottom: "4px",
+                  marginBottom: "8px",
+                }}
+              >
+                SUMMARY
+              </div>
+              <p style={{ fontSize: "0.86rem", lineHeight: 1.65, color: isDark ? "#CCCCCC" : "#334155" }}>
+                Dedicated software engineering student with extensive hands-on experience building production-ready, full-stack applications. Specializing in the MERN stack, Django, and Next.js, I focus on delivering efficient, scalable systems from concept to deployment. Driven by daily algorithmic problem-solving, I write clean, maintainable code and prioritize clear communication to deliver reliable solutions for frontend, backend, and full-stack roles.
+              </p>
+            </div>
+
+            {/* ── 2. EDUCATION ──────────────────────────────────────────── */}
+            <div style={{ marginBottom: "1.4rem" }}>
+              <div
+                className="font-mono cv-section-rule"
+                style={{
+                  fontSize: "0.82rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  color: isDark ? "#FFFFFF" : "#111111",
+                  borderBottom: `1.5px solid ${isDark ? "#333333" : "#111111"}`,
+                  paddingBottom: "4px",
+                  marginBottom: "8px",
+                }}
+              >
+                EDUCATION
+              </div>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "8px", fontSize: "0.86rem" }}>
+                <div>
+                  <strong style={{ fontSize: "0.92rem", color: isDark ? "#FFFFFF" : "#111111" }}>
+                    Bachelors in Software Engineering
+                  </strong>
+                  <div style={{ color: isDark ? "#A0A0A0" : "#475569", fontStyle: "italic", marginTop: "2px" }}>
+                    Addis Ababa University
+                  </div>
+                </div>
+                <div className="font-mono" style={{ textAlign: "right", fontSize: "0.78rem", color: isDark ? "#888888" : "#64748B" }}>
+                  <div>09/2024 – Present</div>
+                  <div>Addis Ababa, Ethiopia</div>
+                </div>
+              </div>
+            </div>
+
+            {/* ── 3. SKILLS ─────────────────────────────────────────────── */}
+            <div style={{ marginBottom: "1.4rem" }}>
+              <div
+                className="font-mono cv-section-rule"
+                style={{
+                  fontSize: "0.82rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  color: isDark ? "#FFFFFF" : "#111111",
+                  borderBottom: `1.5px solid ${isDark ? "#333333" : "#111111"}`,
+                  paddingBottom: "4px",
+                  marginBottom: "8px",
+                }}
+              >
+                SKILLS & TECHNICAL PROFICIENCIES
+              </div>
+              <div style={{ fontSize: "0.86rem", lineHeight: 1.65, color: isDark ? "#CCCCCC" : "#334155" }}>
+                <div style={{ fontStyle: "italic", marginBottom: "0.4rem", color: isDark ? "#A0A0A0" : "#475569" }}>
+                  Full-Stack Development, Applied AI Systems, Offline-First Architecture, Concurrency & Fintech
+                </div>
+                <ul style={{ listStyleType: "disc", paddingLeft: "1.2rem", display: "grid", gap: "4px" }}>
+                  <li>
+                    <strong>Languages:</strong> TypeScript, JavaScript (ES6+), Python, Java, SQL, Dart, C/C++
+                  </li>
+                  <li>
+                    <strong>Frontend & Mobile:</strong> Next.js (App Router), React 19, Tailwind CSS, Telegram Mini Apps (TMA), Flutter, PWA
+                  </li>
+                  <li>
+                    <strong>Backend & APIs:</strong> Node.js, Express, Django, NestJS, Safaricom Daraja API (M-PESA), grammY / Telegram Bots, REST APIs
+                  </li>
+                  <li>
+                    <strong>Databases & Storage:</strong> PostgreSQL (ACID row locks), Supabase (pgvector), MongoDB Atlas, IndexedDB, SQLite3, Prisma ORM
+                  </li>
+                  <li>
+                    <strong>Applied AI & Optimization:</strong> Groq AI Vision (Llama 3.2 Vision), Prompt Engineering (Amharic & Afaan Oromoo), Mixed-Integer Optimization (MIT)
+                  </li>
+                  <li>
+                    <strong>Systems & DevOps:</strong> Ubuntu Linux 26.04 LTS, Docker, Git/GitHub, Vercel, Render, PythonAnywhere, INSA Kernel Audits & OWASP Security
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* ── 4. LANGUAGES ──────────────────────────────────────────── */}
+            <div style={{ marginBottom: "1.4rem" }}>
+              <div
+                className="font-mono cv-section-rule"
+                style={{
+                  fontSize: "0.82rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  color: isDark ? "#FFFFFF" : "#111111",
+                  borderBottom: `1.5px solid ${isDark ? "#333333" : "#111111"}`,
+                  paddingBottom: "4px",
+                  marginBottom: "8px",
+                }}
+              >
+                LANGUAGES
+              </div>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                  gap: "0.6rem 2.5rem",
+                  fontSize: "0.86rem",
+                }}
+              >
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <span>Oromic</span>
+                  <span style={{ display: "inline-flex", gap: "4px" }}>
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <span
+                        key={i}
+                        className={i <= 5 ? "cv-dot-filled" : "cv-dot-empty"}
+                        style={{ backgroundColor: i <= 5 ? (isDark ? accentHex : "#111111") : (isDark ? "#333333" : "#D1D5DB") }}
+                      />
+                    ))}
+                  </span>
+                </div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <span>English</span>
+                  <span style={{ display: "inline-flex", gap: "4px" }}>
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <span
+                        key={i}
+                        className={i <= 4 ? "cv-dot-filled" : "cv-dot-empty"}
+                        style={{ backgroundColor: i <= 4 ? (isDark ? accentHex : "#111111") : (isDark ? "#333333" : "#D1D5DB") }}
+                      />
+                    ))}
+                  </span>
+                </div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <span>Amharic</span>
+                  <span style={{ display: "inline-flex", gap: "4px" }}>
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <span
+                        key={i}
+                        className={i <= 4 ? "cv-dot-filled" : "cv-dot-empty"}
+                        style={{ backgroundColor: i <= 4 ? (isDark ? accentHex : "#111111") : (isDark ? "#333333" : "#D1D5DB") }}
+                      />
+                    ))}
+                  </span>
+                </div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <span>Arabic</span>
+                  <span style={{ display: "inline-flex", gap: "4px" }}>
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <span
+                        key={i}
+                        className={i <= 2 ? "cv-dot-filled" : "cv-dot-empty"}
+                        style={{ backgroundColor: i <= 2 ? (isDark ? accentHex : "#111111") : (isDark ? "#333333" : "#D1D5DB") }}
+                      />
+                    ))}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* ── 5. CERTIFICATES ───────────────────────────────────────── */}
+            <div style={{ marginBottom: "1.4rem" }}>
+              <div
+                className="font-mono cv-section-rule"
+                style={{
+                  fontSize: "0.82rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  color: isDark ? "#FFFFFF" : "#111111",
+                  borderBottom: `1.5px solid ${isDark ? "#333333" : "#111111"}`,
+                  paddingBottom: "4px",
+                  marginBottom: "8px",
+                }}
+              >
+                CERTIFICATES
+              </div>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+                  gap: "0.55rem 1.5rem",
+                  fontSize: "0.85rem",
+                  color: isDark ? "#CCCCCC" : "#334155",
+                }}
+              >
+                <div>
+                  • <strong>Programming Fundamentals</strong>{" "}
+                  <span className="font-mono" style={{ fontSize: "0.74rem", color: isDark ? "#888888" : "#64748B" }}>
+                    (Udacity)
+                  </span>
+                </div>
+                <div>
+                  • <strong>Android Developer Fundamentals</strong>{" "}
+                  <span className="font-mono" style={{ fontSize: "0.74rem", color: isDark ? "#888888" : "#64748B" }}>
+                    (Udacity)
+                  </span>
+                </div>
+                <div>
+                  • <strong>Introduction to Universal AI</strong>{" "}
+                  <span className="font-mono" style={{ fontSize: "0.74rem", color: isDark ? "#888888" : "#64748B" }}>
+                    (MIT Open Learning)
+                  </span>
+                </div>
+                <div>
+                  • <strong>National Ethio Cyber Talent Summer Camp Graduate</strong>{" "}
+                  <span className="font-mono" style={{ fontSize: "0.74rem", color: isDark ? "#888888" : "#64748B" }}>
+                    (INSA Cyber Talent)
+                  </span>
+                </div>
+                <div>
+                  • <strong>Software Engineering Internship</strong>{" "}
+                  <span className="font-mono" style={{ fontSize: "0.74rem", color: isDark ? "#888888" : "#64748B" }}>
+                    (Sof Omar Technologies)
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* ── 6. PROJECTS ───────────────────────────────────────────── */}
+            <div style={{ marginBottom: "1.4rem" }}>
+              <div
+                className="font-mono cv-section-rule"
+                style={{
+                  fontSize: "0.82rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  color: isDark ? "#FFFFFF" : "#111111",
+                  borderBottom: `1.5px solid ${isDark ? "#333333" : "#111111"}`,
+                  paddingBottom: "4px",
+                  marginBottom: "8px",
+                }}
+              >
+                PROJECTS
+              </div>
+              <div style={{ display: "grid", gap: "1rem", fontSize: "0.86rem" }}>
+                {/* AmanaTrade */}
+                <div>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "6px" }}>
+                    <div>
+                      <strong style={{ fontSize: "0.92rem", color: isDark ? "#FFFFFF" : "#111111" }}>
+                        AmanaTrade
+                      </strong>
+                      <a
+                        href="https://github.com/oumersalah2-cmd/Amana-Trading-"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="font-mono"
+                        style={{ marginLeft: "8px", fontSize: "0.74rem", color: accentHex, textDecoration: "underline" }}
+                      >
+                        github.com/oumersalah2-cmd/Amana-Trading- ↗
+                      </a>
+                    </div>
+                    <span className="font-mono" style={{ fontSize: "0.76rem", color: isDark ? "#888888" : "#64748B" }}>
+                      09/2026 – Present
+                    </span>
+                  </div>
+                  <p style={{ marginTop: "3px", lineHeight: 1.55, color: isDark ? "#CCCCCC" : "#334155" }}>
+                    Built an offline-first B2B platform designed to digitize supply chains and drive M-PESA adoption for wholesale transactions across Ethiopia. Features milestone escrow holding capital until delivery, automated settlement, and Safaricom Daraja API integration.
+                  </p>
+                  <div className="font-mono" style={{ fontSize: "0.72rem", color: isDark ? "#888888" : "#64748B", marginTop: "2px" }}>
+                    Stack: Next.js, Node.js, TypeScript, Safaricom Daraja API (M-PESA), Offline-First Architecture
+                  </div>
+                </div>
+
+                {/* SmartBiz ERP Lite */}
+                <div>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "6px" }}>
+                    <div>
+                      <strong style={{ fontSize: "0.92rem", color: isDark ? "#FFFFFF" : "#111111" }}>
+                        SmartBiz ERP Lite
+                      </strong>
+                      <span className="font-mono" style={{ marginLeft: "8px", fontSize: "0.74rem", color: isDark ? "#888888" : "#64748B" }}>
+                        Offline-First Enterprise State & POS Engine
+                      </span>
+                    </div>
+                    <span className="font-mono" style={{ fontSize: "0.76rem", color: isDark ? "#888888" : "#64748B" }}>
+                      Production Architecture
+                    </span>
+                  </div>
+                  <p style={{ marginTop: "3px", lineHeight: 1.55, color: isDark ? "#CCCCCC" : "#334155" }}>
+                    • 100% local-first PWA with client-side IndexedDB mutations and deterministic vector-clock sync eliminating transaction dropouts during power cuts.
+                  </p>
+                </div>
+
+                {/* Tutor Marketplace (LAMIF) */}
+                <div>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "6px" }}>
+                    <div>
+                      <strong style={{ fontSize: "0.92rem", color: isDark ? "#FFFFFF" : "#111111" }}>
+                        Tutor Marketplace (LAMIF)
+                      </strong>
+                      <a
+                        href="https://lamif-platform.vercel.app"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="font-mono"
+                        style={{ marginLeft: "8px", fontSize: "0.74rem", color: accentHex, textDecoration: "underline" }}
+                      >
+                        lamif-platform.vercel.app ↗
+                      </a>
+                    </div>
+                    <span className="font-mono" style={{ fontSize: "0.76rem", color: isDark ? "#888888" : "#64748B" }}>
+                      02/2026 – 03/2026
+                    </span>
+                  </div>
+                  <p style={{ marginTop: "3px", lineHeight: 1.55, color: isDark ? "#CCCCCC" : "#334155" }}>
+                    Built a comprehensive student-instructor platform featuring complex booking and matching logic, developed using React, Node.js, and MongoDB.
+                  </p>
+                </div>
+
+                {/* Ethio Bucks */}
+                <div>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "6px" }}>
+                    <div>
+                      <strong style={{ fontSize: "0.92rem", color: isDark ? "#FFFFFF" : "#111111" }}>
+                        Ethio Bucks
+                      </strong>
+                      <a
+                        href="http://abdusalam.pythonanywhere.com"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="font-mono"
+                        style={{ marginLeft: "8px", fontSize: "0.74rem", color: accentHex, textDecoration: "underline" }}
+                      >
+                        abdusalam.pythonanywhere.com ↗
+                      </a>
+                    </div>
+                    <span className="font-mono" style={{ fontSize: "0.76rem", color: isDark ? "#888888" : "#64748B" }}>
+                      10/2025 – 01/2026
+                    </span>
+                  </div>
+                  <p style={{ marginTop: "3px", lineHeight: 1.55, color: isDark ? "#CCCCCC" : "#334155" }}>
+                    Developed a transaction-heavy financial backend built for scale and reliability. Deployed the system utilizing Django and PostgreSQL with strict row-level ACID locks (`SELECT FOR UPDATE`).
+                  </p>
+                </div>
+
+                {/* AAU Café Management System */}
+                <div>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "6px" }}>
+                    <div>
+                      <strong style={{ fontSize: "0.92rem", color: isDark ? "#FFFFFF" : "#111111" }}>
+                        AAU Café Management System (CampusTrack)
+                      </strong>
+                      <a
+                        href="https://addis-ababa-university-cafe-management.onrender.com/"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="font-mono"
+                        style={{ marginLeft: "8px", fontSize: "0.74rem", color: accentHex, textDecoration: "underline" }}
+                      >
+                        Live Portal ↗
+                      </a>
+                    </div>
+                    <span className="font-mono" style={{ fontSize: "0.76rem", color: isDark ? "#888888" : "#64748B" }}>
+                      04/2026 – 04/2026
+                    </span>
+                  </div>
+                  <p style={{ marginTop: "3px", lineHeight: 1.55, color: isDark ? "#CCCCCC" : "#334155" }}>
+                    • Engineered a real-time campus ordering system utilizing JavaScript and PostgreSQL. Automates 3,000 ETB/mo dining stipend custody with database uniqueness constraints preventing duplicate claims.
+                  </p>
+                </div>
+
+                {/* Gebere Vision AI */}
+                <div>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "6px" }}>
+                    <div>
+                      <strong style={{ fontSize: "0.92rem", color: isDark ? "#FFFFFF" : "#111111" }}>
+                        Gebere Vision AI
+                      </strong>
+                      <a
+                        href="https://t.me/gebere_vision_bot"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="font-mono"
+                        style={{ marginLeft: "8px", fontSize: "0.74rem", color: accentHex, textDecoration: "underline" }}
+                      >
+                        t.me/gebere_vision_bot ↗
+                      </a>
+                    </div>
+                    <span className="font-mono" style={{ fontSize: "0.76rem", color: isDark ? "#888888" : "#64748B" }}>
+                      07/2026 – Present
+                    </span>
+                  </div>
+                  <p style={{ marginTop: "3px", lineHeight: 1.55, color: isDark ? "#CCCCCC" : "#334155" }}>
+                    • Selected for the METI-Funded UniPods AI Programme. Multilingual crop diagnostic bot powered by Groq Llama 3.2 Vision in Amharic & Afaan Oromoo, returning localized remedies in native scripts.
+                  </p>
+                </div>
+
+                {/* Ace-Ifa-Boru */}
+                <div>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "6px" }}>
+                    <div>
+                      <strong style={{ fontSize: "0.92rem", color: isDark ? "#FFFFFF" : "#111111" }}>
+                        Ace-Ifa-Boru
+                      </strong>
+                      <a
+                        href="https://ace-ifa-boru-frontend.vercel.app"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="font-mono"
+                        style={{ marginLeft: "8px", fontSize: "0.74rem", color: accentHex, textDecoration: "underline" }}
+                      >
+                        ace-ifa-boru-frontend.vercel.app ↗
+                      </a>
+                    </div>
+                    <span className="font-mono" style={{ fontSize: "0.76rem", color: isDark ? "#888888" : "#64748B" }}>
+                      08/2026 – Present
+                    </span>
+                  </div>
+                  <p style={{ marginTop: "3px", lineHeight: 1.55, color: isDark ? "#CCCCCC" : "#334155" }}>
+                    • Native Telegram Mini App (TMA) secondary exam preparation platform with Next.js 14, Express, grammY bot, Prisma ORM, and anti-leak content protection.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* ── 7. CONTINUOUS DEVELOPMENT (CUSTOM) ───────────────────── */}
+            <div style={{ marginBottom: "1.4rem" }}>
+              <div
+                className="font-mono cv-section-rule"
+                style={{
+                  fontSize: "0.82rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  color: isDark ? "#FFFFFF" : "#111111",
+                  borderBottom: `1.5px solid ${isDark ? "#333333" : "#111111"}`,
+                  paddingBottom: "4px",
+                  marginBottom: "8px",
+                }}
+              >
+                CONTINUOUS DEVELOPMENT
+              </div>
+              <div>
+                <strong style={{ fontSize: "0.9rem", color: isDark ? "#FFFFFF" : "#111111", display: "block", marginBottom: "4px" }}>
+                  Competitive Programming & Algorithm Optimization
+                </strong>
+                <p style={{ fontSize: "0.86rem", lineHeight: 1.65, color: isDark ? "#CCCCCC" : "#334155" }}>
+                  Maintain a rigorous daily practice of solving complex data structure and algorithmic challenges across LeetCode, Codeforces, and HackerRank. This consistent discipline ensures that writing highly optimized, structurally sound, and efficient code is a foundational habit, directly translating into faster and more reliable production systems.
+                </p>
+              </div>
+            </div>
+
+            {/* ── 8. COURSES ────────────────────────────────────────────── */}
+            <div style={{ marginBottom: "1.2rem" }}>
+              <div
+                className="font-mono cv-section-rule"
+                style={{
+                  fontSize: "0.82rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  color: isDark ? "#FFFFFF" : "#111111",
+                  borderBottom: `1.5px solid ${isDark ? "#333333" : "#111111"}`,
+                  paddingBottom: "4px",
+                  marginBottom: "8px",
+                }}
+              >
+                COURSES
+              </div>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "8px", fontSize: "0.86rem" }}>
+                <div>
+                  <strong style={{ fontSize: "0.9rem", color: isDark ? "#FFFFFF" : "#111111" }}>
+                    Software Development and Competitive Programming (DSA)
+                  </strong>
+                  <div style={{ color: isDark ? "#A0A0A0" : "#475569", fontStyle: "italic", marginTop: "2px" }}>
+                    Nexus Tutorial
+                  </div>
+                </div>
+                <div className="font-mono" style={{ textAlign: "right", fontSize: "0.78rem", color: isDark ? "#888888" : "#64748B" }}>
+                  <div>10/2025 – 01/2026</div>
+                  <div>Addis Ababa, Ethiopia</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Modal Actions (No-Print) */}
+            <div
+              className="no-print"
+              style={{
+                marginTop: "1.8rem",
+                paddingTop: "1.2rem",
+                borderTop: `1px solid ${isDark ? "#262626" : "#E2E8F0"}`,
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                flexWrap: "wrap",
+                gap: "10px",
+              }}
+            >
+              <span className="font-mono" style={{ fontSize: "0.74rem", color: isDark ? "#888888" : "#64748B" }}>
+                Verified Official Resume · Abdusalam Oumer Aman
+              </span>
+              <div style={{ display: "flex", gap: "8px" }}>
+                <button
+                  onClick={() => window.print()}
+                  className="btn-action"
+                  style={{ padding: "6px 14px", fontSize: "0.75rem" }}
+                >
+                  🖨️ Print / Save PDF
+                </button>
+                <button
+                  onClick={() => setCvModalOpen(false)}
+                  className="btn-action-ghost"
+                  style={{ padding: "6px 14px", fontSize: "0.75rem" }}
+                >
+                  Close Document
+                </button>
+              </div>
             </div>
           </div>
         </div>
