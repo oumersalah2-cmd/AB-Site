@@ -1,16 +1,17 @@
-# Abdusalam Oumer Aman — Applied AI Founder & Systems Portfolio
+# Abdusalam Oumer Aman — Engineering Portfolio
 
-A bespoke, "Anti-AI" editorial portfolio rejecting generic glowing AI aesthetics in favor of maximum white space, high-contrast tactile typography, verifiable credentials, and raw engineering artifacts.
+A minimalist, editorial personal portfolio website engineered with Next.js/React, TypeScript, and Tailwind CSS. Built with clean typographic hierarchy, custom photography, dual Light/Dark theme support, and verified production deployments.
 
 ```
 Abdusalam Oumer Aman
-Software Engineering at AAU. Systems Security at INSA. Applied AI Founder.
-Building localized, production-ready AI systems for Ethiopian infrastructure.
+3rd-Year Software Engineering at Addis Ababa University (AAU)
+National Ethio Cyber Talent Graduate (INSA) · Applied AI Founder (Gebere 360)
+Shipped 20+ live production platforms and applications.
 ```
 
 ---
 
-## 🏛️ Foundations that Matter
+## 🏛️ Foundations & Rigor
 
 1. **AI Fluency // MIT Open Learning**
    - **Credential:** *Introduction to Universal AI* (Completed Oct 7, 2026)
@@ -18,126 +19,74 @@ Building localized, production-ready AI systems for Ethiopian infrastructure.
    - **Faculty Sponsor:** Dimitris Bertsimas — MIT's Vice Provost for Open Learning and Boeing Professor of Operations Research.
    - **Core Rigor:** Mathematical optimization, mixed-integer formulations, transformer architectures, and applied operations research.
 
-2. **Security & Infrastructure // INSA**
+2. **Security & Infrastructure // INSA Talent Cohort**
    - **Program:** National Ethio Cyber Talent Summer Camp (Jul – Nov 2026)
    - **Institution:** Information Network Security Administration (INSA), Addis Ababa.
-   - **Focus:** Defensive cybersecurity, kernel-level Linux auditing, cryptographic ledger validation.
+   - **Focus:** Defensive software security, web application architecture, secure API sessions, and Linux systems auditing.
 
 3. **Academic Core // Addis Ababa University (AAU)**
-   - **Program:** B.Sc. in Software Engineering (Junior / 3rd Year, 2022 – Present)
-   - **Focus:** Relational database transaction isolation (ACID), distributed systems, and algorithmic complexity.
+   - **Program:** B.Sc. in Software Engineering (Year 3 / Junior, 2022 – Present)
+   - **Focus:** ACID database transaction constraints, distributed systems architecture, and algorithmic complexity.
+
+4. **Algorithmic Rigor & Chess Foundations**
+   - **LeetCode & DSA:** Strong algorithmic problem-solving with dynamic programming, graphs, and amortized efficiency.
+   - **Competitive Chess:** Strategic planning, pattern recognition, and decisive trade-off evaluation.
 
 ---
 
-## 🚀 The Founder Showcase (Projects as Products)
+## 🚀 Selected Live Systems
 
-- **Gebere Vision AI (ግብረ ቪዥን)**
-  - *Founder & Lead Architect* · Selected for **METI-Funded UniPods AI Programme**.
-  - Edge crop disease diagnosis via Groq AI Llama vision models (<800ms inference).
-  - Native multilingual support: **Amharic (አማርኛ), Afaan Oromoo, English, and Arabic**.
-  - Supabase `pgvector` disease knowledge base + Human-in-the-Loop agronomist verification pipeline.
-  - Live Telegram Bot: [t.me/gebere_vision_bot](https://t.me/gebere_vision_bot)
+1. **LAMIF Digital Platform**
+   - Full-stack tutor marketplace monorepo with verified instructor onboarding, role-based JWT sessions, and scheduling workflows.
+   - Live Deployment: [lamif-platfor.me](https://lamif-platfor.me/)
 
-- **AmanaTrade**
-  - *Full-Stack Architect* · Offline-First B2B Escrow & Wholesale Platform.
-  - Digitizes supply chains and accelerates M-PESA wholesale adoption across Ethiopian regional merchants.
-  - Milestone-based escrow locking capital until conditions are satisfied, eliminating counterparty trust deficits.
-  - Safaricom Daraja API integration with automated clearing and offline-first local synchronization.
-  - Stack: Next.js, Node.js, TypeScript, Daraja API.
+2. **Hikaya Tour & Travel**
+   - Commercial tour booking platform featuring custom inquiry flows, destination showcases, and responsive client UX.
+   - Live Deployment: [hikayatourandtravel.com](https://hikayatourandtravel.com)
 
-- **Ace-Ifa-Boru**
-  - *Full-Stack Engineer & Bot Architect* · Native Telegram Mini App (TMA) exam preparation platform.
-  - Oromo-centric UI, anti-leak content protection, timed practice modes, Supabase PostgreSQL, and Express/grammY bot backend.
-  - Live Platform: [ace-ifa-boru-frontend.vercel.app](https://ace-ifa-boru-frontend.vercel.app)
+3. **LUCY CSR — AI Support Resolution**
+   - AI-powered customer support resolution platform engineered for the Vision Vertex × AAU ISHUB Hackathon.
+   - Live Deployment: [ishub-hackathon.vercel.app](https://ishub-hackathon.vercel.app/)
 
-- **LAMIF Educational Platform**
-  - *Full-Stack Engineer* · Tutor marketplace and monorepo platform connecting students with vetted educators.
-  - Role-based JWT authentication, tutor verification, and scheduling.
-  - Live Platform: [lamif-platform.vercel.app](https://lamif-platform.vercel.app)
+4. **AAU Cafe & Stipend Management System**
+   - High-throughput campus dining and student stipend disbursement engine enforcing strict ACID constraints and bursary ledger reconciliation.
+   - Live Deployment: [addis-ababa-university-cafe-managem.vercel.app](https://addis-ababa-university-cafe-managem.vercel.app/)
 
-- **Ethio Bucks & Financial Backends**
-  - *Backend Architect* · High-concurrency ETB wallet and microwork ledger in Django & PostgreSQL.
-  - Enforced row-level locking (`SELECT FOR UPDATE`) to eliminate double-spend race conditions.
-  - Live Deployment: [abdusalam.pythonanywhere.com](http://abdusalam.pythonanywhere.com)
+5. **Gebere Vision AI (Gebere 360)**
+   - Sub-800ms crop disease vision diagnostic bot for rural Ethiopian smallholder farmers in native Amharic and Afaan Oromoo scripts.
+   - Selected & funded by METI in collaboration with the Ethiopian Artificial Intelligence Institute (EAII) and UniPods.
+   - Live Telegram Bot: [t.me/gebere_vision_bot](https://t.me/gebere_vision_bot)
 
-- **CampusTrack & AAU Café Stipend System**
-  - Cryptographic item custody audit (Node/Express/SQLite3).
-  - AAU dining stipend platform automating 3,000 ETB/mo allocations with unique database constraints.
+6. **EduBridge**
+   - Inclusive AI educational accessibility platform adhering to WCAG standards with screen-reader optimizations.
+   - GitHub: [oumersalah2-cmd/EduBridge](https://github.com/oumersalah2-cmd/EduBridge)
 
----
+7. **EthioBucks**
+   - High-concurrency task-based earning engine with multi-tier referral rewards, automated transaction tracking, and withdrawal requests in Django & PostgreSQL.
+   - GitHub: [oumersalah2-cmd/EthioBucks](https://github.com/oumersalah2-cmd/EthioBucks)
 
-## 📓 The Engineering Ledger (Replacing the Blog)
-
-Replacing generic SaaS blog posts with real, unfiltered engineering changelogs:
-- Daily algorithmic breakthroughs on LeetCode (150+ solved with O(1) space DP).
-- Bare-metal workstation migration to Ubuntu 26.04 LTS & custom kernel tuning.
-- Shaving 400ms off Groq vision inference for rural 2G/3G links.
-- **Telegram Dispatch Channel:** [Unplugged Me (@unpluggedme)](https://t.me/unpluggedme)
+8. **SmartBiz ERP Lite**
+   - 100% offline-first PWA with client-side IndexedDB mutations and deterministic vector-clock sync for zero data loss during power/cellular blackouts.
+   - GitHub: [oumersalah2-cmd](https://github.com/oumersalah2-cmd)
 
 ---
 
-## 🛠️ Engineering Tech Stack & Production Capabilities
+## 🛠️ Technical Capabilities
 
-1. **Languages & Core Runtimes:**
-   - **TypeScript & JavaScript (ES6+):** Full-stack web applications, Next.js, Node.js microservices, and Telegram Mini Apps.
-   - **Python:** Django REST APIs, algorithmic optimization, AI vision scripts, and daily DSA practice.
-   - **Java & Dart:** OOP system design, cross-platform Flutter mobile applications (Sof Omar Technologies), and native Android.
-   - **SQL & C/C++:** ACID relational query engineering and foundational memory-conscious computing at AAU.
-
-2. **Frontend & Mobile Interfaces:**
-   - **Next.js 14 (App Router) & React 19:** Server components, reactive caching, and high-performance client rendering.
-   - **Tailwind CSS & Vanilla CSS:** High-contrast editorial design systems, tactile typography, and bespoke micro-animations.
-   - **Progressive Web Apps (PWA) & Offline-First:** 100% local client execution via IndexedDB for grid-failure resilience.
-   - **Telegram Mini Apps (TMA SDK):** Native in-app Telegram educational platform engineering (Ace-Ifa-Boru).
-
-3. **Backend, Concurrency & Distributed Rails:**
-   - **Node.js, Express & NestJS:** High-throughput transactional endpoints, JWT verification, and service layers.
-   - **Django (Python):** Concurrency-hardened task ledgers with strict row locks (`SELECT FOR UPDATE`).
-   - **Safaricom Daraja API:** Ethiopian M-PESA wholesale escrow settlement and clearing automation (AmanaTrade).
-   - **Telegram Bot API / grammY:** Low-latency bot backends (Gebere Vision AI & Ace-Ifa-Boru).
-   - **Vector Clocks & Offline Sync:** Conflict-free delta synchronization for low-connectivity regional commerce.
-
-4. **Databases, Ledgers & Storage:**
-   - **PostgreSQL:** ACID transaction isolation, foreign key constraints, and row-level locking.
-   - **Supabase & pgvector:** Vector similarity search for agricultural pathology embeddings.
-   - **MongoDB Atlas & SQLite3:** Document-based student-tutor marketplace storage and embedded dining custody ledgers.
-   - **IndexedDB & Prisma ORM:** Local browser persistence and type-safe database migrations.
-
-5. **Applied AI, Machine Vision & Optimization:**
-   - **Groq AI Vision API:** Sub-800ms Llama 3.2 Vision diagnostics for smallholder farmers.
-   - **Multilingual Prompt Engineering:** Culturally and regionally grounded prompts in Amharic (አማርኛ) and Afaan Oromoo.
-   - **MIT Universal AI Rigor:** Mixed-integer programming, combinatorial optimization, and transformer architectures.
-
-6. **DevOps, Security & Systems Infrastructure:**
-   - **Ubuntu Linux 26.04 LTS:** Bare-metal engineering workstation with custom kernel parameters and bash scripting.
-   - **Defensive Cybersecurity:** INSA Cyber Talent Camp graduate in Linux kernel auditing, intrusion containment, and OWASP.
-   - **Deployment Infrastructure:** Vercel, Render, PythonAnywhere, Docker, and GitHub automated CI/CD.
+- **Languages:** TypeScript, JavaScript (ES6+), Python 3, Java, C/C++, SQL, Bash
+- **Frontend:** React 19, Next.js, Vite, Tailwind CSS, Responsive PWA Architecture
+- **Backend & APIs:** Node.js, Express, Django, NestJS, REST APIs, Telegram Bot API
+- **Databases & Storage:** PostgreSQL, Supabase pgvector, MongoDB Atlas, SQLite3, IndexedDB
+- **Security & Systems:** Linux (Ubuntu 26.04 LTS), INSA Defensive Software Security, JWT Authentication, ACID Guarantees
 
 ---
 
-## 🏃 Local Development
+## 📬 Contact & Connect
 
-```bash
-# Install dependencies
-npm install
-
-# Start Vite dev server
-npm run dev
-
-# Run ESLint
-npm run lint
-
-# Compile production bundle
-npm run build
-```
-
----
-
-## 📬 Dispatch & Contact
-
-- **Live Portfolio:** [https://ab-site-tawny.vercel.app/](https://ab-site-tawny.vercel.app/)
+- **Phone:** [+251 934 978 247](tel:+251934978247)
 - **Email:** [oumersalah2@gmail.com](mailto:oumersalah2@gmail.com)
-- **Telegram Channel:** [@ggedAbdusay](https://t.me/ggedAbdusay) (Unplugged Me)
-- **GitHub:** [@oumersalah2-cmd](https://github.com/oumersalah2-cmd)
-- **Upwork:** [Abdusalam Oumer](https://www.upwork.com/freelancers/~01d02c68660140f622)
-- **Location:** Addis Ababa, Ethiopia (UTC+3)
+- **LinkedIn:** [linkedin.com/in/abdusalam-oumer-aman-200291389](https://www.linkedin.com/in/abdusalam-oumer-aman-200291389)
+- **GitHub:** [github.com/oumersalah2-cmd](https://github.com/oumersalah2-cmd)
+- **X (Twitter):** [@titanic66834](https://x.com/titanic66834)
+- **Telegram:** [@ggedAbdusay](https://t.me/ggedAbdusay)
+- **Upwork:** [Freelancer Profile](https://www.upwork.com/freelancers/~013401fa91baaa52d5)
