@@ -682,16 +682,25 @@ export default function App() {
 
         /* Mobile Phone Optimization: Contact actions prioritized 1st/2nd */
         @media (max-width: 640px) {
+          .action-dock-container {
+            padding: 12px 14px !important;
+            gap: 12px !important;
+          }
           .action-dock-actions {
             order: 1 !important;
             width: 100% !important;
+            display: flex !important;
             justify-content: space-between !important;
-            margin-bottom: 6px !important;
+            align-items: center !important;
+            flex-wrap: wrap !important;
+            gap: 10px !important;
           }
           .action-dock-socials {
             order: 2 !important;
             width: 100% !important;
+            display: flex !important;
             justify-content: center !important;
+            gap: 16px !important;
             border-top: 1px solid ${colors.ruleBorder} !important;
             padding-top: 10px !important;
           }
@@ -1044,6 +1053,7 @@ export default function App() {
 
           {/* ── ACTION DOCK (WARM AMBER HOVER & CLEAN SVGS) ── */}
           <div
+            className="action-dock-container"
             style={{
               display: "flex",
               justifyContent: "space-between",
@@ -1080,7 +1090,7 @@ export default function App() {
                 title="LinkedIn: Abdusalam Oumer Aman"
                 className="dock-icon"
               >
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="#0A66C2">
                   <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.07v8.37h2.78z" />
                 </svg>
               </a>
@@ -1106,7 +1116,7 @@ export default function App() {
                 title="Telegram: @ggedAbdusay"
                 className="dock-icon"
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="#229ED9">
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z" />
                 </svg>
               </a>
@@ -1127,34 +1137,78 @@ export default function App() {
 
             {/* Right: Actions */}
             <div className="action-dock-actions" style={{ display: "flex", alignItems: "center", gap: "14px", fontSize: "0.78rem", flexWrap: "wrap" }}>
-              <button
+              <a
+                href={`tel:${PROFILE.phone}`}
                 onClick={copyPhone}
                 className="font-mono dock-action"
-                style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
-                title="Copy phone: +251 934 978 247"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  textDecoration: "none",
+                  cursor: "pointer",
+                }}
+                title="Call or copy: +251 934 978 247"
               >
-                📞 {copiedPhone ? "Copied Phone!" : PROFILE.phoneDisplay}
-              </button>
-              <button
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.72 11.72 0 003.68.59 1 1 0 011 1v3.5a1 1 0 01-1 1A19.93 19.93 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.59 3.68 1 1 0 01-.24 1.02l-2.23 2.09z" />
+                </svg>
+                <span>{copiedPhone ? "Copied Phone!" : PROFILE.phoneDisplay}</span>
+              </a>
+
+              <a
+                href={`mailto:${PROFILE.email}`}
                 onClick={copyEmail}
                 className="font-mono dock-action"
-                style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  textDecoration: "none",
+                  cursor: "pointer",
+                }}
+                title="Email or copy: oumersalah2@gmail.com"
               >
-                ✉ {copiedEmail ? "Copied!" : "Email"}
-              </button>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+                <span>{copiedEmail ? "Copied Email!" : "Email"}</span>
+              </a>
+
               <button
                 onClick={() => setCvModalOpen(true)}
                 className="font-mono dock-action"
-                style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
+                style={{
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  padding: 0,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "5px",
+                }}
               >
-                ⤓ CV
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+                </svg>
+                <span>CV</span>
               </button>
+
               <button
                 onClick={() => scrollToSection("projects")}
                 className="font-mono dock-action"
-                style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
+                style={{
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  padding: 0,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "4px",
+                }}
               >
-                Projects ↓
+                <span>Projects</span>
+                <span>↓</span>
               </button>
             </div>
           </div>
@@ -1584,7 +1638,7 @@ export default function App() {
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
-                  gap: "6px",
+                  gap: "7px",
                   backgroundColor: colors.accent,
                   color: isDark ? "#0f1422" : "#ffffff",
                   fontSize: "0.78rem",
@@ -1596,7 +1650,10 @@ export default function App() {
                   transition: "all 0.15s ease",
                 }}
               >
-                {copiedPhone ? "✓ Copied Phone!" : `📞 Call: ${PROFILE.phoneDisplay}`}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.72 11.72 0 003.68.59 1 1 0 011 1v3.5a1 1 0 01-1 1A19.93 19.93 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.59 3.68 1 1 0 01-.24 1.02l-2.23 2.09z" />
+                </svg>
+                <span>{copiedPhone ? "✓ Copied Phone!" : `Call: ${PROFILE.phoneDisplay}`}</span>
               </button>
 
               {/* Copy Email Button */}
@@ -1605,7 +1662,7 @@ export default function App() {
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
-                  gap: "6px",
+                  gap: "7px",
                   backgroundColor: colors.pillBg,
                   color: colors.textHeading,
                   fontSize: "0.78rem",
@@ -1617,7 +1674,10 @@ export default function App() {
                   transition: "all 0.15s ease",
                 }}
               >
-                {copiedEmail ? "✓ Copied oumersalah2@gmail.com" : "✉ oumersalah2@gmail.com"}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+                <span>{copiedEmail ? "✓ Copied Email!" : PROFILE.email}</span>
               </button>
 
               {/* LinkedIn */}
@@ -1628,7 +1688,7 @@ export default function App() {
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
-                  gap: "6px",
+                  gap: "7px",
                   backgroundColor: colors.pillBg,
                   color: colors.textSub,
                   fontSize: "0.78rem",
@@ -1637,9 +1697,13 @@ export default function App() {
                   borderRadius: "6px",
                   border: `1px solid ${colors.pillBorder}`,
                   textDecoration: "none",
+                  transition: "all 0.15s ease",
                 }}
               >
-                LinkedIn ↗
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="#0A66C2">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.07v8.37h2.78z" />
+                </svg>
+                <span>LinkedIn ↗</span>
               </a>
 
               {/* X / Twitter */}
@@ -1650,7 +1714,7 @@ export default function App() {
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
-                  gap: "6px",
+                  gap: "7px",
                   backgroundColor: colors.pillBg,
                   color: colors.textSub,
                   fontSize: "0.78rem",
@@ -1659,9 +1723,13 @@ export default function App() {
                   borderRadius: "6px",
                   border: `1px solid ${colors.pillBorder}`,
                   textDecoration: "none",
+                  transition: "all 0.15s ease",
                 }}
               >
-                X: @titanic66834 ↗
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+                <span>X: @titanic66834 ↗</span>
               </a>
 
               {/* Telegram */}
@@ -1672,7 +1740,7 @@ export default function App() {
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
-                  gap: "6px",
+                  gap: "7px",
                   backgroundColor: colors.pillBg,
                   color: colors.textSub,
                   fontSize: "0.78rem",
@@ -1681,9 +1749,39 @@ export default function App() {
                   borderRadius: "6px",
                   border: `1px solid ${colors.pillBorder}`,
                   textDecoration: "none",
+                  transition: "all 0.15s ease",
                 }}
               >
-                Telegram: @ggedAbdusay ↗
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="#229ED9">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z" />
+                </svg>
+                <span>Telegram: @ggedAbdusay ↗</span>
+              </a>
+
+              {/* GitHub */}
+              <a
+                href={PROFILE.github}
+                target="_blank"
+                rel="noreferrer"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "7px",
+                  backgroundColor: colors.pillBg,
+                  color: colors.textSub,
+                  fontSize: "0.78rem",
+                  fontWeight: 500,
+                  padding: "8px 14px",
+                  borderRadius: "6px",
+                  border: `1px solid ${colors.pillBorder}`,
+                  textDecoration: "none",
+                  transition: "all 0.15s ease",
+                }}
+              >
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                  <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                </svg>
+                <span>GitHub ↗</span>
               </a>
 
               {/* FlowCV Modal Button */}
@@ -1692,7 +1790,7 @@ export default function App() {
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
-                  gap: "6px",
+                  gap: "7px",
                   backgroundColor: colors.pillBg,
                   color: colors.textSub,
                   fontSize: "0.78rem",
@@ -1701,9 +1799,13 @@ export default function App() {
                   borderRadius: "6px",
                   border: `1px solid ${colors.pillBorder}`,
                   cursor: "pointer",
+                  transition: "all 0.15s ease",
                 }}
               >
-                Download CV (PDF) 📄
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+                </svg>
+                <span>Download CV (PDF)</span>
               </button>
             </div>
           </div>
@@ -1726,21 +1828,36 @@ export default function App() {
           <div className="font-mono">
             © 2026 Abdusalam Oumer Aman · Software Engineering @ AAU · Addis Ababa, Ethiopia
           </div>
-          <div style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}>
-            <a href={PROFILE.github} target="_blank" rel="noreferrer" className="font-mono dock-action">
-              GitHub
+          <div style={{ display: "flex", gap: "14px", flexWrap: "wrap", alignItems: "center" }}>
+            <a href={PROFILE.github} target="_blank" rel="noreferrer" className="font-mono dock-action" style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+              </svg>
+              <span>GitHub</span>
             </a>
-            <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" className="font-mono dock-action">
-              LinkedIn
+            <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" className="font-mono dock-action" style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="#0A66C2">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.07v8.37h2.78z" />
+              </svg>
+              <span>LinkedIn</span>
             </a>
-            <a href={PROFILE.twitter} target="_blank" rel="noreferrer" className="font-mono dock-action">
-              X
+            <a href={PROFILE.twitter} target="_blank" rel="noreferrer" className="font-mono dock-action" style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+              <span>X</span>
             </a>
-            <a href={PROFILE.telegramChannel} target="_blank" rel="noreferrer" className="font-mono dock-action">
-              Telegram
+            <a href={PROFILE.telegramChannel} target="_blank" rel="noreferrer" className="font-mono dock-action" style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="#229ED9">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z" />
+              </svg>
+              <span>Telegram</span>
             </a>
-            <a href={PROFILE.upwork} target="_blank" rel="noreferrer" className="font-mono dock-action">
-              Upwork
+            <a href={PROFILE.upwork} target="_blank" rel="noreferrer" className="font-mono dock-action" style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-3.254 0-5.46 2.046-6.19 4.341l-.417 1.854C11.13 9.47 9.873 8.358 8.01 8.358c-2.88 0-5.217 2.338-5.217 5.219 0 2.88 2.337 5.217 5.217 5.217 2.88 0 5.217-2.337 5.217-5.217 0-.585-.1-1.146-.282-1.669 1.139.878 2.569 1.411 4.135 1.411 3.864 0 7.008-3.144 7.008-7.009s-3.144-7.009-7.009-7.009z" />
+              </svg>
+              <span>Upwork</span>
             </a>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
