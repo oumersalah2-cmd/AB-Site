@@ -32,12 +32,12 @@ const HIGHLIGHT_METRICS = [
 // ── TOP NAVIGATION PILLS (FROM SCREENSHOT 2) ───────────────────────────
 const NAV_ITEMS = [
   { id: "projects", label: "Projects" },
+  { id: "contact", label: "Contact" },
   { id: "work", label: "Experience" },
+  { id: "stack", label: "Stack" },
   { id: "algorithmic-foundation", label: "Rigor & Chess" },
   { id: "recognition", label: "Recognition" },
-  { id: "stack", label: "Stack" },
   { id: "notes", label: "Notes" },
-  { id: "contact", label: "Contact" },
 ];
 
 // ── SECTION 01: SELECTED LIVE PROJECTS ─────────────────────────────────
@@ -680,6 +680,23 @@ export default function App() {
           transform: scale(1.1);
         }
 
+        /* Mobile Phone Optimization: Contact actions prioritized 1st/2nd */
+        @media (max-width: 640px) {
+          .action-dock-actions {
+            order: 1 !important;
+            width: 100% !important;
+            justify-content: space-between !important;
+            margin-bottom: 6px !important;
+          }
+          .action-dock-socials {
+            order: 2 !important;
+            width: 100% !important;
+            justify-content: center !important;
+            border-top: 1px solid ${colors.ruleBorder} !important;
+            padding-top: 10px !important;
+          }
+        }
+
         /* Custom scrollbar */
         ::-webkit-scrollbar {
           width: 6px;
@@ -802,11 +819,87 @@ export default function App() {
       </div>
 
       {/* ── MAIN CONTENT CONTAINER (SINGLE COLUMN, CENTERED) ────────── */}
-      <main className="page-container" style={{ paddingTop: "1rem", paddingBottom: "6rem" }}>
+      <main className="page-container" style={{ paddingTop: "0.75rem", paddingBottom: "6rem" }}>
+        {/* ── HORIZONTAL NAVBAR (ABOVE EVERYTHING ON HOMEPAGE) ── */}
+        <nav
+          aria-label="Section Navigation"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "0.5rem",
+            marginBottom: "1.75rem",
+            width: "100%",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexWrap: "wrap",
+              gap: "6px",
+              padding: "6px 10px",
+              borderRadius: "999px",
+              backgroundColor: isDark ? "rgba(22, 30, 46, 0.85)" : "rgba(241, 245, 249, 0.92)",
+              border: `1px solid ${colors.cardBorder}`,
+              boxShadow: isDark
+                ? "0 4px 20px rgba(0, 0, 0, 0.35)"
+                : "0 2px 10px rgba(0, 0, 0, 0.04)",
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
+              maxWidth: "100%",
+            }}
+          >
+            {NAV_ITEMS.map((item) => {
+              const isActive = activeSection === item.id;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  style={{
+                    border: "none",
+                    background: isActive
+                      ? (isDark ? "rgba(245, 158, 11, 0.22)" : "#ffffff")
+                      : "transparent",
+                    color: isActive
+                      ? (isDark ? colors.accent : "#09090b")
+                      : colors.textMuted,
+                    boxShadow: isActive
+                      ? (isDark ? "0 1px 4px rgba(0,0,0,0.4)" : "0 1px 3px rgba(0,0,0,0.08)")
+                      : "none",
+                    padding: "6px 14px",
+                    borderRadius: "999px",
+                    fontSize: "0.78rem",
+                    fontWeight: isActive ? 600 : 500,
+                    cursor: "pointer",
+                    whiteSpace: "nowrap",
+                    transition: "all 0.15s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive) {
+                      e.currentTarget.style.color = colors.textHeading;
+                      e.currentTarget.style.background = isDark ? "rgba(255, 255, 255, 0.06)" : "rgba(0, 0, 0, 0.04)";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive) {
+                      e.currentTarget.style.color = colors.textMuted;
+                      e.currentTarget.style.background = "transparent";
+                    }
+                  }}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
+          </div>
+        </nav>
+
         {/* ════════════════════════════════════════════════════════════════
             HERO SECTION WITH CROPPED CIRCULAR HEADSHOT (SCREENSHOT 3)
         ════════════════════════════════════════════════════════════════ */}
-        <section style={{ paddingTop: "1rem", paddingBottom: "2rem" }}>
+        <section style={{ paddingTop: "0.5rem", paddingBottom: "2rem" }}>
           {/* Identity Header: Circular Headshot (Above Hands) + Name */}
           <div
             style={{
@@ -965,7 +1058,7 @@ export default function App() {
             }}
           >
             {/* Left: Social Icons (GitHub, LinkedIn, X, Telegram, Upwork) */}
-            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+            <div className="action-dock-socials" style={{ display: "flex", alignItems: "center", gap: "12px" }}>
               {/* GitHub */}
               <a
                 href={PROFILE.github}
@@ -1033,7 +1126,7 @@ export default function App() {
             </div>
 
             {/* Right: Actions */}
-            <div style={{ display: "flex", alignItems: "center", gap: "14px", fontSize: "0.78rem" }}>
+            <div className="action-dock-actions" style={{ display: "flex", alignItems: "center", gap: "14px", fontSize: "0.78rem", flexWrap: "wrap" }}>
               <button
                 onClick={copyPhone}
                 className="font-mono dock-action"
@@ -1066,81 +1159,6 @@ export default function App() {
             </div>
           </div>
         </section>
-
-        {/* ── INLINE SECTION NAVIGATION PILL BAR (SCREENSHOT 2 STYLE) ── */}
-        <nav
-          aria-label="Section Navigation"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            margin: "2rem 0 1.25rem 0",
-            width: "100%",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexWrap: "wrap",
-              gap: "6px",
-              padding: "6px 10px",
-              borderRadius: "999px",
-              backgroundColor: isDark ? "rgba(22, 30, 46, 0.85)" : "rgba(241, 245, 249, 0.92)",
-              border: `1px solid ${colors.cardBorder}`,
-              boxShadow: isDark
-                ? "0 4px 20px rgba(0, 0, 0, 0.35)"
-                : "0 2px 10px rgba(0, 0, 0, 0.04)",
-              backdropFilter: "blur(12px)",
-              WebkitBackdropFilter: "blur(12px)",
-              maxWidth: "100%",
-            }}
-          >
-            {NAV_ITEMS.map((item) => {
-              const isActive = activeSection === item.id;
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  style={{
-                    border: "none",
-                    background: isActive
-                      ? (isDark ? "rgba(245, 158, 11, 0.22)" : "#ffffff")
-                      : "transparent",
-                    color: isActive
-                      ? (isDark ? colors.accent : "#09090b")
-                      : colors.textMuted,
-                    boxShadow: isActive
-                      ? (isDark ? "0 1px 4px rgba(0,0,0,0.4)" : "0 1px 3px rgba(0,0,0,0.08)")
-                      : "none",
-                    padding: "6px 14px",
-                    borderRadius: "999px",
-                    fontSize: "0.78rem",
-                    fontWeight: isActive ? 600 : 500,
-                    cursor: "pointer",
-                    whiteSpace: "nowrap",
-                    transition: "all 0.15s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    if (!isActive) {
-                      e.currentTarget.style.color = colors.textHeading;
-                      e.currentTarget.style.background = isDark ? "rgba(255, 255, 255, 0.06)" : "rgba(0, 0, 0, 0.04)";
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (!isActive) {
-                      e.currentTarget.style.color = colors.textMuted;
-                      e.currentTarget.style.background = "transparent";
-                    }
-                  }}
-                >
-                  {item.label}
-                </button>
-              );
-            })}
-          </div>
-        </nav>
 
         {/* ════════════════════════════════════════════════════════════════
             SECTION 01: SELECTED LIVE PROJECTS (8 VERIFIED SYSTEMS)
