@@ -199,6 +199,19 @@ const WORK_EXPERIENCES = [
     linkLabel: "Launch Bot ↗",
   },
   {
+    id: "insa-ctc",
+    role: "Full-Stack Development Trainee",
+    company: "Information Network Security Administration · Internship",
+    period: "Jun 2026 — Present · 6 mos",
+    location: "Addis Ababa, Ethiopia · Hybrid",
+    tag: "Cyber Talent Camp (CTC 5th Batch)",
+    description:
+      "Currently participating in the Cyber Talent Camp (CTC 5th Batch) training program within the development track. Key areas of focus and ongoing training include:\n• Software Engineering: Training in full-stack web development and mobile app development.\n• DevSecOps & Infrastructure: Gaining hands-on experience with Docker containerization and website security best practices.\n• Cognitive & Personal Growth: Developing strategic logic and problem-solving skills through regular chess training, alongside dedicated modules on self-awareness.",
+    stack: ["Full-Stack Development", "DevOps", "Docker", "Software Security", "Mobile Dev", "Chess Strategy"],
+    link: "https://www.linkedin.com/in/abdusalam-oumer-a-200291389/",
+    linkLabel: "LinkedIn Position ↗",
+  },
+  {
     id: "sof-omar",
     role: "Software Engineering Intern",
     company: "Sof Omar Technologies",
@@ -209,18 +222,6 @@ const WORK_EXPERIENCES = [
     stack: ["Flutter", "Dart", "Node.js", "REST APIs", "Git", "PostgreSQL"],
     link: "https://github.com/oumersalah2-cmd",
     linkLabel: "GitHub ↗",
-  },
-  {
-    id: "insa-training",
-    role: "Full-Stack & Software Security Trainee",
-    company: "Information Network Security Administration (INSA)",
-    period: "Jul 2026 — Nov 2026",
-    tag: "Full-Stack & App Security",
-    description:
-      "Intensive national training cohort focused on full-stack web application engineering, software security architecture, defensive coding standards, secure API authentication, and OWASP mitigation.",
-    stack: ["Full-Stack Web", "Software Security", "OWASP Hardening", "Secure APIs", "Linux", "Node.js / React"],
-    link: null,
-    linkLabel: null,
   },
   {
     id: "aau-research",
@@ -370,7 +371,7 @@ const ENGINEERING_NOTES = [
 ];
 
 export default function App() {
-  const [isDark, setIsDark] = useState(false); // Default to light/white mode as requested
+  const [isDark, setIsDark] = useState(true); // Default to dark mode as requested
   const [currentTime, setCurrentTime] = useState("");
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
@@ -689,18 +690,44 @@ export default function App() {
           .action-dock-actions {
             order: 1 !important;
             width: 100% !important;
-            display: flex !important;
-            justify-content: space-between !important;
-            align-items: center !important;
-            flex-wrap: wrap !important;
-            gap: 10px !important;
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 8px !important;
+          }
+          .dock-action-call {
+            grid-column: span 1 !important;
+            justify-content: center !important;
+            background-color: ${colors.accent} !important;
+            color: ${isDark ? "#0f1422" : "#ffffff"} !important;
+            padding: 8px 10px !important;
+            border-radius: 6px !important;
+            font-weight: 600 !important;
+          }
+          .dock-action-email {
+            grid-column: span 1 !important;
+            justify-content: center !important;
+            background-color: ${colors.pillBg} !important;
+            border: 1px solid ${colors.pillBorder} !important;
+            color: ${colors.textHeading} !important;
+            padding: 8px 10px !important;
+            border-radius: 6px !important;
+            font-weight: 600 !important;
+          }
+          .dock-action-cv,
+          .dock-action-projects {
+            grid-column: span 1 !important;
+            justify-content: center !important;
+            background-color: ${colors.pillBg} !important;
+            border: 1px solid ${colors.pillBorder} !important;
+            padding: 7px 10px !important;
+            border-radius: 6px !important;
           }
           .action-dock-socials {
             order: 2 !important;
             width: 100% !important;
             display: flex !important;
             justify-content: center !important;
-            gap: 16px !important;
+            gap: 18px !important;
             border-top: 1px solid ${colors.ruleBorder} !important;
             padding-top: 10px !important;
           }
@@ -1140,7 +1167,7 @@ export default function App() {
               <a
                 href={`tel:${PROFILE.phone}`}
                 onClick={copyPhone}
-                className="font-mono dock-action"
+                className="font-mono dock-action dock-action-call"
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
@@ -1159,7 +1186,7 @@ export default function App() {
               <a
                 href={`mailto:${PROFILE.email}`}
                 onClick={copyEmail}
-                className="font-mono dock-action"
+                className="font-mono dock-action dock-action-email"
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
@@ -1177,7 +1204,7 @@ export default function App() {
 
               <button
                 onClick={() => setCvModalOpen(true)}
-                className="font-mono dock-action"
+                className="font-mono dock-action dock-action-cv"
                 style={{
                   background: "none",
                   border: "none",
@@ -1196,7 +1223,7 @@ export default function App() {
 
               <button
                 onClick={() => scrollToSection("projects")}
-                className="font-mono dock-action"
+                className="font-mono dock-action dock-action-projects"
                 style={{
                   background: "none",
                   border: "none",
@@ -1357,6 +1384,11 @@ export default function App() {
                     </h3>
                     <div className="font-mono" style={{ fontSize: "0.76rem", color: colors.textMuted }}>
                       {exp.company}
+                      {exp.location && (
+                        <span style={{ color: colors.textMuted, marginLeft: "6px" }}>
+                          · {exp.location}
+                        </span>
+                      )}
                       {exp.tag && (
                         <span style={{ color: colors.accent, marginLeft: "6px" }}>
                           · {exp.tag}
@@ -1370,9 +1402,25 @@ export default function App() {
                 </div>
 
                 {/* Description */}
-                <p style={{ fontSize: "0.86rem", color: colors.textSub, lineHeight: 1.58, marginTop: "0.2rem" }}>
-                  {exp.description}
-                </p>
+                <div style={{ fontSize: "0.86rem", color: colors.textSub, marginTop: "0.2rem" }}>
+                  {exp.description.includes("•") ? (
+                    <div>
+                      <p style={{ marginBottom: "0.45rem", lineHeight: 1.58 }}>{exp.description.split("•")[0].trim()}</p>
+                      <ul style={{ paddingLeft: "1.2rem", margin: 0, display: "flex", flexDirection: "column", gap: "0.35rem" }}>
+                        {exp.description
+                          .split("•")
+                          .slice(1)
+                          .map((bullet, bIdx) => (
+                            <li key={bIdx} style={{ fontSize: "0.84rem", color: colors.textSub, lineHeight: 1.55 }}>
+                              {bullet.trim()}
+                            </li>
+                          ))}
+                      </ul>
+                    </div>
+                  ) : (
+                    <p style={{ lineHeight: 1.58 }}>{exp.description}</p>
+                  )}
+                </div>
 
                 {/* Tech Pills */}
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "5px", alignItems: "center", marginTop: "0.4rem" }}>
