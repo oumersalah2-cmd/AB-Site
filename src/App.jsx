@@ -471,7 +471,11 @@ export default function App() {
             radial-gradient(ellipse 75% 600px at 85% 45%, rgba(99, 102, 241, 0.06) 0%, transparent 60%),
             radial-gradient(ellipse 80% 700px at 15% 75%, rgba(245, 158, 11, 0.05) 0%, transparent 60%)
           `
-          : "none",
+          : `
+            radial-gradient(ellipse 90% 500px at 50% 0px, rgba(16, 185, 129, 0.07) 0%, transparent 70%),
+            radial-gradient(ellipse 75% 600px at 85% 45%, rgba(20, 184, 166, 0.04) 0%, transparent 60%),
+            radial-gradient(ellipse 80% 700px at 15% 75%, rgba(16, 185, 129, 0.04) 0%, transparent 60%)
+          `,
         color: colors.text,
         fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
         minHeight: "100vh",
@@ -482,7 +486,7 @@ export default function App() {
         transition: "background-color 0.25s ease, color 0.25s ease",
       }}
     >
-      {/* ── ATMOSPHERIC SUNSET BACKDROP (CUSTOM PHOTOGRAPHY) ─────────────── */}
+      {/* ── ATMOSPHERIC HERO BACKDROP (CUSTOM PHOTOGRAPHY: SUNSET IN DARK, MISTY NATURE IN WHITE) ── */}
       <div
         style={{
           position: "absolute",
@@ -502,14 +506,14 @@ export default function App() {
             `
             : `
               linear-gradient(to bottom, 
-                rgba(248, 250, 252, 0.45) 0%, 
-                rgba(248, 250, 252, 0.72) 280px, 
-                rgba(248, 250, 252, 0.96) 520px, 
+                rgba(248, 250, 252, 0.40) 0%, 
+                rgba(248, 250, 252, 0.65) 260px, 
+                rgba(248, 250, 252, 0.95) 540px, 
                 #f8fafc 100%
               ),
-              url('/sunset-bg.jpg')
+              url('/nature-bg.jpg')
             `,
-          backgroundPosition: "center 22%",
+          backgroundPosition: isDark ? "center 22%" : "center 35%",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           pointerEvents: "none",
@@ -518,7 +522,7 @@ export default function App() {
         }}
       />
 
-      {/* Warm Golden Sunset Radial Ambient Luster */}
+      {/* Atmospheric Radial Ambient Luster */}
       <div
         style={{
           position: "absolute",
@@ -528,7 +532,7 @@ export default function App() {
           height: "600px",
           background: isDark
             ? "radial-gradient(ellipse 65% 45% at 50% 12%, rgba(245, 158, 11, 0.16) 0%, rgba(217, 119, 6, 0.08) 45%, transparent 75%)"
-            : "radial-gradient(ellipse 65% 45% at 50% 12%, rgba(217, 119, 6, 0.12) 0%, rgba(245, 158, 11, 0.05) 45%, transparent 75%)",
+            : "radial-gradient(ellipse 70% 50% at 50% 15%, rgba(16, 185, 129, 0.12) 0%, rgba(20, 184, 166, 0.05) 45%, transparent 75%)",
           pointerEvents: "none",
           zIndex: 1,
         }}
