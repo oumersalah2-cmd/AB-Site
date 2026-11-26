@@ -448,34 +448,23 @@ export default function App() {
     textHeading: isDark ? "#f8fafc" : "#09090b",
     textMuted: isDark ? "#94a3b8" : "#64748b",
     textSub: isDark ? "#cbd5e1" : "#334155",
-    cardBg: isDark ? "rgba(22, 30, 46, 0.78)" : "rgba(255, 255, 255, 0.95)",
-    cardBorder: isDark ? "rgba(255, 255, 255, 0.08)" : "rgba(0, 0, 0, 0.08)",
+    cardBg: isDark ? "rgba(18, 24, 38, 0.78)" : "rgba(255, 255, 255, 0.90)",
+    cardBorder: isDark ? "rgba(255, 255, 255, 0.10)" : "rgba(0, 0, 0, 0.08)",
     cardHoverBorder: isDark ? "rgba(245, 158, 11, 0.45)" : "rgba(217, 119, 6, 0.45)",
-    cardHoverBg: isDark ? "rgba(28, 38, 58, 0.90)" : "#ffffff",
+    cardHoverBg: isDark ? "rgba(24, 33, 52, 0.88)" : "rgba(255, 255, 255, 0.96)",
     accent: isDark ? "#f59e0b" : "#d97706",
     accentGlow: isDark ? "rgba(245, 158, 11, 0.22)" : "rgba(217, 119, 6, 0.12)",
-    pillBg: isDark ? "rgba(26, 36, 56, 0.88)" : "rgba(241, 245, 249, 0.95)",
-    pillBorder: isDark ? "rgba(255, 255, 255, 0.08)" : "rgba(0, 0, 0, 0.08)",
-    dockBg: isDark ? "rgba(22, 30, 46, 0.88)" : "rgba(255, 255, 255, 0.92)",
-    dockBorder: isDark ? "rgba(255, 255, 255, 0.09)" : "rgba(0, 0, 0, 0.1)",
-    ruleBorder: isDark ? "rgba(255, 255, 255, 0.08)" : "rgba(0, 0, 0, 0.08)",
+    pillBg: isDark ? "rgba(24, 33, 52, 0.86)" : "rgba(241, 245, 249, 0.92)",
+    pillBorder: isDark ? "rgba(255, 255, 255, 0.10)" : "rgba(0, 0, 0, 0.08)",
+    dockBg: isDark ? "rgba(18, 24, 38, 0.86)" : "rgba(255, 255, 255, 0.90)",
+    dockBorder: isDark ? "rgba(255, 255, 255, 0.10)" : "rgba(0, 0, 0, 0.1)",
+    ruleBorder: isDark ? "rgba(255, 255, 255, 0.10)" : "rgba(0, 0, 0, 0.08)",
   };
 
   return (
     <div
       style={{
         backgroundColor: colors.bg,
-        backgroundImage: isDark
-          ? `
-            radial-gradient(ellipse 90% 500px at 50% 0px, rgba(245, 158, 11, 0.10) 0%, transparent 70%),
-            radial-gradient(ellipse 75% 600px at 85% 45%, rgba(99, 102, 241, 0.06) 0%, transparent 60%),
-            radial-gradient(ellipse 80% 700px at 15% 75%, rgba(245, 158, 11, 0.05) 0%, transparent 60%)
-          `
-          : `
-            radial-gradient(ellipse 90% 500px at 50% 0px, rgba(217, 119, 6, 0.06) 0%, transparent 70%),
-            radial-gradient(ellipse 75% 600px at 85% 45%, rgba(16, 185, 129, 0.04) 0%, transparent 60%),
-            radial-gradient(ellipse 80% 700px at 15% 75%, rgba(217, 119, 6, 0.04) 0%, transparent 60%)
-          `,
         color: colors.text,
         fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
         minHeight: "100vh",
@@ -486,34 +475,32 @@ export default function App() {
         transition: "background-color 0.25s ease, color 0.25s ease",
       }}
     >
-      {/* ── ATMOSPHERIC HERO BACKDROP (CUSTOM PHOTOGRAPHY: SUNSET IN DARK, MOUNTAIN VILLA IN WHITE) ── */}
+      {/* ── FULL-SCREEN ATMOSPHERIC BACKDROP (WORKSPACE IN DARK, MOUNTAIN VILLA IN WHITE) ── */}
       <div
         style={{
-          position: "absolute",
+          position: "fixed",
           top: 0,
           left: 0,
           right: 0,
-          height: "720px",
+          bottom: 0,
           backgroundImage: isDark
             ? `
-              linear-gradient(to bottom, 
-                rgba(15, 20, 34, 0.35) 0%, 
-                rgba(15, 20, 34, 0.65) 280px, 
-                rgba(15, 20, 34, 0.94) 540px, 
-                #0f1422 100%
+              linear-gradient(180deg, 
+                rgba(12, 16, 28, 0.56) 0%, 
+                rgba(12, 16, 28, 0.68) 45%, 
+                rgba(12, 16, 28, 0.80) 100%
               ),
-              url('/sunset-bg.jpg')
+              url('/workspace-bg.jpg')
             `
             : `
-              linear-gradient(to bottom, 
-                rgba(248, 250, 252, 0.45) 0%, 
-                rgba(248, 250, 252, 0.70) 260px, 
-                rgba(248, 250, 252, 0.95) 540px, 
-                #f8fafc 100%
+              linear-gradient(180deg, 
+                rgba(248, 250, 252, 0.56) 0%, 
+                rgba(248, 250, 252, 0.74) 45%, 
+                rgba(248, 250, 252, 0.86) 100%
               ),
               url('/nature-bg.jpg')
             `,
-          backgroundPosition: isDark ? "center 22%" : "center 32%",
+          backgroundPosition: isDark ? "center center" : "center 32%",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           pointerEvents: "none",
@@ -522,36 +509,40 @@ export default function App() {
         }}
       />
 
-      {/* Atmospheric Radial Ambient Luster */}
+      {/* Full-Screen Atmospheric Radial Ambient Luster */}
       <div
         style={{
-          position: "absolute",
+          position: "fixed",
           top: 0,
           left: 0,
           right: 0,
-          height: "600px",
+          bottom: 0,
           background: isDark
-            ? "radial-gradient(ellipse 65% 45% at 50% 12%, rgba(245, 158, 11, 0.16) 0%, rgba(217, 119, 6, 0.08) 45%, transparent 75%)"
-            : "radial-gradient(ellipse 70% 50% at 50% 15%, rgba(217, 119, 6, 0.09) 0%, rgba(16, 185, 129, 0.06) 45%, transparent 75%)",
+            ? `
+              radial-gradient(ellipse 80% 55% at 50% 15%, rgba(245, 158, 11, 0.12) 0%, transparent 70%),
+              radial-gradient(ellipse 70% 50% at 85% 75%, rgba(99, 102, 241, 0.08) 0%, transparent 65%)
+            `
+            : `
+              radial-gradient(ellipse 80% 55% at 50% 15%, rgba(217, 119, 6, 0.08) 0%, transparent 70%),
+              radial-gradient(ellipse 70% 50% at 85% 75%, rgba(16, 185, 129, 0.06) 0%, transparent 65%)
+            `,
           pointerEvents: "none",
           zIndex: 1,
         }}
       />
 
-      {/* Subtle Dither Stipple Matrix Overlay */}
+      {/* Full-Screen Subtle Dither Stipple Matrix Overlay */}
       <div
         style={{
-          position: "absolute",
+          position: "fixed",
           top: 0,
           left: 0,
           right: 0,
-          height: "600px",
+          bottom: 0,
           backgroundImage: isDark
-            ? "radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px)"
-            : "radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px)",
+            ? "radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px)"
+            : "radial-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px)",
           backgroundSize: "8px 8px",
-          maskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)",
-          WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)",
           pointerEvents: "none",
           zIndex: 1,
         }}
