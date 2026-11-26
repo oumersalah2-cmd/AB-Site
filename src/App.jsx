@@ -440,25 +440,24 @@ export default function App() {
     setTimeout(() => setCopiedPhone(false), 2200);
   };
 
-  // ── THEME COLORS (ATTRACTIVE SOFT MIDNIGHT SLATE DARK MODE + PRISTINE LIGHT MODE) ──
+  // ── THEME COLORS (STARK CYAN/COBALT DARK MODE + LUMINOUS INDIGO-RGB LIGHT MODE) ──
   const colors = {
-    // Soft deep midnight slate instead of harsh jet black
-    bg: isDark ? "#0f1422" : "#f8fafc",
-    text: isDark ? "#e2e8f0" : "#1e293b",
-    textHeading: isDark ? "#f8fafc" : "#09090b",
-    textMuted: isDark ? "#94a3b8" : "#64748b",
-    textSub: isDark ? "#cbd5e1" : "#334155",
-    cardBg: isDark ? "rgba(18, 24, 38, 0.78)" : "rgba(255, 255, 255, 0.90)",
-    cardBorder: isDark ? "rgba(255, 255, 255, 0.10)" : "rgba(0, 0, 0, 0.08)",
-    cardHoverBorder: isDark ? "rgba(245, 158, 11, 0.45)" : "rgba(217, 119, 6, 0.45)",
-    cardHoverBg: isDark ? "rgba(24, 33, 52, 0.88)" : "rgba(255, 255, 255, 0.96)",
-    accent: isDark ? "#f59e0b" : "#d97706",
-    accentGlow: isDark ? "rgba(245, 158, 11, 0.22)" : "rgba(217, 119, 6, 0.12)",
-    pillBg: isDark ? "rgba(24, 33, 52, 0.86)" : "rgba(241, 245, 249, 0.92)",
-    pillBorder: isDark ? "rgba(255, 255, 255, 0.10)" : "rgba(0, 0, 0, 0.08)",
-    dockBg: isDark ? "rgba(18, 24, 38, 0.86)" : "rgba(255, 255, 255, 0.90)",
-    dockBorder: isDark ? "rgba(255, 255, 255, 0.10)" : "rgba(0, 0, 0, 0.1)",
-    ruleBorder: isDark ? "rgba(255, 255, 255, 0.10)" : "rgba(0, 0, 0, 0.08)",
+    bg: isDark ? "#060c1a" : "#f8fafc",
+    text: isDark ? "#f1f5f9" : "#0f172a",
+    textHeading: isDark ? "#ffffff" : "#09090b",
+    textMuted: isDark ? "#b8cce4" : "#334155",
+    textSub: isDark ? "#e2e8f0" : "#1e293b",
+    cardBg: isDark ? "rgba(7, 15, 34, 0.82)" : "rgba(255, 255, 255, 0.88)",
+    cardBorder: isDark ? "rgba(56, 189, 248, 0.22)" : "rgba(79, 70, 229, 0.18)",
+    cardHoverBorder: isDark ? "rgba(56, 189, 248, 0.60)" : "rgba(79, 70, 229, 0.50)",
+    cardHoverBg: isDark ? "rgba(10, 22, 48, 0.90)" : "rgba(255, 255, 255, 0.96)",
+    accent: isDark ? "#38bdf8" : "#4f46e5",
+    accentGlow: isDark ? "rgba(56, 189, 248, 0.25)" : "rgba(79, 70, 229, 0.16)",
+    pillBg: isDark ? "rgba(12, 26, 56, 0.88)" : "rgba(241, 245, 249, 0.94)",
+    pillBorder: isDark ? "rgba(56, 189, 248, 0.24)" : "rgba(79, 70, 229, 0.18)",
+    dockBg: isDark ? "rgba(7, 15, 34, 0.88)" : "rgba(255, 255, 255, 0.90)",
+    dockBorder: isDark ? "rgba(56, 189, 248, 0.24)" : "rgba(79, 70, 229, 0.18)",
+    ruleBorder: isDark ? "rgba(56, 189, 248, 0.18)" : "rgba(79, 70, 229, 0.14)",
   };
 
   return (
@@ -475,7 +474,7 @@ export default function App() {
         transition: "background-color 0.25s ease, color 0.25s ease",
       }}
     >
-      {/* ── FULL-SCREEN ATMOSPHERIC BACKDROP (WORKSPACE IN DARK, MOUNTAIN VILLA IN WHITE) ── */}
+      {/* ── FULL-SCREEN ATMOSPHERIC BACKDROP (DUAL STUDIO SETUPS FOR DARK & WHITE MODES) ── */}
       <div
         style={{
           position: "fixed",
@@ -486,21 +485,21 @@ export default function App() {
           backgroundImage: isDark
             ? `
               linear-gradient(180deg, 
-                rgba(12, 16, 28, 0.56) 0%, 
-                rgba(12, 16, 28, 0.68) 45%, 
-                rgba(12, 16, 28, 0.80) 100%
+                rgba(6, 12, 26, 0.54) 0%, 
+                rgba(6, 12, 26, 0.66) 50%, 
+                rgba(6, 12, 26, 0.78) 100%
               ),
-              url('/workspace-bg.jpg')
+              url('/dark-bg.jpg')
             `
             : `
               linear-gradient(180deg, 
-                rgba(248, 250, 252, 0.56) 0%, 
-                rgba(248, 250, 252, 0.74) 45%, 
+                rgba(248, 250, 252, 0.68) 0%, 
+                rgba(248, 250, 252, 0.78) 50%, 
                 rgba(248, 250, 252, 0.86) 100%
               ),
-              url('/nature-bg.jpg')
+              url('/light-bg.jpg')
             `,
-          backgroundPosition: isDark ? "center center" : "center 32%",
+          backgroundPosition: isDark ? "center 42%" : "center center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           pointerEvents: "none",
@@ -519,12 +518,12 @@ export default function App() {
           bottom: 0,
           background: isDark
             ? `
-              radial-gradient(ellipse 80% 55% at 50% 15%, rgba(245, 158, 11, 0.12) 0%, transparent 70%),
-              radial-gradient(ellipse 70% 50% at 85% 75%, rgba(99, 102, 241, 0.08) 0%, transparent 65%)
+              radial-gradient(ellipse 80% 55% at 50% 15%, rgba(56, 189, 248, 0.14) 0%, transparent 70%),
+              radial-gradient(ellipse 70% 50% at 85% 75%, rgba(244, 63, 94, 0.08) 0%, transparent 65%)
             `
             : `
-              radial-gradient(ellipse 80% 55% at 50% 15%, rgba(217, 119, 6, 0.08) 0%, transparent 70%),
-              radial-gradient(ellipse 70% 50% at 85% 75%, rgba(16, 185, 129, 0.06) 0%, transparent 65%)
+              radial-gradient(ellipse 80% 55% at 50% 15%, rgba(99, 102, 241, 0.10) 0%, transparent 70%),
+              radial-gradient(ellipse 70% 50% at 85% 75%, rgba(6, 182, 212, 0.08) 0%, transparent 65%)
             `,
           pointerEvents: "none",
           zIndex: 1,
@@ -540,8 +539,8 @@ export default function App() {
           right: 0,
           bottom: 0,
           backgroundImage: isDark
-            ? "radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px)"
-            : "radial-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px)",
+            ? "radial-gradient(rgba(56, 189, 248, 0.05) 1px, transparent 1px)"
+            : "radial-gradient(rgba(79, 70, 229, 0.04) 1px, transparent 1px)",
           backgroundSize: "8px 8px",
           pointerEvents: "none",
           zIndex: 1,
@@ -562,7 +561,7 @@ export default function App() {
 
         ::selection {
           background: ${colors.accent};
-          color: ${isDark ? "#0f1422" : "#ffffff"};
+          color: ${isDark ? "#060d1c" : "#ffffff"};
         }
 
         /* Typography */
@@ -601,6 +600,7 @@ export default function App() {
           font-size: 1.15rem;
           font-weight: 600;
           color: ${colors.textHeading};
+          text-shadow: ${isDark ? "0 2px 10px rgba(4, 10, 24, 0.92)" : "0 1px 8px rgba(255, 255, 255, 0.85)"};
           display: flex;
           align-items: baseline;
           gap: 9px;
@@ -618,6 +618,7 @@ export default function App() {
           font-family: 'JetBrains Mono', monospace;
           font-size: 0.68rem;
           color: ${colors.textMuted};
+          text-shadow: ${isDark ? "0 1px 8px rgba(4, 10, 24, 0.9)" : "none"};
           letter-spacing: 0.08em;
           text-transform: uppercase;
           text-align: right;
@@ -693,7 +694,7 @@ export default function App() {
             grid-column: span 1 !important;
             justify-content: center !important;
             background-color: ${colors.accent} !important;
-            color: ${isDark ? "#0f1422" : "#ffffff"} !important;
+            color: ${isDark ? "#060d1c" : "#ffffff"} !important;
             padding: 8px 10px !important;
             border-radius: 6px !important;
             font-weight: 600 !important;
@@ -872,10 +873,10 @@ export default function App() {
               gap: "6px",
               padding: "6px 10px",
               borderRadius: "999px",
-              backgroundColor: isDark ? "rgba(22, 30, 46, 0.85)" : "rgba(241, 245, 249, 0.92)",
+              backgroundColor: isDark ? "rgba(7, 16, 36, 0.88)" : "rgba(241, 245, 249, 0.92)",
               border: `1px solid ${colors.cardBorder}`,
               boxShadow: isDark
-                ? "0 4px 20px rgba(0, 0, 0, 0.35)"
+                ? "0 4px 20px rgba(0, 0, 0, 0.45)"
                 : "0 2px 10px rgba(0, 0, 0, 0.04)",
               backdropFilter: "blur(12px)",
               WebkitBackdropFilter: "blur(12px)",
@@ -891,7 +892,7 @@ export default function App() {
                   style={{
                     border: "none",
                     background: isActive
-                      ? (isDark ? "rgba(245, 158, 11, 0.22)" : "#ffffff")
+                      ? (isDark ? "rgba(56, 189, 248, 0.22)" : "#ffffff")
                       : "transparent",
                     color: isActive
                       ? (isDark ? colors.accent : "#09090b")
@@ -949,8 +950,8 @@ export default function App() {
                 height: "88px",
                 borderRadius: "50%",
                 padding: "2.5px",
-                background: `linear-gradient(135deg, ${colors.accent}, rgba(245, 158, 11, 0.2))`,
-                boxShadow: `0 0 24px ${isDark ? "rgba(245, 158, 11, 0.25)" : "rgba(217, 119, 6, 0.18)"}`,
+                background: `linear-gradient(135deg, ${colors.accent}, rgba(56, 189, 248, 0.25))`,
+                boxShadow: `0 0 24px ${isDark ? "rgba(56, 189, 248, 0.30)" : "rgba(2, 132, 199, 0.22)"}`,
                 flexShrink: 0,
               }}
             >
@@ -988,6 +989,7 @@ export default function App() {
                   fontSize: "clamp(2.3rem, 4.4vw, 3.1rem)",
                   fontWeight: 500,
                   color: colors.textHeading,
+                  textShadow: isDark ? "0 2px 14px rgba(4, 10, 24, 0.95)" : "0 1px 10px rgba(255, 255, 255, 0.9)",
                   letterSpacing: "-0.025em",
                   lineHeight: 1.15,
                   marginBottom: "0.25rem",
@@ -1000,6 +1002,7 @@ export default function App() {
                 style={{
                   fontSize: "0.85rem",
                   color: colors.accent,
+                  textShadow: isDark ? "0 1px 10px rgba(4, 10, 24, 0.95)" : "none",
                   fontWeight: 600,
                   letterSpacing: "0.03em",
                 }}
@@ -1011,6 +1014,7 @@ export default function App() {
 
           {/* Punchy First-Person Engineering Narrative */}
           <div
+            className="clean-card"
             style={{
               fontSize: "0.98rem",
               lineHeight: 1.74,
@@ -1018,7 +1022,7 @@ export default function App() {
               display: "flex",
               flexDirection: "column",
               gap: "1.05rem",
-              marginBottom: "1.85rem",
+              marginBottom: "1.35rem",
             }}
           >
             <p>
@@ -1055,6 +1059,7 @@ export default function App() {
                   borderRadius: "6px",
                   backgroundColor: colors.cardBg,
                   border: `1px solid ${colors.cardBorder}`,
+                  backdropFilter: "blur(10px)",
                 }}
               >
                 <div
@@ -1284,9 +1289,9 @@ export default function App() {
                           display: "inline-flex",
                           alignItems: "center",
                           gap: "5px",
-                          backgroundColor: isDark ? "rgba(245, 158, 11, 0.12)" : "rgba(217, 119, 6, 0.1)",
+                          backgroundColor: isDark ? "rgba(56, 189, 248, 0.14)" : "rgba(79, 70, 229, 0.10)",
                           color: colors.accent,
-                          border: `1px solid ${isDark ? "rgba(245, 158, 11, 0.35)" : "rgba(217, 119, 6, 0.35)"}`,
+                          border: `1px solid ${isDark ? "rgba(56, 189, 248, 0.38)" : "rgba(79, 70, 229, 0.35)"}`,
                           padding: "3px 9px",
                           borderRadius: "4px",
                           fontSize: "0.7rem",
@@ -1683,7 +1688,7 @@ export default function App() {
                   alignItems: "center",
                   gap: "7px",
                   backgroundColor: colors.accent,
-                  color: isDark ? "#0f1422" : "#ffffff",
+                  color: isDark ? "#060d1c" : "#ffffff",
                   fontSize: "0.78rem",
                   fontWeight: 600,
                   padding: "8px 14px",
@@ -1938,8 +1943,8 @@ export default function App() {
               maxWidth: "580px",
               width: "100%",
               padding: "1.75rem",
-              backgroundColor: isDark ? "#121825" : "#ffffff",
-              border: `1px solid ${isDark ? "rgba(245, 158, 11, 0.25)" : "rgba(217, 119, 6, 0.35)"}`,
+              backgroundColor: isDark ? "#071022" : "#ffffff",
+              border: `1px solid ${isDark ? "rgba(56, 189, 248, 0.30)" : "rgba(79, 70, 229, 0.35)"}`,
               boxShadow: "0 25px 70px rgba(0, 0, 0, 0.95)",
             }}
             onClick={(e) => e.stopPropagation()}
@@ -1975,7 +1980,7 @@ export default function App() {
                   alignItems: "center",
                   gap: "6px",
                   backgroundColor: colors.accent,
-                  color: isDark ? "#0f1422" : "#ffffff",
+                  color: isDark ? "#060d1c" : "#ffffff",
                   fontSize: "0.78rem",
                   fontWeight: 600,
                   padding: "8px 14px",
